@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Shrines!
+{% endblock %}
+
+{% block body %} 
+    <h2>{{ headline }}</h2>
+
+    <form id="shrineform" action="{{ url_for('shrines') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <table style="width: 100%;">
+                <colgroup>
+                    <col span="1">
+                    <col span="2">
+                </colgroup>
+                
+                {% for result in results %}
+                    <tbody>
+                        <tr>
+                            <th>Info</th>
+                            <th>Shrine Info</th>
+                        </tr>
+
+                        {% if result[0] == 2 %}
+                        <tr>
+                            <td>Shrine</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{result[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{result[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{result[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{result[5]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Rewards</td>
+                            <td>{{result[7]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Enemies</td>
+                            <td>{{result[8]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Side Quest</td>
+                            <td>{{result[6]}}</td>
+                        </tr>    
+                        
+                        {% elif result[0] == 1 %}
+                        <tr>
+                            <td>Shrine</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{result[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{result[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{result[5]}}</td>
+                        </tr>
+                        
+                        {% elif result[0] == 0 %}
+                        <tr>
+                            <td>Shrine</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        {% endif %}
+
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <input type="radio" id="undone_{{ result[1] }}" name="done_shrine_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="shrine_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
+                            <input type="radio" id="tapped_{{ result[1] }}"name="done_shrine_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="tapped_{{ result[1] }}">Tapped</label>
+                            <input type="radio" id="done_{{ result[1] }}"name="done_shrine_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class="shrine_radio_labels" for="done_{{ result[1] }}">Done</label>
+                            <input type="submit" id="ShrineSubmit" value="Update">
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}

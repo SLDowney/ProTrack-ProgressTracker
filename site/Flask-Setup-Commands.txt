@@ -1,0 +1,11 @@
+Get-ExecutionPolicy -List
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+
+venv/Scripts/activate
+
+
+pip3 install flask
+$env:FLASK_APP="application"
+$env:FLASK_ENV="development"
+flask run

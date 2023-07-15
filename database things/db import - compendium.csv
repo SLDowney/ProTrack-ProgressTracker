@@ -1,0 +1,509 @@
+1,Horse,Creatures
+2,Giant Horse,Creatures
+3,White Horse,Creatures
+4,Giant White Stallion,Creatures
+5,Golden Horse,Creatures
+6,Stalhorse,Creatures
+7,Donkey,Creatures
+8,Sand Seal,Creatures
+9,Patricia,Creatures
+10,Bushy-Tailed Squirrel,Creatures
+11,Woodland Boar,Creatures
+12,Red-Tusked Boar,Creatures
+13,Mountain Goat,Creatures
+14,White Goat,Creatures
+15,Mountain Buck,Creatures
+16,Mountain Doe,Creatures
+17,Water Buffalo,Creatures
+18,Hateno Cow,Creatures
+19,Highland Sheep,Creatures
+20,Grassland Fox,Creatures
+21,Snowcoat Fox,Creatures
+22,Maraudo Wolf,Creatures
+23,Wasteland Coyote,Creatures
+24,Colt-Footed Wolf,Creatures
+25,Tabantha Moose,Creatures
+26,Dondon,Creatures
+27,Honeyvore Bear,Creatures
+28,Grizzlemaw Bear,Creatures
+29,Hylian Retriever,Creatures
+30,Blupee,Creatures
+31,Bubbulfrog,Creatures
+32,Common Sparrow,Creatures
+33,Red Sparrow,Creatures
+34,Blue Sparrow,Creatures
+35,Rainbow Sparrow,Creatures
+36,Sand Sparrow,Creatures
+37,Golden Sparrow,Creatures
+38,Wood Pigeon,Creatures
+39,Rainbow Pigeon,Creatures
+40,Hotfeather Pigeon,Creatures
+41,White Pigeon,Creatures
+42,Accented Pigeon,Creatures
+43,Mountain Crow,Creatures
+44,Bright-Chested Duck,Creatures
+45,Blue-Winged Heron,Creatures
+46,Pink Heron,Creatures
+47,Islander Hawk,Creatures
+48,Seagull,Creatures
+49,Cloud Seagull,Creatures
+50,Eldin Ostrich,Creatures
+51,Forest Ostrich,Creatures
+52,Cucco,Creatures
+53,Hyrule Bass,Creatures
+54,Hearty Bass,Creatures
+55,Staminoka Bass,Creatures
+56,Hearty Salmon,Creatures
+57,Chillfin Trout,Creatures
+58,Sizzlefin Trout,Creatures
+59,oltfin Trout,Creatures
+60,Stealthfin Trout,Creatures
+61,Mighty Carp,Creatures
+62,Armored Carp,Creatures
+63,Sanke Carp,Creatures
+64,Ancient Arowana,Creatures
+65,Glowing Cave Fish,Creatures
+66,Mighty Porgy,Creatures
+67,Armored Porgy,Creatures
+68,Sneaky River Snail,Creatures
+69,Razorclaw Crab,Creatures
+70,Ironshell Crab,Creatures
+71,Bright-Eyed Crab,Creatures
+72,Fairy,Creatures
+73,Winterwing Butterfly,Creatures
+74,Summerwing Butterfly,Creatures
+75,Thunderwing Butterfly,Creatures
+76,Smotherwing Butterfly,Creatures
+77,Cold Darner,Creatures
+78,Warm Darner,Creatures
+79,Electric Darner,Creatures
+80,Restless Cricket,Creatures
+81,Bladed Rhino Beetle,Creatures
+82,Rugged Rhino Beetle,Creatures
+83,Energetic Rhino Beetle,Creatures
+84,Sunset Firefly,Creatures
+85,Deep Firefly,Creatures
+86,Hot-Footed Frog,Creatures
+87,Tireless Frog,Creatures
+88,Sticky Frog,Creatures
+89,Hightail Lizard,Creatures
+90,Hearty Lizard,Creatures
+91,Fireproof Lizard,Creatures
+92,Sticky Lizard,Creatures
+93,Chuchu,Monsters
+94,Fire Chuchu,Monsters
+95,Ice Chuchu,Monsters
+96,Electric Chuchu,Monsters
+97,Keese,Monsters
+98,Fire Keese,Monsters
+99,Ice Keese,Monsters
+100,Electric Keese,Monsters
+101,Water Octorok,Monsters
+102,Forest Octorok,Monsters
+103,Rock Octorok,Monsters
+104,Snow Octorok,Monsters
+105,Treasure Octorok,Monsters
+106,Fire Wizzrobe,Monsters
+107,Ice Wizzrobe,Monsters
+108,Electric Wizzrobe,Monsters
+109,Meteo Wizzrobe,Monsters
+110,Blizzrobe,Monsters
+111,Thunder Wizzrobe,Monsters
+112,Like Like,Monsters
+113,Fire Like,Monsters
+114,Ice Like,Monsters
+115,Shock Like,Monsters
+116,Rock Like,Monsters
+117,Evermean,Monsters
+118,Aerocuda,Monsters
+119,Gibdo,Monsters
+120,Moth Gibdo,Monsters
+121,Bokoblin,Monsters
+122,Blue Bokoblin,Monsters
+123,Black Bokoblin,Monsters
+124,Stalkoblin,Monsters
+125,Silver Bokoblin,Monsters
+126,Boss Bokoblin,Monsters
+127,Blue Boss Bokoblin,Monsters
+128,Black Boss Bokoblin,Monsters
+129,Silver Boss Bokoblin,Monsters
+130,Moblin,Monsters
+131,Blue Moblin,Monsters
+132,Black Moblin,Monsters
+133,Stalmoblin,Monsters
+134,Silver Moblin,Monsters
+135,Lizalfos,Monsters
+136,Blue Lizalfos,Monsters
+137,Black Lizalfos,Monsters
+138,Stalizalfos,Monsters
+139,Fire-Breath Lizalfos,Monsters
+140,Ice-Breath Lizalfos,Monsters
+141,Electric Lizalfos,Monsters
+142,Silver Lizalfos,Monsters
+143,Horriblin,Monsters
+144,Blue Horriblin,Monsters
+145,Black Horriblin,Monsters
+146,Silver Horriblin,Monsters
+147,Lynel,Monsters
+148,Blue-Maned Lynel,Monsters
+149,White-Maned Lynel,Monsters
+150,Silver Lynel,Monsters
+151,Soldier Construct I,Monsters
+152,Soldier Construct II,Monsters
+153,Soldier Construct III,Monsters
+154,Soldier Construct IV,Monsters
+155,Captain Construct I,Monsters
+156,Captain Construct II,Monsters
+157,Captain Construct III,Monsters
+158,Captain Construct IV,Monsters
+159,Training Construct,Monsters
+160,Flux Construct I,Monsters
+161,Flux Construct II,Monsters
+162,Flux Construct III,Monsters
+163,Yiga Footsoldier,Monsters
+164,Yiga Blademaster,Monsters
+165,Master Kohga,Monsters
+166,Stone Pebblit,Monsters
+167,Igneo Pebblit,Monsters
+168,Frost Pebblit,Monsters
+169,Stone Talus,Monsters
+170,Stone Talus (Luminous),Monsters
+171,Stone Talus (Rare),Monsters
+172,Battle Talus,Monsters
+173,Igneo Talus,Monsters
+174,Frost Talus,Monsters
+175,Hinox,Monsters
+176,Blue Hinox,Monsters
+177,Black Hinox,Monsters
+178,Stalnox,Monsters
+179,Molduga,Monsters
+180,Flame Gleeok,Monsters
+181,Frost Gleeok,Monsters
+182,Thunder Gleeok,Monsters
+183,King Gleeok,Monsters
+184,Little Frox,Monsters
+185,Frox,Monsters
+186,Obsidian Frox,Monsters
+187,Blue-White Frox,Monsters
+188,Dinraal,Monsters
+189,Naydra,Monsters
+190,Farosh,Monsters
+191,Colgera,Monsters
+192,Moragia,Monsters
+193,Marbled Gohma,Monsters
+194,Sludged Like,Monsters
+195,Mucktorok,Monsters
+196,Queen Gibdo,Monsters
+197,Seized Construct,Monsters
+198,Phantom Ganon,Monsters
+199,Demon King Ganondorf,Monsters
+200,Demon King Ganondorf (2nd Form),Monsters
+201,Demon Dragon,Monsters
+202,Light Dragon,Monsters
+203,Apple,Materials
+204,Golden Apple,Materials
+205,Palm Fruit,Materials
+206,Wildberry,Materials
+207,Hylian Tomato,Materials
+208,Hydromelon,Materials
+209,Spicey Pepper,Materials
+210,Voltfruit,Materials
+211,Fleet-Lotus Seeds,Materials
+212,Mighty Bananas,Materials
+213,Fire Fruit,Materials
+214,Ice Fruit,Materials
+215,Splash Fruit,Materials
+216,Shock Fruit,Materials
+217,Dazzlefruit,Materials
+218,Hylian Shroom,Materials
+219,Skyshroom,Materials
+220,Endura Shroom,Materials
+221,Stamella Shroom,Materials
+222,Hearty Truffle,Materials
+223,Big Hearty Truffle,Materials
+224,Chillshroom,Materials
+225,Sunshroom,Materials
+226,Zapshroom,Materials
+227,Rushroom,Materials
+228,Razorshroom,Materials
+229,Ironshroom,Materials
+230,Silent Shroom,Materials
+231,Brightcap,Materials
+232,Puffshroom,Materials
+233,Hyrule Herb,Materials
+234,Stambulb,Materials
+235,Hearty Radish,Materials
+236,Big Hearty Radish,Materials
+237,Cool Safflina,Materials
+238,Warm Safflina,Materials
+239,Electric Safflina,Materials
+240,Swift Carrot,Materials
+241,Endura Carrot,Materials
+242,Fortified Pumpkin,Materials
+243,Sun Pumpkin,Materials
+244,Swift Violet,Materials
+245,Mighty Thistle,Materials
+246,Armoranth,Materials
+247,Blue Nightshade,Materials
+248,Sundelion,Materials
+249,Brightbloom Seed,Materials
+250,Giant Brightbloom Seed,Materials
+251,Muddle Bud,Materials
+252,Bomb Flower,Materials
+253,Silent Princess,Materials
+254,Courser Bee Honey,Materials
+255,Hylian Pine Cone,Materials
+256,Korok Frond,Materials
+257,Chuchu Jelly,Materials
+258,Red Chuchu Jelly,Materials
+259,White Chuchu Jelly,Materials
+260,Yellow Chuchu Jelly,Materials
+261,Keese Eyeball,Materials
+262,Fire Keese Eyeball,Materials
+263,Ice Keese Eyeball,Materials
+264,Electric Keese Eyeball,Materials
+265,Like Like Stone,Materials
+266,Fire Like Stone,Materials
+267,Ice Like Stone,Materials
+268,Shock Like Stone,Materials
+269,Aerocuda Eyeball,Materials
+270,Gibdo Bone,Materials
+271,Bokoblin Horn,Materials
+272,Blue Bokoblin Horn,Materials
+273,Black Bokoblin Horn,Materials
+274,Silver Bokoblin Horn,Materials
+275,Boss Bokoblin Horn,Materials
+276,Blue Boss Bokoblin Horn,Materials
+277,Black Boss Bokoblin Horn,Materials
+278,Silver Boss Bokoblin Horn,Materials
+279,Moblin Horn,Materials
+280,Blue Moblin Horn,Materials
+281,Black Moblin Horn,Materials
+282,Silver Moblin Horn,Materials
+283,Lizalfos Horn,Materials
+284,Blue Lizalfos Horn,Materials
+285,Black Lizalfos Horn,Materials
+286,Fire-Breath Lizalfos Horn,Materials
+287,Ice-Breath Lizalfos Horn,Materials
+288,Electric Lizalfos Horn,Materials
+289,Silver Lizalfos Horn,Materials
+290,Horriblin Horn,Materials
+291,Blue Horriblin Horn,Materials
+292,Black Horriblin Horn,Materials
+293,Silver Horriblin Horn,Materials
+294,Lynel Saber Horn,Materials
+295,Lynel Mace Horn,Materials
+296,Blue-Maned Lynel Saber Horn,Materials
+297,Blue-Maned Lynel Mace Horn,Materials
+298,White-Maned Lynel Saber Horn,Materials
+299,White-Maned Lynel Mace Horn,Materials
+300,Silver Lynel Saber Horn,Materials
+301,Silver Lynel Mace Horn,Materials
+302,Soldier Construct Horn,Materials
+303,Soldier Construct II Horn,Materials
+304,Soldier Construct III Horn,Materials
+305,Soldier Construct IV Horn,Materials
+306,Captain Construct I Horn,Materials
+307,Captain Construct II Horn,Materials
+308,Captain Construct III Horn,Materials
+309,Captain Construct IV Horn,Materials
+310,Hinox Horn,Materials
+311,Blue Hinox Horn,Materials
+312,Black Hinox Horn,Materials
+313,Stalnox Horn,Materials
+314,Molduga Jaw,Materials
+315,Gleeok Flame Horn,Materials
+316,Gleeok Frost Horn,Materials
+317,Gleeok Thunder Horn,Materials
+318,Frox Fang,Materials
+319,Obsidian Frox Fang,Materials
+320,Blue-White Frox Fang,Materials
+321,Dinraal's Horn,Materials
+322,Shard of Dinraal's Spike,Materials
+323,Naydra's Horn,Materials
+324,Shard of Naydra's Spike,Materials
+325,Farosh's Horn,Materials
+326,Shard of Farosh's Spike,Materials
+327,Light Dragon's Horn,Materials
+328,Shard of Light Dragon's Spike,Materials
+329,Master Sword,Equipment
+330,Tree Branch,Equipment
+331,Torch,Equipment
+332,Soup Ladle,Equipment
+333,Boomerang,Equipment
+334,Boomerang*,Equipment
+335,Sea-Breeze Boomerang,Equipment
+336,Traveler's Sword,Equipment
+337,Traveler's Sword*,Equipment
+338,Soldier's Broadsword,Equipment
+339,Soldier's Broadsword*,Equipment
+340,Knight's Broadsword,Equipment
+341,Knight's Broadsword*,Equipment
+342,Royal Broadsword,Equipment
+343,Royal Broadsword*,Equipment
+344,Forest Dweller's Sword,Equipment
+345,Forest Dweller's Sword*,Equipment
+346,Zora Sword,Equipment
+347,Zora Sword*,Equipment
+348,Feathered Edge,Equipment
+349,Feathered Edge*,Equipment
+350,Gerudo Scimitar,Equipment
+351,Gerudo Scimitar*,Equipment
+352,Scimitar of the Seven,Equipment
+353,Eightfold Blade,Equipment
+354,Eightfold Blade*,Equipment
+355,Rusty Broadsword,Equipment
+356,Sword of the Hero,Equipment
+357,Royal Guard's Sword,Equipment
+358,Royal Guard's Sword*,Equipment
+359,White Sword of the Sky,Equipment
+360,Wooden Stick,Equipment
+361,Sturdy Wooden Stick,Equipment
+362,Gnarled Wooden Stick,Equipment
+363,Lizal Boomerang,Equipment
+364,Zonaite Sword,Equipment
+365,Strong Zonaite Sword,Equipment
+366,Mighty Zonaite Sword,Equipment
+367,Magic Rod,Equipment
+368,Bokoblin Arm,Equipment
+369,Lizalfos Arm,Equipment
+370,Gloom Sword,Equipment
+371,Farming Hoe,Equipment
+372,Boat Oar,Equipment
+373,Giant Boomerang,Equipment
+374,Giant Boomerang*,Equipment
+375,Traveler's Claymore,Equipment
+376,Traveler's Claymore*,Equipment
+377,Soldier's Claymore,Equipment
+378,Soldier's Claymore*,Equipment
+379,Knight's Claymore,Equipment
+380,Knight's Claymore*,Equipment
+381,Royal Claymore,Equipment
+382,Royal Claymore*,Equipment
+383,Zora Longsword,Equipment
+384,Zora Longsword*,Equipment
+385,Cobble Crusher,Equipment
+386,Cobble Crusher*,Equipment
+387,Boulder Breaker,Equipment
+388,Biggoron's Sword,Equipment
+389,Gerudo Claymore,Equipment
+390,Gerudo Claymore*,Equipment
+391,Eightfold Longblade,Equipment
+392,Eightfold Longblade*,Equipment
+393,Dusk Claymore,Equipment
+394,Fierce Deity Sword,Equipment
+395,Rusty Claymore,Equipment
+396,Royal Guard's Claymore,Equipment
+397,Royal Guard's Claymore*,Equipment
+398,Thick Stick,Equipment
+399,Sturdy Thick Stick,Equipment
+400,Gnarled Thick Stick,Equipment
+401,Zonaite Longsword,Equipment
+402,Strong Zonaite Longsword,Equipment
+403,Mighty Zonaite Longsword,Equipment
+404,Magic Scepter,Equipment
+405,Moblin Arm,Equipment
+406,Gloom Club,Equipment
+407,Wooden Mop,Equipment
+408,Farmer's Pitchfork,Equipment
+409,Fishing Harpoon,Equipment
+410,Throwing Spear,Equipment
+411,Throwing Spear*,Equipment
+412,Traveler's Spear,Equipment
+413,Traveler's Spear*,Equipment
+414,Soldier's Spear,Equipment
+415,Soldier's Spear*,Equipment
+416,Knight's Halberd,Equipment
+417,Knight's Halberd*,Equipment
+418,Royal Halberd,Equipment
+419,Royal Halberd*,Equipment
+420,Forest Dweller's Spear,Equipment
+421,Forest Dweller's Spear*,Equipment
+422,Zora Spear,Equipment
+423,Zora Spear*,Equipment
+424,Lightscale Trident,Equipment
+425,Feathered Spear,Equipment
+426,Feathered Spear*,Equipment
+427,Gerudo Spear,Equipment
+428,Gerudo Spear*,Equipment
+429,Rusty Halberd,Equipment
+430,Royal Guard's Spear,Equipment
+431,Royal Guard's Spear*,Equipment
+432,Long Stick,Equipment
+433,Sturdy Long Stick,Equipment
+434,Gnarled Long Stick,Equipment
+435,Zonaite Spear,Equipment
+436,Strong Zonaite Spear,Equipment
+437,Mighty Zonaite Spear,Equipment
+438,Magic Staff,Equipment
+439,Gloom Spear,Equipment
+440,Arrow,Equipment
+441,Old Wooden Bow,Equipment
+442,Wooden Bow,Equipment
+443,Traveler's Bow,Equipment
+444,Soldier's Bow,Equipment
+445,Knight's Bow,Equipment
+446,Royal Bow,Equipment
+447,Forest Dweller's Bow,Equipment
+448,Zora Bow,Equipment
+449,Swallow Bow,Equipment
+450,Falcon Bow,Equipment
+451,Great Eagle Bow,Equipment
+452,Gerudo Bow,Equipment
+453,Phrenic Bow,Equipment
+454,Royal Guard's Bow,Equipment
+455,Dusk Bow,Equipment
+456,Boko Bow,Equipment
+457,Spiked Boko Bow,Equipment
+458,Dragonbone Boko Bow,Equipment
+459,Lizal Bow,Equipment
+460,Strengthened Lizal Bow,Equipment
+461,Steel Lizal Bow,Equipment
+462,Lynel Bow,Equipment
+463,Mighty Lynel Bow,Equipment
+464,Savage Lynel Bow,Equipment
+465,Duplex Bow,Equipment
+466,Construct Bow,Equipment
+467,Strong Construct Bow,Equipment
+468,Mighty Construct Bow,Equipment
+469,Zonaite Bow,Equipment
+470,Demon King's Bow,Equipment
+471,Hylian Shield,Equipment
+472,Pot Lid,Equipment
+473,Old Wooden Shield,Equipment
+474,Wooden Shield,Equipment
+475,Emblazoned Shield,Equipment
+476,Hunter's Shield,Equipment
+477,Fisherman's Shield,Equipment
+478,Traveler's Shield,Equipment
+479,Soldier's Shield,Equipment
+480,Knight's Shield,Equipment
+481,Royal Shield,Equipment
+482,Forest Dweller's Shield,Equipment
+483,Zora Shield,Equipment
+484,Kite Shield,Equipment
+485,Gerudo Shield,Equipment
+486,Radiant Shield,Equipment
+487,Daybreaker,Equipment
+488,Shield of the Mind's Eye,Equipment
+489,Sea-Breeze Shield,Equipment
+490,Rusty Shield,Equipment
+491,Royal Guard's Shield,Equipment
+492,Boko Shield,Equipment
+493,Spiked Boko Shield,Equipment
+494,Dragonbone Boko Shield,Equipment
+495,Lizal Shield,Equipment
+496,Reinforced Lizal Shield,Equipment
+497,Steel Lizal Shield,Equipment
+498,Zonaite Shield,Equipment
+499,Strong Zonaite Shield,Equipment
+500,Mighty Zonaite Shield,Equipment
+501,Lynel Shield,Equipment
+502,Mighty Lynel Shield,Equipment
+503,Savage Lynel Shield,Equipment
+504,Treasure Chest,Treasure
+505,Ore Deposit,Treasure
+506,Rare Ore Deposit,Treasure
+507,Luminous Stone Deposit,Treasure
+508,Zonaite Deposit,Treasure
+509,Well,Treasure

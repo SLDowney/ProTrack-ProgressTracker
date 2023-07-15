@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Caves!
+{% endblock %}
+
+{% block body %} 
+    <h2>{{ headline }}</h2>
+
+{% for result in results %}
+    <div class="row">
+        <table  style="width: 100%;">
+            <colgroup>
+                <col span="1" style="width: 30%;">
+                <col span="2" style="width: 70%;">
+             </colgroup>
+            <tbody>
+            <tr>
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{result[0]}}</td>
+            </tr>
+            <tr>
+                <td>Coordinates</td>
+                <td>{{result[1]}}</td>
+            </tr>
+            <tr>
+                <td>Region</td>
+                <td>{{result[2]}}</td>
+            </tr>
+            <tr>
+                <td>Enemies</td>
+                <td>{{result[5]}}</td>
+            </tr>
+            <tr>
+                <td>Treasures</td>
+                <td>{{result[6]}}</td>
+            </tr>
+            <tr>
+                <td>Bubbulfrog</td>
+                <td>{{result[3]}}</td>
+            </tr>
+            <tr>
+                <td>Side Quest</td>
+                <td>{{result[7]}}</td>
+            </tr>
+            <tr>
+                <td>Shrine</td>
+                <td>{{result[4]}}</td>
+            </tr>
+            <tr>
+                <td>Shrine Quest</td>
+                <td>{{result[8]}}</td>
+            </tr>
+        </tbody>
+            </table>
+        <!-- <p>Name: {{result["char_name"]}}</p>
+        <p>Type: {{result["char_type"]}}</p>
+        <p>Health: {{result["char_health"]}}</p>
+        <p>Attack: {{result["char_attack"]}}</p>
+        <p>Defense: {{result["char_Defense"]}}</p>
+        <p>Magic: {{result["char_magic"]}}</p> -->
+        <br>
+    </div>
+
+{% endfor %}
+    
+{% endblock %}

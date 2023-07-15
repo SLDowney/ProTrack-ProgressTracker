@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Chests!
+{% endblock %}
+
+{% block body %} 
+    <h1>Chests</h1>
+    <form method="POST" action="/chests">
+        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+        <button id="sort-by-name-btn" onclick="sortChests('name')">Item</button>
+        <button id="sort-by-coord-btn" onclick="sortChests('coord')">Coordinates</button>
+        <ul id="chests-list">
+            {% for chest in chests %}
+            <li>
+                <input type="hidden" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
+                <input type="checkbox" name="chest_found_{{ chest[0] }}" value="1" {% if chest[6] == 1 %}checked{% elif chest[6] == 0 %} unchecked{% endif %}>{{ chest[0] }} <p>{{ chest[1] }}</p> <p>{{chest[2]}}</p>
+                
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Update</button>
+    </form>  
+    <script src="{{ url_for('static', filename='javascript_chests.js') }}"></script>
+{% endblock %}

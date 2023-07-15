@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Inventory!
+{% endblock %}
+
+{% block body %} 
+    <h2>{{ headline }}</h2>
+
+    <div class="row">
+        <p>Currency: {{moneys["obj_description"]}}</p>
+    </div>
+    
+    <div class="row">
+        <p id="inventory_header">Weapons</p>
+        <table  style="width: 100%;">
+            <colgroup>
+                <col span="1" style="width: 20%;">
+                <col span="2" style="width: 60%;">
+                <col span="1" style="width: 20%;">
+             </colgroup>
+            <tbody>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Damage</th>
+            </tr>
+            {% for weapon in weapons %}
+            <tr>
+                <td>{{weapon["obj_name"]}}</td>
+                <td>{{weapon["obj_description"]}}</td>
+                <td>{{weapon["obj_damage"]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </div>
+
+    <div class="row">
+        <p id="inventory_header">Armours</p>
+        <table  style="width: 100%;">
+            <colgroup>
+                <col span="1" style="width: 20%;">
+                <col span="2" style="width: 60%;">
+                <col span="1" style="width: 20%;">
+             </colgroup>
+            <tbody>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Defense</th>
+            </tr>
+            {% for armor in armors %}
+            <tr>
+                <td>{{armor["obj_name"]}}</td>
+                <td>{{armor["obj_description"]}}</td>
+                <td>{{armor["obj_defense"]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </div>
+    
+    <div class="row">
+        <p id="inventory_header">Artifacts</p>
+        <table  style="width: 100%;">
+            <colgroup>
+                <col span="1" style="width: 20%;">
+                <col span="2" style="width: 80%;">
+             </colgroup>
+            <tbody>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            {% for artifact in artifacts %}
+            <tr>
+                <td>{{artifact["obj_name"]}}</td>
+                <td>{{artifact["obj_description"]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </div>
+    
+{% endblock %}

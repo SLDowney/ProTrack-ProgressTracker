@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Edit Item!
+{% endblock %}
+
+{% block body %} 
+    <h2>{{headline}}
+        {% if name!=null %}
+            , {{name}}!</h2>
+        {% else %} 
+            </h2>
+        {% endif %}
+
+    <form id = "form" action="{{ url_for('edititem') }}" method="POST" enctype="multipart/form-data">
+
+        <!-- <label id="item_picture_label" class="labels" for="item_picture">Book Cover Image:</label>
+            <input type="file" id="item_picture" name="item_picture" accept=".png, .jfif, .jpg, .jpeg" multiple required>
+            <br><span id="image_span" class="span"></span>
+        <br>
+        <br> -->
+        <label id="item_title_label" class="labels" for="title">Object Name:</label>
+            <input type="text" id="obj_name" name="obj_name" placeholder="Enter Object Name" required>
+            <br><span class="span"></span>
+        <br>
+        <br>
+        <label id="item_series_label" class="labels" for="series">Type:</label>
+            <label><input type="radio" id="obj_type" name="type" value="1">Armour</label>
+            <label><input type="radio" id="obj_type" name="type" value="2">Weapon</label>
+            <label><input type="radio" id="obj_type" name="type" value="3">Spells</label>
+            <label><input type="radio" id="obj_type" name="type" value="4">Artifact</label>
+            <br><span class="span"></span>
+        <br>
+        <br>
+        <label id="item_author_label" class="labels" for="author">Description:</label>
+            <input type="text" id="obj_description" name="obj_description" placeholder="Enter Short Description" required>
+            <br><span class="span"></span>
+        <br>
+        <br>
+        <label id="item_series_label" class="labels" for="series">Durability:</label>
+            <input type="text" id="obj_durability" name="obj_durability" placeholder="Enter Durability" required>
+            <br><span class="span"></span>
+        <br>
+        <br>
+        <label id="item_series_label" class="labels" for="series">Damage:</label>
+            <input type="text" id="obj_damage" name="obj_damage" placeholder="Enter Damage" required>
+            <br><span class="span"></span>
+        <br>
+        <br>
+        <label id="item_series_label" class="labels" for="series">Defense:</label>
+            <input type="text" id="obj_defense" name="obj_defense" placeholder="Enter Defense" required>
+            <br><span class="span"></span>
+        <br>
+        
+        <!-- <br>
+        <label id="item_series_label" class="labels" for="series">Is this on your person?</label>
+            <input type="checkbox" id="yes_no" name="yes_no" required>
+            <br><span class="span"></span>
+        <br> -->
+        <input type="submit" id="addItemSubmit" value="Submit">
+
+    </form>
+
+{% endblock %}

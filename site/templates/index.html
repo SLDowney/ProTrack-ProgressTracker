@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Database testing !!
+{% endblock %}
+
+{% block body %} 
+
+    <h2>OMG IF YOU SEE THIS IT WORKED MOTHERFUCKERS !!! </h2>
+
+    <a href='{{ url_for("index") }}'><button id="randomize">RANDOMIZE !</button></a>
+    <div id="index_book"></div>
+        <div id="book_details">
+            <p>{{itemToShow[1]}}</p>
+            <p>{{itemToShow[2]}}</p>
+            <p>{{itemToShow[3]}}</p>
+        </div>
+        <div id="book_cover">
+            <img src ='{{ url_for("static", filename="images/" + itemToShow[0] )}}' alt="book cover">
+        </div>
+    </div>
+
+
+{% endblock %}

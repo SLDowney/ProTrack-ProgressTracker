@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Delete Item!
+{% endblock %}
+
+{% block body %} 
+    <h2>{{ headline }}</h2>
+
+    <div id="all_items">
+        <form action="{{ url_for('deleteitem') }}" method="POST">
+                {% for item in item_titles %}
+                   <input type="radio" id="item" name="item"
+                          value="{{item[4]}}" class="items">
+                   <label for="item" class="items">{{item[1]}}</label><br>
+                {% endfor %}
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+{% endblock %}

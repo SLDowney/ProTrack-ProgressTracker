@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    koroks!
+{% endblock %}
+
+{% block body %} 
+    <h1>Koroks!</h1>
+    <table id="koroks-table">
+        <thead>
+            <tr>
+                <th><button id="sort-by-found-btn" onclick="sortKoroks('korok_found')">Found</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortKoroks('location_num')">Location/Num</button></th>
+                <th><button id="sort-by-type-btn" onclick="sortKoroks('korok_type')">Type</button></th>
+                <th><button id="sort-by-coord-btn" onclick="sortKoroks('korok_coord_start')">Start</button></th>
+            </tr>
+        </thead>
+        <tbody id="koroks-body">
+            {% for korok in koroks %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="korok_found_{{ korok[0] }}" value="1" {% if korok[1] == 1 %}checked{% endif %} onclick="updateKorok(this, korok[0])">
+                </td>
+                <td>
+                    {{ korok['korok_location'] }} / {{ korok['korok_num'] }}
+                </td>
+                <td>{{ korok['korok_type'] }}</td>
+                <td>
+                    {{ korok['korok_coord_start'] }}
+                    {% if korok['korok_coord_end'] is not none %}
+                        <br>
+                        {{ korok['korok_coord_end'] }}
+                    {% endif %}
+                </td>
+                <td>{{ korok['korok_desc'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='javascript_koroks.js') }}"></script>
+{% endblock %}

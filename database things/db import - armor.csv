@@ -1,0 +1,120 @@
+Zora,Helm,FALSE,,,,FALSE,3 Lizalfos Horn,x,FALSE,"5 Lizalfos Talon, 5 Hyrule Bass",x,FALSE,"5 Blue Lizalfos Horn, 3 Lizalfos Tail, 3 Hearty Bass",x,FALSE,"5 Black Lizalfos Horn, 5 Blue Lizalfos Tail, 20 Opal",x,"9 Lizalfos Horn, 15 Lizalfos Talon, 15 Hyrule Bass, 15 Blue Lizalfos Horn, 9 Lizalfos Tail, 9 Hearty Bass, 15 Black Lizalfos Horn, 15 Blue Lizalfos Tail, 60 Opal"
+Zora,Chest,FALSE,,,,FALSE,3 Lizalfos Horn,x,FALSE,"5 Lizalfos Talon, 5 Hyrule Bass",x,FALSE,"5 Blue Lizalfos Horn, 3 Lizalfos Tail, 3 Hearty Bass",x,FALSE,"5 Black Lizalfos Horn, 5 Blue Lizalfos Tail, 20 Opal",x,
+Zora,Pants,FALSE,,,,FALSE,3 Lizalfos Horn,x,FALSE,"5 Lizalfos Talon, 5 Hyrule Bass",x,FALSE,"5 Blue Lizalfos Horn, 3 Lizalfos Tail, 3 Hearty Bass",x,FALSE,"5 Black Lizalfos Horn, 5 Blue Lizalfos Tail, 20 Opal",x,
+Desert Voe,Helm,TRUE,Gerudo Secret Club,450,,FALSE,,,FALSE,"5 White Chuchu Jelly, 3 Cool Safflina",,FALSE,"5 Ice Keese Wing, 3 Ice-Breath Lizalfos Tail, 5 Chillshroom",465,FALSE,"5 Ice-Breath Lizalfos Horn, 10 Ice-Breath Lizalfos Tail, 5 Sapphire",,"15 Ice Keese Wing, 39 Ice-Breath Lizalfos Tail, 15 Chillshroom, 15 White Chuchu Jelly, 9 Cool Safflina, 15 Ice-Breath Lizalfos Horn, 15 Sapphire"
+Desert Voe,Chest,FALSE,Gerudo Secret Club,1300,,FALSE,,,FALSE,"5 White Chuchu Jelly, 3 Cool Safflina",,FALSE,"5 Ice Keese Wing, 3 Ice-Breath Lizalfos Tail, 5 Chillshroom",675,FALSE,"5 Ice-Breath Lizalfos Horn, 10 Ice-Breath Lizalfos Tail, 5 Sapphire",,"15 Ice Keese Wing, 39 Ice-Breath Lizalfos Tail, 15 Chillshroom, 15 White Chuchu Jelly, 9 Cool Safflina, 15 Ice-Breath Lizalfos Horn, 15 Sapphire"
+Desert Voe,Pants,FALSE,Gerudo Secret Club,650,,FALSE,,,FALSE,"5 White Chuchu Jelly, 3 Cool Safflina",,FALSE,"5 Chillshroom, 5 Ice Keese Wing, 3 Ice-Breath Lizalfos Tail",215,FALSE,"5 Ice-Breath Lizalfos Horn, 10 Ice-Breath Lizalfos Tail, 5 Sapphire",,"15 Ice Keese Wing, 39 Ice-Breath Lizalfos Tail, 15 Chillshroom, 15 White Chuchu Jelly, 9 Cool Safflina, 15 Ice-Breath Lizalfos Horn, 15 Sapphire"
+Snowquill,Helm,FALSE,,,,FALSE,,,FALSE,,465,FALSE,"5 Fire Keese Wing, 3 Fire-Breath Lizalfos Tail, 5 Sunshroom",,FALSE,,,"15 Fire Keese Wing, 9 Fire-Breath Lizalfos Tail, 15 Sunshroom"
+Snowquill,Chest,FALSE,,,,FALSE,,,FALSE,,290,FALSE,"5 Fire Keese Wing, 3 Fire-Breath Lizalfos Tail, 5 Sunshroom",,FALSE,,,
+Snowquill,Pants,FALSE,,,,FALSE,,,FALSE,,260,FALSE,"5 Fire Keese Wing, 3 Fire-Breath Lizalfos Tail, 5 Sunshroom",,FALSE,,,
+Stealthy,Helm,TRUE,,,125,FALSE,,,FALSE,"5 Blue Nightshade, 5 Sunset Firefly",,FALSE,"8 Silent Shroom, 5 Sneaky River Snail, 5 Sticky Frog",475,FALSE,"10 Stealthfin Trout, 5 Silent Princess, 10 Sundelion",,"15 Blue Nightshade, 15 Sunset Firefly, 24 Silent Shroom, 15 Sneaky River Snail, 15 Sticky Frog, 30 Stealthfin Trout, 15 Silent Princess, 30 Sundelion"
+Stealthy,Chest,TRUE,,,175,FALSE,,,FALSE,"5 Blue Nightshade, 5 Sunset Firefly",325,FALSE,"8 Silent Shroom, 5 Sneaky River Snail, 5 Sticky Frog",,FALSE,"10 Stealthfin Trout, 5 Silent Princess, 10 Sundelion",,
+Stealthy,Pants,TRUE,,,150,FALSE,,,FALSE,"5 Blue Nightshade, 5 Sunset Firefly",160,FALSE,"8 Silent Shroom, 5 Sneaky River Snail, 5 Sticky Frog",,FALSE,"10 Stealthfin Trout, 5 Silent Princess, 10 Sundelion",,
+Glide,Helm,TRUE,Valor Island,,,FALSE,,,FALSE,,,FALSE,"6 Aerocuda Wing, 8 Aerocuda Eyeball",,FALSE,"12 Gleeok Wing, 10 Aerocuda Wing, 8 Gibdo Wing",1450,"18 Aerocuda Wing, 24 Aerocuda Eyeball, 36 Gleeok Wing, 30 Aerocuda Wing, 24 Gibdo Wing"
+Glide,Chest,FALSE,,,,FALSE,,,FALSE,,,FALSE,"6 Aerocuda Wing, 8 Aerocuda Eyeball",950,FALSE,"12 Gleeok Wing, 10 Aerocuda Wing, 8 Gibdo Wing",,
+Glide,Pants,FALSE,,,,FALSE,,,FALSE,,750,FALSE,"6 Aerocuda Wing, 8 Aerocuda Eyeball",950,FALSE,"12 Gleeok Wing, 10 Aerocuda Wing, 8 Gibdo Wing",,
+Depths,Helm,FALSE,,,,FALSE,,,FALSE,"3 Frox Fang, 5 Dark Clumps",750,FALSE,"3 Obsidian Frox Fang, 20 Zonite, 3 Frox Fingernail",,FALSE,,,"9 Frox Fang, 15 Dark Clumps, 9 Obsidian Frox Fang, 60 Zonite, 9 Frox Fingernail"
+Depths,Chest,TRUE,,,,FALSE,,,FALSE,"3 Frox Fang, 5 Dark Clumps",750,FALSE,"3 Obsidian Frox Fang, 20 Zonite, 3 Frox Fingernail",,FALSE,,,
+Depths,Pants,FALSE,,,,FALSE,,,FALSE,"3 Frox Fang, 5 Dark Clumps",750,FALSE,"3 Obsidian Frox Fang, 20 Zonite, 3 Frox Fingernail",,FALSE,,,
+Yiga,Helm,FALSE,,,,FALSE,2 Octorok Eyeball,650,FALSE,"3 Fire-breath Lizalfos Tail, 3 Puffshroom",,FALSE,,,FALSE,,,"6 Octorok Eyeball, 9 Fire-Breath Lizalfos Tail, 9 Puffshroom"
+Yiga,Chest,TRUE,,,,FALSE,2 Octorok Eyeball,650,FALSE,"3 Fire-breath Lizalfos Tail, 3 Puffshroom",,FALSE,,,FALSE,,,
+Yiga,Pants,TRUE,,,,FALSE,2 Octorok Eyeball,650,FALSE,"3 Fire-breath Lizalfos Tail, 3 Puffshroom",,FALSE,,,FALSE,,,
+Miners,Helm,FALSE,,,,FALSE,10 Brightbloom Seeds,,FALSE,"20 Brightbloom Seeds, 5 Brightcap",,FALSE,"15 Giant Brightbloom Seeds, 5 Glowing Cave Fish, 10 Deep Firefly",,FALSE,"20 Giant Brightbloom Seeds, 3 Diamond, 10 Large Zonite",,"90 Brightbloom Seeds, 105 Giant Brightbloom Seeds, 30 Deep Firefly, 15 Glowing Cave Fish, 9 Diamond, 30 Large Zonite"
+Miners,Chest,FALSE,,,,FALSE,10 Brightbloom Seeds,,FALSE,"20 Brightbloom Seeds, 5 Brightcap",,FALSE,"15 Giant Brightbloom Seeds, 5 Glowing Cave Fish, 10 Deep Firefly",950,FALSE,"20 Giant Brightbloom Seeds, 3 Diamond, 10 Large Zonite",,
+Miners,Pants,FALSE,,,,FALSE,10 Brightbloom Seeds,,FALSE,"20 Brightbloom Seeds, 5 Brightcap",,FALSE,"15 Giant Brightbloom Seeds, 5 Glowing Cave Fish, 10 Deep Firefly",950,FALSE,"20 Giant Brightbloom Seeds, 3 Diamond, 10 Large Zonite",,
+Hylian,Helm,TRUE,,,15,FALSE,5 Bokoblin Horn,,FALSE,"5 Blue Bokoblin Horn, 3 Bokoblin Fang",,FALSE,"5 Black Bokoblin Horn, 3 Bokoblin Guts, 20 Amber",,FALSE,"5 Silver Bokoblin Horn, 5 Bokoblin Guts, 30 Amber",,"9 Bokoblin Fang, 24 Bokoblin Guts, 150 Amber, 15 Silver Bokoblin Horn, 15 Bokoblin Horn, 15 Blue Bokoblin Horn, 15 Black Bokoblin Horn"
+Hylian,Chest,TRUE,,,35,FALSE,5 Bokoblin Horn,,FALSE,"5 Blue Bokoblin Horn, 3 Bokoblin Fang",,FALSE,"5 Black Bokoblin Horn, 3 Bokoblin Guts, 20 Amber",385,FALSE,"5 Silver Bokoblin Horn, 5 Bokoblin Guts, 30 Amber",885,
+Hylian,Pants,TRUE,,,30,FALSE,5 Bokoblin Horn,,FALSE,"5 Blue Bokoblin Horn, 3 Bokoblin Fang",,FALSE,"5 Black Bokoblin Horn, 3 Bokoblin Guts, 20 Amber",380,FALSE,"5 Silver Bokoblin Horn, 5 Bokoblin Guts, 30 Amber",880,
+Soldier,Helm,FALSE,,,,FALSE,"5 Chuchu Jelly, 3 Bokoblin Guts",,FALSE,"5 Keese Eyeball, 3 Moblin Guts",195,FALSE,"3 Lizalfos Tail, 3 Hinox Guts, 30 Flint",,FALSE,,,"15 Chuchu Jelly, 9 Bokoblin Guts, 15 Keese Eyeball, 9 Moblin Guts, 9 Lizalfos Tail, 9 Hinox Guts, 90 Flint"
+Soldier,Chest,FALSE,,,,FALSE,"5 Chuchu Jelly, 3 Bokoblin Guts",,FALSE,"5 Keese Eyeball, 3 Moblin Guts",215,FALSE,"3 Lizalfos Tail, 3 Hinox Guts, 30 Flint",,FALSE,,,
+Soldier,Pants,FALSE,,,,FALSE,"5 Chuchu Jelly, 3 Bokoblin Guts",,FALSE,"5 Keese Eyeball, 3 Moblin Guts",100,FALSE,"3 Lizalfos Tail, 3 Hinox Guts, 30 Flint",,FALSE,,,
+Barbarian,Helm,TRUE,,,,FALSE,3 Mighty Thistle,650,FALSE,"2 Lynel Saber Horn, 2 Lynel Mace Horn, 5 Razorshroom",,FALSE,,,FALSE,,,"9 Mighty Thistle, 6 Lynel Saber Horn, 6 Lynel Mace Horn, 15 Razorshroom"
+Barbarian,Chest,FALSE,"Meeshy, Road around Kakriko",,,FALSE,3 Mighty Thistle,650,FALSE,"2 Lynel Saber Horn, 2 Lynel Mace Horn, 5 Razorshroom",,FALSE,,,FALSE,,,
+Barbarian,Pants,FALSE,,,,FALSE,3 Mighty Thistle,650,FALSE,"2 Lynel Saber Horn, 2 Lynel Mace Horn, 5 Razorshroom",,FALSE,,,FALSE,,,
+Rubber,Helm,FALSE,,,,FALSE,"1 Electric Lizalfos Horn, 3 Yellow Chuchu Jelly",,FALSE,"5 Voltfruit, 8 Yellow Chuchu Jelly",,FALSE,"5 Zapshroom, 5 Electric Lizalfos Tail, 8 Electric Safflina",,FALSE,,,"3 Electric Lizalfos Horn, 15 Voltfruit, 15 Zapshroom, 15 Electric Lizalfos Tail, 24 Electric Safflina, 33 Yellow Chuchu Jelly"
+Rubber,Chest,FALSE,"Meeshy, Road around Kakriko",,,FALSE,"1 Electric Lizalfos Horn, 3 Yellow Chuchu Jelly",,FALSE,"5 Voltfruit, 8 Yellow Chuchu Jelly",750,FALSE,"5 Zapshroom, 5 Electric Lizalfos Tail, 8 Electric Safflina",,FALSE,,,
+Rubber,Pants,FALSE,,,,FALSE,"1 Electric Lizalfos Horn, 3 Yellow Chuchu Jelly",,FALSE,"5 Voltfruit, 8 Yellow Chuchu Jelly",,FALSE,"5 Zapshroom, 5 Electric Lizalfos Tail, 8 Electric Safflina",,FALSE,,,
+Climbers,Helm,FALSE,,,,FALSE,"3 Keese Wing, 3 Rushroom",,FALSE,"5 Electric Keese Wing, 5 Hightail Lizard",,FALSE,"8 Ice Keese Wing, 10 Hot-Footed Frog",,FALSE,,,"15 Electric Keese Wing, 15 Hightail Lizard, 24 Ice Keese Wing, 30 Hot-Footed Frog, 9 Keese Wing, 9 Rushroom"
+Climbers,Chest,TRUE,"Meeshy, Road around Kakriko",,,FALSE,"3 Keese Wing, 3 Rushroom",,FALSE,"5 Electric Keese Wing, 5 Hightail Lizard",325,FALSE,"8 Ice Keese Wing, 10 Hot-Footed Frog",,FALSE,,,
+Climbers,Pants,FALSE,,,,FALSE,"3 Keese Wing, 3 Rushroom",605,FALSE,"5 Electric Keese Wing, 5 Hightail Lizard",,FALSE,"8 Ice Keese Wing, 10 Hot-Footed Frog",,FALSE,,,
+Royal Guard,Helm,FALSE,,,600,FALSE,"3 Boss Bokoblin Horn, 3 Bokoblin Guts",,FALSE,,,FALSE,,,FALSE,,,"9 Boss Bokoblin Horn, 9 Bokoblin Guts"
+Royal Guard,Chest,FALSE,,,550,FALSE,"3 Boss Bokoblin Horn, 3 Bokoblin Guts",,FALSE,,,FALSE,,,FALSE,,,
+Royal Guard,Pants,FALSE,,,600,FALSE,"3 Boss Bokoblin Horn, 3 Bokoblin Guts",,FALSE,,,FALSE,,,FALSE,,,
+Flamebreaker,Helm,FALSE,,,,FALSE,3 Moblin Horn,,FALSE,"5 Moblin Fang, 5 Fireproof Lizard",500,FALSE,"5 Blue Moblin Horn, 3 Smotherwing Butterfly, 15 Flint",,FALSE,,,"9 Moblin Horn, 15 Moblin Fang, 15 Fireproof Lizard, 15 Blue Moblin Horn, 9 Smotherwing Butterfly, 45 Flint"
+Flamebreaker,Chest,TRUE,,,,FALSE,3 Moblin Horn,,FALSE,"5 Moblin Fang, 5 Fireproof Lizard",325,FALSE,"5 Blue Moblin Horn, 3 Smotherwing Butterfly, 15 Flint",,FALSE,,,
+Flamebreaker,Pants,FALSE,,,,FALSE,3 Moblin Horn,305,FALSE,"5 Moblin Fang, 5 Fireproof Lizard",,FALSE,"5 Blue Moblin Horn, 3 Smotherwing Butterfly, 15 Flint",,FALSE,,,
+Zonite,Helm,FALSE,,,,FALSE,5 Soldier Construct Horn,650,FALSE,"5 Soldier Construct 2 Horn, 5 Captain Construct 1 Horn, 5 Zonite",750,FALSE,"5 Soldier Construct 3 Horn, 5 Captian Construct 2 Horn, 5 Large Zonite",,FALSE,,,"15 Soldier Construct Horn, 15 Soldier Construct 2 Horn, 15 Soldier Construct 3 Horn, 15 Captain Construct 1 Horn, 15 Captain Construct 2 Horn, 15 Zonite, 15 Large Zonite"
+Zonite,Chest,TRUE,,,600,FALSE,5 Soldier Construct Horn,650,FALSE,"5 Soldier Construct 2 Horn, 5 Captain Construct 1 Horn, 5 Zonite",750,FALSE,"5 Soldier Construct 3 Horn, 5 Captian Construct 2 Horn, 5 Large Zonite",,FALSE,,,
+Zonite,Pants,FALSE,,,,FALSE,5 Soldier Construct Horn,650,FALSE,"5 Soldier Construct 2 Horn, 5 Captain Construct 1 Horn, 5 Zonite",750,FALSE,"5 Soldier Construct 3 Horn, 5 Captian Construct 2 Horn, 5 Large Zonite",,FALSE,,,
+Froggy,Helm,FALSE,,,,FALSE,3 Sticky Lizard,,FALSE,"5 Horriblin Horn, 5 Sticky Lizard",,FALSE,"5 Blue Horriblin Horn, 5 Sticky Frog",,FALSE,"5 Black Horriblin Horn, 10 Horriblin Guts, 10 Opal",,"24 Sticky Lizard, 15 Horriblin Horn, 15 Blue Horriblin Horn, 15 Sticky Frog, 15 Black Horriblin Horn, 30 Horriblin Guts, 30 Opal"
+Froggy,Chest,FALSE,,,,FALSE,3 Sticky Lizard,,FALSE,"5 Horriblin Horn, 5 Sticky Lizard",,FALSE,"5 Blue Horriblin Horn, 5 Sticky Frog",,FALSE,"5 Black Horriblin Horn, 10 Horriblin Guts, 10 Opal",1450,
+Froggy,Pants,FALSE,,,,FALSE,3 Sticky Lizard,,FALSE,"5 Horriblin Horn, 5 Sticky Lizard",750,FALSE,"5 Blue Horriblin Horn, 5 Sticky Frog",,FALSE,"5 Black Horriblin Horn, 10 Horriblin Guts, 10 Opal",,
+Fierce Deity,Helm,TRUE,,,600,FALSE,"5 Hinox Toenail, 1 Dinraal's Scale",,FALSE,,,FALSE,,,FALSE,,,"15 Hinox Toenail, 1 Dinraal's Scale, 1 Nydra's Scale, 1 Farosh's Scale, 5 Hinox Tooth, 1 Nydra's Claw"
+Fierce Deity,Chest,TRUE,,,600,FALSE,"5 Hinox Toenail, 1 Nydra's Scale",650,FALSE,"5 Hinox Tooth, 1 Naydra's Claw",,FALSE,,,FALSE,,,
+Fierce Deity,Pants,TRUE,,,600,FALSE,"5 Hinox Toenail, 1 Farosh's Scale",,FALSE,,,FALSE,,,FALSE,,,
+Time,Helm,FALSE,,,600,FALSE,"10 Amber, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,"30 Amber, 3 Star Fragment"
+Time,Chest,FALSE,,,600,FALSE,"10 Amber, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Time,Pants,FALSE,,,600,FALSE,"10 Amber, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Hero,Helm,FALSE,,,600,FALSE,"1 Ruby, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,"3 Ruby, 3 Star Fragment"
+Hero,Chest,FALSE,,,600,FALSE,"1 Ruby, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Hero,Pants,FALSE,,,,FALSE,"1 Ruby, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Wind,Helm,FALSE,,,600,FALSE,"5 Opal, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,"15 Opal, 3 Star Fragment"
+Wind,Chest,FALSE,,,600,FALSE,"5 Opal, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Wind,Pants,FALSE,,,600,FALSE,"5 Opal, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Twilight,Helm,FALSE,,,,FALSE,"1 Topaz, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,"3 Topaz, 3 Star Fragment"
+Twilight,Chest,FALSE,,,600,FALSE,"1 Topaz, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Twilight,Pants,FALSE,,,,FALSE,"1 Topaz, 1 Star Fragment",,FALSE,,,FALSE,,,FALSE,,,
+Awakening,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Awakening,Chest,FALSE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Awakening,Pants,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Wild,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Wild,Chest,FALSE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Wild,Pants,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Sky,Helm,FALSE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Sky,Chest,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Sky,Pants,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Ember,Helm,FALSE,,,,FALSE,3 Fire Fruit,,FALSE,"5 Fire-Breath Lizalfos Horn, 5 Summerwing Butterfly",750,FALSE,"5 Fire-Like Stone, 5 Warm Darner, 5 Large Zonai Charge",950,FALSE,,,
+Ember,Chest,FALSE,,,,FALSE,3 Fire Fruit,,FALSE,"5 Fire-Breath Lizalfos Horn, 5 Summerwing Butterfly",,FALSE,"5 Fire-Like Stone, 5 Warm Darner, 5 Large Zonai Charge",,FALSE,,,
+Ember,Pants,TRUE,,,600,FALSE,3 Fire Fruit,,FALSE,"5 Fire-Breath Lizalfos Horn, 5 Summerwing Butterfly",,FALSE,"5 Fire-Like Stone, 5 Warm Darner, 5 Large Zonai Charge",,FALSE,,,
+Frostbite,Helm,FALSE,,,,FALSE,3 Ice Fruit,650,FALSE,"5 Ice-Breath Lizalfos Horm, 5 Winterwing Butterfly",,FALSE,"5 Ice Like Stone, 5 Cold Darner, 5 Large Zonai Charge",,FALSE,"5 Gleeok Frost Horn, 10 Chillfin Trout, 10 Large Zonai Charge",,
+Frostbite,Chest,FALSE,,,200,FALSE,3 Ice Fruit,,FALSE,"5 Ice-Breath Lizalfos Horm, 5 Winterwing Butterfly",,FALSE,"5 Ice Like Stone, 5 Cold Darner, 5 Large Zonai Charge",,FALSE,"5 Gleeok Frost Horn, 10 Chillfin Trout, 10 Large Zonai Charge",,
+Frostbite,Pants,FALSE,,,,FALSE,3 Ice Fruit,,FALSE,"5 Ice-Breath Lizalfos Horm, 5 Winterwing Butterfly",,FALSE,"5 Ice Like Stone, 5 Cold Darner, 5 Large Zonai Charge",,FALSE,"5 Gleeok Frost Horn, 10 Chillfin Trout, 10 Large Zonai Charge",,
+Charged,Helm,FALSE,,,,FALSE,3 Shock Fruit,,FALSE,"5 Electric Lizalfos Horn, 3 Thunderwing Butterfly",x,FALSE,"5 Shock Like Stone, 5 Electric Darner, 3 Large Zonai Charge",,FALSE,,,"9 Shock Fruit, 15 Electric Lizalfos Horn, 9 Thunderwing Butterfly, 15 Shock Like Stone, 15 Electric Darner, 9 Large Zonai Charge, "
+Charged,Chest,FALSE,,,,FALSE,3 Shock Fruit,x,FALSE,"5 Electric Lizalfos Horn, 3 Thunderwing Butterfly",,FALSE,"5 Shock Like Stone, 5 Electric Darner, 3 Large Zonai Charge",,FALSE,,,
+Charged,Pants,FALSE,,,,FALSE,3 Shock Fruit,x,FALSE,"5 Electric Lizalfos Horn, 3 Thunderwing Butterfly",,FALSE,"5 Shock Like Stone, 5 Electric Darner, 3 Large Zonai Charge",,FALSE,,,
+Tingle,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Tingle,Chest,TRUE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Tingle,Pants,FALSE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Phantom,Helm,TRUE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Phantom,Chest,TRUE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Phantom,Pants,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Evil Spirit,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Evil Spirit,Chest,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Evil Spirit,Pants,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Dark,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Dark,Chest,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Dark,Pants,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Archaic,Chest,TRUE,"0390, -1746, 2285",,15,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Archaic,Pants,TRUE,,,15,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Archaic,Warm Pants,TRUE,"0767, -1339, 1587",,20,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Sheik's Mask,Helm,FALSE,,,,FALSE,"1 Silent Princess, 1 Star Fragment",,FALSE,"2 Silent Princess, 2 Star Fragment",,FALSE,"4 Silent Princess, 3 Star Fragment",950,FALSE,"8 Silent Princess, 4 Star Fragment",,"15 Silent Princess, 10 Star Fragment"
+Rudania Helm,Helm,TRUE,,,,FALSE,"1 Ruby, 5 Zonite",,FALSE,"4 Ruby, 10 Zonite",750,FALSE,"6 Ruby, 5 Large Zonite, 5 Dazzlefruit",,FALSE,,,"11 Ruby, 15 Zonite, 5 Dazzlefruit"
+Cece Hat,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Zant's Helmet,Helm,FALSE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Ruta Helm,Helm,FALSE,,,,FALSE,"5 Opal, 5 Zonaite",,FALSE,,,FALSE,,,FALSE,,,
+Medoh Helm,Helm,FALSE,,,,FALSE,"1 Sapphire, 5 Zonaite",,FALSE,,,FALSE,,,FALSE,,,
+Naboris Helm,Helm,FALSE,,,,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Bokoblin Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Horriblin Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Moblin Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Lizalfos Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Lynel Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Ravio's Hood,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Midna's Helmet,Helm,FALSE,Old Map,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Majora's Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Korok Mask,Helm,FALSE,,,600,FALSE,,,FALSE,,,FALSE,,,FALSE,,,
+Tunic of Memories,Chest,FALSE,,,x,FALSE,"3 Silent Princess, 1 Light Dragon Scale",x,FALSE,"3 Silent Princess, 1 Light Dragon's Talon, 2 Farosh's Horn",x,FALSE,,x,FALSE,,x,
+Champion's Leathers,Chest,FALSE,,,x,FALSE,"3 Silent Princess, 2 Light Dragon Scale",x,FALSE,"3 Silent Princess, 2 Light Dragon's Talon, 10 Sundelion",x,FALSE,,x,FALSE,,x,
+Island Lobster Shirt,Chest,FALSE,,,600,FALSE,"3 Silent Princess, 2 Light Dragon Scale",x,FALSE,"3 Silent Princess, 2 Light Dragon's Talon, 10 Sundelion",x,FALSE,,x,FALSE,,x,
+Sandboots,Pants,TRUE,Gerudo Secret Club,1200,300,FALSE,3 Hightail Lizard,,FALSE,"20 Gibdo Bone, 5 Swift Carrot",450,FALSE,"5 Gibdo Guts, 10 Rushroom, 5 Molduga Fin",650,FALSE,"5 Molduga Guts, 10 Swift Violets, 5 Hearty Lizard",,
+Snowboots,Pants,FALSE,Gerudo Secret Club,1300,,FALSE,3 Hightail Lizard,,FALSE,"5 Octorok Tentacle, 5 Swift Carrot",475,FALSE,"5 Octo Balloon, 20 Rushroom",675,FALSE,"2 Naydra's Scale, 20 Swift Violet",,
