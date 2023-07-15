@@ -85,7 +85,7 @@ p {
 table {
     box-shadow: inset 0 0 0 500px rgb(255, 255, 255, 0.5);
     border-collapse: collapse;
-    width: 150%;
+    width: 75%;
 }
 
 th {
@@ -219,6 +219,17 @@ input[type="text"] {
     font-size:medium;
 }
 
+#koroks-table {
+    width: 75%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+#add_korok {
+    width: 75%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
 
 #randomize {
     margin: 0 0 2% 42%;
