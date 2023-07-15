@@ -1,32 +1,29 @@
 {% extends "layout.html" %}
 
-{% block heading %}
-    Caves!
-{% endblock %}
-
 {% block body %} 
     <h2>{{ headline }}</h2>
-    <div id="greatFairies">
+    <!-- <div id="greatFairies">
         <input type="checkbox" id="greatFairy"  name="greatFairy_1" value="FALSE" unchecked><label>First Great Fairy</label><br>
         <input type="checkbox" id="greatFairy"  name="greatFairy_2" value="FALSE" unchecked><label>Second Great Fairy</label><br>
         <input type="checkbox" id="greatFairy"  name="greatFairy_3" value="FALSE" unchecked><label>Third Great Fairy</label><br>
         <input type="checkbox" id="greatFairy"  name="greatFairy_4" value="FALSE" unchecked><label>Fourth Great Fairy</label>
         <br>
-    </div>
-{% for result in results %}
+    </div> -->
+{% for armor in armors %}
     <div class="container">
-        <div class="row">{{result[1]}}
-            <div class="col-sm">{{result[2]}}</div>
-            <div class="col-sm">{% if result[3]== "FALSE" %}
-                <input type="checkbox" id="have_armor"  name="have_armor_no" value="FALSE" unchecked>
+        <div class="row">{{armor[1]}}
+            <div class="col-sm">{{armor[2]}}</div>
+            <div class="col-sm">{% if armor[3]== "FALSE" %}
+                <input type="checkbox" id="have_armor_{{armor[0]}}"  name="have_armor_{{armor[0]}}" value="FALSE" unchecked>
                 {{"Not Found"}}
             {% else %} 
-                <input type="checkbox" id="have_armor" name="have_armor_yes" value="TRUE" checked>
+                <input type="checkbox" id="have_armor_{{armor[0]}}" name="have_armor_{{armor[0]}}" value="TRUE" checked>
                 {{"Found!"}}
             {% endif %}</div>
+            <button type="submit">Update</button>
         </div>   
     </div>
 
 {% endfor %}
-    
+    <script src="{{ url_for('static', filename='armors.js') }}"></script>
 {% endblock %}

@@ -174,31 +174,50 @@ def edititem():
     else:
         return render_template("edititem.html", headline=headline)
 
-@app.route("/armors", methods=["GET", "POST"])
+@app.route('/armors', methods=['GET', 'POST'])
 def armors():
-    headline = "Armors!!"
-    with closing(conn.cursor()) as c:
-        query = '''Select * From armor ORDER BY a_set ASC'''
-        c.execute(query)
-        results = c.fetchall()
-        info = []
-        for result in results:
-            info.append(result)
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
     if request.method == 'POST':
-        try:
-            armor_check = request.form.get("found_armor", False)
-            with closing(conn.cursor()) as c:
-                query = '''UPDATE armor
-                            SET a_collected = ?
-                            WHERE a_id = ? '''
-                c.execute(query, (armor_check, result[0]))
-                conn.commit()
-                return render_template("armors.html", headline=headline, info=info, results = results)
-        except sqlite3.OperationalError as e:
-            print(e)
-            headline = "Error in insert operation. Please try again."
-    else:
-        return render_template("armors.html", headline=headline, info=info, results = results)
+        with closing(conn.cursor()) as c:
+            armors = c.execute('SELECT * FROM armor').fetchall()
+            for armor in armors:
+                a_id = armor[0]
+                armor_found = request.form.get(f'have_armor_{a_id}')
+                if armor_found is None:
+                    armor_found = '0'
+                else:
+                    armor_found = '1'
+                print("a_id:", a_id)
+                print("armor_found:", armor_found)
+                c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, a_id))
+                print("Executed update statement for armor ID:", a_id)
+            conn.commit()
+
+    # Retrieve all armors from the database
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM armor ORDER BY a_set ASC')
+        armors = c.fetchall()
+        print("a_set, a_piece:", armors[0][1], armors[0][2])
+        print("armor id:", armors[0][0])
+
+    return render_template('armors.html', armors=armors, scroll_position=scroll_position)
+
+
+@app.route('/armors/update', methods=['POST'])
+def update_armor():
+    data = request.get_json()
+    armor_id = data['armorId']
+    armor_found = data['armorFound']
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+        print("Executed armor update, collected, id: ", armor_found, armor_id)
+        conn.commit()
+
+    return jsonify(success=True)
 
 @app.route("/shrines", methods=["GET", "POST"])
 def shrines():
