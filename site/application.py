@@ -293,6 +293,23 @@ def update_korok():
 
     return jsonify(success=True)
 
+@app.route('/add_korok', methods=['POST'])
+def add_korok():
+    location = request.form.get('location')
+    kType = request.form.get('kType')
+    coord_start = request.form.get('coord_start')
+    coord_end = request.form.get('coord_end')
+    description = request.form.get('description')
+    korok_found = request.form.get('korok_found')
+
+    # Insert the new korok into the database
+    with closing(conn.cursor()) as c:
+        c.execute('INSERT INTO koroks (korok_found, korok_location, korok_type, korok_coord_start, korok_coord_end, korok_desc) VALUES (?, ?, ?, ?, ?, ?)',
+                  (korok_found, location, kType, coord_start, coord_end, description))
+        conn.commit()
+
+    # Redirect back to the koroks page after adding the korok
+    return redirect('/koroks')
 
 @app.route("/oldmaps")
 def oldmaps():
