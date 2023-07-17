@@ -311,6 +311,68 @@ def add_korok():
     # Redirect back to the koroks page after adding the korok
     return redirect('/koroks')
 
+@app.route('/enemies', methods=['GET', 'POST'])
+def enemies():
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            enemies = c.execute('SELECT * FROM enemies').fetchall()
+            for enemy in enemies:
+                e_id = enemy[0]
+                e_found = request.form.get(f'e_found_{e_id}')
+                if e_found is None:
+                    e_found = '0'
+                else:
+                    e_found = '1'
+                print("e_id:", e_id)
+                print("e_found:", e_found)
+                c.execute('UPDATE enemies SET e_found = ? WHERE e_id = ?', (e_found, e_id))
+                print("Executed update statement for enemy ID:", e_id)
+            conn.commit()
+
+    # Retrieve all enemies from the database
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM enemies')
+        enemies = c.fetchall()
+        print("result[6]:", enemies[0][6])
+        print("enemy id:", enemies[0][0])
+
+    return render_template('enemies.html', enemies=enemies, scroll_position=scroll_position)
+
+@app.route('/update-enemy', methods=['POST'])
+def update_enemy():
+    e_id = request.json.get('enemyId')
+    e_found = request.json.get('enemyFound')
+
+    # Update the enemy in the database with the new found status
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE enemies SET e_found = ? WHERE e_id = ?', (e_found, e_id))
+        conn.commit()
+
+    return jsonify(success=True)
+
+@app.route('/add_enemy', methods=['POST'])
+def add_enemy():
+    e_monster = request.form.get('e_monster')
+    e_color = request.form.get('e_color')
+    e_coord = request.form.get('e_coord')
+    e_location = request.form.get('e_location')
+    e_region = request.form.get('e_region')
+    e_found = request.form.get('e_found')
+
+    # Insert the new enemy into the database
+    with closing(conn.cursor()) as c:
+        c.execute('INSERT INTO enemies (e_found, e_monster, e_color, e_coord, e_location, e_region) VALUES (?, ?, ?, ?, ?, ?)',
+                  (e_found, e_monster, e_color, e_coord, e_location, e_region))
+        conn.commit()
+
+    # Redirect back to the enemies page after adding the enemy
+    return redirect('/enemies')
+
+
 @app.route("/oldmaps")
 def oldmaps():
     headline = "Old Maps!!"
