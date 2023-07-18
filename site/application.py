@@ -29,26 +29,36 @@ def index():
     return render_template("index.html", headline=headline, itemToShow=itemToShow)
 
 
-@app.route("/caves")
+@app.route("/caves", methods=["GET", "POST"])
 def caves():
     headline = "Caves!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            caves = c.execute('SELECT cave_name FROM caves ORDER BY cave_name ASC').fetchall()
+            for cave in caves:
+                cave_name = cave[0]
+                cave_done = request.form.get(f'done_cave_{cave_name}')
+                if cave_done is None:
+                    print("cave_done is none:", cave_done)
+                    cave_done = c.execute('SELECT cave_done FROM caves WHERE cave_name = ?', (cave_name,)).fetchone()[0]
+                else:
+                    print("cave_done is not none:", cave_done)
+                print("cave_name:", cave_name)
+                print("cave_done:", cave_done)
+                c.execute('UPDATE caves SET cave_done = ? WHERE cave_name = ?', (cave_done, cave_name))
+                print("Executed update statement for cave_name:", cave_name)
+            conn.commit()
+
     with closing(conn.cursor()) as c:
-        query = '''Select * From caves ORDER BY cave_name ASC'''
+        query = '''SELECT * FROM caves ORDER BY cave_name ASC'''
         c.execute(query)
-        # C_names = c.name
-        # C_coord = c.coord
-        # C_region = c.region
-        # C_Bub = c.bubbulfrog
-        # C_shrine = c.shrine
-        # C_enemies = c.enemies
-        # C_tres = c.treasure
-        # C_sidequ = c.sidequ
-        # C_shrinequ = c.shrinequ
         results = c.fetchall()
-        info = []
-        for result in results:
-            info.append(result)
-    return render_template("caves.html", headline=headline, info=info, results = results)
+        info = [(result[0], result[1], result[2]) for result in results]
+    return render_template("caves.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
 
 @app.route('/chests', methods=['GET', 'POST'])
 def chests():
@@ -109,12 +119,13 @@ def additem():
             chest_item = request.form['chest_item']
             chest_location = request.form['chest_location']
             chest_sideq = request.form['chest_sideq']
+            chest_region = request.form['chest_region']
             chest_done = 1            
 
             with closing(conn.cursor()) as c:
-                query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_sideq, chest_done)
-                            VALUES(?, ?, ?, ?, ?, ?)'''
-                c.execute(query, (formatted_chest_coord, chest_type, chest_item, chest_location, chest_sideq, chest_done))
+                query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done)
+                            VALUES(?, ?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (formatted_chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done))
                 conn.commit()
                 query = '''SELECT * FROM chests ORDER BY chest_id DESC LIMIT 1'''
                 c.execute(query)
@@ -186,12 +197,13 @@ def armors():
             for armor in armors:
                 a_id = armor[0]
                 armor_found = request.form.get(f'have_armor_{a_id}')
+                print("Armor_found:", armor_found)
                 if armor_found is None:
                     armor_found = '0'
                 else:
                     armor_found = '1'
                 print("a_id:", a_id)
-                print("armor_found:", armor_found)
+                print("armor_found after if/else:", armor_found)
                 c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, a_id))
                 print("Executed update statement for armor ID:", a_id)
             conn.commit()
@@ -200,8 +212,6 @@ def armors():
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM armor ORDER BY a_set ASC')
         armors = c.fetchall()
-        print("a_set, a_piece:", armors[0][1], armors[0][2])
-        print("armor id:", armors[0][0])
 
     return render_template('armors.html', armors=armors, scroll_position=scroll_position)
 
@@ -361,17 +371,48 @@ def add_enemy():
     e_coord = request.form.get('e_coord')
     e_location = request.form.get('e_location')
     e_region = request.form.get('e_region')
+    e_map = request.form.get('e_map')
     e_found = request.form.get('e_found')
 
     # Insert the new enemy into the database
     with closing(conn.cursor()) as c:
-        c.execute('INSERT INTO enemies (e_found, e_monster, e_color, e_coord, e_location, e_region) VALUES (?, ?, ?, ?, ?, ?)',
-                  (e_found, e_monster, e_color, e_coord, e_location, e_region))
+        c.execute('INSERT INTO enemies (e_found, e_monster, e_color, e_coord, e_location, e_region, e_map) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                  (e_found, e_monster, e_color, e_coord, e_location, e_region, e_map))
         conn.commit()
 
     # Redirect back to the enemies page after adding the enemy
     return redirect('/enemies')
 
+@app.route("/lightroots", methods=["GET", "POST"])
+def lightroots():
+    headline = "Lightroots!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            roots = c.execute('SELECT root_name FROM lightroots ORDER BY root_name ASC').fetchall()
+            for root in roots:
+                root_name = root[0]
+                root_done = request.form.get(f'done_root_{root_name}')
+                if root_done is None:
+                    print("root_done is none:", root_done)
+                    root_done = c.execute('SELECT root_done FROM lightroots WHERE root_name = ?', (root_name,)).fetchone()[0]
+                else:
+                    print("root_done is not none:", root_done)
+                print("root_name:", root_name)
+                print("root_done:", root_done)
+                c.execute('UPDATE lightroots SET root_done = ? WHERE root_name = ?', (root_done, root_name))
+                print("Executed update statement for root_name:", root_name)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM lightroots ORDER BY root_name ASC'''
+        c.execute(query)
+        results = c.fetchall()
+        info = [(result[0], result[1], result[2]) for result in results]
+    return render_template("lightroots.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
 
 @app.route("/oldmaps")
 def oldmaps():

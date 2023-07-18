@@ -13,13 +13,16 @@
     <div class="container">
         <div class="row">{{armor[1]}}
             <div class="col-sm">{{armor[2]}}</div>
-            <div class="col-sm">{% if armor[3]== "FALSE" %}
-                <input type="checkbox" id="have_armor_{{armor[0]}}"  name="have_armor_{{armor[0]}}" value="FALSE" unchecked>
+            <!-- <div class="col-sm">{{armor[3]}}</div> -->
+            <div class="col-sm">
+            {% if armor[3]== "FALSE" %}
+                <input type="checkbox" class="armor_checkbox" id="have_armor_{{armor[0]}}"  name="have_armor_{{armor[0]}}" value="FALSE" unchecked onclick="updateArmor(this, armor[3])">
                 {{"Not Found"}}
             {% else %} 
-                <input type="checkbox" id="have_armor_{{armor[0]}}" name="have_armor_{{armor[0]}}" value="TRUE" checked>
+                <input type="checkbox" class="armor_checkbox" id="have_armor_{{armor[0]}}" name="have_armor_{{armor[0]}}" value="TRUE" checked onclick="updateArmor(this, armor[3])">
                 {{"Found!"}}
-            {% endif %}</div>
+            {% endif %}
+            </div>
             <button type="submit">Update</button>
         </div>   
     </div>

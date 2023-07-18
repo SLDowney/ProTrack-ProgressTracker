@@ -3,65 +3,98 @@
 {% block body %} 
     <h2>{{ headline }}</h2>
 
-{% for result in results %}
-    <div class="row">
-        <table  style="width: 100%;">
-            <colgroup>
-                <col span="1" style="width: 30%;">
-                <col span="2" style="width: 70%;">
-             </colgroup>
-            <tbody>
-            <tr>
-                <th>Stat</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td>{{result[0]}}</td>
-            </tr>
-            <tr>
-                <td>Coordinates</td>
-                <td>{{result[1]}}</td>
-            </tr>
-            <tr>
-                <td>Region</td>
-                <td>{{result[2]}}</td>
-            </tr>
-            <tr>
-                <td>Enemies</td>
-                <td>{{result[5]}}</td>
-            </tr>
-            <tr>
-                <td>Treasures</td>
-                <td>{{result[6]}}</td>
-            </tr>
-            <tr>
-                <td>Bubbulfrog</td>
-                <td>{{result[3]}}</td>
-            </tr>
-            <tr>
-                <td>Side Quest</td>
-                <td>{{result[7]}}</td>
-            </tr>
-            <tr>
-                <td>Shrine</td>
-                <td>{{result[4]}}</td>
-            </tr>
-            <tr>
-                <td>Shrine Quest</td>
-                <td>{{result[8]}}</td>
-            </tr>
-        </tbody>
-            </table>
-        <!-- <p>Name: {{result["char_name"]}}</p>
-        <p>Type: {{result["char_type"]}}</p>
-        <p>Health: {{result["char_health"]}}</p>
-        <p>Attack: {{result["char_attack"]}}</p>
-        <p>Defense: {{result["char_Defense"]}}</p>
-        <p>Magic: {{result["char_magic"]}}</p> -->
-        <br>
-    </div>
+    <form id="caveform" action="{{ url_for('caves') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <table style="width: 100%;">
+                <colgroup>
+                    <col span="1">
+                    <col span="2">
+                </colgroup>
+                
+                {% for result in results %}
+                    <tbody>
+                        <tr>
+                            <th>Info</th>
+                            <th>Cave Info</th>
+                        </tr>
 
-{% endfor %}
-    
+                        {% if result[0] == 2 %}
+                        <tr>
+                            <td>Name</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{result[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{result[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Bubbulfrog</td>
+                            <td>{{result[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Shrine</td>
+                            <td>{{result[5]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Enemies</td>
+                            <td>{{result[6]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Treasure</td>
+                            <td>{{result[7]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Side Quest</td>
+                            <td>{{result[8]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Shrine Quest</td>
+                            <td>{{result[9]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Prerequisites</td>
+                            <td>{{result[10]}}</td>
+                        </tr>    
+                        
+                        {% elif result[0] == 1 %}
+                        <tr>
+                            <td>Name</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{result[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{result[3]}}</td>
+                        </tr>
+                        
+                        {% elif result[0] == 0 %}
+                        <tr>
+                            <td>Name</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        {% endif %}
+
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <input type="radio" id="undone_{{ result[1] }}" name="done_cave_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="cave_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
+                            <input type="radio" id="found_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="cave_radio_labels" for="found_{{ result[1] }}">Found</label>
+                            <input type="radio" id="done_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class="cave_radio_labels" for="done_{{ result[1] }}">Completed</label>
+                            <input type="submit" id="CaveSubmit" value="Update">
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </form>
 {% endblock %}

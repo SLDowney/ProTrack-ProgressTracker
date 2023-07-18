@@ -25,7 +25,7 @@ body {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1000px;
+    max-width: 1200px;
 
 }
 
@@ -102,6 +102,7 @@ td {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 125%;
     padding-left: 10px;
+    padding-right: 10px;
     border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -182,7 +183,22 @@ input[type="text"] {
 
 #chest_labels {
     display: table-cell;
-    width: 100px;
+    width: 150px;
+}
+
+#chest_list_labels {
+    display: inline-table;
+}
+
+#chest_info_p {
+    /* display: table-cell; */
+    margin:5px;
+}
+
+#chest_list_submit {
+    float:right;
+    margin-right: 30%;
+    margin-bottom: 10%;
 }
 
 /* #chest_item_label {
@@ -197,6 +213,12 @@ input[type="text"] {
     display: block;
     justify-content: left;
     font-family: Helvetica, Arial, sans-serif;
+}
+
+.armor_checkbox {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
 }
 
 #koroks_p {
@@ -229,6 +251,35 @@ input[type="text"] {
     width: 75%;
     margin-left: 10%;
     margin-top: 5%;
+}
+
+#add_enemy{
+    margin-left: 25%;
+}
+
+#enemies-table {
+    margin-left: 8%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: auto;
+}
+
+.e_td {
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.add_enemy_textbox {
+    float: right;
+    margin-right: 40%;
+}
+
+.add_enemy_checkbox {
+    margin-left: 27%;
+}
+
+#add_enemy_submit {
+    margin-left: 27%;
 }
 
 #randomize {

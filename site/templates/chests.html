@@ -9,13 +9,39 @@
         <ul id="chests-list">
             {% for chest in chests %}
             <li>
-                <input type="hidden" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
-                <input type="checkbox" name="chest_found_{{ chest[0] }}" value="1" {% if chest[6] == 1 %}checked{% elif chest[6] == 0 %} unchecked{% endif %}>{{ chest[0] }} <p>{{ chest[1] }}</p> <p>{{chest[2]}}</p>
-                
+                <input type="hidden" id="chest_id_{{ chest[0] }}" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
+                <input type="checkbox" id="chest_id_{{ chest[0] }}" name="chest_found_{{ chest[0] }}" value="1" {% if chest[6] == 1 %}checked{% elif chest[6] == 0 %} unchecked{% endif %}>
+                <label id="chest_list_labels" for="chest_found_{{ chest[0] }}">
+                    <p id="chest_info_p"> {{ chest[1] }}</p>
+                    <p id="chest_info_p">{{chest[2]}}</p>
+                    <p id="chest_info_p">{% if chest[3] == None %}
+                        Unknown
+                    {% else %}
+                        {{chest[3]}}
+                    {% endif %}</p> 
+                    <p id="chest_info_p">{% if chest[4] == None %}
+                        Unknown
+                    {% else %}
+                        {{chest[4]}}
+                    {% endif %}</p>
+                    <p id="chest_info_p">{% if chest[5] == None %}
+                        Unknown
+                    {% else %}
+                        {{chest[5]}}
+                    {% endif %}</p>
+                    <p id="chest_info_p">{% if chest[6] == None %}
+                        Unknown
+                    {% elif chest[6] == "None" %}
+                        Unknown
+                    {% else %}
+                        {{chest[6]}}
+                    {% endif %}</p>
+                </label>
+                <button type="submit" id="chest_list_submit">Update</button>
             </li>
             {% endfor %}
         </ul>
-        <button type="submit">Update</button>
+        
     </form>  
     <script src="{{ url_for('static', filename='javascript_chests.js') }}"></script>
 {% endblock %}

@@ -4,25 +4,28 @@
     <h1>enemies!</h1>
     <form id="add_enemy" method="POST" action="/add_enemy">
         <label for="e_monster">Monster:</label>
-        <input type="text" id="e_monster" name="e_monster" required><br>
+        <input type="text" class="add_enemy_textbox" id="e_monster" name="e_monster" required><br>
         <label for="e_color">Color:</label>
-        <input type="text" id="e_color" name="e_color" required><br>
+        <input type="text" class="add_enemy_textbox" id="e_color" name="e_color" required><br>
         <label for="e_coord">Coordinates:</label>
-        <input type="text" id="e_coord" name="e_coord" required><br>
+        <input type="text" class="add_enemy_textbox" id="e_coord" name="e_coord" required><br>
         <label for="e_location">Location:</label>
-        <input type="text" id="e_location" name="e_location"><br>
+        <input type="text" class="add_enemy_textbox" id="e_location" name="e_location"><br>
         <label for="e_region">Region:</label>
-        <textarea id="e_region" name="e_region"></textarea><br>
+        <input type="text" class="add_enemy_textbox" id="e_region" name="e_region"><br>
+            <label><input type="radio" id="e_map" name="e_map" value="Depths">Depths</label>
+            <label><input type="radio" id="e_map" name="e_map" value="Surface" checked>Surface</label>
+            <label><input type="radio" id="e_map" name="e_map" value="Sky">Sky</label><br>
         <label for="e_found">Found:</label>
-        <input type="checkbox" id="e_found" name="e_found" value="1" checked><br>
-        <button type="submit">Add Enemy</button>
+        <input type="checkbox" class="add_enemy_checkbox" id="e_found" name="e_found" value="1" checked><br>
+        <button type="submit" id="add_enemy_submit">Add Enemy</button>
     </form>
 
     <table id="enemies-table">
         <thead>
             <tr>
-                <th><button id="sort-by-found-btn" onclick="sortenemies('e_found')">Found</button></th>
-                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Location</button></th>
+                <th><button id="sort-by-found-btn" onclick="sortenemies('e_found')">Done</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Color</button></th>
                 <th><button id="sort-by-type-btn" onclick="sortenemies('e_monster')">Monster</button></th>
                 <th><button id="sort-by-coord-btn" onclick="sortenemies('e_coord')">Coordinates</button></th>
             </tr>
@@ -33,11 +36,12 @@
                 <td>
                     <input type="checkbox" name="e_found_{{ enemy[0] }}" value="1" {% if enemy[1] == 1 %}checked{% endif %} onclick="updateenemy(this, enemy[0])">
                 </td>
-                <td>{{ enemy['e_color'] }}</td>
-                <td>{{ enemy['e_monster'] }}</td>
-                <td>{{ enemy['e_coord'] }}</td>
-                <td>{{ enemy['e_location'] }}</td>
-                <td>{{ enemy['e_region'] }}</td>
+                <td class="e_td">{{ enemy['e_color'] }}</td>
+                <td class="e_td">{{ enemy['e_monster'] }}</td>
+                <td class="e_td">{{ enemy['e_coord'] }}</td>
+                <td class="e_td">{{ enemy['e_location'] }}</td>
+                <td class="e_td">{{ enemy['e_region'] }}</td>
+                <td class="e_td">{{ enemy['e_map'] }}</td>
             </tr>
             {% endfor %}
         </tbody>
