@@ -414,6 +414,38 @@ def lightroots():
         info = [(result[0], result[1], result[2]) for result in results]
     return render_template("lightroots.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
 
+@app.route("/compendium", methods=["GET", "POST"])
+def compendium():
+    headline = "compendium!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            comps = c.execute('SELECT comp_id FROM compendium ORDER BY comp_id ASC').fetchall()
+            for comp in comps:
+                comp_id = comp[0]
+                comp_done = request.form.get(f'done_comp_{comp_id}')
+                if comp_done is None:
+                    print("comp_done is none:", comp_done)
+                    comp_done = c.execute('SELECT comp_done FROM compendium WHERE comp_id = ?', (comp_id,)).fetchone()[0]
+                else:
+                    print("comp_done is not none:", comp_done)
+                print("comp_id:", comp_id)
+                print("comp_done:", comp_done)
+                c.execute('UPDATE compendium SET comp_done = ? WHERE comp_id = ?', (comp_done, comp_id))
+                print("Executed update statement for comp_id:", comp_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM compendium ORDER BY comp_id ASC'''
+        c.execute(query)
+        results = c.fetchall()
+        info = [(result[0], result[1], result[2]) for result in results]
+    return render_template("compendium.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+
+
 @app.route("/oldmaps")
 def oldmaps():
     headline = "Old Maps!!"

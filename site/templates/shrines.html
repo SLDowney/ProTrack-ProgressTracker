@@ -43,14 +43,20 @@
                             <td>Rewards</td>
                             <td>{{result[7]}}</td>
                         </tr>
+                        {% if result[8] != None %}
                         <tr>
                             <td>Enemies</td>
                             <td>{{result[8]}}</td>
                         </tr>
+                        {% else %}
+                        {% endif %}
+                        {% if result[6] != None %}
                         <tr>
                             <td>Side Quest</td>
                             <td>{{result[6]}}</td>
-                        </tr>    
+                        </tr>
+                        {% else %}
+                        {% endif %}    
                         
                         {% elif result[0] == 1 %}
                         <tr>

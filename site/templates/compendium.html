@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+    <h2>{{ headline }}</h2>
+
+    <form id="compform" action="{{ url_for('compendium') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <table style="width: 100%;">
+                <colgroup>
+                    <col span="1">
+                    <col span="2">
+                </colgroup>
+                
+                {% for result in results %}
+                    <tbody>
+                        <tr>
+                            <th>Info</th>
+                            <th>Compendium Info</th>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{result[0]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Item</td>
+                            <td>{{result[1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>{{result[2]}}</td>
+                        </tr>
+                        
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <input type="checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value="0" {% if result[3] == 0 %}unchecked{% endif %}><label class="comp_checkbox_labels" for="done_{{ result[0] }}"></label>
+                            <input type="submit" id="compSubmit" value="Update">
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}
