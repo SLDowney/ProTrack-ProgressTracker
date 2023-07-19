@@ -445,6 +445,67 @@ def compendium():
         info = [(result[0], result[1], result[2]) for result in results]
     return render_template("compendium.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
 
+@app.route('/interesting', methods=['GET', 'POST'])
+def interesting():
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            interesting = c.execute('SELECT * FROM misc').fetchall()
+            for thing in interesting:
+                misc_id = thing[0]
+                misc_found = request.form.get(f'misc_found_{misc_id}')
+                if misc_found is None:
+                    misc_found = '0'
+                else:
+                    misc_found = '1'
+                print("misc_id:", misc_id)
+                print("misc_found:", misc_found)
+                c.execute('UPDATE misc SET misc_found = ? WHERE misc_id = ?', (misc_found, misc_id))
+                print("Executed update statement for thing ID:", misc_id)
+            conn.commit()
+
+    # Retrieve all interesting from the database
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM misc')
+        interesting = c.fetchall()
+
+    return render_template('interesting.html', interesting=interesting, scroll_position=scroll_position)
+
+@app.route('/update-thing', methods=['POST'])
+def update_thing():
+    misc_id = request.json.get('thingId')
+    misc_found = request.json.get('thingFound')
+
+    # Update the thing in the database with the new found status
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE misc SET misc_found = ? WHERE misc_id = ?', (misc_found, misc_id))
+        conn.commit()
+
+    return jsonify(success=True)
+
+@app.route('/add_thing', methods=['POST'])
+def add_thing():
+    misc_category = request.form.get('misc_category')
+    misc_thing = request.form.get('misc_thing')
+    misc_tier = request.form.get('misc_tier')
+    misc_secondary = request.form.get('misc_secondary')
+    misc_coord = request.form.get('misc_coord')
+    misc_location = request.form.get('misc_location')
+    misc_region = request.form.get('misc_region')
+    misc_map = request.form.get('misc_map')
+    misc_found = request.form.get('misc_found')
+
+    # Insert the new thing into the database
+    with closing(conn.cursor()) as c:
+        c.execute('INSERT INTO misc (misc_found, misc_monster, misc_color, misc_coord, misc_location, misc_region, misc_map) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                  (misc_found, misc_category, misc_thing, misc_tier, misc_secondary, misc_coord, misc_location, misc_region, misc_map))
+        conn.commit()
+
+    # Redirect back to the interesting page after adding the thing
+    return redirect('/interesting')
 
 @app.route("/oldmaps")
 def oldmaps():

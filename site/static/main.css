@@ -282,8 +282,29 @@ input[type="text"] {
     margin-left: 27%;
 }
 
-#randomize {
-    margin: 0 0 2% 42%;
+#items-table-th {
+    color: #ffffff;
+}
+
+.add_item_checkbox {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+#items-table {
+    margin-left: 8%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: auto;
+}
+
+.add_item_textbox {
+    float: right;
+    margin-right: 40%;
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
 }
 
 span {

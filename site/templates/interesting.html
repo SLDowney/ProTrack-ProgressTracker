@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+    <h1>Add Interesting Things!</h1>
+    <form id="items-table" method="POST" action="/interesting">
+        <label for="misc_category">Category:</label>
+            <label><input type="radio" id="misc_category" name="misc_mmisc_categoryap" value="Cherry Blossom Trees">Cherry Blossom Trees</label>
+            <label><input type="radio" id="misc_category" name="misc_category" value="Chest" checked>Chest</label>
+            <label><input type="radio" id="misc_category" name="misc_category" value="Hearty">Hearty</label><br>
+            <label><input type="radio" id="misc_category" name="misc_category" value="Monster">Monster</label>
+            <label><input type="radio" id="misc_category" name="misc_category" value="Weapon">Weapon</label><br>
+            <label><input type="radio" id="misc_category" name="misc_category" value="Other">Other</label><br>
+
+        <label for="misc_thing">Thing:</label>
+        <input type="text" class="add_item_textbox" id="misc_thing" name="misc_thing" placeholder="Hinox" required><br>
+        <label for="misc_tier">Tier:</label>
+        <input type="text" class="add_item_textbox" id="misc_tier" name="misc_tier" placeholder="Red" required><br>
+        <label for="misc_secondary">Secondary:</label>
+        <input type="text" class="add_item_textbox" id="misc_secondary" name="misc_secondary" placeholder="Optional" required><br>
+        <label for="misc_coord">Coordinates:</label>
+        <input type="text" class="add_item_textbox" id="misc_coord" name="misc_coord" placeholder="0000, 0000, 0000" required><br>
+        <label for="misc_location">Location:</label>
+        <input type="text" class="add_item_textbox" id="misc_location" name="misc_location" placeholder="Landmark" ><br>
+        <label for="misc_region">Region:</label>
+        <input type="text" class="add_item_textbox" id="misc_region" name="misc_region" placeholder="Region"><br>
+            <label><input type="radio" id="misc_map" name="misc_map" value="Depths">Depths</label>
+            <label><input type="radio" id="misc_map" name="misc_map" value="Surface" checked>Surface</label>
+            <label><input type="radio" id="misc_map" name="misc_map" value="Sky">Sky</label><br>
+        <label for="misc_found">Found:</label>
+        <input type="checkbox" class="add_item_checkbox" id="misc_found" name="misc_found" value="1" checked><br>
+        <button type="submit" id="add_item_submit">Add item</button>
+    </form>
+
+    <table id="items-table">
+        <thead>
+            <tr>
+                <!-- <th><button id="sort-by-found-btn" onclick="sortitems('misc_found')">Button</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortitems('misc_location')">Button</button></th>
+                <th><button id="sort-by-type-btn" onclick="sortitems('misc_monster')">Button</button></th>
+                <th><button id="sort-by-coord-btn" onclick="sortitems('misc_coord')">Button</button></th> -->
+                <th id="items-table-th">Found</th>
+                <th id="items-table-th">Category</th>
+                <th id="items-table-th">Thing</th>
+                <th id="items-table-th">Tier</th>
+                <th id="items-table-th">Secondary</th>
+                <th id="items-table-th">Coordinates</th>
+                <th id="items-table-th">Location</th>
+                <th id="items-table-th">Region</th>
+                <th id="items-table-th">Map</th>
+            </tr>
+        </thead>
+        <tbody id="items-body">
+            {% for thing in interesting %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="misc_found_{{ thing[0] }}" value="1" {% if thing[1] == 1 %}checked{% endif %} onclick="updateitem(this, thing[0])">
+                </td>
+                <td class="misc_td">{{ thing['misc_category'] }}</td>
+                <td class="misc_td">{{ thing['misc_thing'] }}</td>
+                <td class="misc_td">{{ thing['misc_tier'] }}</td>
+                <td class="misc_td">{{ thing['misc_secondary'] }}</td>
+                <td class="misc_td">{{ thing['misc_coord'] }}</td>
+                <td class="misc_td">{{ thing['misc_location'] }}</td>
+                <td class="misc_td">{{ thing['misc_region'] }}</td>
+                <td class="misc_td">
+                    {% if thing['misc_map'] == "0" %}
+                        Depths
+                    {% elif thing['misc_map'] == "1" %}
+                        Surface
+                    {% elif thing['misc_map'] == "2" %}
+                        Sky
+                    {% else %}
+                        {{thing['misc_map']}}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='interesting.js') }}"></script>
+{% endblock %}
