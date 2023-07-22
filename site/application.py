@@ -193,41 +193,66 @@ def armors():
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            armors = c.execute('SELECT * FROM armor').fetchall()
+            armors = c.execute('SELECT * FROM armor_set').fetchall()
             for armor in armors:
                 a_id = armor[0]
-                armor_found = request.form.get(f'have_armor_{a_id}')
-                print("Armor_found:", armor_found)
-                if armor_found is None:
-                    armor_found = '0'
+                a_helm = armor[2]
+                a_chest = armor[3]
+                a_pants = armor[4]
+                armor_helm_found = request.form.get(f'armor_{a_id}_{a_helm}')
+                armor_chest_found = request.form.get(f'armor_{a_id}_{a_chest}')
+                armor_pants_found = request.form.get(f'armor_{a_id}_{a_pants}')
+                print("Armor_helm_found:", armor_helm_found)
+                print("Armor_chest_found:", armor_chest_found)
+                print("Armor_pants_found:", armor_pants_found)
+
+                if armor_helm_found is None:
+                    armor_helm_found = '0'
                 else:
-                    armor_found = '1'
+                    armor_helm_found = '1'
+                
+                if armor_chest_found is None:
+                    armor_chest_found = '0'
+                else:
+                    armor_chest_found = '1'
+                
+                if armor_pants_found is None:
+                    armor_pants_found = '0'
+                else:
+                    armor_pants_found = '1'
+                
                 print("a_id:", a_id)
-                print("armor_found after if/else:", armor_found)
-                c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, a_id))
-                print("Executed update statement for armor ID:", a_id)
+                print("armor_helm_found after if/else:", armor_helm_found)
+                print("armor_chest_found after if/else:", armor_chest_found)
+                print("armor_pants_found after if/else:", armor_pants_found)
+
+                c.execute('UPDATE armor_set SET a_helm = ? WHERE a_id = ?', (armor_helm_found, a_id))
+                c.execute('UPDATE armor_set SET a_chest = ? WHERE a_id = ?', (armor_chest_found, a_id))
+                c.execute('UPDATE armor_set SET a_pants = ? WHERE a_id = ?', (armor_pants_found, a_id))
+
+                print("Executed update statements for armor ID:", a_id)
             conn.commit()
 
     # Retrieve all armors from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM armor ORDER BY a_set ASC')
+        c.execute('SELECT * FROM armor_set ORDER BY a_set ASC')
         armors = c.fetchall()
 
     return render_template('armors.html', armors=armors, scroll_position=scroll_position)
 
 
-@app.route('/armors/update', methods=['POST'])
-def update_armor():
-    data = request.get_json()
-    armor_id = data['armorId']
-    armor_found = data['armorFound']
+# @app.route('/armors/update', methods=['POST'])
+# def update_armor():
+#     data = request.get_json()
+#     armor_id = data['armorId']
+#     armor_found = data['armorFound']
 
-    with closing(conn.cursor()) as c:
-        c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
-        print("Executed armor update, collected, id: ", armor_found, armor_id)
-        conn.commit()
+#     with closing(conn.cursor()) as c:
+#         c.execute('UPDATE armor_set SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+#         print("Executed armor_set update, collected, id: ", armor_found, armor_id)
+#         conn.commit()
 
-    return jsonify(success=True)
+#     return jsonify(success=True)
 
 @app.route("/shrines", methods=["GET", "POST"])
 def shrines():

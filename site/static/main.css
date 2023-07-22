@@ -16,11 +16,11 @@ a {
 }
 
 body {
-    background-image: url('/static/background1.jpg');
+    /* background-image: url('/static/background1.jpg'); */
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    box-shadow: inset 0 0 0 500px rgb(255, 255, 255, 0.7);
+    /* box-shadow: inset 0 0 0 900px rgb(255, 255, 255, 0.7); */
     border: 15px dashed rgb(0, 102, 189, 0.5);
     margin-top: 50px;
     margin-left: auto;
@@ -73,6 +73,8 @@ p {
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 1%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+
 }
 
 .col {
@@ -127,11 +129,6 @@ img {
 label {
     display: inline-block;
     margin-top: 10px;
-}
-
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
 }
 
 input[type="radio"] {
@@ -206,19 +203,147 @@ input[type="text"] {
     text-align: right;
 } */
 
-#greatFairies {
-    position: fixed;
-    margin: 0% 0% 7% 1%;
-    padding: 0px 0px 0px 0px;
-    display: block;
-    justify-content: left;
-    font-family: Helvetica, Arial, sans-serif;
+.container {
+    width:auto;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
-.armor_checkbox {
-    vertical-align: middle;
+* {
+    box-sizing: border-box;
+  }
+  
+  .greatfairy_checkboxes {
+    text-align: center;
+    border: 2px solid #404040;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    border-style: solid;
     position: relative;
-    bottom: 1px;
+  }
+  
+  .greatfairy_checkboxes input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Style for the custom checkbox */
+  .greatfairy_checkboxes::before {
+    content: ""; /* Add this line to define content for :before pseudo-element */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: #2fff00; /* Background color for unchecked checkbox */
+    border: 2px solid #404040;
+    border-radius: 2px;
+  }
+  
+  /* Style for the checkmark when checkbox is checked */
+  .greatfairy_checkboxes input[type="checkbox"]:checked + .greatfairy_checkboxes::before {
+    background-color: #0800ff; /* Background color for checked checkbox */
+    content: "\2713"; /* Unicode checkmark symbol ✓ */
+    font-size: 20px; /* Adjust font size as needed */
+    color: #ff0b0b; /* Checkmark color */
+    text-align: center;
+    line-height: 24px;
+  }
+  
+  .greatfairy_labels {
+    /* Additional styles for the labels */
+    border: 2px solid #404040;
+    border-radius: 2px;
+    border-style: solid;
+  }
+
+.col-lg-12 {
+    text-align: center; 
+    padding: 0 0 0 0;
+    border: #000000;
+    border-style: solid;
+}
+
+.col-lg-4 {
+    text-align: center;
+    border: #404040;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.form-check-label {
+    margin: 0 0 20px 20px;
+}
+
+.custom-btn {
+    background-color: #999999; /* Change the background color to red */
+    color: #FFFFFF; /* Change the text color to white */
+    font-size: 18px; /* Change the font size */
+    border-radius: 0;
+    /* Add any other custom styles as needed */
+  }
+  
+  .BESTDRAGON input[type="checkbox"] {
+    visibility: hidden;
+} 
+
+/* Custom styles for the checkboxes */
+.form-check-input.BESTDRAGON {
+    /* Hide the default checkboxes */
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.form-check-label.BESTDRAGON {
+    /* Replace these with your desired colors */
+    position: relative; /* Add this line to set position to relative */
+    padding-left: 30px; /* Add some space for the custom checkbox */
+}
+
+.form-check-label.BESTDRAGON::before {
+    /* Replace these with your desired colors */
+    content: "";
+    background-color: #b47736; /* Primary color for checked checkbox */
+    border-color: #c53737; /* Border color for checkbox */
+    /* Additional styles to enhance the checkbox appearance */
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Add some spacing between the checkbox and label text */
+    border-radius: 4px; /* Rounded corners */
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+/* checkmark to be shown in checkbox */
+/* It is not be shown when not checked */
+.form-check-label.BESTDRAGON::after {
+    content: "";
+    position: absolute;
+    display: none; /* Hide the checkmark by default */
+    top: 73%;
+    left: 7%;
+    /* transform: translate(-75%, -15%); */
+    width: 10px;
+    height: 10px;
+    background-color: #000000;
+    border-radius: 2px;
+}
+
+/* display checkmark when checked */
+.form-check-input:checked + .form-check-label.BESTDRAGON::after {
+    display: block;
 }
 
 #koroks_p {
@@ -313,10 +438,6 @@ span {
     font-size: 100%;
     margin-left: 50%;
 }
-
-/*#image_span {*/
-/*    margin-left: -75px;*/
-/*}*/
 
 @media only screen and (max-width: 600px) {
     #book_picture {
