@@ -1,18 +1,18 @@
-nav {
-    display: flex;
-    justify-content: center;
-    float: middle;
+/* Customize the brand logo and its style */
+.navbar .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
 }
 
-a {
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 100%;
-    font-variant: small-caps;
-    color: rgb(8, 0, 255);
-    text-shadow: 1px 1px #000000;
-    margin: 0 1% 0 20px;
-    justify-content: center;
+/* Customize the mobile dropdown button */
+.navbar-toggler {
+    border-color: #ffcc00;
+    color:#2fff00
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffcc00; /* Your custom link color */
 }
 
 body {
@@ -60,7 +60,6 @@ h4 {
 
 p {
     font-family: Helvetica, Arial, sans-serif;
-    font-variant: small-caps;
     font-size: larger;
 }
 
@@ -207,81 +206,118 @@ input[type="text"] {
     width:auto;
     margin-left: 20%;
     margin-right: 20%;
+    padding: 0;
 }
 
 * {
     box-sizing: border-box;
   }
   
-  .greatfairy_checkboxes {
-    text-align: center;
-    border: 2px solid #404040;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2px;
-    border-style: solid;
-    position: relative;
-  }
-  
-  .greatfairy_checkboxes input[type="checkbox"] {
+.container.greatfairies {
+    width: auto;
+}
+
+.greatfairies input[type="checkbox"] {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+} 
+
+.greatfairy {
+    margin-top: 0;
+}
+
+.col-sm-1 {
+    padding: 0;
+}
+/*
+Custom styles for the checkboxes
+.form-check-input.greatfairies {
+    Hide the default checkboxes 
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.form-check-label.greatfairies {
+    /* Replace these with your desired colors 
+    position: relative; /* Add this line to set position to relative 
+    padding-left: 30px; /* Add some space for the custom checkbox 
+}
+
+.form-check-label.greatfairies::before {
+    /* Replace these with your desired colors 
+    content: "";
+    background-color: #b47736; /* Primary color for checked checkbox 
+    border-color: #c53737; /* Border color for checkbox 
+    /* Additional styles to enhance the checkbox appearance 
+    width: 100%; /* Change to 100% to fill the entire width of the parent 
+    height: 100%; /* Change to 100% to fill the entire height of the parent 
+    border-radius: 4px; /* Rounded corners 
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  /* Style for the custom checkbox */
-  .greatfairy_checkboxes::before {
-    content: ""; /* Add this line to define content for :before pseudo-element */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background-color: #2fff00; /* Background color for unchecked checkbox */
-    border: 2px solid #404040;
-    border-radius: 2px;
-  }
-  
-  /* Style for the checkmark when checkbox is checked */
-  .greatfairy_checkboxes input[type="checkbox"]:checked + .greatfairy_checkboxes::before {
-    background-color: #0800ff; /* Background color for checked checkbox */
-    content: "\2713"; /* Unicode checkmark symbol ✓ */
-    font-size: 20px; /* Adjust font size as needed */
-    color: #ff0b0b; /* Checkmark color */
-    text-align: center;
-    line-height: 24px;
-  }
-  
-  .greatfairy_labels {
-    /* Additional styles for the labels */
-    border: 2px solid #404040;
-    border-radius: 2px;
-    border-style: solid;
-  }
+}
 
-.col-lg-12 {
+/* checkmark to be shown in checkbox 
+/* It is not be shown when not checked 
+.form-check-label.greatfairies::after {
+    content: "";
+    position: absolute;
+    display: none; /* Hide the checkmark by default 
+    top: 50%; /* Adjust the vertical position of the checkmark 
+    left: 50%; /* Adjust the horizontal position of the checkmark 
+    transform: translate(-50%, -50%); /* Center the checkmark 
+    width: 10px;
+    height: 10px;
+    background-color: #000000;
+    border-radius: 2px;
+}
+
+display checkmark when checked
+.form-check-input:checked + .form-check-label.greatfairies::after {
+    display: block;
+}
+
+
+.greatfairies .form-check-label {
+    margin: 0 0 10px 0px;
+}
+*/
+
+#armor_set {
+    text-align: center; 
+    padding: 0 0 0 0;
+    border: #000000;
+    border-style: solid;
+    background-color: #01d5ff9c;
+    height: 50px;
+}
+
+.armor_upgrade {
+    background-color: yellow;
+}
+
+.armor_items {
+    text-align: left;
+}
+
+.col-sm-12 {
     text-align: center; 
     padding: 0 0 0 0;
     border: #000000;
     border-style: solid;
 }
 
-.col-lg-4 {
+.col-sm-4 {
     text-align: center;
     border: #404040;
     border-width: 2px;
     border-style: solid;
 }
 
-.form-check-label {
+.form-check-label.BESTDRAGON {
     margin: 0 0 20px 20px;
 }
 
@@ -438,6 +474,36 @@ span {
     font-size: 100%;
     margin-left: 50%;
 }
+
+@media (min-width: 992px) {
+    .navbar {
+      position: fixed; /* Fixed position on the left side of the screen */
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 200px; /* Adjust the width as needed */
+      padding: 20px;
+      flex-direction: column; /* Arrange items vertically */
+    }
+  
+    .navbar-nav .nav-link {
+      color: #ffcc00; /* Your custom link color */
+    }
+  }
+  
+  /* Customize the position of the navbar items on mobile */
+  @media (max-width: 991px) {
+    .navbar {
+      position: static; /* Reset position for mobile */
+      width: 100%; /* Reset width for mobile */
+      padding: 0; /* Reset padding for mobile */
+      flex-direction: row; /* Arrange items horizontally for mobile */
+    }
+  
+    .navbar-collapse {
+      justify-content: center; /* Center the items in the dropdown for mobile */
+    }
+  }
 
 @media only screen and (max-width: 600px) {
     #book_picture {

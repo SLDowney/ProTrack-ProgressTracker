@@ -2,32 +2,38 @@
 
 {% block body %} 
     <h2>{{ headline }}</h2>
-    <div class="container">
+    <div class="container greatfairies">
         <div class="row">
-            <div class="col-lg-1 greatfairy_checkboxes">
-                <input type="checkbox" id="greatFairy_1" name="greatFairy_1" value="FALSE">
-              </div>
-              <div class="col-lg-11 greatfairy_labels">
-                <label for="greatFairy_1">First Great Fairy</label>
-              </div>
-              <div class="col-lg-1 greatfairy_checkboxes">
-                <input type="checkbox" id="greatFairy_2" name="greatFairy_2" value="FALSE">
-              </div>
-              <div class="col-lg-11 greatfairy_labels">
-                <label for="greatFairy_2">Second Great Fairy</label>
-              </div>
-              <div class="col-lg-1 greatfairy_checkboxes">
-                <input type="checkbox" id="greatFairy_3" name="greatFairy_3" value="FALSE">
-              </div>
-              <div class="col-lg-11 greatfairy_labels">
-                <label for="greatFairy_3">Third Great Fairy</label>
-              </div>
-              <div class="col-lg-1 greatfairy_checkboxes">
-                <input type="checkbox" id="greatFairy_4" name="greatFairy_4" value="FALSE">
-              </div>
-              <div class="col-lg-11 greatfairy_labels">
-                <label for="greatFairy_4">Fourth Great Fairy</label>
-              </div>
+            <div class="col-sm-1">
+                <input class="form-checkbox-input" type="checkbox" id="greatFairy_1" name="greatFairy_1" value="FALSE">
+            </div>
+            <div class="col-sm-11">
+                <label class="form-checkbox-label greatfairy" for="greatFairy_1">Great Fairy 1</label>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <input class="form-checkbox-input" type="checkbox" id="greatFairy_2" name="greatFairy_2" value="FALSE">
+            </div>
+            <div class="col-sm-11">
+                <label class="form-checkbox-label greatfairy" for="greatFairy_2">Great Fairy 2</label>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <input class="form-checkbox-input" type="checkbox" id="greatFairy_3" name="greatFairy_3" value="FALSE">
+            </div>
+            <div class="col-sm-11">
+                <label class="form-checkbox-label greatfairy" for="greatFairy_3">Great Fairy 3</label>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <input class="form-checkbox-input" type="checkbox" id="greatFairy_4" name="greatFairy_4" value="FALSE">
+            </div>
+            <div class="col-sm-11">
+                <label class="form-checkbox-label greatfairy" for="greatFairy_4">Great Fairy 4</label>
+            </div>                        
         </div>
     </div>
     <br>
@@ -35,8 +41,8 @@
     <div class="container">
         {% for armor in armors %}
             <div class="row">
-                <div class="col-lg-12" id="armor_set">{{ armor[1] }}</div>
-                <div class="col-lg-4">
+                <div class="col-sm-12" id="armor_set">{{ armor[1] }}</div>
+                <div class="col-sm-4">
                     <div class="BESTDRAGON">
                         <div class="form-check custom-checkbox">
                             <input class="form-check-input" type="checkbox" value="1" id="have_{{ armor[0] }}_helm" {% if armor[2] == 1 %}checked{% endif %} onclick="updateArmor(this, '{{ armor[2] }}')">
@@ -44,7 +50,7 @@
                         </div>                        
                     </div>                    
                 </div>
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="BESTDRAGON">
                         <div class="form-check custom-checkbox">
                             <input class="form-check-input" type="checkbox" value="1" id="have_{{ armor[0] }}_chest" {% if armor[3] == 1 %}checked{% endif %} onclick="updateArmor(this, '{{ armor[3] }}')">
@@ -52,7 +58,7 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="BESTDRAGON">
                         <div class="form-check custom-checkbox">
                             <input class="form-check-input" type="checkbox" value="1" id="have_{{ armor[0] }}_pants" {% if armor[4] == 1 %}checked{% endif %} onclick="updateArmor(this, '{{ armor[4] }}')">
@@ -60,14 +66,16 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-lg-12" id="armor_update_button">
+                <div class="col-sm-12" id="armor_update_button">
                     <button type="submit" class="btn btn-block custom-btn">Update</button>
                 </div>
 
                 <!-- IF ARMOR FOUND && 1 GREAT FAIRY CHECKED -->
-
-                <div class="col-lg-12" id="armor_upgrade_1">&#9733;</div>
-                <div class="col-lg-4">
+                <div class="armor_upgrade level-1">
+                <div class="col-sm-12">
+                    &#9733;
+                </div>
+                <div class="col-sm-4">
                     <div class="BESTDRAGON">
                         <div class="form-check custom-checkbox">
                             <input class="form-check-input" type="checkbox" value="1" id="up1_{{ armor[0] }}_helm" {% if armor[5] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[5] }}')">
@@ -75,7 +83,7 @@
                         </div>                        
                     </div>                    
                 </div>
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="BESTDRAGON">
                         <div class="form-check custom-checkbox">
                             <input class="form-check-input" type="checkbox" value="1" id="up1_{{ armor[0] }}_chest" {% if armor[6] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[6] }}')">
@@ -83,7 +91,7 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="BESTDRAGON">
                         <div class="form-check custom-checkbox">
                             <input class="form-check-input" type="checkbox" value="1" id="up1_{{ armor[0] }}_pants" {% if armor[7] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[7] }}')">
@@ -91,21 +99,139 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-lg-12" id="armor_update_button">
-                    <p>
-                        {% if armor[17] == None %}
-                            Unknown
-                        {% else %}
-                            {{ armor[17] }}
-                        {% endif %}
-                    </p>
+                <div class="col-sm-12 armor_items">
+                    {% if armor[18] == None %}
+                        Upgrade Items Here - LEVEL 1
+                    {% else %}
+                        {{ armor[18] }}
+                    {% endif %}
                 </div>
-                <div class="col-lg-12" id="armor_update_button">
+                <div class="col-sm-12" id="armor_update_button">
                     <button type="submit" class="btn btn-block custom-btn">Update</button>
                 </div>
-            </div>    
+                </div>
+                <!-- IF ARMOR FOUND && 2 GREAT FAIRY CHECKED && LEVEL 1 UPGRADE COMPLETE -->
+                <div class="armor_upgrade level-2">
+                <div class="col-sm-12">
+                    &#9733;&#9733;
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up2_{{ armor[0] }}_helm" {% if armor[8] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[8] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up2_{{ armor[0] }}_helm">Helm</label>
+                        </div>                        
+                    </div>                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up2_{{ armor[0] }}_chest" {% if armor[9] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[9] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up2_{{ armor[0] }}_chest">Chest</label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up2_{{ armor[0] }}_pants" {% if armor[10] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[10] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up2_{{ armor[0] }}_pants">Pants</label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-12 armor_items">
+                    {% if armor[17] == None %}
+                        Upgrade Items Here
+                    {% else %}
+                        {{ armor[17] }}
+                    {% endif %}
+                </div>
+                <div class="col-sm-12" id="armor_update_button">
+                    <button type="submit" class="btn btn-block custom-btn">Update</button>
+                </div>
+                </div>
+                <!-- IF ARMOR FOUND && 3 GREAT FAIRY CHECKED && LEVEL 2 UPGRADE COMPLETE -->
+                <div class="armor_upgrade level-3">
+                <div class="col-sm-12">
+                    &#9733;&#9733;&#9733;
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up3_{{ armor[0] }}_helm" {% if armor[11] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[11] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up3_{{ armor[0] }}_helm">Helm</label>
+                        </div>                        
+                    </div>                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up3_{{ armor[0] }}_chest" {% if armor[12] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[12] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up3_{{ armor[0] }}_chest">Chest</label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up3_{{ armor[0] }}_pants" {% if armor[13] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[13] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up3_{{ armor[0] }}_pants">Pants</label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-12 armor_items">
+                    {% if armor[19] == None %}
+                        Upgrade Items Here
+                    {% else %}
+                        {{ armor[19] }}
+                    {% endif %}
+                </div>
+                <div class="col-sm-12" id="armor_update_button">
+                    <button type="submit" class="btn btn-block custom-btn">Update</button>
+                </div>
+                </div>
+                <!-- IF ARMOR FOUND && 4 GREAT FAIRY CHECKED && LEVEL 3 UPGRADE COMPLETE -->
+                <div class="armor_upgrade level-4">
+                <div class="col-sm-12">
+                    &#9733;&#9733;&#9733;&#9733;
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up4_{{ armor[0] }}_helm" {% if armor[14] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[14] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up4_{{ armor[0] }}_helm">Helm</label>
+                        </div>                        
+                    </div>                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up4_{{ armor[0] }}_chest" {% if armor[15] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[15] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up4_{{ armor[0] }}_chest">Chest</label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="BESTDRAGON">
+                        <div class="form-check custom-checkbox">
+                            <input class="form-check-input" type="checkbox" value="1" id="up4_{{ armor[0] }}_pants" {% if armor[16] == "TRUE" %}checked{% endif %} onclick="updateArmor(this, '{{ armor[16] }}')">
+                            <label class="form-check-label BESTDRAGON" for="up4_{{ armor[0] }}_pants">Pants</label>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-12 armor_items">
+                    {% if armor[19] == None %}
+                        Upgrade Items Here
+                    {% else %}
+                        {{ armor[19] }}
+                    {% endif %}
+                </div>
+                <div class="col-sm-12" id="armor_update_button">
+                    <button type="submit" class="btn btn-block custom-btn">Update</button>
+                </div>
+                </div>
+            </div>            
         {% endfor %}
     </div>
     <script src="{{ url_for('static', filename='armors.js') }}"></script>
-
 {% endblock %}
