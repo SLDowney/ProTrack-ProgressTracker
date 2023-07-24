@@ -333,14 +333,46 @@ def add_korok():
     location = request.form.get('location')
     kType = request.form.get('kType')
     coord_start = request.form.get('coord_start')
+    # Remove spaces and commas from the input
+    coord_start = coord_start.replace(' ', '').replace(',', '')
+
+    # Format the chest_coord with commas while maintaining negative signs
+    formatted_coord_start = ''
+    i = 0
+    while i < len(coord_start):
+        section = coord_start[i:i+4]
+        if section.startswith('-'):
+            section = coord_start[i:i+5]
+            formatted_coord_start += section + ', '
+            i += 5
+        else:
+            formatted_coord_start += section[:4] + ', '
+            i += 4
+    formatted_coord_start = formatted_coord_start.rstrip(', ')
     coord_end = request.form.get('coord_end')
+    # Remove spaces and commas from the input
+    coord_end = coord_end.replace(' ', '').replace(',', '')
+
+    # Format the chest_coord with commas while maintaining negative signs
+    formatted_coord_end = ''
+    i = 0
+    while i < len(coord_end):
+        section = coord_end[i:i+4]
+        if section.startswith('-'):
+            section = coord_end[i:i+5]
+            formatted_coord_end+= section + ', '
+            i += 5
+        else:
+            formatted_coord_end += section[:4] + ', '
+            i += 4
+    formatted_coord_end = formatted_coord_start.rstrip(', ')
     description = request.form.get('description')
     korok_found = request.form.get('korok_found')
 
     # Insert the new korok into the database
     with closing(conn.cursor()) as c:
         c.execute('INSERT INTO koroks (korok_found, korok_location, korok_type, korok_coord_start, korok_coord_end, korok_desc) VALUES (?, ?, ?, ?, ?, ?)',
-                  (korok_found, location, kType, coord_start, coord_end, description))
+                  (korok_found, location, kType, formatted_coord_start, formatted_coord_end, description))
         conn.commit()
 
     # Redirect back to the koroks page after adding the korok
@@ -394,6 +426,22 @@ def add_enemy():
     e_monster = request.form.get('e_monster')
     e_color = request.form.get('e_color')
     e_coord = request.form.get('e_coord')
+    # Remove spaces and commas from the input
+    e_coord = e_coord.replace(' ', '').replace(',', '')
+
+    # Format the chest_coord with commas while maintaining negative signs
+    formatted_e_coord = ''
+    i = 0
+    while i < len(e_coord):
+        section = e_coord[i:i+4]
+        if section.startswith('-'):
+            section = e_coord[i:i+5]
+            formatted_e_coord += section + ', '
+            i += 5
+        else:
+            formatted_e_coord += section[:4] + ', '
+            i += 4
+    formatted_e_coord = formatted_e_coord.rstrip(', ')
     e_location = request.form.get('e_location')
     e_region = request.form.get('e_region')
     e_map = request.form.get('e_map')
@@ -402,7 +450,7 @@ def add_enemy():
     # Insert the new enemy into the database
     with closing(conn.cursor()) as c:
         c.execute('INSERT INTO enemies (e_found, e_monster, e_color, e_coord, e_location, e_region, e_map) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                  (e_found, e_monster, e_color, e_coord, e_location, e_region, e_map))
+                  (e_found, e_monster, e_color, formatted_e_coord, e_location, e_region, e_map))
         conn.commit()
 
     # Redirect back to the enemies page after adding the enemy
@@ -467,8 +515,23 @@ def compendium():
         query = '''SELECT * FROM compendium ORDER BY comp_id ASC'''
         c.execute(query)
         results = c.fetchall()
-        info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("compendium.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+        creatures = []
+        monsters = []
+        materials = []
+        equipment = []
+        treasures = []
+        for result in results:
+            if result[2] == "Creatures":
+                creatures.append(result)
+            if result[2] == "Monsters":
+                monsters.append(result)
+            if result[2] == "Materials":
+                materials.append(result)
+            if result[2] == "Equipment":
+                equipment.append(result)
+            if result[2] == "Treasure":
+                treasures.append(result)
+    return render_template("compendium.html", scroll_position=scroll_position, headline=headline, results=results, creatures=creatures, monsters=monsters, materials=materials, equipment=equipment, treasures=treasures)
 
 @app.route('/interesting', methods=['GET', 'POST'])
 def interesting():
@@ -518,6 +581,22 @@ def add_thing():
     misc_tier = request.form.get('misc_tier')
     misc_secondary = request.form.get('misc_secondary')
     misc_coord = request.form.get('misc_coord')
+    # Remove spaces and commas from the input
+    misc_coord = misc_coord.replace(' ', '').replace(',', '')
+
+    # Format the chest_coord with commas while maintaining negative signs
+    formatted_misc_coord = ''
+    i = 0
+    while i < len(misc_coord):
+        section = misc_coord[i:i+4]
+        if section.startswith('-'):
+            section = misc_coord[i:i+5]
+            formatted_misc_coord += section + ', '
+            i += 5
+        else:
+            formatted_misc_coord += section[:4] + ', '
+            i += 4
+    formatted_misc_coord = formatted_misc_coord.rstrip(', ')
     misc_location = request.form.get('misc_location')
     misc_region = request.form.get('misc_region')
     misc_map = request.form.get('misc_map')
@@ -526,7 +605,7 @@ def add_thing():
     # Insert the new thing into the database
     with closing(conn.cursor()) as c:
         c.execute('INSERT INTO misc (misc_found, misc_monster, misc_color, misc_coord, misc_location, misc_region, misc_map) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                  (misc_found, misc_category, misc_thing, misc_tier, misc_secondary, misc_coord, misc_location, misc_region, misc_map))
+                  (misc_found, misc_category, misc_thing, misc_tier, misc_secondary, formatted_misc_coord, misc_location, misc_region, misc_map))
         conn.commit()
 
     # Redirect back to the interesting page after adding the thing

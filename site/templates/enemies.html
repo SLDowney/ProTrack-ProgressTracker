@@ -5,7 +5,7 @@
     <form id="add_enemy" method="POST" action="/add_enemy">
         <label for="e_monster">Monster:</label>
         <input type="text" class="add_enemy_textbox" id="e_monster" name="e_monster" required><br>
-        <label for="e_color">Color:</label>
+        <label for="e_color">Tier:</label>
         <input type="text" class="add_enemy_textbox" id="e_color" name="e_color" required><br>
         <label for="e_coord">Coordinates:</label>
         <input type="text" class="add_enemy_textbox" id="e_coord" name="e_coord" required><br>
@@ -25,7 +25,7 @@
         <thead>
             <tr>
                 <th><button id="sort-by-found-btn" onclick="sortenemies('e_found')">Done</button></th>
-                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Color</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Tier</button></th>
                 <th><button id="sort-by-type-btn" onclick="sortenemies('e_monster')">Monster</button></th>
                 <th><button id="sort-by-coord-btn" onclick="sortenemies('e_coord')">Coordinates</button></th>
             </tr>

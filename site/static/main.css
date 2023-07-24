@@ -7,12 +7,41 @@
 
 /* Customize the mobile dropdown button */
 .navbar-toggler {
-    border-color: #ffcc00;
-    color:#2fff00
+    border-color: #000000;
+    color:#000000
 }
 
 .navbar-nav .nav-item .nav-link {
-    color: #ffcc00; /* Your custom link color */
+    color: #000000; /* Your custom link color */
+}
+
+/* Custom CSS to style the columns */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a minimum height for the content area to occupy the full height */
+.col-md-2 {
+    position:relative;
+    min-height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Style the navigation column */
+.nav-column {
+    background-color: #f8f9fa;
+    flex-basis: 10px; /* Adjust this width as needed */
+    padding: 20px;
+}
+
+/* Style the content column */
+.col-md-10 {
+    flex: 1;
+    padding: 0px;
+    float: right;
 }
 
 body {
@@ -317,6 +346,27 @@ display checkmark when checked
     border-style: solid;
 }
 
+/* Updated CSS for the custom "comp-col-7" class */
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} 
+
+.comp_checkbox {
+    width: 100px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .form-check-label.BESTDRAGON {
     margin: 0 0 20px 20px;
 }
@@ -475,24 +525,8 @@ span {
     margin-left: 50%;
 }
 
-@media (min-width: 992px) {
-    .navbar {
-      position: fixed; /* Fixed position on the left side of the screen */
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 200px; /* Adjust the width as needed */
-      padding: 20px;
-      flex-direction: column; /* Arrange items vertically */
-    }
-  
-    .navbar-nav .nav-link {
-      color: #ffcc00; /* Your custom link color */
-    }
-  }
-  
-  /* Customize the position of the navbar items on mobile */
-  @media (max-width: 991px) {
+/* Customize the position of the navbar items on mobile */
+@media (min-width: 601px) and (max-width: 991px) {
     .navbar {
       position: static; /* Reset position for mobile */
       width: 100%; /* Reset width for mobile */
@@ -503,17 +537,62 @@ span {
     .navbar-collapse {
       justify-content: center; /* Center the items in the dropdown for mobile */
     }
+  
+    /* Remove float and flex-basis properties for smaller screens */
+    .col-md-4 {
+      /* flex-direction: column; Remove this line */
+      /* float: left; Remove this line */
+      /* width: fit-content; Remove this line */
+    }
+  
+    .col-md-8 {
+      /* flex-basis: auto; Remove this line */
+      /* width: fit-content; Remove this line */
+    }
+  
+    /* Update the width for the items to have two columns in this media query */
+    .item-container .comp-col-7 {
+      width: calc(50% - 20px); /* Adjust the width to fit two columns with some spacing */
+      margin: 0px;
+      box-sizing: border-box;
+    }
+  
+    .comp_table {
+      padding: 0;
+      margin: 2%;
+      width: 100%;
+      height: 25vh; /* Adjust this value to control the vertical centering */
+    }
   }
-
-@media only screen and (max-width: 600px) {
-    #book_picture {
-        justify-content: center;
-        margin-top: 10px;
+  
+  /* For larger screens */
+  @media (min-width: 992px) {
+    .navbar {
+      position: relative; /* Fixed position on the left side of the screen */
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 200px; /* Adjust the width as needed */
+      padding: 20px;
+      flex-direction: column; /* Arrange items vertically */
     }
-
-    #book_info {
-        justify-content: center;
-        padding-top: 10px;
+  
+    .navbar-nav .nav-link {
+      color: #000000; /* Your custom link color */
     }
-
-}
+  
+    /* Update the width for the items to have four columns in this media query */
+    .item-container .comp-col-7 {
+      width: calc(25% - 20px); /* Each item takes about 25% width to fit 4 items in a row */
+      margin: 0px;
+      box-sizing: border-box;
+    }
+  
+    .comp_table {
+      padding: 0;
+      margin: 2%;
+      width: 100%;
+      height: 25vh; /* Adjust this value to control the vertical centering */
+    }
+  }
+  
