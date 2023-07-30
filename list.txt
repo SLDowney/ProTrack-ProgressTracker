@@ -1,0 +1,108 @@
+Central Hyrule Region Cooking Pots
+Cooking Pot #01
+Location: This cooking pot is near the East Passage of Hyrule Castle
+Coordinates: -0073, 0983, 0137
+Cooking Pot #02
+Location: This cooking Pot is at the First Gatehouse, Hyrule Castle.
+Coordinates: -0340, 0833, 0215
+Cooking Pot #03
+Location: It is located near the Second Gatehouse in Zelda Tears of the Kingdom (the place where Knight’s Broadsword is obtained)
+Coordinates: -0233, 0791, 0177
+Cooking Pot #04
+Location: This cooking pot is located in Central Square, Central Hyrule
+Coordinates: -0333, 0443, 0128
+Cooking Pot #05
+Location: This pot in Zelda Tears of the Kingdom is near the Hyrule Castle Town Ruins.
+Coordinates: -0218, 0416, 0127
+Cooking Pot #06
+Location: Its position is in Castle Town Watchtower.
+Coordinates: -0078, 0417, 0134
+Cooking Pot #07
+Location: It is located at the Lookout Landing Mini Stable, near the Bargainer Statue.
+Coordinates: -0269, 0102, 0114
+Cooking Pot #08
+Location: This cooking pot is on the left side of Central Hyrule, near the Carok Bridge in Zelda Tears of the Kingdom.
+Coordinates: -1040, 0427, 0125
+Cooking Pot #09
+Location: This pot is located precisely at the Mabe Village Ruins.
+Coordinates: -0043, -0224, 0131
+Cooking Pot #10
+Location: This cooking pot is on the Hyrule Field.
+Coordinates: -0447, -0612, 0132
+Cooking Pot #11
+Location: Adjacent to the above pot, this one is also positioned near the Hyrule Field.
+Coordinates: -0455, -0628, 0132
+Necluda Cooking Pots
+Cooking Pot #01
+Location: This cooking pot is on the left side of Popla Foothills.
+Coordinates: 0589, -2108, 0199
+Cooking Pot #02
+Location: This is also located near Zelda TotK Popla Foothills.
+Coordinates: 0594, -2224, 0145
+Cooking Pot #03
+Location: You can locate this one near Dracozu Lake.
+Coordinates: 0791, -2572, 0155
+Cooking Pot #04
+Location: This cooking pot is situated near Guchini Plain.
+Coordinates: 0645, -3187, 0163
+Cooking Pot #05
+Location: You can locate this cooking pot near Komo Shoreline.
+Coordinates: 0660, -3891, 0107
+Faron Region Cooking Pots
+Cooking Pot #01
+Location: This cooking pot situates near Sand Seal Rental Shop.
+Coordinates: -3833, -2948, 0149
+Cooking Pot #02
+Location: It is located near Sand Seal in Zelda TotK, but also touches Canteen.
+Coordinates: -3769, -2869, 0149
+Cooking Pot #03
+Location: Located near the center of the Gerudo Region. It is near the pond where Decorate With Passion Side Quest is performed.
+Coordinates: -3278, -2570, 0129
+Cooking Pot #04
+Location: It is on the road to Gerudo Canyon Pass and connects Central Hyrule with Faron.
+Coordinates: -1521, -2231, 0087
+Cooking Pot #05
+Location: You can see this Cooking Pot situates near East Gerudo Ruins.
+Coordinates: -2442, -2834, 0233
+Akkala Region Cooking Pots
+Cooking Pot #01
+Location: It is in North Akkala Valley, near Zelda Tears of the Kingdom Spring Of Power.
+Coordinates: 3831, 2781, 0156
+Cooking Pot #02
+Location: This cooking Pot is near Ordorac Quarry, the dwelling place of Phantom Ganon.
+Coordinates: 3682, 2395, 0179
+Cooking Pot #03
+Location: You will find this cooking pot in the North Akkala Foothill.
+Coordinates: 4245, 2934, 0256
+Cooking Pot #04
+Location: This cooking Pot is on the left side of North Akkala Beach, near the place of Hudson Sign Puzzle.
+Coordinates: 4476, 2977, 0306
+Eldin Region Cooking Pots
+Cooking Pot #01
+Location: This cooking pot is near Death Caldera, on the upper side of Death Mountain.
+Coordinates: 2436, 2977, 0551
+Cooking Pot #02
+Location: It is northeast of the Isle of Rabac, near Lake Darman in Tears of the Kingdom.
+Coordinates: 1702, 3011, 0343
+Cooking Pot #03
+Location: This cooking pot is north of Goronbi River, near Gortram Cliff.
+Coordinates: 1654, 1964, 0430
+Cooking Pot #04
+Location: This cooking pot can be accessed at the bank of Goronbi River. The river’s tail gives you the Meat For Meat side quest.
+Coordinates: 1624, 1718, 0383
+Hebra Region Cooking Pots
+Cooking Pot #01
+Location: You can access this cooking pot at the center of Lake Totori. This place relates to Genli’s Home Cooking and Molli The Fletcher’s quest.
+Coordinates: -3589, 1805, 0297
+Cooking Pot #02
+Location: You will find this cooking pot on the right bank of Lake Totori. This is where you complete the Potential Princess Sightings side quest in Zelda TotK.
+Coordinates: -3266, 1776, 0225
+Cooking Pot #03
+Location: It is on the northern side of Hebra, near the Great Fairy Fountain.
+Coordinates: -1380, 2936, 0282
+Cooking Pot #04
+Location: You can access this cooking pot at Piper Ridge. This is near where you get The Hornist’s Escape side quest.
+Coordinates: -3582, 0643, 0275
+Cooking Pot #05
+Location: This pot is in Ultra Ball Haul Check-In, near Tabantha Great Bridge in Zelda TotK.
+Coordinates: -3136, 0604, 0025

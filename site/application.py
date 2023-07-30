@@ -120,7 +120,12 @@ def additem():
             chest_location = request.form['chest_location']
             chest_sideq = request.form['chest_sideq']
             chest_region = request.form['chest_region']
-            chest_done = 1            
+            chest_done = request.form.get(f'chest_done')
+            print("Chest_Done:", chest_done) 
+            if chest_done == None:
+                chest_done = "0"
+            else:
+                chest_done = "1"       
 
             with closing(conn.cursor()) as c:
                 query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done)
@@ -180,6 +185,10 @@ def camp_chest():
                 c.execute('UPDATE camp_chest SET camp_chest_done = ? WHERE camp_chest_id = ?', (camp_chest_found, camp_chest_id))
                 print("Executed update statement for camp_chest ID:", camp_chest_id)
             conn.commit()
+            with closing(conn.cursor()) as c:
+                c.execute('SELECT * FROM camp_chest')
+                camp_chests = c.fetchall()
+                return render_template('camp_chest.html', camp_chests=camp_chests, scroll_position=scroll_position)
 
     # Retrieve all camp_chest from the database
     with closing(conn.cursor()) as c:

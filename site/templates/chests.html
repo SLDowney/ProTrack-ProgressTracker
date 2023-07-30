@@ -10,7 +10,7 @@
             {% for chest in chests %}
             <li>
                 <input type="hidden" id="chest_id_{{ chest[0] }}" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
-                <input type="checkbox" id="chest_id_{{ chest[0] }}" name="chest_found_{{ chest[0] }}" value="1" {% if chest[6] == 1 %}checked{% elif chest[6] == 0 %} unchecked{% endif %}>
+                <input type="checkbox" id="chest_id_{{ chest[0] }}" name="chest_found_{{ chest[0] }}" value="1" {% if chest[7] == 1 %}checked{% elif chest[7] == 0 %} unchecked{% endif %}>
                 <label id="chest_list_labels" for="chest_found_{{ chest[0] }}">
                     <p id="chest_info_p"> {{ chest[1] }}</p>
                     <p id="chest_info_p">{{chest[2]}}</p>
