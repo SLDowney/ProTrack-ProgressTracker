@@ -1,8 +1,37 @@
+// javascript_koroks.js
+
+function updateKorok(checkbox, korokId) {
+  const korokFound = checkbox.checked ? 1 : 0;
+
+  const data = {
+      korok_id: korokId,
+      korok_found: korokFound,
+  };
+
+  console.log('Data sent to server:', data); // Add this line for debugging
+
+  fetch('/update-korok', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Handle the response if needed
+      console.log('Response from server:', data); // Add this line for debugging
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+}
+
 window.addEventListener('DOMContentLoaded', function() {
   var sortByLocationBtn = document.getElementById("sort-by-location-btn");
   var sortByCoordBtn = document.getElementById("sort-by-coord-btn");
   var sortByTypeBtn = document.getElementById("sort-by-type-btn");
-  var sortByStartBtn = document.getElementById("sort-by-start-btn");
+  // var sortByStartBtn = document.getElementById("sort-by-start-btn");
   var sortByFoundBtn = document.getElementById("sort-by-found-btn");
   var koroksTable = document.getElementById('koroks-table');
 
@@ -11,36 +40,6 @@ window.addEventListener('DOMContentLoaded', function() {
   var isTypeSortAscending = true;
   var isStartSortAscending = true;
   var isFoundSortAscending = true;
-
-  sortByLocationBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    sortKoroks('location');
-    isLocationSortAscending = !isLocationSortAscending;
-  });
-
-  sortByCoordBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    sortKoroks('coord');
-    isCoordSortAscending = !isCoordSortAscending;
-  });
-
-  sortByTypeBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    sortKoroks('type');
-    isTypeSortAscending = !isTypeSortAscending;
-  });
-
-  sortByStartBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    sortKoroks('start');
-    isStartSortAscending = !isStartSortAscending;
-  });
-
-  sortByFoundBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    sortKoroks('found');
-    isFoundSortAscending = !isFoundSortAscending;
-  });
 
   function sortKoroks(sortType) {
     var koroks = Array.from(koroksTable.getElementsByTagName('tr'));
@@ -61,16 +60,16 @@ window.addEventListener('DOMContentLoaded', function() {
       } else if (sortType === 'start') {
         aValue = a.cells[5].textContent.toLowerCase();
         bValue = b.cells[5].textContent.toLowerCase();
-      } else if (sortType === 'found') {
+      } else if (sortType === 'korok_found') {
         aValue = a.cells[0].querySelector('input[type="checkbox"]').checked;
         bValue = b.cells[0].querySelector('input[type="checkbox"]').checked;
       }
 
       if (aValue && bValue) {
         if (aValue < bValue) {
-          return sortType === 'found' ? (isFoundSortAscending ? -1 : 1) : -1;
+          return sortType === 'korok_found' ? (isFoundSortAscending ? -1 : 1) : -1;
         } else if (aValue > bValue) {
-          return sortType === 'found' ? (isFoundSortAscending ? 1 : -1) : 1;
+          return sortType === 'korok_found' ? (isFoundSortAscending ? 1 : -1) : 1;
         } else {
           return 0;
         }
@@ -87,6 +86,27 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  function updatePercentageCounter() {
+    var totalKoroks = koroksTable.getElementsByTagName('tr').length - 1; // Exclude the header row
+    var totalFoundKoroks = Array.from(koroksTable.querySelectorAll('input[type="checkbox"]')).reduce(function(total, checkbox) {
+        return total + (checkbox.checked ? 1 : 0);
+    }, 0);
+  
+    var percentageFound = (totalFoundKoroks / totalKoroks) * 100;
+    document.getElementById('percentage-found').textContent = percentageFound.toFixed(2);
+  }
+  
+  // Call the function on page load
+  updatePercentageCounter();
+  
+  // Add the event listener to the checkboxes to update the counter when checkboxes are clicked
+  Array.from(koroksTable.querySelectorAll('input[type="checkbox"]')).forEach(function(checkbox) {
+    checkbox.addEventListener('click', function() {
+        updatePercentageCounter();
+    });
+  });
+  
+  
   function extractCoord(korokRow) {
     var coordCell = korokRow.cells[4];
     if (coordCell) {
@@ -95,4 +115,36 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     return '';
   }
+  
+  sortByLocationBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    sortKoroks('location');
+    isLocationSortAscending = !isLocationSortAscending;
+  });
+
+  sortByCoordBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    sortKoroks('coord');
+    isCoordSortAscending = !isCoordSortAscending;
+  });
+
+  sortByTypeBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    sortKoroks('type');
+    isTypeSortAscending = !isTypeSortAscending;
+  });
+
+  // sortByStartBtn.addEventListener("click", function(event) {
+  //   event.preventDefault();
+  //   sortKoroks('coord_start');
+  //   isStartSortAscending = !isStartSortAscending;
+  // });
+
+  sortByFoundBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    sortKoroks('found');
+    isFoundSortAscending = !isFoundSortAscending;
+  });
+
+ 
 });

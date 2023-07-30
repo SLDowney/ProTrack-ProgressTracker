@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+    <h1>Camp Chests</h1>
+    <form method="POST" action="/camp_chest">
+        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+        <button id="sort-by-name-btn" onclick="sortcamp_chests('name')">Item</button>
+        <button id="sort-by-coord-btn" onclick="sortcamp_chests('coord')">Coordinates</button>
+        <ul id="camp_chests-list">
+            {% for camp_chest in camp_chests %}
+            <li>
+                <input type="hidden" id="camp_chest_id_{{ camp_chest[0] }}" name="camp_chest_id_{{ camp_chest[0] }}" value="{{ camp_chest[1] }}">
+                <input type="checkbox" id="camp_chest_id_{{ camp_chest[0] }}" name="camp_chest_found_{{ camp_chest[0] }}" value="1" {% if camp_chest[1] == 1 %}checked{% elif camp_chest[1] == 0 %} unchecked{% endif %}>
+                <label id="camp_chest_list_labels" for="camp_chest_found_{{ camp_chest[0] }}">
+                    <p id="camp_chest_info_p"> {{ camp_chest[2] }}</p>
+                    <p id="camp_chest_info_p">{{camp_chest[3]}}</p>
+                    <p id="camp_chest_info_p">{% if camp_chest[4] == None %}
+                        Unknown
+                    {% else %}
+                        {{camp_chest[4]}}
+                    {% endif %}</p> 
+                    <p id="camp_chest_info_p">{% if camp_chest[5] == None %}
+                        Unknown
+                    {% else %}
+                        {{camp_chest[5]}}
+                    {% endif %}</p>
+                    <p id="camp_chest_info_p">{% if camp_chest[6] == None %}
+                        Unknown
+                    {% else %}
+                        {{camp_chest[6]}}
+                    {% endif %}</p>
+                    <p id="camp_chest_info_p">{% if camp_chest[7] == None %}
+                        Unknown
+                    {% elif camp_chest[7] == "None" %}
+                        Unknown
+                    {% else %}
+                        {{camp_chest[7]}}
+                    {% endif %}</p>
+                </label>
+                <button type="submit" id="camp_chest_list_submit">Update</button>
+            </li>
+            {% endfor %}
+        </ul>
+        
+    </form>  
+    <script src="{{ url_for('static', filename='javascript_camp_chests.js') }}"></script>
+{% endblock %}

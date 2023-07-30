@@ -159,6 +159,85 @@ def additem():
         return render_template("additem.html", headline=headline)
     return render_template("additem.html", headline=headline)
 
+@app.route('/camp_chest', methods=['GET', 'POST'])
+def camp_chest():
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            camp_chest = c.execute('SELECT * FROM camp_chest').fetchall()
+            for camp_chest in camp_chest:
+                camp_chest_id = camp_chest[0]
+                camp_chest_found = request.form.get(f'camp_chest_found_{camp_chest_id}')
+                if camp_chest_found is None:
+                    camp_chest_found = '0'
+                else:
+                    camp_chest_found = '1'
+                print("camp_chest_id:", camp_chest_id)
+                print("camp_chest_found:", camp_chest_found)
+                c.execute('UPDATE camp_chest SET camp_chest_done = ? WHERE camp_chest_id = ?', (camp_chest_found, camp_chest_id))
+                print("Executed update statement for camp_chest ID:", camp_chest_id)
+            conn.commit()
+
+    # Retrieve all camp_chest from the database
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM camp_chest')
+        camp_chests = c.fetchall()
+
+    return render_template('camp_chest.html', camp_chests=camp_chests, scroll_position=scroll_position)
+
+
+@app.route("/add_camp_chest", methods=["GET", "POST"])
+def add_camp_chest():
+    headline = "Insert found camp_chest into database:"
+    if request.method == 'POST':
+        try:
+            camp_chest_coord = request.form['camp_chest_coord']
+            # Remove spaces and commas from the input
+            camp_chest_coord = camp_chest_coord.replace(' ', '').replace(',', '')
+
+            # Format the camp_chest_coord with commas while maintaining negative signs
+            formatted_camp_chest_coord = ''
+            i = 0
+            while i < len(camp_chest_coord):
+                section = camp_chest_coord[i:i+4]
+                if section.startswith('-'):
+                    section = camp_chest_coord[i:i+5]
+                    formatted_camp_chest_coord += section + ', '
+                    i += 5
+                else:
+                    formatted_camp_chest_coord += section[:4] + ', '
+                    i += 4
+            formatted_camp_chest_coord = formatted_camp_chest_coord.rstrip(', ')
+            
+            camp_chest_enemies = request.form['camp_chest_enemies']
+            camp_chest_item = request.form['camp_chest_item']
+            camp_chest_location = request.form['camp_chest_location']
+            camp_chest_region = request.form['camp_chest_region']
+            camp_chest_found = request.form.get(f'camp_chest_found')
+            if camp_chest_found is None:
+                    camp_chest_found = '0'
+
+            with closing(conn.cursor()) as c:
+                query = '''INSERT INTO camp_chest (camp_chest_coord, camp_chest_enemies, camp_chest_item, camp_chest_location, camp_chest_region, camp_chest_done)
+                            VALUES(?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (formatted_camp_chest_coord, camp_chest_enemies, camp_chest_item, camp_chest_location, camp_chest_region, camp_chest_found))
+                conn.commit()
+
+        except sqlite3.OperationalError as e:
+            print(e)
+            headline = "Error in insert operation. Please try again."
+    else:
+        return render_template("add_camp_chest.html", headline=headline)
+     # Retrieve all camp_chest from the database
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM camp_chest')
+        camp_chests = c.fetchall()
+    return render_template("add_camp_chest.html", camp_chests=camp_chests)
+
+
 @app.route("/edititem", methods=["POST", "GET"])
 def edititem():
     headline = "Edit a chest:"
@@ -189,49 +268,20 @@ def edititem():
 def armors():
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
-        scroll_position = int(scroll_position) 
+        scroll_position = int(scroll_position)
 
     if request.method == 'POST':
+        armor_id = request.form['armorId']
+        armor_helm_found = request.form.get(f'have_{armor_id}_helm', '0')
+        armor_chest_found = request.form.get(f'have_{armor_id}_chest', '0')
+        armor_pants_found = request.form.get(f'have_{armor_id}_pants', '0')
+
         with closing(conn.cursor()) as c:
-            armors = c.execute('SELECT * FROM armor_set').fetchall()
-            for armor in armors:
-                a_id = armor[0]
-                a_helm = armor[2]
-                a_chest = armor[3]
-                a_pants = armor[4]
-                armor_helm_found = request.form.get(f'armor_{a_id}_{a_helm}')
-                armor_chest_found = request.form.get(f'armor_{a_id}_{a_chest}')
-                armor_pants_found = request.form.get(f'armor_{a_id}_{a_pants}')
-                print("Armor_helm_found:", armor_helm_found)
-                print("Armor_chest_found:", armor_chest_found)
-                print("Armor_pants_found:", armor_pants_found)
+            c.execute('UPDATE armor_set SET a_helm = ? WHERE a_id = ?', (armor_helm_found, armor_id))
+            c.execute('UPDATE armor_set SET a_chest = ? WHERE a_id = ?', (armor_chest_found, armor_id))
+            c.execute('UPDATE armor_set SET a_pants = ? WHERE a_id = ?', (armor_pants_found, armor_id))
 
-                if armor_helm_found is None:
-                    armor_helm_found = '0'
-                else:
-                    armor_helm_found = '1'
-                
-                if armor_chest_found is None:
-                    armor_chest_found = '0'
-                else:
-                    armor_chest_found = '1'
-                
-                if armor_pants_found is None:
-                    armor_pants_found = '0'
-                else:
-                    armor_pants_found = '1'
-                
-                print("a_id:", a_id)
-                print("armor_helm_found after if/else:", armor_helm_found)
-                print("armor_chest_found after if/else:", armor_chest_found)
-                print("armor_pants_found after if/else:", armor_pants_found)
-
-                c.execute('UPDATE armor_set SET a_helm = ? WHERE a_id = ?', (armor_helm_found, a_id))
-                c.execute('UPDATE armor_set SET a_chest = ? WHERE a_id = ?', (armor_chest_found, a_id))
-                c.execute('UPDATE armor_set SET a_pants = ? WHERE a_id = ?', (armor_pants_found, a_id))
-
-                print("Executed update statements for armor ID:", a_id)
-            conn.commit()
+        conn.commit()
 
     # Retrieve all armors from the database
     with closing(conn.cursor()) as c:
@@ -240,19 +290,22 @@ def armors():
 
     return render_template('armors.html', armors=armors, scroll_position=scroll_position)
 
+@app.route('/armors/update', methods=['POST'])
+def update_armor():
+    data = request.get_json()
+    for d in data:
+        print("D !!! ->:", d)
+    armor_id = data['armorId']
+    armor_found = data['armorFound']
+    print("armor_id:", armor_id)
+    print("armor_found:", armor_found)
 
-# @app.route('/armors/update', methods=['POST'])
-# def update_armor():
-#     data = request.get_json()
-#     armor_id = data['armorId']
-#     armor_found = data['armorFound']
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor_set SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+        print("Executed armor_set update, collected, id: ", armor_found, armor_id)
+        conn.commit()
 
-#     with closing(conn.cursor()) as c:
-#         c.execute('UPDATE armor_set SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
-#         print("Executed armor_set update, collected, id: ", armor_found, armor_id)
-#         conn.commit()
-
-#     return jsonify(success=True)
+    return jsonify(success=True)
 
 @app.route("/shrines", methods=["GET", "POST"])
 def shrines():
@@ -311,15 +364,15 @@ def koroks():
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM koroks')
         koroks = c.fetchall()
-        print("result[6]:", koroks[0][6])
+        print("result[1]:", koroks[0][1])
         print("korok id:", koroks[0][0])
 
     return render_template('koroks.html', koroks=koroks, scroll_position=scroll_position)
 
 @app.route('/update-korok', methods=['POST'])
 def update_korok():
-    korok_id = request.json.get('korokId')
-    korok_found = request.json.get('korokFound')
+    korok_id = request.json.get('korok_id')
+    korok_found = request.json.get('korok_found')
 
     # Update the korok in the database with the new found status
     with closing(conn.cursor()) as c:
@@ -365,7 +418,7 @@ def add_korok():
         else:
             formatted_coord_end += section[:4] + ', '
             i += 4
-    formatted_coord_end = formatted_coord_start.rstrip(', ')
+    formatted_coord_end = formatted_coord_end.rstrip(', ')
     description = request.form.get('description')
     korok_found = request.form.get('korok_found')
 

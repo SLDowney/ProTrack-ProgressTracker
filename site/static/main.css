@@ -464,6 +464,10 @@ display checkmark when checked
     margin-top: 5%;
 }
 
+#koroks-counter {
+    color:#000000;
+}
+
 #add_enemy{
     margin-left: 25%;
 }

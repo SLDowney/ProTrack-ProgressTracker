@@ -1,0 +1,16 @@
+camp_chest_id,camp_chest_found,camp_chest_coordinates,camp_chest_item,camp_chest_enemies,camp_chest_location,camp_chest_region
+0,0,"0472, 1516, -1605",Opal,1x Capt Cons 1 2x Soldier Cons,,
+1,0,"0833, -1457, 1566",Opal,2x Capt Cons 1,,
+2,0,"1688, 0587, 0016",Time Bomb x3,,,
+3,0,"-0553, 0151, 0031",Spiky Spear (8),3x Horriblin,Passeri Greenbelt Cave,Hyrule Field
+4,0,"3292, 1530, 0292",Guard's-Sword Stick (26),4x Horriblin,Akkala Citadel Ruins Cave,Akkala
+5,0,"3932, 1187, 0247",? :(,"3x Bokoblin, Battle Talus",Northeast of East Sokkala Bridge,Akkala
+6,0,"1291, -0655, 0030",Lizal Boomerang (8),5x Lizalfos ,,
+7,0,"2524, -1802, 0017",Eightfold Longblade,"3x Bokoblin, 2x Lizalfos",Eastern Bank of the river at Fort Hateno,Dueling Peaks
+8,0,"-3669, -2154, 0185",Knight's Bow (26),"Aerocuda, Bokoblin x2, Moblin",,
+9,0,"-1086, -1672, 0078",? :(,"Bokoblin x4, Battle Talus",In between Hopper Pond and the Forest of Spirits,Great Plateau
+10,0,"2345, -1664, 0024",Eightfold-Blade Halberd (12),"Horriblin x3, Rock Like (Phrenic Bow (15, Attack Up +5))",Fort Hateno Cave,Dueling Peaks
+11,0,"-3096, 1288, 0160",Ruby,"Bokoblin x3, Battle Talus",under a small bridge North West of the Tabantha Great Bridge,Tabantha Frontier
+12,0,"-2779, 2019, 0316","Black Lizal Reaper (40, Attack Up +8)",Bokoblin x4,Hebra Plunge,Hebra Mountains
+13,0,"-1317, 2612, 0141","Dragonbone Boko Bow (24, Durability Up+)","Bokoblin x4, Aerocuda",Mount Drena,Great Hyrule Forest
+14,0,"0121, -1271, 1416",Opal,Soldier Construct x4,Across the lake North of In-isa Shrine,Great Sky Island

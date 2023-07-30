@@ -1,42 +1,4 @@
 window.addEventListener('DOMContentLoaded', function() {
-    var armorForm = document.getElementById("armor-form");
-  
-    armorForm.addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form submission
-  
-      var checkboxes = document.querySelectorAll('input[name^="have_armor_"]');
-      checkboxes.forEach(function(checkbox) {
-        var armorId = checkbox.value;
-        var armorFound = checkbox.checked ? '1' : '0';
-        
-        // Perform AJAX request to update armor in the database
-        updateArmor(armorId, armorFound);
-      });
-    });
-  
-    function updateArmor(armorId, armorFound) {
-      // Perform AJAX request to update armor in the database
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/armors/update", true);
-      xhr.setRequestHeader("Content-Type", "application/json");
-  
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            console.log("Armor updated successfully");
-          } else {
-            console.error("Failed to update armor");
-          }
-        }
-      };
-  
-      var data = JSON.stringify({ armorId: armorId, armorFound: armorFound });
-      xhr.send(data);
-    }
-  });
-// armors.js
-// armors.js
-window.addEventListener('DOMContentLoaded', function() {
   // Function to hide all armor upgrade sections
   function hideAllArmorUpgrades() {
     document.querySelectorAll('.armor_upgrade').forEach(function(section) {
@@ -75,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   // Add event listeners to the Great Fairy checkboxes
-  document.querySelectorAll('.form-checkbox-input').forEach(function(checkbox) {
+  document.querySelectorAll('input[name^="greatFairy_"]').forEach(function(checkbox) {
     checkbox.addEventListener('change', updateArmorSections);
   });
 
@@ -84,4 +46,46 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Update armor sections when the page loads
   updateArmorSections();
+
+  var armorForm = document.getElementById("armor-form");
+
+  armorForm.addEventListener("submit", function(event) {
+    console.log("Submit clicked");
+    event.preventDefault(); // Prevent form submission
+    console.log("after prevent default")
+
+    var checkboxes = document.querySelectorAll('input[name^="have_"]');
+    console.log("Checkboxes -> ", checkboxes)
+    checkboxes.forEach(function(checkbox) {
+      console.log("forEach checkbox");
+      var armorId = checkbox.value;
+      var armorFound = checkbox.checked ? '1' : '0';
+
+      // Perform AJAX request to update armor in the database
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/armors/update", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.onreadystatechange = function() {
+        console.log("onreadystatechange");
+        console.log("Ready state:", xhr.readyState);
+        console.log("Status:", xhr.status);
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          console.log("Request completed");
+          if (xhr.status === 200) {
+            console.log("Armor updated successfully");
+          } else {
+            console.error("Failed to update armor");
+          }
+        }
+      };
+
+      xhr.onerror = function() {
+        console.error("An error occurred during the request");
+      };
+
+      var data = JSON.stringify({ armorId: armorId, armorFound: armorFound });
+      xhr.send(data);
+    });
+  });
 });
