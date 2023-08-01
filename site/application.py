@@ -323,6 +323,20 @@ def shrines():
     if scroll_position is not None:
         scroll_position = int(scroll_position)
 
+    regions = [
+    "Great Sky Island",
+    "Hyrule Field",
+    "Tabantha",
+    "Great Hyrule Forest",
+    "North Hyrule Sky Archipelago",
+    "Akkala",
+    "Eldin",
+    "Lanayru",
+    "Necluda",
+    "Faron",
+    "Gerudo",
+]
+
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
             shrine_shrines = c.execute('SELECT shrine_shrine FROM shrines').fetchall()
@@ -343,9 +357,29 @@ def shrines():
     with closing(conn.cursor()) as c:
         query = '''SELECT * FROM shrines ORDER BY shrine_shrine ASC'''
         c.execute(query)
+        selected_region = request.args.get('region')
         results = c.fetchall()
+        # Filter the results based on the selected region
+        if selected_region:
+            results = [result for result in results if result[4] == selected_region]   
+            print("Region Results:", results) 
         info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("shrines.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+    # Calculate the completion status for each region
+    region_status = {}
+    for region in regions:
+        total_shrines = len([result for result in results if result[4] == region])
+        completed = len([result for result in results if result[4] == region and result[0] == 2])
+        tapped = len([result for result in results if result[4] == region and result[0] == 1])
+        unfound = len([result for result in results if result[4] == region and result[0] == 0])
+
+        region_status[region] = {
+            'completed': completed,
+            'tapped': tapped,
+            'unfound': unfound,
+            'total_shrines': total_shrines
+        }
+
+    return render_template("shrines.html", scroll_position=scroll_position, headline=headline, info=info, results=results, regions=regions, region_status=region_status)
 
 @app.route('/koroks', methods=['GET', 'POST'])
 def koroks():
@@ -708,6 +742,143 @@ def sidequests():
         for result in results:
             info.append(result)
     return render_template("sidequests.html", headline=headline, info=info, results = results)
+
+@app.route("/mainqu", methods=["GET", "POST"])
+def mainqu():
+    headline = "mainqus!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            mainqus = c.execute('SELECT mainqu_id FROM mainqu').fetchall()
+            for mainqu in mainqus:
+                mainqu_id = mainqu[0]
+                mainqu_done = request.form.get(f'done_mainqu_{mainqu_id}')
+                if mainqu_done is None:
+                    print("mainqu_done is none:", mainqu_done)
+                    mainqu_done = c.execute('SELECT mainqu_done FROM mainqu WHERE mainqu_id = ?', (mainqu_id,)).fetchone()[0]
+                else:
+                    print("mainqu_done is not none:", mainqu_done)
+                print("mainqu_id:", mainqu_id)
+                print("mainqu_done:", mainqu_done)
+                c.execute('UPDATE mainqu SET mainqu_done = ? WHERE mainqu_id = ?', (mainqu_done, mainqu_id))
+                print("Executed update statement for mainqu_id:", mainqu_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM mainqu ORDER BY mainqu_id ASC'''
+        c.execute(query)
+        results = c.fetchall()
+        info = [(result[0], result[1], result[2]) for result in results]
+    return render_template("mainqu.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+
+@app.route("/addison", methods=["GET", "POST"])
+def addison():
+    headline = "Addison!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            addisons = c.execute('SELECT addison_id FROM addison ORDER BY addison_id ASC').fetchall()
+            for addison in addisons:
+                addison_id = addison[0]
+                addison_done = request.form.get(f'done_addison_{addison_id}')
+                if addison_done is None:
+                    print("addison_done is none:", addison_done)
+                    addison_done = c.execute('SELECT addison_done FROM addison WHERE addison_id = ?', (addison_id,)).fetchone()[0]
+                else:
+                    print("addison_done is not none:", addison_done)
+                print("addison_id:", addison_id)
+                print("addison_done:", addison_done)
+                c.execute('UPDATE addison SET addison_done = ? WHERE addison_id = ?', (addison_done, addison_id))
+                print("Executed update statement for addison_id:", addison_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM addison ORDER BY addison_id ASC'''
+        c.execute(query)
+        results = c.fetchall()
+        info = [(result[0], result[1], result[2]) for result in results]
+    return render_template("addison.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+
+@app.route("/location", methods=["GET", "POST"])
+def location():
+    headline = "Locations!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            locations = c.execute('SELECT location_id FROM locations ORDER BY location_id ASC').fetchall()
+            for location in locations:
+                location_id = location[0]
+                location_done = request.form.get(f'done_location_{location_id}')
+                if location_done is None:
+                    print("location_done is none:", location_done)
+                    location_done = c.execute('SELECT location_done FROM locations WHERE location_id = ?', (location_id,)).fetchone()[0]
+                else:
+                    print("location_done is not none:", location_done)
+                print("location_id:", location_id)
+                print("location_done:", location_done)
+                c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (location_done, location_id))
+                print("Executed update statement for location_id:", location_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM locations ORDER BY location_id ASC'''
+        c.execute(query)
+        results = c.fetchall()
+        locations = []
+        chasms = []
+        wells = []
+        depths_mines = []
+        great_fairy_fountains = []
+        for result in results:
+            if result[5] == "Location":
+                locations.append(result)
+            if result[5] == "Chasm":
+                chasms.append(result)
+            if result[5] == "Well":
+                wells.append(result)
+            if result[5] == "Depths Mine":
+                depths_mines.append(result)
+            if result[5] == "Great Fairy Fountain":
+                great_fairy_fountains.append(result)
+    return render_template("location.html", scroll_position=scroll_position, headline=headline, results=results, locations=locations, chasms=chasms, wells=wells, depths_mines=depths_mines, great_fairy_fountains=great_fairy_fountains)
+
+@app.route("/tower", methods=["GET", "POST"])
+def tower():
+    headline = "Towers!!"
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            towers = c.execute('SELECT tower_id FROM towers ORDER BY tower_id ASC').fetchall()
+            for tower in towers:
+                tower_id = tower[0]
+                tower_done = request.form.get(f'done_tower_{tower_id}')
+                if tower_done is None:
+                    tower_done = 0
+                else:
+                    tower_done = 1
+                print("tower_id:", tower_id)
+                print("tower_done:", tower_done)
+                c.execute('UPDATE towers SET tower_done = ? WHERE tower_id = ?', (tower_done, tower_id))
+                print("Executed update statement for tower_id:", tower_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM towers ORDER BY tower_name ASC'''
+        c.execute(query)
+        towers = c.fetchall()
+    return render_template("tower.html", scroll_position=scroll_position, headline=headline, towers=towers)
 
 
 if __name__ == "__main__":

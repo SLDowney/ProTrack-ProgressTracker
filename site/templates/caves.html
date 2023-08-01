@@ -35,31 +35,45 @@
                             <td>Bubbulfrog</td>
                             <td>{{result[4]}}</td>
                         </tr>
+                        {% if result[5] != None %}
                         <tr>
                             <td>Shrine</td>
                             <td>{{result[5]}}</td>
                         </tr>
+                        {% else %}
+                        {% endif %}
+                        {% if result[6] != None and result[10] != ""  %}
                         <tr>
                             <td>Enemies</td>
                             <td>{{result[6]}}</td>
                         </tr>
+                        {% else %}
+                        {% endif %}
                         <tr>
                             <td>Treasure</td>
                             <td>{{result[7]}}</td>
                         </tr>
+                        {% if result[8] != None and result[10] != ""  %}
                         <tr>
                             <td>Side Quest</td>
                             <td>{{result[8]}}</td>
                         </tr>
+                        {% else %}
+                        {% endif %}
+                        {% if result[9] != None and result[10] != ""  %}
                         <tr>
                             <td>Shrine Quest</td>
                             <td>{{result[9]}}</td>
                         </tr>
+                        {% else %}
+                        {% endif %}
+                        {% if result[10] != None and result[10] != "" %}
                         <tr>
                             <td>Prerequisites</td>
                             <td>{{result[10]}}</td>
                         </tr>    
-                        
+                        {% else %}
+                        {% endif %}
                         {% elif result[0] == 1 %}
                         <tr>
                             <td>Name</td>

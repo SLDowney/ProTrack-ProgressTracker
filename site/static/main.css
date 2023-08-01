@@ -529,6 +529,43 @@ span {
     margin-left: 50%;
 }
 
+#location_th_1 {
+    width:30%;
+}
+
+.location_container {
+    display:inline-block;
+    justify-content: left;
+    width: 200%;
+} 
+
+.location_checkbox {
+    width: 100px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+#tower_th_1 {
+    width:30%;
+}
+
+.tower_container {
+    display:inline-block;
+    justify-content: left;
+    width: 200%;
+} 
+
+.tower_checkbox {
+    width: 100px;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+
 /* Customize the position of the navbar items on mobile */
 @media (min-width: 601px) and (max-width: 991px) {
     .navbar {

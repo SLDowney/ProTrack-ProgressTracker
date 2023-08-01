@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+    <h2>{{ headline }}</h2>
+
+    <form id="addisonform" action="{{ url_for('addison') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <table style="width: 100%;">
+                <colgroup>
+                    <col span="1">
+                    <col span="2">
+                </colgroup>
+                
+                {% for result in results %}
+                    <tbody>
+                        <tr>
+                            <th>Info</th>
+                            <th>Addison Info</th>
+                        </tr>
+
+                        {% if result[1] == 1 %}
+                        <tr>
+                            <td>Picture</td>
+                            <td>PLACE PICTURE HERE, ALSO MAP PICTURE?</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{result[2]}}</td>
+                        </tr>
+                        {% if result[3] != None %}
+                        <tr>
+                            <td>Location</td>
+                            <td>{{result[3]}}</td>
+                        </tr>
+                        {% else %}
+                        {% endif %}
+                        <tr>
+                            <td>Region</td>
+                            <td>{{result[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Rewards</td>
+                            <td>{% if result[6] == None %}
+                                ???
+                                {% else %}
+                                {{result[6]}}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% elif result[1] == 0 %}
+                        <tr>
+                            <td>Region</td>
+                            <td>{{result[4]}}</td>
+                        </tr>
+                        {% endif %}
+
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <input type="radio" id="undone_{{ result[0] }}" name="done_addison_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="addison_radio_labels" for="undone_{{ result[0] }}">Not Done</label>
+                            <input type="radio" id="found_{{ result[0] }}"name="done_addison_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="addison_radio_labels" for="found_{{ result[0] }}">Completed</label>
+                            <input type="submit" id="addisonSubmit" value="Update">
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}

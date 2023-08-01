@@ -1,0 +1,759 @@
+location_id,location_done,location_name,location_region,location_coord,location_type
+,,Plains Bargainer Statue,Central Hyrule Depths,,Bargainer Statue
+,,Ancient Columns Cave,,"-3472, 0452, 0278",Cave
+,,Coliseum Ruins Cave,,"-1169, -1310, 0040",Cave
+,,Floria River Upstream Excavation,,"0809, -2972, 0012",Cave
+,,Gerudo Canyon Mine,,"-2612, -2611, 0111",Cave
+,,Kakariko Village Cave,,"1943, -0982, 0159",Cave
+,,Lake Ferona Cave,,"1928, 1276, 0128",Cave
+,,Lanayru Road East Cave,,"3091, -1131, 0096",Cave
+,,Reservoir Lakefront Cavern,,"3810, 0424, 0210",Cave
+,,Thundra Plateau Cave,,"-2268, 0912, 0110",Cave
+,,Upland Zorana Mountainside Cave,,"2570, 0517, 0166",Cave
+,,Upland Zorana Mountainside Cave (Entrance #2),,"2636, 0522, 0209",Cave
+,,Akkala Citadel Ruins Cave,Akkala Highlands,"3243, 1457, 0291",Cave
+,,Akkala Citadel Ruins Summit Cave,Akkala Highlands,"3293, 1489, 0414",Cave
+,,Construction Site Cave,Akkala Highlands,"3672, 1546, 0078",Cave
+,,Construction Site Cave (Entrance #2),Akkala Highlands,"3739, 1535, 0082",Cave
+,,Tarrey Town Tunnel,Akkala Highlands,"3925, 1575, 0110",Cave
+,,Ulria Grotto East Cave,Akkala Highlands,"4273, 0774, 0148",Cave
+,,Ulria Grotto South Cave,Akkala Highlands,"4120, 0659, 0189",Cave
+,,Death Mountain East Tunnel,Death Mountain,"2767, 2778, 0522",Cave
+,,North Akkala Beach Cave,Deep Akkala,"4643, 3206, 0009",Cave
+,,Skull Lake Cave,Deep Akkala,"3321, 3424, 0178",Cave
+,,Atun Valley Cave,East Necluda,"2453, -3193, 0066",Cave
+,,Cape Cales Cliffbase Cave,East Necluda,"3635, -3217, 0000",Cave
+,,Deepback Bay Cave,East Necluda,"4208, -2276, 0001",Cave
+,,Lanayru Road South Cave,East Necluda,"2678, -1329, 0115",Cave
+,,Mapla Point Cave,East Necluda,"4570, -2270, 0000",Cave
+,,Mount Dunsel Cave,East Necluda,"3290, -3304, 0066",Cave
+,,Retsam Forest Cave,East Necluda,"3750, -2028, 0191",Cave
+,,Robred Dropoff Cave,East Necluda,"2492, -1477, 0014",Cave
+,,Tobio's Hollow Cave,East Necluda,"1167, -2442, 0168",Cave
+,,Walnot Mountain Cave (Entrance #2),East Necluda,"3932, -2070, 0128",Cave
+,,Cephla Lake Cave,Eldin Canyon,"2594, 1328, 0152",Cave
+,,Death Mountain Foothill Cave,Eldin Canyon,"1948, 2686, 0427",Cave
+,,East Restaurant Cave,Eldin Canyon,"1855, 1718, 0292",Cave
+,,Gorko Tunnel,Eldin Canyon,"2011, 2039, 0423",Cave
+,,Goronbi River Cave,Eldin Canyon,"1421, 2103, 0286",Cave
+,,Isle of Rabac Gallery,Eldin Canyon,"1548, 3107, 0393",Cave
+,,Lake Darman Monster Den,Eldin Canyon,"2372, 3060, 0448",Cave
+,,Lake Ferona Cave (Entrance #2),Eldin Canyon,"1932, 1315, 0143",Cave
+,,Lake Intenoch Cave,Eldin Canyon,"2484, 1794, 0161",Cave
+,,Lizard's Burrow,Eldin Canyon,"2204, 3074, 0406",Cave
+,,Pico Pond Cave,Eldin Canyon,"1247, 1232, 0027",Cave
+,,Southern Mine (Cave),Eldin Canyon,"1798, 1980, 0320",Cave
+,,West Restaurant Cave,Eldin Canyon,"1639, 1721, 0278",Cave
+,,YunoboCo HQ East Cave,Eldin Canyon,"1765, 2842, 0402",Cave
+,,YunoboCo HQ South Cave,Eldin Canyon,"1712, 2717, 0403",Cave
+,,Deplian Badlands Cave,Eldin Mountains,"0305, 3577, 0089",Cave
+,,Cora Lakefront Cave,Faron Grasslands,"-0206, -2995, 0020",Cave
+,,Cora Lakefront Cave (Entrance #2),Faron Grasslands,"-0252, -2939, -0016",Cave
+,,Komo Shoreline Cave,Faron Grasslands,"0487, -3831, 0009",Cave
+,,Pagos Woods Excavation Site,Faron Grasslands,"0672, -3109, 0026",Cave
+,,Puffer Beach Overhead Cave,Faron Grasslands,"0277, -3836, 0049",Cave
+,,Ancient Altar Ruins,Gerudo Desert,"-2452, -3676, 0004",Cave
+,,Ancient Altar Ruins (Entrance #10),Gerudo Desert,"-2516, -3673, 0003",Cave
+,,Ancient Altar Ruins (Entrance #11),Gerudo Desert,"-2564, -3683, 0003",Cave
+,,Ancient Altar Ruins (Entrance #12),Gerudo Desert,"-2520, -3725, 0003",Cave
+,,Ancient Altar Ruins (Entrance #2),Gerudo Desert,"-2477, -3709, 0003",Cave
+,,Ancient Altar Ruins (Entrance #3),Gerudo Desert,"-2479, -3758, 0003",Cave
+,,Ancient Altar Ruins (Entrance #4),Gerudo Desert,"-2531, -3770, 0003",Cave
+,,Ancient Altar Ruins (Entrance #5),Gerudo Desert,"-2571, -3743, 0003",Cave
+,,Ancient Altar Ruins (Entrance #6),Gerudo Desert,"-2603, -3708, 0003",Cave
+,,Ancient Altar Ruins (Entrance #7),Gerudo Desert,"-2583, -3638, 0003",Cave
+,,Ancient Altar Ruins (Entrance #8),Gerudo Desert,"-2535, -3627, 0003",Cave
+,,Ancient Altar Ruins (Entrance #9),Gerudo Desert,"-2479, -3628, 0003",Cave
+,,Ancient Prison Ruins,Gerudo Desert,"-3100, -3063, 0008",Cave
+,,Central Gerudo Cave,Gerudo Desert,"-3678, -3254, -0009",Cave
+,,East Gerudo Ruins Cave,Gerudo Desert,"-2694, -2809, -0053",Cave
+,,Gerudo Great Skeleton,Gerudo Desert,"-4816, -3871, 0000",Cave
+,,Gerudo Sanctuary,Gerudo Desert,"-3763, -2698, 0016",Cave
+,,Oasis Source,Gerudo Desert,"-3354, -2694, -0001",Cave
+,,Quicksand Lake Cave,Gerudo Desert,"-3238, -2936, 0009",Cave
+,,South Gerudo Cave,Gerudo Desert,"-2940, -3860, -0020",Cave
+,,Valley of Silent Statues,Gerudo Desert,"-3825, -2650, 0037",Cave
+,,West Gerudo Underground Ruins,Gerudo Desert,"-4673, -1976, 0013",Cave
+,,Gerudo Canyon Mine (Entrance #2),Gerudo Highlands,"-2675, -2405, 0079",Cave
+,,Koukot Plateau Cave,Gerudo Highlands,"-2260, -1759, 0059",Cave
+,,Lower Spectacle Rock Cave,Gerudo Highlands,"-1740, -2391, -0008",Cave
+,,Meadela's Mantle Cave,Gerudo Highlands,"-3977, -1250, 0429",Cave
+,,Mount Nabooru Cave,Gerudo Highlands,"-1812, -1958, 0040",Cave
+,,Mount Nabooru South Cave,Gerudo Highlands,"-1727, -2183, 0008",Cave
+,,Mystathi's Shelf Cave,Gerudo Highlands,"-3877, -0725, 0570",Cave
+,,Spectacle Rock Cave,Gerudo Highlands,"-2212, -2388, 0247",Cave
+,,Stalry Plateau Cave,Gerudo Highlands,"-1529, -2221, -0018",Cave
+,,Statue of the Eighth Heroine Cave,Gerudo Highlands,"-4384, -0535, 0473",Cave
+,,Taafei Hill Cave,Gerudo Highlands,"-2496, -1785, 0174",Cave
+,,Yiga Blademaster Station,Gerudo Highlands,"-2434, -1818, 0147",Cave
+,,Rauru Hillside Cave,Great Hyrule Forest,"0675, 1388, 0048",Cave
+,,Yiga Clan Maritta Branch,Great Hyrule Forest,"-0642, 2040, 0158",Cave
+,,Bottomless Cave,Great Sky Island,"0712, -1447, 1486",Cave
+,,Bottomless Cave (Entrance #2),Great Sky Island,"0735, -1358, 1544",Cave
+,,Mining Cave,Great Sky Island,"0378, -1632, 1412",Cave
+,,Pit Cave,Great Sky Island,"0586, -1626, 1443",Cave
+,,Pondside Cave,Great Sky Island,"0170, -1634, 1379",Cave
+,,East Biron Snowshelf Cave,Hebra Mountains,"-3554, 3088, 0274",Cave
+,,Hebra Great Skeleton,Hebra Mountains,"-3812, 3594, 0257",Cave
+,,Hebra Mountains Northwest Cave,Hebra Mountains,"-2995, 3217, 0560",Cave
+,,Hebra South Summit Cave,Hebra Mountains,"-3396, 2499, 0313",Cave
+,,Icefall Foothills Cave,Hebra Mountains,"-4428, 3758, 0224",Cave
+,,Mount Drena Foothill Cave,Hebra Mountains,"-1373, 2859, 0199",Cave
+,,North Biron Snowshelf Cave,Hebra Mountains,"-3961, 3244, 0238",Cave
+,,Pikida Stonegrove Northwest Cave,Hebra Mountains,"-2416, 3140, 0374",Cave
+,,Talonto Peak Cave,Hebra Mountains,"-3211, 2465, 0348",Cave
+,,West Lake Totori Cave,Hebra Mountains,"-3956, 2028, 0200",Cave
+,,Royal Hidden Passage (Entrance #2),Hyrule Castle,"-0254, 0766, 0098",Cave
+,,Ancient Tree Stump Cave,Hyrule Field,"-1108, -0438, 0064",Cave
+,,Crenel Hills Cave,Hyrule Field,"0492, 0731, 0041",Cave
+,,Crenel Peak Cave,Hyrule Field,"1144, 0247, 0058",Cave
+,,Great Plateau Foothill Cave,Hyrule Field,"-0833, -1486, 0027",Cave
+,,Lindor's Brow Cave,Hyrule Field,"-1734, 1165, 0230",Cave
+,,North Hyrule Plain Cave,Hyrule Field,"-1188, 0643, 0072",Cave
+,,North Hyrule Plain Cave (Entrance #2),Hyrule Field,"-1234, 0769, 0097",Cave
+,,Passeri Greenbelt Cave,Hyrule Field,"-0511, 0126, 0022",Cave
+,,Ranch Ruins Cave,Hyrule Field,"0038, -0199, 0020",Cave
+,,Ranch Ruins Cave (Entrance #2),Hyrule Field,"0007, -0157, 0032",Cave
+,,Rebonae Bridge Cave,Hyrule Field,"0846, 0031, 0017",Cave
+,,River of the Dead Waterfall Cave,Hyrule Field,"-1092, -2164, 0143",Cave
+,,Royal Hidden Passage,Hyrule Field,"-0253, 0113, 0009",Cave
+,,Royal Hidden Passage (Entrance #3),Hyrule Field,"-0325, 0798, 0075",Cave
+,,Sage Temple Cave,Hyrule Field,"-1405, -0256, -0004",Cave
+,,Shrine of Resurrection,Hyrule Field,"-1061, -1828, 0143",Cave
+,,Whistling Hill Cave,Hyrule Field,"-0079, -1042, 0019",Cave
+,,Satori Mountain Cave,Hyrule Ridge,"-2151, -0364, 0277",Cave
+,,Satori Mountain Foothill Cave,Hyrule Ridge,"-2200, -0806, 0118",Cave
+,,Lake Hylia Whirlpool Cave,Lake Hylia,"0126, -2501, -0090",Cave
+,,Ancient Zora Waterworks,Lanayru Great Spring,"3603, 0128, 0202",Cave
+,,Cave Under Zora's Domain,Lanayru Great Spring,"3242, 0374, 0078",Cave
+,,Lanayru Road East Cave (Entrance #2),Lanayru Great Spring,"3487, -0965, 0005",Cave
+,,Luto's Channel,Lanayru Great Spring,"3091, -0048, 0079",Cave
+,,Oren Bridge Cave,Lanayru Great Spring,"2912, -0065, 0083",Cave
+,,Ploymus Mountain Cave,Lanayru Great Spring,"3660, 0539, 0272",Cave
+,,Pristine Sanctum,Lanayru Great Spring,"3623, 0585, 0172",Cave
+,,Pristine Sanctum (Entrance #2),Lanayru Great Spring,"3706, 0611, 0357",Cave
+,,Ralis Channel,Lanayru Great Spring,"2957, 0254, 0205",Cave
+,,Tabahl Woods Cave,Lanayru Great Spring,"2676, 0290, 0095",Cave
+,,Tarm Point Cave,Lanayru Great Spring,"4474, -0831, 0047",Cave
+,,Upland Zorana Byroad,Lanayru Great Spring,"2861, 0374, 0228",Cave
+,,Upland Zorana Foothill Cave,Lanayru Great Spring,"3140, 0668, 0181",Cave
+,,Upland Zorana Summit Cave,Lanayru Great Spring,"2851, 0474, 0328",Cave
+,,Horon Lagoon Cave,Lanayru Sea,"4244, -0255, -0007",Cave
+,,Boné Pond East Cave,Lanayru Wetlands,"2257, 0106, 0122",Cave
+,,Boné Pond East Cave (Entrance #2),Lanayru Wetlands,"2184, 0142, 0038",Cave
+,,Boné Pond East Cave (Entrance #3),Lanayru Wetlands,"2214, 0100, 0072",Cave
+,,Boné Pond East Cave (Entrance #4),Lanayru Wetlands,"2251, 0013, 0021",Cave
+,,Walnot Mountain Cave,Mount Lanayru,"4218, -1737, 0196",Cave
+,,Brightcap Cave,Tabantha Frontier,"-3001, 1640, 0201",Cave
+,,Gisa Crater Cave,Tabantha Frontier,"-3931, 1090, 0072",Cave
+,,Hebra Headspring Cave,Tabantha Frontier,"-2898, 2512, 0393",Cave
+,,Kopeeki Drifts Cave,Tabantha Frontier,"-2395, 2278, 0172",Cave
+,,Tabantha Hills Cave,Tabantha Frontier,"-2841, 1769, 0224",Cave
+,,Tamio River Downstream Cave,Tabantha Frontier,"-2921, -0804, 0008",Cave
+,,Tanagar Canyon East Cave,Tabantha Frontier,"-2047, 1630, -0054",Cave
+,,Tanagar Canyon West Cave,Tabantha Frontier,"-3311, 0788, -0100",Cave
+,,Byroad to Lanayru Wetlands,West Necluda,"1613, -1257, 0008",Cave
+,,Byroad to Lanayru Wetlands (Entrance #2),West Necluda,"1609, -0806, 0009",Cave
+,,Calora Lake Cave,West Necluda,"2007, -3160, 0181",Cave
+,,Calora Lake Cave (Entrance #2),West Necluda,"1963, -3046, 0208",Cave
+,,Corta Lake Cave,West Necluda,"1676, -3039, 0166",Cave
+,,Dueling Peaks North Cave,West Necluda,"1195, -1854, 0159",Cave
+,,Dueling Peaks South Cave,West Necluda,"1182, -1947, 0246",Cave
+,,Finra Woods Excavation Site,West Necluda,"0568, -2982, 0014",Cave
+,,Fort Hateno Cave,West Necluda,"2242, -1690, 0026",Cave
+,,Mount Floria Cave,West Necluda,"1958, -2608, 0073",Cave
+,,Mount Floria Cave (Entrance #2),West Necluda,"1789, -2989, 0082",Cave
+,,Oakle's Navel Cave,West Necluda,"2503, -2119, 0009",Cave
+,,Rassla Lake Cave,West Necluda,"1816, -3731, 0126",Cave
+,,Rodai Lakefront Tunnel,West Necluda,"1897, -3119, 0133",Cave
+,,Sahasra Slope Cave,West Necluda,"1374, -1197, 0135",Cave
+,,Sarjon Woods Cave,West Necluda,"1204, -3168, 0028",Cave
+,,Ubota Point Cave,West Necluda,"1447, -3484, 0077",Cave
+,,Cucco Hideaway,West Necluda Caves,"1877, -1158, 0200",Cave
+,,Popla Foothills Excavation Site,West Necluda Caves,"0608, -2213, 0052",Cave
+,,East Akkala Plains Chasm,Akkala Highlands,,Chasm
+,,South Akkala Plains Chasm,Akkala Highlands,,Chasm
+,,Tingel Island Chasm,Akkala Highlands,,Chasm
+,,Lomei Labyrinth Chasm,Akkala Sea,,Chasm
+,,Death Mountain Chasm,Death Mountain,,Chasm
+,,Skull Lake Chasm,Deep Akkala,"3248, 3440, -0126",Chasm
+,,Meda Mountain Chasm,East Necluda,"2514, -2374, 0135",Chasm
+,,Tobio's Hollow Chasm,East Necluda,"1310, -2415, 0067",Chasm
+,,Birida Lookout Chasm,Gerudo Highlands,,Chasm
+,,East Gerudo Chasm,Gerudo Highlands,"-2491, -3073, -0087",Chasm
+,,Gerudo Summit Chasm,Gerudo Highlands,,Chasm
+,,South Lomei Chasm,Gerudo Highlands,"-1793, -3451, 0046",Chasm
+,,Deku Tree Chasm,Great Hyrule Forest,,Chasm
+,,Drenan Highlands Chasm,Great Hyrule Forest,,Chasm
+,,Elma Knolls Chasm,Great Hyrule Forest,"-0458, 1710, 0211",Chasm
+,,Minshi Woods Chasm,Great Hyrule Forest,,Chasm
+,,North Lomei Chasm,Hebra Mountains,"-0811, 3536, 0234",Chasm
+,,Forest of Time Chasm,Hyrule Field,,Chasm
+,,Great Plateau East Chasm,Hyrule Field,"0462, -1991, 0072",Chasm
+,,Great Plateau North Chasm,Hyrule Field,,Chasm
+,,Great Plateau South Chasm,Hyrule Field,,Chasm
+,,Great Plateau West Chasm,Hyrule Field,,Chasm
+,,Hyrule Castle Moat East Chasm,Hyrule Field,,Chasm
+,,Hyrule Field Chasm,Hyrule Field,,Chasm
+,,Hyrule Ridge Chasm,Hyrule Ridge,,Chasm
+,,Lake Hylia Chasm,Lake Hylia,"-0329, -2597, -0132",Chasm
+,,Chasm Under Zora's Domain,Lanayru Great Spring,"3269, 0437, 0032",Chasm
+,,Lanayru Wetlands Chasm,Lanayru Wetlands,,Chasm
+,,Naydra Snowfield Chasm,Mount Lanayru,,Chasm
+,,Eventide Island Chasm,Necluda Sea,"4512, -3448, 0001",Chasm
+,,Rito Village Chasm,Tabantha Frontier,"-3574, 1800, 0113",Chasm
+,,East Hill Chasm,West Necluda,,Chasm
+,,Hills of Baumer Chasm,West Necluda,"0231, -2088, 0054",Chasm
+,,Floating Coliseum,Central Hyrule Depths,"-1127, -1174, -0499",Coliseum
+,,Scorching Coliseum,Death Mountain Depths,"2145, 3182, -0838",Coliseum
+,,Desert Coliseum,Gerudo Desert Depths,"-4243, -3721, -0469",Coliseum
+,,Forest Coliseum,Great Hyrule Forest Depths,,Coliseum
+,,Lone Island Coliseum,Necluda Sea Depths,"4585, -3608, -0378",Coliseum
+,,Secluded Coliseum,West Necluda Depths,,Coliseum
+,,Abandoned Tarrey Mine,Akkala Highlands Depths,,Depths Mine
+,,Rist Mine,Akkala Highlands Depths,"4719, 1940, -0454",Depths Mine
+,,Crenel Canyon Mine,Central Hyrule Depths,,Depths Mine
+,,Daphnes Canyon Mine,Central Hyrule Depths,,Depths Mine
+,,Great Abandoned Central Mine,Central Hyrule Depths,,Depths Mine
+,,Hylia Canyon Mine,Central Hyrule Depths,,Depths Mine
+,,Abandoned Hateno Mine,East Necluda Depths,,Depths Mine
+,,Abandoned Lurelin Mine,East Necluda Depths,,Depths Mine
+,,Canyon of Awakening Mine,East Necluda Depths,,Depths Mine
+,,Cresia Pit Mine,East Necluda Depths,"3574, -3792, -0452",Depths Mine
+,,Dunsel Canyon Mine,East Necluda Depths,,Depths Mine
+,,Ebon Canyon Mine,East Necluda Depths,,Depths Mine
+,,Meda Canyon Mine,East Necluda Depths,,Depths Mine
+,,Tuft Canyon Mine,East Necluda Depths,,Depths Mine
+,,Abandoned Eldin Mine,Eldin Canyon Depths,,Depths Mine
+,,Faloraa Canyon Mine,Faron Grasslands Depths,,Depths Mine
+,,Abandoned Gerudo Mine,Gerudo Desert Depths,,Depths Mine
+,,Abandoned Kara Kara Mine,Gerudo Desert Depths,,Depths Mine
+,,Daval Canyon Mine,Gerudo Highlands Depths,,Depths Mine
+,,Gerudo Canyon Mine (the Depths),Gerudo Highlands Depths,"-4084, -0842, -1113",Depths Mine
+,,Granajh Canyon Mine,Gerudo Highlands Depths,"-1317, -3432, -0819",Depths Mine
+,,Nabooru Canyon Mine,Gerudo Highlands Depths,,Depths Mine
+,,Drena Canyon Mine,Great Hyrule Forest Depths,,Depths Mine
+,,Corvash Canyon Mine,Hebra Mountains Depths,"-3335, 2353, -0805",Depths Mine
+,,Hebra Canyon Mine,Hebra Mountains Depths,"-2733, 2918, -1100",Depths Mine
+,,Lindor Canyon Mine,Hyrule Ridge Depths,"-2079, 1323, -0687",Depths Mine
+,,Rhoam Canyon Mine,Hyrule Ridge Depths,,Depths Mine
+,,Abandoned Lanayru Mine,Lanayru Great Spring Depths,"3223, 0581, -0741",Depths Mine
+,,Ploymus Canyon Mine,Lanayru Great Spring Depths,"3790, 0560, -0859",Depths Mine
+,,Ruto Canyon Mine,Lanayru Great Spring Depths,,Depths Mine
+,,Madorna Canyon Mine,Mount Lanayru Depths,,Depths Mine
+,,Walnot Canyon Mine,Mount Lanayru Depths,,Depths Mine
+,,Abandoned Hebra Mine,Tabantha Frontier Depths,"-3596, 1800, -0415",Depths Mine
+,,Cuho Canyon Mine,Tabantha Frontier Depths,,Depths Mine
+,,Abandoned Kakariko Mine,West Necluda Depths,,Depths Mine
+,,Dueling Canyons Mine,West Necluda Depths,,Depths Mine
+,,Rozudo Canyon Mine,West Necluda Depths,,Depths Mine
+,,Malanya Spring,Deep Akkala,,Great Fairy Fountain
+,,Great Fairy Fountain,Great Hyrule Forest,"0920, 1381, 0093",Great Fairy Fountain
+,,Great Fairy Fountain,Hebra Mountains,"1461, 2995, 0305",Great Fairy Fountain
+,,Great Fairy Fountain,Hyrule Field,"-1555, -1237, 0085",Great Fairy Fountain
+,,Great Fairy Fountain,West Necluda,"1766, -2172, 0013",Great Fairy Fountain
+,,Lomei Depths Labyrinth,Akkala Sea Depths,"4655, 3699, -0403",Labyrinth
+,,Lomei Sky Labyrinth,Akkala Sea Sky,"4655, 3515, 1010",Labyrinth
+,,South Lomei Depths Labyrinth,Gerudo Highlands Depths,,Labyrinth
+,,South Lomei Castle Top Floor,Gerudo Highlands Sky,"-1815, -3235, 1208",Labyrinth
+,,North Lomei Labyrinth,Hebra Mountains,"-1004, 3529, 0227",Labyrinth
+,,North Lomei Depths Labyrinth,Hebra Mountains Depths,"-0910, 3515, -0682",Labyrinth
+,,North Lomei Castle Top Floor,Hebra Mountains Sky,"-1048, 3541, 0972",Labyrinth
+,,Niuzimod Lightroot,Akkala Highland Depths,,Lightroot
+,,Agihi-ihcoj Lightroot,Akkala Highlands Depths,,Lightroot
+,,Kawikatisar Lightroot,Akkala Highlands Depths,"4178, 1313, -0674",Lightroot
+,,Kimimeg Lightroot,Akkala Highlands Depths,"4518, 2122, -0453",Lightroot
+,,Sisinatag Lightroot,Akkala Highlands Depths,"4502, 0816, -0536",Lightroot
+,,Kawisar Lightroot,Akkala Sea Depths,"4659, 3251, -0454",Lightroot
+,,Kuhsagi Lightroot,Akkala Sea Depths,"4642, 3721, -0400",Lightroot
+,,Apapes Lightroot,Central Hyrule Depths,,Lightroot
+,,Gadohsi Lightroot,Central Hyrule Depths,"-0868, 0413, -0496",Lightroot
+,,kawakanis-lightroot.jpg,Central Hyrule Depths,"-1422, 0770, -0539",Lightroot
+,,Kogoir Lightroot,Central Hyrule Depths,"-1451, -1626, -0539",Lightroot
+,,Mu-ustust Lightroot,Central Hyrule Depths,"-1432, -1364, -0518",Lightroot
+,,Netamnet Lightroot,Central Hyrule Depths,,Lightroot
+,,Netinet Lightroot,Central Hyrule Depths,,Lightroot
+,,Nihcayam Lightroot,Central Hyrule Depths,,Lightroot
+,,Nisoij Lightroot,Central Hyrule Depths,,Lightroot
+,,Nogukoyk Lightroot,Central Hyrule Depths,,Lightroot
+,,Nojoj Lightroot,Central Hyrule Depths,"1199, 0322, -0575",Lightroot
+,,Nuzimak Lightroot,Central Hyrule Depths,,Lightroot
+,,Oyimay Lightroot,Central Hyrule Depths,,Lightroot
+,,Sinonoyk Lightroot,Central Hyrule Depths,"-0203, 0434, -0473",Lightroot
+,,Stakijat Lightroot,Central Hyrule Depths,,Lightroot
+,,Zi-ner Lightroot,Central Hyrule Depths,"0764, 0813, -0532",Lightroot
+,,Mustis Lightroot,Death Mountain Depths,"2373, 2600, -0948",Lightroot
+,,Sikutamak Lightroot,Deep Akkala Depths,"3427, 3363, -0521",Lightroot
+,,Ui-ihcoj Lightroot,Deep Akkala Depths,,Lightroot
+,,Kimnaz Lightroot,East Necluda Depths,,Lightroot
+,,Kisihayam Lightroot,East Necluda Depths,,Lightroot
+,,Kotimab Lightroot,East Necluda Depths,,Lightroot
+,,Mimufis Lightroot,East Necluda Depths,"2813, -3266, -0522",Lightroot
+,,Sijotu Lightroot,East Necluda Depths,"1214, -2536, -0607",Lightroot
+,,Anonisik Lightroot,Eldin Canyon Depths,,Lightroot
+,,Cugukaram Lightroot,Eldin Canyon Depths,"1761, 2525, -0720",Lightroot
+,,Gedihcayam Lightroot,Eldin Canyon Depths,"3061, 1812, 0663",Lightroot
+,,Katijabis Lightroot,Eldin Canyon Depths,"2387, 3268, -0845",Lightroot
+,,Katoij Lightroot,Eldin Canyon Depths,"1830, 3173, -0838",Lightroot
+,,Kawamit Lightroot,Eldin Canyon Depths,"1795, 1630, -0749",Lightroot
+,,Kisomom Lightroot,Eldin Canyon Depths,"2949, 2759, -0964",Lightroot
+,,Misisi Lightroot,Eldin Canyon Depths,,Lightroot
+,,Nipahsom Lightroot,Eldin Canyon Depths,,Lightroot
+,,Tayamik Lightroot,Eldin Canyon Depths,"2867, 3647, -0685",Lightroot
+,,Katenim Lightroot,Eldin Mountains Depths,"0385, 3473, -0595",Lightroot
+,,Kayam Lightroot,Eldin Mountains Depths,"1259, 3722, -0554",Lightroot
+,,Uukukis Lightroot,Eldin Mountains Depths,"0687, 2082, -0672",Lightroot
+,,Kohsustu Lightroot,Faron Grasslands Depths,"0668, -3350, -0484",Lightroot
+,,Muokuij Lightroot,Faron Grasslands Depths,"0867, -2266, -0557",Lightroot
+,,Nikohsi Lightroot,Faron Grasslands Depths,"-0570, -3512, -0575",Lightroot
+,,Amakawis Lightroot,Gerudo Desert Depths,"-2426, -3337, -0465",Lightroot
+,,Gataharak Lightroot,Gerudo Desert Depths,,Lightroot
+,,Gonatoyrim Lightroot,Gerudo Desert Depths,"-4680, -3099, -0504",Lightroot
+,,Gonatoyros Lightroot,Gerudo Desert Depths,,Lightroot
+,,Kasari Lightroot,Gerudo Desert Depths,"-4171, -3830, -0479",Lightroot
+,,Mihcihc Lightroot,Gerudo Desert Depths,"-3199, -3016, -0471",Lightroot
+,,Rasinaduk Lightroot,Gerudo Desert Depths,,Lightroot
+,,Tatayam Lightroot,Gerudo Desert Depths,"-3296, -2498, -0476",Lightroot
+,,Jadukakar Lightroot,Gerudo Highlands Depths,,Lightroot
+,,Kawatik Lightroot,Gerudo Highlands Depths,"-1525, -2923, -0728",Lightroot
+,,Kawiraus Lightroot,Gerudo Highlands Depths,,Lightroot
+,,Kimakarut Lightroot,Gerudo Highlands Depths,"-2674, -2246, -0489",Lightroot
+,,Sisustom Lightroot,Gerudo Highlands Depths,"-1804, -3489, -0477",Lightroot
+,,Stamayam Lightroot,Gerudo Highlands Depths,"-4633, -1500, -0891",Lightroot
+,,Umamustor Lightroot,Gerudo Highlands Depths,"-3414, -1376, -0780",Lightroot
+,,Eknupup Lightroot,Great Hyrule Forest Depths,,Lightroot
+,,Nikakik Lightroot,Great Hyrule Forest Depths,"-0382, 2735, -0717",Lightroot
+,,Ramobnukas Lightroot,Great Hyrule Forest Depths,,Lightroot
+,,Sijnin Lightroot,Great Hyrule Forest Depths,,Lightroot
+,,Uihcoke Lightroot,Great Hyrule Forest Depths,,Lightroot
+,,Uoyoyuik Lightroot,Great Hyrule Forest Depths,,Lightroot
+,,Ikatoayam Lightroot,Hebra Mountains Depths,,Lightroot
+,,Kato Lightroot,Hebra Mountains Depths,"-4374, 3717, -0703",Lightroot
+,,Mu-ufatur Lightroot,Hebra Mountains Depths,,Lightroot
+,,Muihcoro Lightroot,Hebra Mountains Depths,"-1626, 2648, -0686",Lightroot
+,,Muotue Lightroot,Hebra Mountains Depths,"-3492, 3559, -0827",Lightroot
+,,Narusis Lightroot,Hebra Mountains Depths,"-2553, 3366, -0691",Lightroot
+,,So-oaw Lightroot,Hebra Mountains Depths,,Lightroot
+,,U-nazohso Lightroot,Hebra Mountains Depths,,Lightroot
+,,Worihas Lightroot,Hebra Mountains Depths,"-3362, 2368, -0803",Lightroot
+,,Muzasu Lightroot,Hyrule Ridge Depths,"-2150, -0889, -0543",Lightroot
+,,Nabahi-ikat Lightroot,Hyrule Ridge Depths,,Lightroot
+,,Napanos Lightroot,Hyrule Ridge Depths,"-1932, -0371, -0636",Lightroot
+,,Sikurukam Lightroot,Hyrule Ridge Depths,"-2842, 0637, -0622",Lightroot
+,,Tikanur Lightroot,Hyrule Ridge Depths,,Lightroot
+,,Amo-ne Lightroot,Lake Hylia Depths,"0088, -2512, -0415",Lightroot
+,,A-nehi Lightroot,Lanayru Great Spring Depths,"3794, 0572, -0926",Lightroot
+,,Kawagom Lightroot,Lanayru Great Spring Depths,,Lightroot
+,,Kegopa Lightroot,Lanayru Great Spring Depths,"3889, -0227, -0609",Lightroot
+,,Kuzimoy Lightroot,Lanayru Great Spring Depths,"4405, -0602, -0514",Lightroot
+,,Migo-o Lightroot,Lanayru Great Spring Depths,"2763, -1085, -0549",Lightroot
+,,Takaruk Lightroot,Lanayru Great Spring Depths,,Lightroot
+,,Uinoj Lightroot,Lanayru Great Spring Depths,,Lightroot
+,,Korakut Lightroot,Lanayru Wetlands Depths,"0926, -0261, -0482",Lightroot
+,,Korom Lightroot,Lanayru Wetlands Depths,"1195, -0784, -0500",Lightroot
+,,Sekioam Lightroot,Lanayru Wetlands Depths,,Lightroot
+,,Uasnoj Lightroot,Lanayru Wetlands Depths,,Lightroot
+,,Kimimadena Lightroot,Mount Lanayru Depths,"4245, -2168, -0522",Lightroot
+,,Siakij Lightroot,Mount Lanayru Depths,,Lightroot
+,,Uogoj Lightroot,Mount Lanayru Depths,,Lightroot
+,,Usukaz Lightroot,Mount Lanayru Depths,,Lightroot
+,,Ni-iraram Lightroot,Necluda Sea Depths,"4627, -3702, -0506",Lightroot
+,,Aduon Lightroot,Tabantha Frontier Depths,"-2305, 2199, -0781",Lightroot
+,,Kataki Lightroot,Tabantha Frontier Depths,"-3942, 1129, -0552",Lightroot
+,,Kawakarut Lightroot,Tabantha Frontier Depths,"-3484, -0201, -0516",Lightroot
+,,Kawumoro Lightroot,Tabantha Frontier Depths,,Lightroot
+,,Koro-nui Lightroot,Tabantha Frontier Depths,"-3550, 0847, -0577",Lightroot
+,,Sasag Lightroot,Tabantha Frontier Depths,"-4139, 0091, -0490",Lightroot
+,,Yisuayam Lightroot,Tabantha Frontier Depths,,Lightroot
+,,Arusakam Lightroot,West Necluda Depths,,Lightroot
+,,Busus Lightroot,West Necluda Depths,"0346, -2065, -0472",Lightroot
+,,Sohse Lightroot,West Necluda Depths,"1555, -1946, -0464",Lightroot
+,,U-u-ujoj Lightroot,West Necluda Depths,"1500, -3573, -0530",Lightroot
+,,Yikot Lightroot,West Necluda Depths,"2317, -2383, -0618",Lightroot
+,,Selmie's Spot,,"-2958, 3136, 0571",Location
+,,Akkala Citadel Ruins,Akkala Highlands,,Location
+,,Akkala Parade Ground Ruins,Akkala Highlands,,Location
+,,Hudson Construction Site,Akkala Highlands,,Location
+,,Sky Mine,Akkala Sea Sky,,Location
+,,Forgotten Foundation,Central Hyrule Depths,"-0332, 0787, -1249",Location
+,,Gloom's Approach,Central Hyrule Depths,,Location
+,,Gloom's Lair,Central Hyrule Depths,"-0263, 1035, -1614",Location
+,,Imprisoning Chamber,Central Hyrule Depths,"-0267, 0997, -1294",Location
+,,Secret Spring of Revival,Central Hyrule Depths,,Location
+,,North Akkala Sky Archipelago,Deep Akkala Sky,"4310, 2930, 1008",Location
+,,Hateno Ancient Tech Lab,East Necluda,,Location
+,,Lanayru Road - East Gate,East Necluda,"3222, -1172, 0157",Location
+,,Palmorae Ruins,East Necluda,"3548, -3407, 0008",Location
+,,Ancient Observation Deck,East Necluda Depths,,Location
+,,Retsam Grove,East Necluda Depths,,Location
+,,Bedrock Bistro,Eldin Canyon,"1689, 1555, 0279",Location
+,,Bridge of Eldin,Eldin Canyon,,Location
+,,Gut Check Rock,Eldin Canyon,"2616, 3464, 0338",Location
+,,Shadow Hamlet Ruins,Eldin Canyon,,Location
+,,Southern Mine,Eldin Canyon,,Location
+,,Stolock Bridge,Eldin Canyon,,Location
+,,YunoboCo HQ,Eldin Canyon,,Location
+,,Eldin Great Skeleton,Eldin Mountains,,Location
+,,Eldin Dark Skeleton,Eldin Mountains Depths,"1327, 3730, -0560",Location
+,,Spring of Courage,Faron Grassland,"0880, -2388, 0018",Location
+,,Guchini Plain Barrows,Faron Grasslands,,Location
+,,Zonai Ruins,Faron Grasslands,"0898, -2987, 0016",Location
+,,Left-Arm Depot,Faron Grasslands Depths,,Location
+,,Left-Leg Depot,Faron Grasslands Depths,,Location
+,,Desert Rift,Gerudo Desert,,Location
+,,East Gerudo Ruins,Gerudo Desert,"-2799, -2855, 0023",Location
+,,Kara Kara Bazaar,Gerudo Desert,,Location
+,,North Gerudo Ruins,Gerudo Desert,"-3763, -2701, 0035",Location
+,,Northern Icehouse,Gerudo Desert,,Location
+,,Southern Oasis Training Area,Gerudo Desert,"-3665, -3631, 0034",Location
+,,Statue of the Eighth Heroine Room,Gerudo Desert,,Location
+,,Gerudo Dark Skeleton,Gerudo Desert Depths,"-4548, -3718, -0477",Location
+,,Gerudo Underground Cemetery,Gerudo Desert Depths,"-4124, -3798, -0471",Location
+,,Statue of the Eighth Heroine,Gerudo Highlands,,Location
+,,Yiga Clan Hideout,Gerudo Highlands,"-3686, -1366, 0331",Location
+,,Starview Island,Gerudo Highlands Sky,,Location
+,,Helmhead Bridge,Great Hyrule Forest,"0396, 1154, 0020",Location
+,,Korok Forest,Great Hyrule Forest,,Location
+,,Lost Woods,Great Hyrule Forest,,Location
+,,Rauru Settlement Ruins,Great Hyrule Forest,,Location
+,,Thyphlo Ruins,Great Hyrule Forest,,Location
+,,Gleeok Den,Great Hyrule Forest Depths,,Location
+,,Korok Grove,Great Hyrule Forest Depths,,Location
+,,Flight Range,Hebra Mountains,"-3839, 2302, 0180",Location
+,,Goflam's Secret Hot Spring,Hebra Mountains,,Location
+,,Hebra Trailhead Lodge,Hebra Mountains,"-3584, 2246, 0140",Location
+,,Sherfin's Secret Hot Spring,Hebra Mountains,,Location
+,,Hebra Dark Skeleton,Hebra Mountains Depths,"-3633, 3708, -0785",Location
+,,Sturnida Lavafalls,Hebra Mountains Depths,"-4186, 2663, -0564",Location
+,,Rising Island Chain,Hebra Mountains Sky,"-2721, 2941, 0890",Location
+,,Ancient Tree Stump,Hyrule Field,,Location
+,,Aquame Bridge,Hyrule Field,"-1128, -0956, 0046",Location
+,,Boneyard Bridge,Hyrule Field,,Location
+,,Bridge of Hylia,Hyrule Field,"-0134, -2293, 0039",Location
+,,Carok Bridge,Hyrule Field,"-1044, 0427, 0035",Location
+,,Central Square,Hyrule Field,"-0224, 0446, 0021",Location
+,,Coliseum Ruins,Hyrule Field,"-1136, -1233, 0156",Location
+,,Digdogg Suspension Bridge,Hyrule Field,,Location
+,,Dining Hall,Hyrule Field,,Location
+,,East Post Ruins,Hyrule Field,,Location
+,,Emergency Shelter,Hyrule Field,,Location
+,,First Gatehouse,Hyrule Field,,Location
+,,Gerudo Canyon Pass,Hyrule Field,"-1652, -2012, -0015",Location
+,,Guards' Chamber,Hyrule Field,,Location
+,,Hyrule Castle Town Ruins,Hyrule Field,,Location
+,,Hyrule Forest Park,Hyrule Field,"0192, 0926, 0047",Location
+,,Jeddo Bridge,Hyrule Field,,Location
+,,Kolomo Garrison Ruins,Hyrule Field,"-0436, -1278, 0030",Location
+,,Mabe Village Ruins,Hyrule Field,,Location
+,,Maritta Exchange Ruins,Hyrule Field,"-1813, 1612, 0106",Location
+,,Mini Stable,Hyrule Field,"-1687, -1668, 0020",Location
+,,Moat Bridge,Hyrule Field,"0599, 0660, 0021",Location
+,,Orsedd Bridge,Hyrule Field,,Location
+,,Proxim Bridge,Hyrule Field,"0153, -1604, 0023",Location
+,,Rebonae Bridge,Hyrule Field,"0821, -0021, 0026",Location
+,,Royal Ancient Lab Ruins,Hyrule Field,"-1210, 1118, 0102",Location
+,,Sage Temple Ruins,Hyrule Field,,Location
+,,Second Gatehouse,Hyrule Field,"-0179, 0872, 0292",Location
+,,Temple of Time Ruins,Hyrule Field,"-0859, -2035, 0144",Location
+,,Thims Bridge,Hyrule Field,,Location
+,,Tabantha Great Bridge,Hyrule Ridge,,Location
+,,Blupee Burrow,Hyrule Ridge Depths,"-2232, -0385, -0750",Location
+,,Dalite Grove,Hyrule Ridge Depths,"-2219, -0957, -0542",Location
+,,Courage Island,Hyrule Ridge Sky,,Location
+,,Faron Sky Archipelago,Lake Hylia Sky,"0144, -2473, 0959",Location
+,,Eagus Bridge,Lanaryu Wetlands,"1006, -0886, 0036",Location
+,,Inogo Bridge,Lanayru Great Spring,,Location
+,,Zora's Domain,Lanayru Great Spring,,Location
+,,Goponga Village Ruins,Lanayru Wetlands,,Location
+,,Moor Garrison Ruins,Lanayru Wetlands,,Location
+,,Eventide Island,Necluda Sea,"4527, -3343, 0000",Location
+,,Ancient Columns,Tabantha Frontier,"-3478, 0480, 0275",Location
+,,Dragon Bone Mire,Tabantha Frontier,"-4140, 1677, 0130",Location
+,,Forgotten Temple,Tabantha Frontier,,Location
+,,Gisa Crater,Tabantha Frontier,"-3947, 1127, 0102",Location
+,,Lucky Clover Gazette,Tabantha Frontier,,Location
+,,Tabantha Village Ruins,Tabantha Frontier,,Location
+,,Tanagar Canyon,Tabantha Frontier,,Location
+,,Ultra Ball Haul Check-In,Tabantha Frontier,"-3169, 0678, -0098",Location
+,,South Hebra Sky Archipelago,Tabantha Frontier Sky,"-3079, 2142, 0647",Location
+,,Deya Village Ruins,West Necluda,"0291, -1869, 0022",Location
+,,East Hill,West Necluda,"1844, -0903, 0154",Location
+,,Faron Woods,West Necluda,"0407, -3002, 0012",Location
+,,Horwell Bridge,West Necluda,"0709, -0993, 0012",Location
+,,Kakariko Bridge,West Necluda,"1800, -1484, 0026",Location
+,,Ring Ruins,West Necluda,"1812, -0952, 0113",Location
+,,Sarjon Bridge,West Necluda,,Location
+,,Bubinga Grove,West Necluda Depths,,Location
+,,Meda Lavafalls,West Necluda Depths,,Location
+,,Right-Arm Depot,West Necluda Depths,,Location
+,,Right-Leg Depot,West Necluda Depths,,Location
+,,Beedle's New Serenne Stable Shop,,,Shop
+,,Beedle's Outskirt Stable Shop,,,Shop
+,,Beedle's Riverside Stable Shop,,,Shop
+,,Beedle's Snowfield Stable Shop,,,Shop
+,,Beedle's Tabantha Bridge Stable Shop,,,Shop
+,,Eryck's Shop,,,Shop
+,,Ardin's Shop,Gerudo Town,,Shop
+,,Danda's Shop,Gerudo Town,,Shop
+,,Gerudo Secret Club,Gerudo Town,,Shop
+,,Lorn's Shop,Gerudo Town,,Shop
+,,Spera's Shop,Gerudo Town,,Shop
+,,Starlight Memories: A Jewelry Shop,Gerudo Town,,Shop
+,,East Wind: General Goods,Hateno Village,"3357, -2164, 0120",Shop
+,,Enchanted,Kakariko Village,"1850, -0975, 0119",Shop
+,,High Spirits Produce,Kakariko Village,"1801, -1026, 0115",Shop
+,,The Curious Quiver,Kakariko Village,"1819, -1038, 0116",Shop
+,,Beedle's Kara Kara Bazaar Shop,Kara Kara Bazaar,,Shop
+,,Emri's Shop,Kara Kara Bazaar,"-3273, -2564, 0023",Shop
+,,Kachoo's Shop,Kara Kara Bazaar,"-3261, -2601, 0026",Shop
+,,Maike's Shop,Kara Kara Bazaar,"-3271, -2538, 0023",Shop
+,,Saula's Shop,Kara Kara Bazaar,"-3273, -2549, 0023",Shop
+,,Mubs's Shop,Lookout Landing,"-0210, 0082, 0019",Shop
+,,Brazen Beak,Rito Village,"-3628, 1792, 0186",Shop
+,,The Slippery Falcon,Rito Village,"-3639, 1818, 0184",Shop
+,,Beedle's Dueling Peaks Stable Shop,West Necluda,,Shop
+,,Doritt's Wagon Shop,West Necluda,,Shop
+,,Domizuin Shrine,Akkala Highlands,"3307, 1444, 0426",Shrine
+,,Gatanisis Shrine,Akkala Highlands,"4498, 0825, 0095",Shrine
+,,Gemimik Shrine,Akkala Highlands,"4513, 2116, 0001",Shrine
+,,Jochi-ihiga Shrine,Akkala Highlands,"3809, 1220, 0092",Shrine
+,,Rasitakiwak Shrine,Akkala Highlands,"4166, 1323, 0229",Shrine
+,,Sinatanika Shrine,Akkala Highlands,"3843, 2299, 0048",Shrine
+,,Igashuk Shrine,Akkala Sea,"4654, 3712, 0131",Shrine
+,,Rasiwak Shrine,Akkala Sea,"4664, 3262, 0002",Shrine
+,,Gikaku Shrine,Akkala Sea Sky,"4506, 2164, 1155",Shrine
+,,Mogisari Shrine,Akkala Sea Sky,"4656, 3509, 1010",Shrine
+,,Natak Shrine,Akkala Sky,"3671, 1484, 1158",Shrine
+,,Jinodok Shrine,Central Hyrule Sky,"-1257, -1487, 1008",Shrine
+,,Sitsum Shrine,Death Mountain,"2369, 2595, 0790",Shrine
+,,Jochi-iu Shrine,Deep Akkala,"4346, 2875, 0165",Shrine
+,,Kamatukis Shrine,Deep Akkala,"3429, 3356, 0071",Shrine
+,,Anedamimik Shrine,East Necluda,"4224, -2191, -0009",Shrine
+,,Bamitok Shrine,East Necluda,"-3094, -3209, 0082",Shrine
+,,Mayahisik Shrine,East Necluda,"3731, -2058, 0189",Shrine
+,,O-ogim Shrine,East Necluda,"2754, -1102, 0099",Shrine
+,,Sifumim Shrine,East Necluda,"2826, -3271, 0078",Shrine
+,,Utojis Shrine,East Necluda,"1217, -2530, 0095",Shrine
+,,Zanmik Shrine,East Necluda,"3469, -2182, 0148",Shrine
+,,Kumamayn Shrine,East Necluda Sky,"2855, -2856, 1212",Shrine
+,,Yansamin Shrine,East Necluda Sky,"2350, -1782, 1475",Shrine
+,,Isisim Shrine,Eldin Canyon,"1842, 2844, 0363",Shrine
+,,Jiotak Shrine,Eldin Canyon,"1833, 3179, 0257",Shrine
+,,Kimayat Shrine,Eldin Canyon,"2855, 3629, 0238",Shrine
+,,Kisinona Shrine,Eldin Canyon,"2567, 1245, 0173",Shrine
+,,Marakuguc Shrine,Eldin Canyon,"1761, 2508, 0437",Shrine
+,,Mayachideg Shrine,Eldin Canyon,"3061, 1823, 0216",Shrine
+,,Momosik Shrine,Eldin Canyon,"2959, 2758, 0524",Shrine
+,,Moshapin Shrine,Eldin Canyon,"2680, 1902, 0131",Shrine
+,,Sibajitak Shrine,Eldin Canyon,"2399, 3274, 0402",Shrine
+,,Timawak Shrine,Eldin Canyon,"1800, 1642, 0311",Shrine
+,,Kadaunar Shrine,Eldin Canyon Sky,"1879, 1202, 1251",Shrine
+,,Mayak Shrine,Eldin Mountains,"1270, 3720, 0106",Shrine
+,,Minetak Shrine,Eldin Mountains,"0388, 3495, 0066",Shrine
+,,Sikukuu Shrine,Eldin Mountains,"0699, 2793, 0226",Shrine
+,,Ishokin Shrine,Faron Grasslands,"-0566, -3524, 0129",Shrine
+,,Jiukoum Shrine,Faron Grasslands,"0867, -2279, 0141",Shrine
+,,Utsushok Shrine,Faron Grasslands,"0669, -3358, 0072",Shrine
+,,Joku-u Shrine,Faron Grasslands Sky,"1375, -3339, 0429",Shrine
+,,Joku-usin Shrine,Faron Grasslands Sky,"1074, -3347, 0786",Shrine
+,,Joju-u-u Shrine,Faron Region,"1516, -3576, 0142",Shrine
+,,Chichim Shrine,Gerudo Desert,"-3211, -3007, -0049",Shrine
+,,Irasak Shrine,Gerudo Desert,"-4159, -3824, 0028",Shrine
+,,Karahatag Shrine,Gerudo Desert,"-3726, -3625, 0043",Shrine
+,,Kudanisar Shrine,Gerudo Desert,"-4159, -2145, 0048",Shrine
+,,Mayatat Shrine,Gerudo Desert,"-3290, -2512, 0024",Shrine
+,,Miryotanog Shrine,Gerudo Desert,"-4679, -3086, 0054",Shrine
+,,Siwakama Shrine,Gerudo Desert,"-2445, -3345, 0041",Shrine
+,,Soryotanog Shrine,Gerudo Desert,"-3881, -2961, 0123",Shrine
+,,Turakamik Shrine,Gerudo Desert,"-2658, -2236, 0067",Shrine
+,,Kitawak Shrine,Gerudo Highlands,"-1527, -2927, 0321",Shrine
+,,Mayamats Shrine,Gerudo Highlands,"-4637, -1514, 0452",Shrine
+,,Motsusis Shrine,Gerudo Highlands,"-1795, -3485, 0045",Shrine
+,,Otutsum Shrine,Gerudo Highlands,"-4468, -0670, 0509",Shrine
+,,Rakakudaj Shrine,Gerudo Highlands,"-2036, -1854, 0065",Shrine
+,,Rotsumamu Shrine,Gerudo Highlands,"-3405, -1356, 0335",Shrine
+,,Suariwak Shrine,Gerudo Highlands,"-2523, -1770, 0131",Shrine
+,,Mayasiar Shrine,Gerudo Highlands Sky,"-3545, -0320, 1965",Shrine
+,,Rakashog Shrine,Gerudo Highlands Sky,"-1716, -2118, 1149",Shrine
+,,Siyamotsus Shrine,Gerudo Highlands Sky,"-1794, -3295, 1011",Shrine
+,,Ekochiu Shrine,Great Hyrule Forest,"1063, 1283, 0045",Shrine
+,,Kikakin Shrine,Great Hyrule Forest,"-0397, 2738, 0287",Shrine
+,,Kiuyoyou Shrine,Great Hyrule Forest,"-1106, 2086, 0104",Shrine
+,,Musanokir Shrine,Great Hyrule Forest,"0408, 2133, 0144",Shrine
+,,Ninjis Shrine,Great Hyrule Forest,"0353, 1891, 0178",Shrine
+,,Pupunke Shrine,Great Hyrule Forest,"0611, 2216, 0163",Shrine
+,,Sakunbomar Shrine,Great Hyrule Forest,"0164, 2310, 0179",Shrine
+,,Mayam Shrine,Great Hyrule Forest Sky,"0344, 2816, 1820",Shrine
+,,Simosiwak Shrine,Great Hyrule Forest Sky,"0163, 1972, 0759",Shrine
+,,Gutanbac Shrine,Great Sky Island,"0709, -1381, 1584",Shrine
+,,In-Isa Shrine,Great Sky Island,"0027, -1503, 1408",Shrine
+,,Nachoyah Shrine,Great Sky Island,"0388, -1660, 2299",Shrine
+,,Ukouh Shrine,Great Sky Island,"0274, -0913, 1460",Shrine
+,,Eutoum Shrine,Hebra Mountains,"-3506, 3570, 0387",Shrine
+,,Mayaotaki Shrine,Hebra Mountains,"-0825, 3534, 0234",Shrine
+,,Oshozan-u Shrine,Hebra Mountains,"-1402, 3677, 0287",Shrine
+,,Otak Shrine,Hebra Mountains,"-4392, 3714, 0212",Shrine
+,,Rutafu-um Shrine,Hebra Mountains,"-2997, 3107, 0513",Shrine
+,,Sahirow Shrine,Hebra Mountains,"-3352, 2384, 0360",Shrine
+,,Sisuran Shrine,Hebra Mountains,"-2570, 3352, 0242",Shrine
+,,Tauyosipun Shrine,Hebra Mountains,"-4539, 2881, 0262",Shrine
+,,Wao-os Shrine,Hebra Mountains,"-4053, 2002, 0183",Shrine
+,,Ijo-o Shrine,Hebra Mountains Sky,"-3860, 2682, 0702",Shrine
+,,Kahatanaum Shrine,Hebra Mountains Sky,"-3286, 3425, 1347",Shrine
+,,Mayaumekis Shrine,Hebra Mountains Sky,"-2947, 3051, 0897",Shrine
+,,Taninoud Shrine,Hebra Mountains Sky,"-1801, 3406, 0949",Shrine
+,,Tenbez Shrine,Hebra Mountains Sky,"-0964, 3540, 1011",Shrine
+,,Ishodag Shrine,Hyrule Field,"-0880, 0419, 0049",Shrine
+,,Jiosin Shrine,Hyrule Field,"-0240, -0370, 0027",Shrine
+,,Jojon Shrine,Hyrule Field,"1209, 0322, 0027",Shrine
+,,Kamizun Shrine,Hyrule Field,"-0177, -1557, 0023",Shrine
+,,Kyokugon Shrine,Hyrule Field,"0710, -1550, 0006",Shrine
+,,Kyononis Shrine,Hyrule Field,"-0205, 0451, 0021",Shrine
+,,Mayachin Shrine,Hyrule Field,"-0705, -0869, 0031",Shrine
+,,Ren-iz Shrine,Hyrule Field,"0744, 0823, 0081",Shrine
+,,Riogok Shrine,Hyrule Field,"-1440, -1616, 0089",Shrine
+,,Sepapa Shrine,Hyrule Field,"0219, 1082, 0028",Shrine
+,,Serutabomac Shrine,Hyrule Field,"-0179, 1170, 0280",Shrine
+,,Susuyai Shrine,Hyrule Field,"-0785, -0434, 0018",Shrine
+,,Tadarok Shrine,Hyrule Field,"-1082, -2187, 0129",Shrine
+,,Tajikats Shrine,Hyrule Field,"0346, -1013, 0016",Shrine
+,,Teniten Shrine,Hyrule Field,"-0075, -1115, 0021",Shrine
+,,Tenmaten Shrine,Hyrule Field,"-0602, 1553, -0014",Shrine
+,,Tsutsu-um Shrine,Hyrule Field,"-1423, -1349, 0068",Shrine
+,,Yamiyo Shrine,Hyrule Field,"0322, 0464, 0028",Shrine
+,,Makurukis Shrine,Hyrule Ridge,"-2847, 0629, 0233",Shrine
+,,Runakit Shrine,Hyrule Ridge,"-2532, 1169, 0177",Shrine
+,,Sinakawak Shrine,Hyrule Ridge,"-1413, 0756, 0089",Shrine
+,,Sonapan Shrine,Hyrule Ridge,"-1921, -0357, 0228",Shrine
+,,Taki-ihaban Shrine,Hyrule Ridge,"-1816, 1190, 0147",Shrine
+,,Usazum Shrine,Hyrule Ridge,"-2139, -0873, 0093",Shrine
+,,Taunhiy Shrine,Hyrule Ridge Sky,"-2400, 0824, 0615",Shrine
+,,En-oma Shrine,Lake Hylia,"0111, -2511, -0088",Shrine
+,,Apogek Shrine,Lanayru Great Spring,"3889, -0220, 0163",Shrine
+,,Ihen-a Shrine,Lanayru Great Spring,"3787, 0577, 0486",Shrine
+,,Joniu Shrine,Lanayru Great Spring,"2918, 0494, 0152",Shrine
+,,Kurakat Shrine,Lanayru Great Spring,"2358, -0509, 0156",Shrine
+,,Mogawak Shrine,Lanayru Great Spring,"3299, 0424, 0112",Shrine
+,,Yomizuk Shrine,Lanayru Great Spring,"4414, -0612, 0034",Shrine
+,,Igoshon Shrine,Lanayru Great Spring Sky,"3480, 0667, 1325",Shrine
+,,Jirutagumac Shrine,Lanayru Great Spring Sky,"2916, 0533, 0951",Shrine
+,,Sihajog Shrine,Lanayru Great Spring Sky,"4544, -0845, 1121",Shrine
+,,Mayanas Shrine,Lanayru Sea Sky,"4613, -0947, 1790",Shrine
+,,Jonsau Shrine,Lanayru Wetlands,"1744, 0017, 0025",Shrine
+,,Maoikes Shrine,Lanayru Wetlands,"2277, 0150, 0079",Shrine
+,,Morok Shrine,Lanayru Wetlands,"1179, -0778, 0133",Shrine
+,,Tukarok Shrine,Lanayru Wetlands,"0916, -0253, 0034",Shrine
+,,Jikais Shrine,Mount Lanayru,"4263, -1666, 0181",Shrine
+,,Jogou Shrine,Mount Lanayru,"3346, -1187, 0057",Shrine
+,,Zakusu Shrine,Mount Lanayru,"3527, -1482, 0168",Shrine
+,,Marari-in Shrine,Necluda Sea,"4634, -3713, 0018",Shrine
+,,Gasas Shrine,Tabantha Frontier,"-4155, 0097, 0040",Shrine
+,,Gatakis Shrine,Tabantha Frontier,"-3647, 1807, 0168",Shrine
+,,Ikatak Shrine,Tabantha Frontier,"-3950, 1138, 0112",Shrine
+,,Iun-orok Shrine,Tabantha Frontier,"-3538, 0853, -0133",Shrine
+,,Mayausiy Shrine,Tabantha Frontier,"-1169, 2602, -0083",Shrine
+,,Nouda Shrine,Tabantha Frontier,"-2318, 2201, 0173",Shrine
+,,Orochium Shrine,Tabantha Frontier,"-1638, 2643, 0239",Shrine
+,,Oromuwak Shrine,Tabantha Frontier,"-3061, 1623, 0244",Shrine
+,,Turakawak Shrine,Tabantha Frontier,"-3497, -0197, 0066",Shrine
+,,Ga-ahisas Shrine,Tabantha Frontier Sky,"-3596, 0961, 1699",Shrine
+,,Ganos Shrine,Tabantha Frontier Sky,"-3370, 0466, 1695",Shrine
+,,Eshos Shrine,West Necluda,"1562, -1944, 0157",Shrine
+,,Jochisiu Shrine,West Necluda,"0933, -1895, 0029",Shrine
+,,Makasura Shrine,West Necluda,"1770, -1050, 0166",Shrine
+,,Susub Shrine,West Necluda,"0348, -2051, -0026",Shrine
+,,Tokiy Shrine,West Necluda,"2312, -2372, -0029",Shrine
+,,Josiu Shrine,West Necluda Sky,"1759, -1208, 0924",Shrine
+,,Ukoojisi Shrine,West Necluda Sky,"1458, -2164, 0585",Shrine
+,,Ulri Mountain Skyview Tower,Akkala Highlands,,Skyview Tower
+,,Rabella Wetlands Skyview Tower,East Necluda,"2412, -2783, 0217",Skyview Tower
+,,Eldin Canyon Skyview Tower,Eldin Canyon,"1648, 1220, 0225",Skyview Tower
+,,Gerudo Canyon Skyview Tower,Gerudo Highlands,"-2415, -2186, 0301",Skyview Tower
+,,Gerudo Highlands Skyview Tower,Gerudo Highlands,"-3944, -1329, 0428",Skyview Tower
+,,Thyphlo Ruins Skyview Tower,Great Hyrule Forest,,Skyview Tower
+,,Pikida Stonegrove Skyview Tower,Hebra Mountains,"-2318, 3066, 0443",Skyview Tower
+,,Rospro Pass Skyview Tower,Hebra Mountains,"-3662, 2369, 0231",Skyview Tower
+,,Hyrule Field Skyview Tower,Hyrule Field,,Skyview Tower
+,,Lookout Landing Skyview Tower,Hyrule Field,,Skyview Tower
+,,Lindor's Brow Skyview Tower,Hyrule Ridge,"-1894, 1230, 0290",Skyview Tower
+,,Upland Zorana Skyview Tower,Lanayru Great Spring,,Skyview Tower
+,,Mount Lanayru Skyview Tower,Mount Lanayru,"3869, -1313, 0531",Skyview Tower
+,,Popla Foothills Skyview Tower,West Necluda,,Skyview Tower
+,,Sahasra Slope Skyview Tower,West Necluda,"1357, -1161, 0160",Skyview Tower
+,,South Akkala Stable,Akkala Highlands,"3129, 1679, 0201",Stable
+,,East Akkala Stable,Deep Akkala,"4245, 2731, 0125",Stable
+,,Foothill Stable,Eldin Canyon,"2599, 1131, 0147",Stable
+,,Woodland Stable,Eldin Canyon,"1041, 1125, 0021",Stable
+,,Highland Stable,Faron Grasslands,"0514, -3437, 0047",Stable
+,,Gerudo Canyon Stable,Gerudo Highlands,"-2787, -2244, 0029",Stable
+,,Snowfield Stable,Hebra Mountains,"-1623, 2558, 0233",Stable
+,,New Serenne Stable,Hyrule Field,"-1335, 0731, 0087",Stable
+,,Outskirt Stable,Hyrule Field,"-1427, -1262, 0032",Stable
+,,Riverside Stable,Hyrule Field,"0324, -1078, 0009",Stable
+,,Wetland Stable,Hyrule Field,"0909, -0149, 0026",Stable
+,,Tabantha Bridge Stable,Hyrule Ridge,"-2901, 0542, 0171",Stable
+,,Dueling Peaks Stable,West Necluda,"1740, -1902, 0012",Stable
+,,Lakeside Stable,West Necluda,"1552, -3512, 0060",Stable
+,,Lurelin Village,East Necluda,"2850, -3321, 0060",Town
+,,Goron City,Eldin Canyon,,Town
+,,Lookout Landing,Hyrule Field,,Town
+,,Rito Village,Tabantha Frontier,,Town
+,,Kakariko Village,West Necluda,"1800, -1067, 0115",Town
+,,Construction Site Well,Akkala Highlands,"3718, 1585, 0089",Well
+,,South Akkala Stable Well,Akkala Highlands,"3190, 1713, 0201",Well
+,,East Akkala Stable Well,Deep Akkala,"4234, 2780, 0126",Well
+,,Hateno Village East Well,East Necluda,"3512, -2151, 0129",Well
+,,Hateno Village North Well,East Necluda,"3418, -2031, 0136",Well
+,,Hateno Village South Well,East Necluda,"3381, -2209, 0135",Well
+,,Hateno Village West Well,East Necluda,"3355, -2047, 0117",Well
+,,Lurelin Village Well,East Necluda,"2941, -3375, 0012",Well
+,,Zelda's Secret Well,East Necluda,"3302, -2298, 0130",Well
+,,Foothill Stable Well,Eldin Canyon,"2620, 1172, 0147",Well
+,,Shadow Hamlet Ruins Well,Eldin Canyon,"3058, 2314, 0334",Well
+,,Woodland Stable Well,Eldin Canyon,"1084, 1159, 0002",Well
+,,Haran Lakefront Well,Faron Grasslands,"0397, -3389, 0050",Well
+,,Highland Stable Well,Faron Grasslands,"0539, -3429, 0047",Well
+,,Kara Kara Bazaar Well,Gerudo Desert,"-3254, -2580, 0023",Well
+,,Gerudo Canyon Well,Gerudo Highlands,"-2817, -2228, 0029",Well
+,,Mount Nabooru Well,Gerudo Highlands,"-1722, -2238, 0036",Well
+,,Rauru Settlement Ruins Well,Great Hyrule Forest,"0664, 1269, 0040",Well
+,,Rowan Plain Well,Great Hyrule Forest,"-1071, 2328, 0113",Well
+,,Dronoc's Pass Well,Hebra Mountains,"-3831, 2107, 0141",Well
+,,Snowfield Stable Well,Hebra Mountains,"-1675, 2584, 0234",Well
+,,Aquame Lake Well,Hyrule Field,"-0876, -1100, 0021",Well
+,,Bottomless Pond Well,Hyrule Field,"0685, -0769, 0017",Well
+,,Carok Bridge Well,Hyrule Field,"-1036, 0413, 0035",Well
+,,Elma Knolls Well,Hyrule Field,"-0670, 1354, 0088",Well
+,,Hyrule Castle Town Ruins Well,Hyrule Field,"0063, 0550, 0028",Well
+,,Irch Plain Well,Hyrule Field,"-0910, 1617, 0106",Well
+,,Lookout Landing Well,Hyrule Field,"-0213, 0133, 0019",Well
+,,Mabe Village Ruins Well,Hyrule Field,"-0070, -0162, 0024",Well
+,,Maritta Exchange Ruins Well,Hyrule Field,"-1811, 1620, 0106",Well
+,,Mount Daphnes Well,Hyrule Field,"-1315, -0623, 0009",Well
+,,Mount Gustaf Well,Hyrule Field,"-0912, 0328, 0019",Well
+,,New Serenne Stable Well,Hyrule Field,"-1359, 0702, 0085",Well
+,,Outskirt Hill Well,Hyrule Field,"-1679, -1351, 0122",Well
+,,Outskirt Stable Well,Hyrule Field,"-1458, -1295, 0032",Well
+,,Rebonae Bridge Well,Hyrule Field,"0788, 0006, 0031",Well
+,,Riverside Stable Well,Hyrule Field,"0363, -1125, 0010",Well
+,,Tabantha Bridge Stable Well,Hyrule Ridge,"-2955, -0531, 0169",Well
+,,Tabahl Woods Well,Lanayru Great Spring,"2743, 0172, 0130",Well
+,,Goponga Village Ruins Well,Lanayru Wetlands,"1528, -0330, 0009",Well
+,,Lanayru Wetlands Well,Lanayru Wetlands,"1222, -0396, 0010",Well
+,,Moor Garrison Ruins Well,Lanayru Wetlands,"1541, 0171, 0010",Well
+,,Rikoka Hills Well,Lanayru Wetlands,"1718, -0654, 0023",Well
+,,Wetland Stable South Well,Lanayru Wetlands,"0860, -0262, 0026",Well
+,,Wetland Stable Well,Lanayru Wetlands,"0884, -0194, 0027",Well
+,,Zauz Island Well,Lanayru Wetlands,"1438, -0137, 0010",Well
+,,Tabantha Village Ruins Well,Tabantha Frontier,"-2359, 1875, 0278",Well
+,,Deya Village Ruins East Well,West Necluda,"0423, -2040, 0009",Well
+,,Deya Village Ruins North Well,West Necluda,"0317, -1853, 0009",Well
+,,Deya Village Ruins South Well,West Necluda,"0343, -2095, 0027",Well
+,,Deya Village Ruins Well,West Necluda,"0323, -1930, 0011",Well
+,,Dueling Peaks Stable Well,West Necluda,"1790, -1948, 0010",Well
+,,Hills of Baumer Well,West Necluda,"0316, -2124, 0045",Well
+,,Kakariko Village Well,West Necluda,"1876, -1040, 0123",Well
+,,Lakeside Stable Well,West Necluda,"1537, -3551, 0060",Well
+,,Popla Foothills North Well,West Necluda,"0597, -2102, 0093",Well
+,,Popla Foothills South Well,West Necluda,"0603, -2259, 0051",Well
+,,South Nabi Lake Well,West Necluda,"0786, -1497, 0036",Well
