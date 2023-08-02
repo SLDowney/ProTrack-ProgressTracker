@@ -1,47 +1,104 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-    <h1>Camp Chests</h1>
-    <form method="POST" action="/camp_chest">
-        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
-        <button id="sort-by-name-btn" onclick="sortcamp_chests('name')">Item</button>
-        <button id="sort-by-coord-btn" onclick="sortcamp_chests('coord')">Coordinates</button>
-        <ul id="camp_chests-list">
-            {% for camp_chest in camp_chests %}
-            <li>
-                <input type="hidden" id="camp_chest_id_{{ camp_chest[0] }}" name="camp_chest_id_{{ camp_chest[0] }}" value="{{ camp_chest[1] }}">
-                <input type="checkbox" id="camp_chest_id_{{ camp_chest[0] }}" name="camp_chest_found_{{ camp_chest[0] }}" value="1" {% if camp_chest[1] == 1 %}checked{% elif camp_chest[1] == 0 %} unchecked{% endif %}>
-                <label id="camp_chest_list_labels" for="camp_chest_found_{{ camp_chest[0] }}">
-                    <p id="camp_chest_info_p"> {{ camp_chest[2] }}</p>
-                    <p id="camp_chest_info_p">{{camp_chest[3]}}</p>
-                    <p id="camp_chest_info_p">{% if camp_chest[4] == None %}
-                        Unknown
-                    {% else %}
-                        {{camp_chest[4]}}
-                    {% endif %}</p> 
-                    <p id="camp_chest_info_p">{% if camp_chest[5] == None %}
-                        Unknown
-                    {% else %}
-                        {{camp_chest[5]}}
-                    {% endif %}</p>
-                    <p id="camp_chest_info_p">{% if camp_chest[6] == None %}
-                        Unknown
-                    {% else %}
-                        {{camp_chest[6]}}
-                    {% endif %}</p>
-                    <p id="camp_chest_info_p">{% if camp_chest[7] == None %}
-                        Unknown
-                    {% elif camp_chest[7] == "None" %}
-                        Unknown
-                    {% else %}
-                        {{camp_chest[7]}}
-                    {% endif %}</p>
-                </label>
-                <button type="submit" id="camp_chest_list_submit">Update</button>
-            </li>
-            {% endfor %}
-        </ul>
-        
+    <form id="add_chest" method="POST" action="/add_camp_chest">
+        <div id="new_chest_container">
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Type:</label>
+                <div class="row camp_chest_radio">
+                    <div class="col">
+                        <label><input type="radio" name="camp_chest_enemies" value="Ascend into the Ruin">Ascend into the Ruin</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Aerocuda Chest">Aerocuda Chest</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Buried Chest">Buried Chest</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Floating Chest">Floating Chest</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Flux Construct">Flux Construct</label><br>
+                    </div>
+                    <div class="col">
+                        <label><input type="radio" name="camp_chest_enemies" value="Hanging Chest">Hanging Chest</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Misko's Treasure">Misko's Treasure</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Top of the Pillar">Top of the Pillar</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Underwater Chest">Underwater Chest</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Between Rocks">Between Rocks</label><br>
+                        <label><input type="radio" name="camp_chest_enemies" value="Other/Regular">Other/Regular</label><br>
+                    </div>
+                </div>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Chest Coordinates:</label>
+                <input type="text" id="camp_chest_coord" name="camp_chest_coord" placeholder="0000 0000 0000" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Item:</label>
+                <input type="text" id="camp_chest_item" name="camp_chest_item" placeholder="Item" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Location:</label>
+                <input type="text" id="camp_chest_location" name="camp_chest_location" placeholder="Enter Location" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Region:</label>
+                <input type="text" id="camp_chest_region" name="camp_chest_region" placeholder="Enter Region" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Found:</label>
+                <input type="checkbox" id="camp_chest_found" name="camp_chest_found" value="0" unchecked>
+            </div>
+        </div>
+        <input type="submit" id="addItemSubmit" value="Submit">
+    </form>
+
+    <form id="addchestform" method="POST" action="/camp_chest">
+        <table class="chests-table">
+            <thead>
+                <tr>
+                    <th>Done</th>
+                    <th><button id="sort-by-name-btn" onclick="sortcamp_chests('name')">Item</button></th>
+                    <th><button id="sort-by-coord-btn" onclick="sortcamp_chests('coord')">Coordinates</button></th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Region</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            
+            <tbody id="camp_chests-list">
+                {% for camp_chest in camp_chests %}
+                <tr>
+                    <td>
+                        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                        <input type="hidden" id="camp_chest_id_{{ camp_chest[0] }}" name="camp_chest_id_{{ camp_chest[0] }}" value="{{ camp_chest[1] }}">
+                        <input type="checkbox" id="camp_chest_id_{{ camp_chest[0] }}" name="camp_chest_found_{{ camp_chest[0] }}" value="1" {% if camp_chest[1] == 1 %}checked{% elif camp_chest[1] == 0 %} unchecked{% endif %}>
+                    </td>
+                    <td>{{ camp_chest[2] }}</td>
+                    <td>{{ camp_chest[3] }}</td>
+                    <td>
+                        {% if camp_chest[4] == None %}
+                            Unknown
+                        {% else %}
+                            {{camp_chest[4]}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if camp_chest[5] == None %}
+                            Unknown
+                        {% else %}
+                            {{camp_chest[5]}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if camp_chest[6] == None %}
+                            Unknown
+                        {% else %}
+                            {{camp_chest[6]}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button type="submit" id="camp_chest_list_submit">Update</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </form>  
     <script src="{{ url_for('static', filename='javascript_camp_chests.js') }}"></script>
 {% endblock %}

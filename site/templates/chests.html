@@ -1,47 +1,114 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-    <h1>Chests</h1>
-    <form method="POST" action="/chests">
-        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
-        <button id="sort-by-name-btn" onclick="sortChests('name')">Item</button>
-        <button id="sort-by-coord-btn" onclick="sortChests('coord')">Coordinates</button>
-        <ul id="chests-list">
-            {% for chest in chests %}
-            <li>
-                <input type="hidden" id="chest_id_{{ chest[0] }}" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
-                <input type="checkbox" id="chest_id_{{ chest[0] }}" name="chest_found_{{ chest[0] }}" value="1" {% if chest[7] == 1 %}checked{% elif chest[7] == 0 %} unchecked{% endif %}>
-                <label id="chest_list_labels" for="chest_found_{{ chest[0] }}">
-                    <p id="chest_info_p"> {{ chest[1] }}</p>
-                    <p id="chest_info_p">{{chest[2]}}</p>
-                    <p id="chest_info_p">{% if chest[3] == None %}
-                        Unknown
-                    {% else %}
-                        {{chest[3]}}
-                    {% endif %}</p> 
-                    <p id="chest_info_p">{% if chest[4] == None %}
-                        Unknown
-                    {% else %}
-                        {{chest[4]}}
-                    {% endif %}</p>
-                    <p id="chest_info_p">{% if chest[5] == None %}
-                        Unknown
-                    {% else %}
-                        {{chest[5]}}
-                    {% endif %}</p>
-                    <p id="chest_info_p">{% if chest[6] == None %}
-                        Unknown
-                    {% elif chest[6] == "None" %}
-                        Unknown
-                    {% else %}
-                        {{chest[6]}}
-                    {% endif %}</p>
-                </label>
-                <button type="submit" id="chest_list_submit">Update</button>
-            </li>
-            {% endfor %}
-        </ul>
-        
+    <form id="add_chest" method="POST" action="/add_chest">
+        <div id="new_chest_container">
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Type:</label>
+                <div class="row">
+                    <div class="col">
+                        <label><input type="radio" name="chest_type" value="Ascend into the Ruin">Ascend into the Ruin</label><br>
+                        <label><input type="radio" name="chest_type" value="Aerocuda Chest">Aerocuda Chest</label><br>
+                        <label><input type="radio" name="chest_type" value="Buried Chest">Buried Chest</label><br>
+                        <label><input type="radio" name="chest_type" value="Floating Chest">Floating Chest</label><br>
+                        <label><input type="radio" name="chest_type" value="Flux Construct">Flux Construct</label><br>
+                    </div>
+                    <div class="col">
+                        <label><input type="radio" name="chest_type" value="Hanging Chest">Hanging Chest</label><br>
+                        <label><input type="radio" name="chest_type" value="Misko's Treasure">Misko's Treasure</label><br>
+                        <label><input type="radio" name="chest_type" value="Top of the Pillar">Top of the Pillar</label><br>
+                        <label><input type="radio" name="chest_type" value="Underwater Chest">Underwater Chest</label><br>
+                        <label><input type="radio" name="chest_type" value="Between Rocks">Between Rocks</label><br>
+                        <label><input type="radio" name="chest_type" value="Other/Regular">Other/Regular</label><br>
+                    </div>
+                </div>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Chest Coordinates:</label>
+                <input type="text" id="chest_coord" name="chest_coord" placeholder="0000 0000 0000" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Item:</label>
+                <input type="text" id="chest_item" name="chest_item" placeholder="Item" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Location:</label>
+                <input type="text" id="chest_location" name="chest_location" placeholder="Enter Location" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Region:</label>
+                <input type="text" id="chest_region" name="chest_region" placeholder="Enter Region" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Side Quest:</label>
+                <input type="text" id="chest_sideq" name="chest_sideq">
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Collected:</label>
+                <input type="checkbox" id="chest_done" name="chest_done" value="0" unchecked>
+            </div>
+        </div>
+        <input type="submit" id="addItemSubmit" value="Submit">
+    </form>
+
+    <form id="chestform" method="POST" action="/chests">
+        <table class="chests-table">
+            <thead>    
+                <tr>
+                    <th>Done</th>
+                    <th><button id="sort-by-name-btn" onclick="sortChests('name')">Item</button></th>
+                    <th><button id="sort-by-coord-btn" onclick="sortChests('coord')">Coordinates</button></th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Region</th>
+                    <th>Side Quest</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+    
+            <tbody id="chests-list">
+                {% for chest in chests %}
+                <tr>
+                    <td>
+                        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                        <input type="hidden" id="chest_id_{{ chest[0] }}" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
+                        <input type="checkbox" id="chest_id_{{ chest[0] }}" name="chest_found_{{ chest[0] }}" value="1" {% if chest[7] == 1 %}checked{% elif chest[7] == 0 %} unchecked{% endif %}>
+                    </td>
+                    <td>{{ chest[1] }}</td>
+                    <td>{{chest[2]}}</td>
+                    <td>
+                        {% if chest[3] == None %}
+                        {% else %}
+                            {{chest[3]}}
+                        {% endif %}
+                    </td> 
+                    <td>
+                        {% if chest[4] == None %}
+                        {% else %}
+                            {{chest[4]}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if chest[5] == None %}
+                        {% else %}
+                            {{chest[5]}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if chest[6] == None %}
+                            X
+                        {% elif chest[6] != "None" %}
+                            {{chest[6]}}
+                        {% else %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button type="submit" id="chest_list_submit">Update</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </form>  
     <script src="{{ url_for('static', filename='javascript_chests.js') }}"></script>
 {% endblock %}

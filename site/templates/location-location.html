@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+<div class="content-container">
+    <form action="{{ url_for('location') }}" method="POST" enctype="multipart/form-data">
+        <input type="submit" id="locationSubmit" value="Update">
+        <div class="item-container location_container">
+            {% for location in locations %}
+                <div class="location-col-7">
+                    <table class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">location Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{location[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{location[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{location[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="location_checkbox">
+                                {% if location[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ location[0] }}" name="done_location_{{ location[0] }}" value="0" unchecked>
+                                {% elif location[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ location[0] }}" name="done_location_{{ location[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,11 +1,39 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-    <h2>{{ headline }}</h2>
+
+     <!-- Add a table to display the completion status for each region -->
+     <table style="width: 100%;">
+        <tr>
+            <th>Region</th>
+            <th>Completed</th>
+            <th>Discovered</th>
+            <th>Unfound</th>
+        </tr>
+        {% for region in regions %}
+        <tr>
+            <td>{{ region }}</td>
+            <td>{{ region_status[region]['completed'] }} of {{ region_status[region]['total_caves'] }}</td>
+            <td>{{ region_status[region]['discovered'] }} of {{ region_status[region]['total_caves'] }}</td>
+            <td>{{ region_status[region]['unfound'] }} of {{ region_status[region]['total_caves'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form id="regionFilterForm" onsubmit="return filterByRegion()">
+        <label for="regionFilter">Filter by Region:</label>
+        <select id="regionFilter" name="regionFilter">
+            <option value="">All Regions</option>
+            {% for region in regions %}
+                <option value="{{ region }}">{{ region }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filter">
+    </form>
 
     <form id="caveform" action="{{ url_for('caves') }}" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <table style="width: 100%;">
+            <table>
                 <colgroup>
                     <col span="1">
                     <col span="2">
@@ -99,7 +127,7 @@
                         <td>Status</td>
                         <td>
                             <input type="radio" id="undone_{{ result[1] }}" name="done_cave_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="cave_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
-                            <input type="radio" id="found_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="cave_radio_labels" for="found_{{ result[1] }}">Found</label>
+                            <input type="radio" id="found_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="cave_radio_labels" for="found_{{ result[1] }}">Discovered</label>
                             <input type="radio" id="done_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class="cave_radio_labels" for="done_{{ result[1] }}">Completed</label>
                             <input type="submit" id="CaveSubmit" value="Update">
                         </td>
@@ -111,4 +139,5 @@
             </table>
         </div>
     </form>
+    <script src="{{ url_for('static', filename='caves.js') }}"></script>
 {% endblock %}

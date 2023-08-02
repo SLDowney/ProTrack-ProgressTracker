@@ -2,8 +2,18 @@
 
 {% block body %} 
 
-    <h2>OMG IF YOU SEE THIS IT WORKED MOTHERFUCKERS !!! </h2>
-
+    <table id="percentage_table">
+        <tr>
+            <th>Table</th>
+            <th>Completion Percentage</th>
+        </tr>
+        {% for key, value in percentages.items() %}
+        <tr>
+            <td>{{ key | format_percentage_key }}</td>
+            <td>{{ "%.2f" % value }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
     
-
+    
 {% endblock %}

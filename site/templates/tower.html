@@ -5,7 +5,6 @@
 <div class="content-container">
     <form action="{{ url_for('tower') }}" method="POST" enctype="multipart/form-data">
         <input type="submit" id="towerSubmit" value="Update">
-        <h1>towers</h1>
         <div class="item-container tower_container">
             {% for tower in towers %}
                 <div class="tower-col-7">

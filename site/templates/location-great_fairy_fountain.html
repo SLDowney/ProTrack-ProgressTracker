@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+<div class="content-container">
+    <form action="{{ url_for('great_fairy_fountain') }}" method="POST" enctype="multipart/form-data">
+        <input type="submit" id="great_fairy_fountainSubmit" value="Update">
+        <div class="item-container location_container">
+            {% for great_fairy_fountain in great_fairy_fountains %}
+                <div class="location-col-7">
+                    <table class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">great_fairy_fountain Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{great_fairy_fountain[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{great_fairy_fountain[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{great_fairy_fountain[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="location_checkbox">
+                                {% if great_fairy_fountain[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ great_fairy_fountain[0] }}" name="done_great_fairy_fountain_{{ great_fairy_fountain[0] }}" value="0" unchecked>
+                                {% elif great_fairy_fountain[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ great_fairy_fountain[0] }}" name="done_great_fairy_fountain_{{ great_fairy_fountain[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

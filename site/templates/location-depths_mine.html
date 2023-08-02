@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+<div class="content-container">
+    <form action="{{ url_for('depths_mine') }}" method="POST" enctype="multipart/form-data">
+        <input type="submit" id="depths_mineSubmit" value="Update">
+        <div class="item-container location_container">
+            {% for depths_mine in depths_mines %}
+                <div class="location-col-7">
+                    <table class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">depths_mine Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{depths_mine[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{depths_mine[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{depths_mine[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="location_checkbox">
+                                {% if depths_mine[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ depths_mine[0] }}" name="done_depths_mine_{{ depths_mine[0] }}" value="0" unchecked>
+                                {% elif depths_mine[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ depths_mine[0] }}" name="done_depths_mine_{{ depths_mine[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,27 +1,3 @@
-/* Customize the brand logo and its style */
-.navbar .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffcc00;
-}
-
-/* Customize the mobile dropdown button */
-.navbar-toggler {
-    border-color: #000000;
-    color:#000000
-}
-
-.navbar-nav .nav-item .nav-link {
-    color: #000000; /* Your custom link color */
-}
-
-/* Custom CSS to style the columns */
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 /* Set a minimum height for the content area to occupy the full height */
 .col-md-2 {
     position:relative;
@@ -35,13 +11,35 @@ body, html {
     background-color: #f8f9fa;
     flex-basis: 10px; /* Adjust this width as needed */
     padding: 20px;
+    position:fixed;
 }
 
 /* Style the content column */
-.col-md-10 {
-    flex: 1;
-    padding: 0px;
-    float: right;
+.col-md-8 {
+    /* flex: 1;
+    padding-right: 20%; */
+    /* display: flex; */
+    /* justify-content: center; */
+    margin-left: auto;
+    margin-right: auto;
+    /* float: right;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.percentage_table {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px; /* Adjust the width as needed */
+    background-color: #ffffff; /* Optional background color for the table */
+    border-collapse: collapse;
+}
+
+.percentage_table th,
+.percentage_table td {
+    padding: 8px;
+    border: 1px solid #ccc;
 }
 
 body {
@@ -50,16 +48,21 @@ body {
     background-position: center;
     background-size: cover;
     /* box-shadow: inset 0 0 0 900px rgb(255, 255, 255, 0.7); */
-    border: 15px dashed rgb(0, 102, 189, 0.5);
+    /* border: 15px dashed rgb(0, 102, 189, 0.5); */
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    width: auto;
     max-width: 1200px;
 
 }
 
+#layout_headline {
+    margin-left: 50%;
+}
+
 h1 {
-    text-align: center;
+    /* text-align: center; */
     font-family:'Arial', Helvetica, sans-serif;
 	font-size: 200%;
     color: rgb(0, 102, 189);
@@ -69,7 +72,7 @@ h1 {
 h2 {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    margin: 30px 0 30px 15%;
+    margin: 0px 0 30px 0;
     color: rgb(0, 102, 189);
     max-width: 70%;
 }
@@ -90,16 +93,13 @@ h4 {
 p {
     font-family: Helvetica, Arial, sans-serif;
     font-size: larger;
+    margin-bottom: 0;
 }
-
-/* #form {
-    /*margin-left: 30px;
-} */
 
 .row {
     display: flex;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 0%;
+    margin-right: 0%;
     margin-bottom: 1%;
     border: 2px solid rgba(0, 0, 0, 0.5);
 
@@ -115,7 +115,7 @@ p {
 table {
     box-shadow: inset 0 0 0 500px rgb(255, 255, 255, 0.5);
     border-collapse: collapse;
-    width: 75%;
+    width: 100%;
 }
 
 th {
@@ -181,6 +181,17 @@ input[type="text"] {
     justify-items:flex-start;
 }
 
+textarea {
+    display: table-cell;
+    margin-left: 20%;
+    justify-items:flex-start;
+}
+
+#percentage_table {
+    margin-bottom: 10%;
+    width: 550px;
+}
+
 #ShrineSubmit {
     float: right;
     margin: 5px 20px 5px 5px;
@@ -188,7 +199,6 @@ input[type="text"] {
 }
 
 #shrineform {
-    margin: 0 0 0 0;
     width: 100%;
 }
 
@@ -197,6 +207,10 @@ input[type="text"] {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100%;
     margin: 2% 0 0 5px;
+}
+
+#new_chest_container input[type=checkbox] {
+    margin-left: 20%;
 }
 
 #addchest {
@@ -222,14 +236,24 @@ input[type="text"] {
 
 #chest_list_submit {
     float:right;
-    margin-right: 30%;
     margin-bottom: 10%;
+    margin-top: 10%;
 }
 
-/* #chest_item_label {
-    display: inline-flex;
-    text-align: right;
-} */
+#chestform {
+    width:min-content;
+    margin-left: -15%;
+    margin-right: 0;
+}
+
+.chests-table th {
+    color:#FFFFFF;
+}
+
+#addchestform {
+    margin-left: 0;
+    margin-right: 0;
+}
 
 .container {
     width:auto;
@@ -361,12 +385,6 @@ display checkmark when checked
     padding: 0;
 }
 
-.content-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .form-check-label.BESTDRAGON {
     margin: 0 0 20px 20px;
 }
@@ -455,17 +473,25 @@ display checkmark when checked
 #koroks-table {
     width: 75%;
     margin-left: 10%;
-    margin-top: 5%;
 }
 
-#add_korok {
-    width: 75%;
+#addkorok {
+    display: table;
+    width: 100%;
     margin-left: 10%;
-    margin-top: 5%;
+    margin-bottom: 10px;
+}
+
+#korok_labels {
+    display: table-cell;
+    width: 150px;
 }
 
 #koroks-counter {
     color:#000000;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
 
 #add_enemy{
@@ -524,20 +550,50 @@ display checkmark when checked
 
 span {
     font-family: 'Arial', Helvetica, sans-serif;
-    color: #ffffff;
-    font-size: 100%;
-    margin-left: 50%;
+    /* color: #514141; */
+    font-size: 200%;
+    /* margin-left: 50%; */
 }
+
+/* .content-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 20%;
+    padding: 0;
+    align-items: center;
+}
+
+  #locationform {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  } */
+  
+  #chasmSubmit {
+    margin-right: 10px; /* Add some spacing between the Submit button and the h1 element */
+  }
+  
+  .location-h1 {
+    margin: 0;
+  }
+  
+  /* .item-container {
+    display: inline-block;
+    justify-content: center;
+    width: 200%;
+  } */
+  
 
 #location_th_1 {
     width:30%;
 }
 
-.location_container {
+/* .location_container {
     display:inline-block;
-    justify-content: left;
+    justify-content: center;
     width: 200%;
-} 
+}  */
 
 .location_checkbox {
     width: 100px;
@@ -564,62 +620,36 @@ span {
     margin-bottom: 5px;
     padding: 0;
 }
+/* For larger screens */
+@media (min-width: 992px) {
+    /* Customize the brand logo and its style */
+    .navbar .navbar-brand {
+        margin-top:0px;
+    }
 
+    /* Customize the mobile dropdown button */
+    .navbar-toggler {
+        /* border-color: #000000; */
+        color:#00c55f;
+        order: 1;
+        margin-right: 0; /* You can adjust the margin value if needed */
+    }
 
-/* Customize the position of the navbar items on mobile */
-@media (min-width: 601px) and (max-width: 991px) {
+    
     .navbar {
-      position: static; /* Reset position for mobile */
-      width: 100%; /* Reset width for mobile */
-      padding: 0; /* Reset padding for mobile */
-      flex-direction: row; /* Arrange items horizontally for mobile */
-    }
-  
-    .navbar-collapse {
-      justify-content: center; /* Center the items in the dropdown for mobile */
-    }
-  
-    /* Remove float and flex-basis properties for smaller screens */
-    .col-md-4 {
-      /* flex-direction: column; Remove this line */
-      /* float: left; Remove this line */
-      /* width: fit-content; Remove this line */
-    }
-  
-    .col-md-8 {
-      /* flex-basis: auto; Remove this line */
-      /* width: fit-content; Remove this line */
-    }
-  
-    /* Update the width for the items to have two columns in this media query */
-    .item-container .comp-col-7 {
-      width: calc(50% - 20px); /* Adjust the width to fit two columns with some spacing */
-      margin: 0px;
-      box-sizing: border-box;
-    }
-  
-    .comp_table {
-      padding: 0;
-      margin: 2%;
-      width: 100%;
-      height: 25vh; /* Adjust this value to control the vertical centering */
-    }
-  }
-  
-  /* For larger screens */
-  @media (min-width: 992px) {
-    .navbar {
-      position: relative; /* Fixed position on the left side of the screen */
+      position: fixed; /* Fixed position on the left side of the screen */
       top: 0;
       left: 0;
       bottom: 0;
-      width: 200px; /* Adjust the width as needed */
-      padding: 20px;
-      flex-direction: column; /* Arrange items vertically */
+      width: auto; /* Adjust the width as needed */
+      align-items: flex-start;
+      display:inline-flex;
+      flex-direction: column;
+      background-color: #404040;
     }
   
     .navbar-nav .nav-link {
-      color: #000000; /* Your custom link color */
+      color: #ffffff; /* Your custom link color */
     }
   
     /* Update the width for the items to have four columns in this media query */
@@ -636,4 +666,50 @@ span {
       height: 25vh; /* Adjust this value to control the vertical centering */
     }
   }
-  
+
+/* Customize the position of the navbar items on mobile */
+@media (min-width: 601px) and (max-width: 991px) {
+    .navbar {
+        position: static; /* Reset position for mobile */
+        width: 100%; /* Reset width for mobile */
+        padding-top: 10%; /* Reset padding for mobile */
+        flex-direction: row; /* Arrange items horizontally for mobile */
+    }
+
+    /* .navbar-collapse {
+        justify-content: center;  Center the items in the dropdown for mobile 
+    } */
+
+    /* Remove float and flex-basis properties for smaller screens */
+    .col-md-2 {
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        align-items: stretch;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* Update the width for the items to have two columns in this media query */
+    .item-container .comp-col-7 {
+        width: calc(50% - 20px); /* Adjust the width to fit two columns with some spacing */
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    .comp_table {
+        padding: 0;
+        margin: 2%;
+        width: 100%;
+        height: 25vh; /* Adjust this value to control the vertical centering */
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .navbar-collapse {
+        order: 2;
+    }
+}

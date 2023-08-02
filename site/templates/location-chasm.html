@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+<div class="content-container">
+    <form id="locationform" action="{{ url_for('chasm') }}" method="POST" enctype="multipart/form-data" class="locationform-container">
+        <input type="submit" id="chasmSubmit" value="Update">
+    </form>
+    <div class="item-container location_container">
+        {% for chasm in chasms %}
+                <div class="location-col-7">
+                    <table class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">chasm Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{chasm[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{chasm[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{chasm[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="location_checkbox">
+                                {% if chasm[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ chasm[0] }}" name="done_chasm_{{ chasm[0] }}" value="0" unchecked>
+                                {% elif chasm[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ chasm[0] }}" name="done_chasm_{{ chasm[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

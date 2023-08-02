@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+<div class="content-container">
+    <form action="{{ url_for('well') }}" method="POST" enctype="multipart/form-data">
+        <input type="submit" id="wellSubmit" value="Update">
+        <div class="item-container location_container">
+            {% for well in wells %}
+                <div class="location-col-7">
+                    <table class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">well Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{well[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{well[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{well[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="location_checkbox">
+                                {% if well[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ well[0] }}" name="done_well_{{ well[0] }}" value="0" unchecked>
+                                {% elif well[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ well[0] }}" name="done_well_{{ well[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

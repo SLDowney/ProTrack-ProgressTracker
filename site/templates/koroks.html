@@ -1,28 +1,40 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-    <h1>Koroks!</h1>
     <form id="add_korok" method="POST" action="/add_korok">
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required><br>
-        <label for="kType">Type:</label>
-        <input type="text" id="kType" name="kType" required><br>
-        <label for="coord_start">Coordinates Start:</label>
-        <input type="text" id="coord_start" name="coord_start" required><br>
-        <label for="coord_end">Coordinates End:</label>
-        <input type="text" id="coord_end" name="coord_end"><br>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea><br>
-        <label for="korok_found">Coordinates End:</label>
-        <input type="checkbox" id="korok_found" name="korok_found" value="1" checked><br>
-        <button type="submit">Add Korok</button>
+        <div class="container">
+            <div id="addkorok" class="addkorokclass">
+                <label id="korok_labels" for="location">Location:</label>
+                <input type="text" id="location" name="location" required><br>
+            </div>
+            <div id="addkorok">
+                <label id="korok_labels" for="kType">Type:</label>
+                <input type="text" id="kType" name="kType" required><br>
+            </div>
+            <div id="addkorok">
+                <label id="korok_labels" for="coord_start">Coordinates Start:</label>
+                <input type="text" id="coord_start" name="coord_start" required><br>
+            </div>
+            <div id="addkorok">
+                <label id="korok_labels" for="coord_end">Coordinates End:</label>
+                <input type="text" id="coord_end" name="coord_end"><br>
+            </div>
+            <div id="addkorok">
+                <label id="korok_labels" for="description">Description:</label>
+                <textarea id="description" name="description"></textarea><br>
+            </div>
+            <div id="addkorok">
+                <label id="korok_labels" for="korok_found">Coordinates End:</label>
+                <input type="checkbox" id="korok_found" name="korok_found" value="1" checked><br>
+            </div>
+        </div>
+        <input type="submit" id="add_korok_submit"value="Add Korok">
     </form>
 
     <div id="koroks-counter">
         <p>Percentage of Koroks Found: <span id="percentage-found">0</span>%</p>
     </div>
     
-
     <table id="koroks-table">
         <thead>
             <tr>
@@ -30,6 +42,7 @@
                 <th><button id="sort-by-location-btn" onclick="sortKoroks('location_num')">Location/Num</button></th>
                 <th><button id="sort-by-type-btn" onclick="sortKoroks('korok_type')">Type</button></th>
                 <th><button id="sort-by-coord-btn" onclick="sortKoroks('coord_start')">Start</button></th>
+                <th style="color: white;">Description</th>
             </tr>
         </thead>
         <tbody id="koroks-body">

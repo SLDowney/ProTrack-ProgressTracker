@@ -15,26 +15,189 @@ app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024
 conn = sqlite3.connect("totk.db", check_same_thread=False)
 conn.row_factory = sqlite3.Row
 
+# Define the calculate_completion_percentage function
+def calculate_completion_percentage(completed_rows, total_rows):
+    if total_rows == 0:
+        return 0
+    return (completed_rows / total_rows) * 100
+
+def get_percentages():
+    with closing(conn.cursor()) as c:
+        # Fetch the total number of rows for each table
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Location'")
+        total_locations = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Chasm'")
+        total_chasms = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Well'")
+        total_wells = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Depths Mine'")
+        total_depths_mines = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Great Fairy Fountain'")
+        total_great_fairy_fountains = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM shrines")
+        total_shrines = c.fetchone()[0]
+
+        # Add the counts for the additional tables
+        c.execute("SELECT COUNT(*) FROM addison")
+        total_addison = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM adventure")
+        total_adventure = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM caves")
+        total_caves = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM compendium")
+        total_compendium = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM koroks")
+        total_koroks = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM lightroots")
+        total_lightroots = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM mainqu")
+        total_mainqu = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM oldmaps")
+        total_oldmaps = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM shrinequests")
+        total_shrinequests = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM sidequests")
+        total_sidequests = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM towers")
+        total_towers = c.fetchone()[0]
+
+        # Fetch the number of completed rows for each table
+        c.execute("SELECT COUNT(*) FROM shrines WHERE shrine_done = 2")
+        completed_shrines = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Location'")
+        completed_locations = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Chasm'")
+        completed_chasms = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Well'")
+        completed_wells = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Depths Mine'")
+        completed_depths_mines = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Great Fairy Fountain'")
+        completed_great_fairy_fountains = c.fetchone()[0]
+
+        # Add the counts for the completed rows in the additional tables
+        c.execute("SELECT COUNT(*) FROM addison WHERE addison_done = 1")
+        completed_addison = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM adventure WHERE adventure_done = 2")
+        completed_adventure = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM caves WHERE cave_done = 2")
+        completed_caves = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM compendium WHERE comp_found = 1")
+        completed_compendium = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM koroks WHERE korok_found = 1")
+        completed_koroks = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM lightroots WHERE root_done = 1")
+        completed_lightroots = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM mainqu WHERE mainqu_done = 2")
+        completed_mainqu = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM oldmaps WHERE map_type = 'Map' AND map_collected = 'TRUE'")
+        completed_oldmaps = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM shrinequests WHERE shrinequ_done = 2")
+        completed_shrinequests = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM sidequests WHERE side_done = 2")
+        completed_sidequests = c.fetchone()[0]
+
+        c.execute("SELECT COUNT(*) FROM towers WHERE tower_done = 1")
+        completed_towers = c.fetchone()[0]
+
+        # Calculate the percentage completion for the additional tables
+        percentages = {
+            "percentage_chasms": calculate_completion_percentage(completed_chasms, total_chasms),
+            "percentage_great_fairy_fountains": calculate_completion_percentage(completed_great_fairy_fountains, total_great_fairy_fountains),
+            "percentage_depths_mines": calculate_completion_percentage(completed_depths_mines, total_depths_mines),
+            "percentage_wells": calculate_completion_percentage(completed_wells, total_wells),
+            "percentage_locations": calculate_completion_percentage(completed_locations, total_locations),
+            "percentage_shrines": calculate_completion_percentage(completed_shrines, total_shrines),
+            "percentage_addison": calculate_completion_percentage(completed_addison, total_addison),
+            "percentage_adventure": calculate_completion_percentage(completed_adventure, total_adventure),
+            "percentage_caves": calculate_completion_percentage(completed_caves, total_caves),
+            "percentage_compendium": calculate_completion_percentage(completed_compendium, total_compendium),
+            "percentage_koroks": calculate_completion_percentage(completed_koroks, total_koroks),
+            "percentage_lightroots": calculate_completion_percentage(completed_lightroots, total_lightroots),
+            "percentage_mainqu": calculate_completion_percentage(completed_mainqu, total_mainqu),
+            "percentage_oldmaps": calculate_completion_percentage(completed_oldmaps, total_oldmaps),
+            "percentage_shrinequests": calculate_completion_percentage(completed_shrinequests, total_shrinequests),
+            "percentage_sidequests": calculate_completion_percentage(completed_sidequests, total_sidequests),
+            "percentage_towers": calculate_completion_percentage(completed_towers, total_towers)
+        }
+    return percentages
+
+# Define a custom Jinja filter to format the key as desired
+@app.template_filter('format_percentage_key')
+def format_percentage_key(key):
+    # Replace underscores with spaces
+    formatted_key = key.replace("percentage_", "").capitalize()
+    formatted_key = formatted_key.replace("_", " ")
+
+    # Capitalize each word
+    formatted_key = formatted_key.title()
+
+    return formatted_key
+
 @app.route("/")
 def index():
-    headline = "This is a Test!"
-    with closing(conn.cursor()) as c:
-        query = '''Select * From caves'''
-        c.execute(query)
-        items = c.fetchall()
-        itemList = []
-        for item in items:
-            itemList.append(item)
-    itemToShow = random.choice(itemList)
-    return render_template("index.html", headline=headline, itemToShow=itemToShow)
+    headline = "Current Percentage Completed"
+    percentages = get_percentages()
+    return render_template("index.html", headline=headline, percentages=percentages)
 
+
+@app.route("/locationnav")
+def locationnav():
+    headline = "Locations!"
+    percentages = get_percentages()
+    return render_template("locationnav.html", headline=headline, percentages=percentages)
 
 @app.route("/caves", methods=["GET", "POST"])
 def caves():
-    headline = "Caves!!"
+    headline = "Caves"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
+        
+        
+    regions = [
+    "Great Sky Island",
+    "Hyrule Field",
+    "Tabantha",
+    "Great Hyrule Forest",
+    "North Hyrule Sky Archipelago",
+    "Akkala",
+    "Eldin",
+    "Lanayru",
+    "Necluda",
+    "Faron",
+    "Gerudo",
+]
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
@@ -57,11 +220,30 @@ def caves():
         query = '''SELECT * FROM caves ORDER BY cave_name ASC'''
         c.execute(query)
         results = c.fetchall()
-        info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("caves.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+        selected_region = request.args.get('region')
+        # Filter the results based on the selected region
+        if selected_region:
+            results = [result for result in results if result[4] == selected_region]   
+    # Calculate the completion status for each region
+    region_status = {}
+    for region in regions:
+        total_caves = len([result for result in results if result[3] == region])
+        completed = len([result for result in results if result[3] == region and result[0] == 2])
+        discovered = len([result for result in results if result[3] == region and result[0] == 1])
+        unfound = len([result for result in results if result[3] == region and result[0] == 0])
+
+        region_status[region] = {
+            'completed': completed,
+            'discovered': discovered,
+            'unfound': unfound,
+            'total_caves': total_caves
+        }
+    return render_template("caves.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, regions=regions, region_status=region_status)
 
 @app.route('/chests', methods=['GET', 'POST'])
 def chests():
+    headline = "Chests"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
@@ -89,83 +271,61 @@ def chests():
         print("result[6]:", chests[0][6])
         print("chest id:", chests[0][0])
 
-    return render_template('chests.html', chests=chests, scroll_position=scroll_position)
+    return render_template('chests.html', chests=chests, scroll_position=scroll_position, headline=headline, percentages=percentages)
 
 
-@app.route("/additem", methods=["GET", "POST"])
-def additem():
-    headline = "Insert found chest into database:"
-    if request.method == 'POST':
-        try:
-            chest_coord = request.form['chest_coord']
-            # Remove spaces and commas from the input
-            chest_coord = chest_coord.replace(' ', '').replace(',', '')
+@app.route("/add_chest", methods=["POST"])
+def add_chest():
+    try:
+        chest_coord = request.form['chest_coord']
+        # Remove spaces and commas from the input
+        chest_coord = chest_coord.replace(' ', '').replace(',', '')
 
-            # Format the chest_coord with commas while maintaining negative signs
-            formatted_chest_coord = ''
-            i = 0
-            while i < len(chest_coord):
-                section = chest_coord[i:i+4]
-                if section.startswith('-'):
-                    section = chest_coord[i:i+5]
-                    formatted_chest_coord += section + ', '
-                    i += 5
-                else:
-                    formatted_chest_coord += section[:4] + ', '
-                    i += 4
-            formatted_chest_coord = formatted_chest_coord.rstrip(', ')
-            
-            chest_type = request.form['chest_type']
-            chest_item = request.form['chest_item']
-            chest_location = request.form['chest_location']
-            chest_sideq = request.form['chest_sideq']
-            chest_region = request.form['chest_region']
-            chest_done = request.form.get(f'chest_done')
-            print("Chest_Done:", chest_done) 
-            if chest_done == None:
-                chest_done = "0"
+        # Format the chest_coord with commas while maintaining negative signs
+        formatted_chest_coord = ''
+        i = 0
+        while i < len(chest_coord):
+            section = chest_coord[i:i+4]
+            if section.startswith('-'):
+                section = chest_coord[i:i+5]
+                formatted_chest_coord += section + ', '
+                i += 5
             else:
-                chest_done = "1"       
+                formatted_chest_coord += section[:4] + ', '
+                i += 4
+        formatted_chest_coord = formatted_chest_coord.rstrip(', ')
+        
+        chest_type = request.form['chest_type']
+        chest_item = request.form['chest_item']
+        chest_location = request.form['chest_location']
+        chest_sideq = request.form['chest_sideq']
+        chest_region = request.form['chest_region']
+        chest_done = request.form.get(f'chest_done')
+        print("Chest_Done:", chest_done) 
+        if chest_done == None:
+            chest_done = "0"
+        else:
+            chest_done = "1"       
 
-            with closing(conn.cursor()) as c:
-                query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done)
-                            VALUES(?, ?, ?, ?, ?, ?, ?)'''
-                c.execute(query, (formatted_chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done))
-                conn.commit()
-                query = '''SELECT * FROM chests ORDER BY chest_id DESC LIMIT 1'''
-                c.execute(query)
-                row = c.fetchone()
+        with closing(conn.cursor()) as c:
+            query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done)
+                        VALUES(?, ?, ?, ?, ?, ?, ?)'''
+            c.execute(query, (formatted_chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done))
+            conn.commit()
+            query = '''SELECT * FROM chests ORDER BY chest_id DESC LIMIT 1'''
+            c.execute(query)
+            row = c.fetchone()
 
-            # Access the values of the last row
-            if row:
-                # Retrieve the values from the row
-                chest_item = row[1]
-                chest_coord = row[2]
-                chest_type = row[3]
-                chest_location = row[4]
-                chest_sideq = row[5]
-                if chest_sideq == "":
-                    tagline = chest_item + ", " + chest_coord + ", " + chest_type + ", " + chest_location
-                    print("chest_sideq is empty string, confirmed:", chest_sideq)
-                    return render_template("additem.html", tagline=tagline)
-                else:
-                    tagline = chest_item + ", " + chest_coord + ", " + chest_type + ", " + chest_location + ", " + chest_sideq
-                    print("chest_sideq is not None:", chest_sideq)
-                    return render_template("additem.html", tagline=tagline)
-                    
-                # ... access other columns as needed
-            else:
-                # Handle the case when no rows are found
-                pass
-        except sqlite3.OperationalError as e:
-            print(e)
-            headline = "Error in insert operation. Please try again."
-    else:
-        return render_template("additem.html", headline=headline)
-    return render_template("additem.html", headline=headline)
+    except sqlite3.OperationalError as e:
+        print(e)
+        headline = "Error in insert operation. Please try again."
+        return redirect('/chests')
+    return redirect('/chests')
 
 @app.route('/camp_chest', methods=['GET', 'POST'])
 def camp_chest():
+    headline = "Camp Chests"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
@@ -188,68 +348,65 @@ def camp_chest():
             with closing(conn.cursor()) as c:
                 c.execute('SELECT * FROM camp_chest')
                 camp_chests = c.fetchall()
-                return render_template('camp_chest.html', camp_chests=camp_chests, scroll_position=scroll_position)
-
-    # Retrieve all camp_chest from the database
-    with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM camp_chest')
-        camp_chests = c.fetchall()
-
-    return render_template('camp_chest.html', camp_chests=camp_chests, scroll_position=scroll_position)
-
-
-@app.route("/add_camp_chest", methods=["GET", "POST"])
-def add_camp_chest():
-    headline = "Insert found camp_chest into database:"
-    if request.method == 'POST':
-        try:
-            camp_chest_coord = request.form['camp_chest_coord']
-            # Remove spaces and commas from the input
-            camp_chest_coord = camp_chest_coord.replace(' ', '').replace(',', '')
-
-            # Format the camp_chest_coord with commas while maintaining negative signs
-            formatted_camp_chest_coord = ''
-            i = 0
-            while i < len(camp_chest_coord):
-                section = camp_chest_coord[i:i+4]
-                if section.startswith('-'):
-                    section = camp_chest_coord[i:i+5]
-                    formatted_camp_chest_coord += section + ', '
-                    i += 5
-                else:
-                    formatted_camp_chest_coord += section[:4] + ', '
-                    i += 4
-            formatted_camp_chest_coord = formatted_camp_chest_coord.rstrip(', ')
-            
-            camp_chest_enemies = request.form['camp_chest_enemies']
-            camp_chest_item = request.form['camp_chest_item']
-            camp_chest_location = request.form['camp_chest_location']
-            camp_chest_region = request.form['camp_chest_region']
-            camp_chest_found = request.form.get(f'camp_chest_found')
-            if camp_chest_found is None:
-                    camp_chest_found = '0'
-
-            with closing(conn.cursor()) as c:
-                query = '''INSERT INTO camp_chest (camp_chest_coord, camp_chest_enemies, camp_chest_item, camp_chest_location, camp_chest_region, camp_chest_done)
-                            VALUES(?, ?, ?, ?, ?, ?)'''
-                c.execute(query, (formatted_camp_chest_coord, camp_chest_enemies, camp_chest_item, camp_chest_location, camp_chest_region, camp_chest_found))
-                conn.commit()
-
-        except sqlite3.OperationalError as e:
-            print(e)
-            headline = "Error in insert operation. Please try again."
+                return render_template('camp_chest.html', headline=headline, percentages=percentages, camp_chests=camp_chests, scroll_position=scroll_position)
     else:
-        return render_template("add_camp_chest.html", headline=headline)
-     # Retrieve all camp_chest from the database
-    with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM camp_chest')
-        camp_chests = c.fetchall()
-    return render_template("add_camp_chest.html", camp_chests=camp_chests)
+        # Retrieve all camp_chest from the database
+        with closing(conn.cursor()) as c:
+            c.execute('SELECT * FROM camp_chest')
+            camp_chests = c.fetchall()
+
+    return render_template('camp_chest.html',headline=headline, percentages=percentages,  camp_chests=camp_chests, scroll_position=scroll_position)
+
+
+@app.route("/add_camp_chest", methods=["POST"])
+def add_camp_chest():
+    try:
+        camp_chest_coord = request.form['camp_chest_coord']
+        # Remove spaces and commas from the input
+        camp_chest_coord = camp_chest_coord.replace(' ', '').replace(',', '')
+
+        # Format the camp_chest_coord with commas while maintaining negative signs
+        formatted_camp_chest_coord = ''
+        i = 0
+        while i < len(camp_chest_coord):
+            section = camp_chest_coord[i:i+4]
+            if section.startswith('-'):
+                section = camp_chest_coord[i:i+5]
+                formatted_camp_chest_coord += section + ', '
+                i += 5
+            else:
+                formatted_camp_chest_coord += section[:4] + ', '
+                i += 4
+        formatted_camp_chest_coord = formatted_camp_chest_coord.rstrip(', ')
+        
+        camp_chest_enemies = request.form['camp_chest_enemies']
+        camp_chest_item = request.form['camp_chest_item']
+        camp_chest_location = request.form['camp_chest_location']
+        camp_chest_region = request.form['camp_chest_region']
+        camp_chest_found = request.form.get(f'camp_chest_found')
+        print("Camp_chest_found:", camp_chest_found)
+        if camp_chest_found is None:
+                camp_chest_found = '0'
+        else:
+            camp_chest_found = '1'
+        print("Camp_chest_found 2:", camp_chest_found)
+        with closing(conn.cursor()) as c:
+            query = '''INSERT INTO camp_chest (camp_chest_coord, camp_chest_enemies, camp_chest_item, camp_chest_location, camp_chest_region, camp_chest_done)
+                        VALUES(?, ?, ?, ?, ?, ?)'''
+            c.execute(query, (formatted_camp_chest_coord, camp_chest_enemies, camp_chest_item, camp_chest_location, camp_chest_region, camp_chest_found))
+            conn.commit()
+            return redirect('/camp_chest')
+
+    except sqlite3.OperationalError as e:
+        print(e)
+        headline = "Error in insert operation. Please try again."
+    return redirect('/camp_chest')
 
 
 @app.route("/edititem", methods=["POST", "GET"])
 def edititem():
     headline = "Edit a chest:"
+    percentages = get_percentages()
     if request.method == 'POST':
         # uploaded_file = request.files["item_picture"]
         # filename = secure_filename(uploaded_file.filename)
@@ -265,16 +422,18 @@ def edititem():
                             VALUES(?)'''
                 c.execute(query, (obj_name))
                 conn.commit()
-                tagline = "Successfully added Item to Collection!!"
+                tagline = "Successfully added Item to Collection"
                 return render_template("success.html", tagline=tagline)
         except sqlite3.OperationalError as e:
             print(e)
             headline = "Error in insert operation. Please try again."
     else:
-        return render_template("edititem.html", headline=headline)
+        return render_template("edititem.html", headline=headline, percentages=percentages)
 
 @app.route('/armors', methods=['GET', 'POST'])
 def armors():
+    headline = "Armors"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -297,13 +456,13 @@ def armors():
         c.execute('SELECT * FROM armor_set ORDER BY a_set ASC')
         armors = c.fetchall()
 
-    return render_template('armors.html', armors=armors, scroll_position=scroll_position)
+    return render_template('armors.html', headline=headline, percentages=percentages, armors=armors, scroll_position=scroll_position)
 
 @app.route('/armors/update', methods=['POST'])
 def update_armor():
     data = request.get_json()
     for d in data:
-        print("D !!! ->:", d)
+        print("D ! ->:", d)
     armor_id = data['armorId']
     armor_found = data['armorFound']
     print("armor_id:", armor_id)
@@ -318,7 +477,8 @@ def update_armor():
 
 @app.route("/shrines", methods=["GET", "POST"])
 def shrines():
-    headline = "Shrines!!"
+    headline = "Shrines"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -344,14 +504,10 @@ def shrines():
                 shrine_shrine = shrine_shrine[0]
                 shrine_done = request.form.get(f'done_shrine_{shrine_shrine}')
                 if shrine_done is None:
-                    print("shrine_done is none:", shrine_done)
                     shrine_done = c.execute('SELECT shrine_done FROM shrines WHERE shrine_shrine = ?', (shrine_shrine,)).fetchone()[0]
                 else:
                     print("shrine_done is not none:", shrine_done)
-                print("shrine_shrine:", shrine_shrine)
-                print("shrine_done:", shrine_done)
                 c.execute('UPDATE shrines SET shrine_done = ? WHERE shrine_shrine = ?', (shrine_done, shrine_shrine))
-                print("Executed update statement for shrine_shrine:", shrine_shrine)
             conn.commit()
 
     with closing(conn.cursor()) as c:
@@ -362,7 +518,6 @@ def shrines():
         # Filter the results based on the selected region
         if selected_region:
             results = [result for result in results if result[4] == selected_region]   
-            print("Region Results:", results) 
         info = [(result[0], result[1], result[2]) for result in results]
     # Calculate the completion status for each region
     region_status = {}
@@ -379,10 +534,12 @@ def shrines():
             'total_shrines': total_shrines
         }
 
-    return render_template("shrines.html", scroll_position=scroll_position, headline=headline, info=info, results=results, regions=regions, region_status=region_status)
+    return render_template("shrines.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
 
 @app.route('/koroks', methods=['GET', 'POST'])
 def koroks():
+    headline = "Koroks"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
@@ -410,7 +567,7 @@ def koroks():
         print("result[1]:", koroks[0][1])
         print("korok id:", koroks[0][0])
 
-    return render_template('koroks.html', koroks=koroks, scroll_position=scroll_position)
+    return render_template('koroks.html', headline=headline, percentages=percentages, koroks=koroks, scroll_position=scroll_position)
 
 @app.route('/update-korok', methods=['POST'])
 def update_korok():
@@ -476,6 +633,8 @@ def add_korok():
 
 @app.route('/enemies', methods=['GET', 'POST'])
 def enemies():
+    headline = "Enemies"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
@@ -503,7 +662,7 @@ def enemies():
         print("result[6]:", enemies[0][6])
         print("enemy id:", enemies[0][0])
 
-    return render_template('enemies.html', enemies=enemies, scroll_position=scroll_position)
+    return render_template('enemies.html', headline=headline, percentages=percentages, enemies=enemies, scroll_position=scroll_position)
 
 @app.route('/update-enemy', methods=['POST'])
 def update_enemy():
@@ -554,7 +713,8 @@ def add_enemy():
 
 @app.route("/lightroots", methods=["GET", "POST"])
 def lightroots():
-    headline = "Lightroots!!"
+    headline = "Lightroots"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -581,11 +741,12 @@ def lightroots():
         c.execute(query)
         results = c.fetchall()
         info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("lightroots.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+    return render_template("lightroots.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
 
 @app.route("/compendium", methods=["GET", "POST"])
 def compendium():
-    headline = "compendium!!"
+    headline = "Compendium"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -627,10 +788,12 @@ def compendium():
                 equipment.append(result)
             if result[2] == "Treasure":
                 treasures.append(result)
-    return render_template("compendium.html", scroll_position=scroll_position, headline=headline, results=results, creatures=creatures, monsters=monsters, materials=materials, equipment=equipment, treasures=treasures)
+    return render_template("compendium.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, creatures=creatures, monsters=monsters, materials=materials, equipment=equipment, treasures=treasures)
 
 @app.route('/interesting', methods=['GET', 'POST'])
 def interesting():
+    headline = "Interesting Finds"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
@@ -656,7 +819,7 @@ def interesting():
         c.execute('SELECT * FROM misc')
         interesting = c.fetchall()
 
-    return render_template('interesting.html', interesting=interesting, scroll_position=scroll_position)
+    return render_template('interesting.html', headline=headline, percentages=percentages, interesting=interesting, scroll_position=scroll_position)
 
 @app.route('/update-thing', methods=['POST'])
 def update_thing():
@@ -709,7 +872,8 @@ def add_thing():
 
 @app.route("/oldmaps")
 def oldmaps():
-    headline = "Old Maps!!"
+    headline = "Old Maps"
+    percentages = get_percentages()
     with closing(conn.cursor()) as c:
         query = '''Select * From oldmaps ORDER BY map_name ASC'''
         c.execute(query)
@@ -717,11 +881,12 @@ def oldmaps():
         info = []
         for result in results:
             info.append(result)
-    return render_template("oldmaps.html", headline=headline, info=info, results = results)
+    return render_template("oldmaps.html", headline=headline, percentages=percentages, info=info, results = results)
 
 @app.route("/shrinequests")
 def shrinequests():
-    headline = "Shrine Quests!!"
+    headline = "Shrine Quests"
+    percentages = get_percentages()
     with closing(conn.cursor()) as c:
         query = '''Select * From shrinequests ORDER BY map_name ASC'''
         c.execute(query)
@@ -729,11 +894,12 @@ def shrinequests():
         info = []
         for result in results:
             info.append(result)
-    return render_template("shrinequests.html", headline=headline, info=info, results = results)
+    return render_template("shrinequests.html", headline=headline, percentages=percentages, info=info, results = results)
 
 @app.route("/sidequests")
 def sidequests():
-    headline = "Side Quests!!"
+    headline = "Side Quests"
+    percentages = get_percentages()
     with closing(conn.cursor()) as c:
         query = '''Select * From sidequests ORDER BY side_quest ASC'''
         c.execute(query)
@@ -741,11 +907,12 @@ def sidequests():
         info = []
         for result in results:
             info.append(result)
-    return render_template("sidequests.html", headline=headline, info=info, results = results)
+    return render_template("sidequests.html", headline=headline, percentages=percentages, info=info, results = results)
 
 @app.route("/mainqu", methods=["GET", "POST"])
 def mainqu():
-    headline = "mainqus!!"
+    headline = "Main Quests"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -772,11 +939,12 @@ def mainqu():
         c.execute(query)
         results = c.fetchall()
         info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("mainqu.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+    return render_template("mainqu.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
 
 @app.route("/addison", methods=["GET", "POST"])
 def addison():
-    headline = "Addison!!"
+    headline = "Addison"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -803,57 +971,169 @@ def addison():
         c.execute(query)
         results = c.fetchall()
         info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("addison.html", scroll_position=scroll_position, headline=headline, info=info, results=results)
+    return render_template("addison.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
 
-@app.route("/location", methods=["GET", "POST"])
+@app.route("/location-location", methods=["GET", "POST"])
 def location():
-    headline = "Locations!!"
+    headline = "Locations"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            locations = c.execute('SELECT location_id FROM locations ORDER BY location_id ASC').fetchall()
+            locations = c.execute('SELECT * FROM locations WHERE location_type = "Location" ORDER BY location_name ASC').fetchall()
             for location in locations:
                 location_id = location[0]
                 location_done = request.form.get(f'done_location_{location_id}')
                 if location_done is None:
-                    print("location_done is none:", location_done)
-                    location_done = c.execute('SELECT location_done FROM locations WHERE location_id = ?', (location_id,)).fetchone()[0]
+                    location_done = 0
                 else:
-                    print("location_done is not none:", location_done)
-                print("location_id:", location_id)
-                print("location_done:", location_done)
+                    location_done = 1
+                    print("Location Done ->", location_id, ", ", location_done)
+                # print("location_id:", location_id)
+                # print("location_done:", location_done)
                 c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (location_done, location_id))
-                print("Executed update statement for location_id:", location_id)
+                # print("Executed update statement for location_id:", location_id)
             conn.commit()
 
     with closing(conn.cursor()) as c:
-        query = '''SELECT * FROM locations ORDER BY location_id ASC'''
+        query = '''SELECT * FROM locations WHERE location_type = 'Location' ORDER BY location_name ASC'''
         c.execute(query)
-        results = c.fetchall()
-        locations = []
-        chasms = []
-        wells = []
-        depths_mines = []
-        great_fairy_fountains = []
-        for result in results:
-            if result[5] == "Location":
-                locations.append(result)
-            if result[5] == "Chasm":
-                chasms.append(result)
-            if result[5] == "Well":
-                wells.append(result)
-            if result[5] == "Depths Mine":
-                depths_mines.append(result)
-            if result[5] == "Great Fairy Fountain":
-                great_fairy_fountains.append(result)
-    return render_template("location.html", scroll_position=scroll_position, headline=headline, results=results, locations=locations, chasms=chasms, wells=wells, depths_mines=depths_mines, great_fairy_fountains=great_fairy_fountains)
+        locations = c.fetchall()
+    return render_template("location-location.html", scroll_position=scroll_position, headline=headline, percentages=percentages, locations=locations)
+
+@app.route("/location-chasm", methods=["GET", "POST"])
+def chasm():
+    headline = "Chasms"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            chasms = c.execute('SELECT * FROM locations WHERE location_type = "Chasm" ORDER BY location_name ASC').fetchall()
+            for chasm in chasms:
+                chasm_id = chasm[0]
+                chasm_done = request.form.get(f'done_chasm_{chasm_id}')
+                if chasm_done is None:
+                    chasm_done = 0
+                else:
+                    chasm_done = 1
+                    print("chasm Done ->", chasm_id, ", ", chasm_done)
+                # print("chasm_id:", chasm_id)
+                # print("chasm_done:", chasm_done)
+                c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (chasm_done, chasm_id))
+                # print("Executed update statement for chasm_id:", chasm_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM locations WHERE location_type = 'Chasm' ORDER BY location_name ASC'''
+        c.execute(query)
+        chasms = c.fetchall()
+        print("CHASMS ->", chasms)
+    return render_template("location-chasm.html", scroll_position=scroll_position, headline=headline, percentages=percentages, chasms=chasms)
+
+
+@app.route("/location-well", methods=["GET", "POST"])
+def well():
+    headline = "Wells"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            wells = c.execute('SELECT * FROM locations WHERE location_type = "Well" ORDER BY location_name ASC').fetchall()
+            for well in wells:
+                well_id = well[0]
+                well_done = request.form.get(f'done_well_{well_id}')
+                if well_done is None:
+                    well_done = 0
+                else:
+                    well_done = 1
+                    print("well Done ->", well_id, ", ", well_done)
+                # print("well_id:", well_id)
+                # print("well_done:", well_done)
+                c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (well_done, well_id))
+                # print("Executed update statement for well_id:", well_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM locations WHERE location_type = 'Well' ORDER BY location_name ASC'''
+        c.execute(query)
+        wells = c.fetchall()
+    return render_template("location-well.html", scroll_position=scroll_position, headline=headline, percentages=percentages, wells=wells)
+
+@app.route("/location-depths_mine", methods=["GET", "POST"])
+def depths_mine():
+    headline = "Depths Mines"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            depths_mines = c.execute('SELECT * FROM locations WHERE location_type = "Depths Mine" ORDER BY location_name ASC').fetchall()
+            for depths_mine in depths_mines:
+                depths_mine_id = depths_mine[0]
+                depths_mine_done = request.form.get(f'done_depths_mine_{depths_mine_id}')
+                if depths_mine_done is None:
+                    depths_mine_done = 0
+                else:
+                    depths_mine_done = 1
+                    print("depths_mine Done ->", depths_mine_id, ", ", depths_mine_done)
+                # print("depths_mine_id:", depths_mine_id)
+                # print("depths_mine_done:", depths_mine_done)
+                c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (depths_mine_done, depths_mine_id))
+                # print("Executed update statement for depths_mine_id:", depths_mine_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM locations WHERE location_type = 'Depths Mine' ORDER BY location_name ASC'''
+        c.execute(query)
+        depths_mines = c.fetchall()
+    return render_template("location-depths_mine.html", scroll_position=scroll_position, headline=headline, percentages=percentages, depths_mines=depths_mines)
+
+@app.route("/location-great_fairy_fountain", methods=["GET", "POST"])
+def great_fairy_fountain():
+    headline = "Great Fairy Fountains"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            great_fairy_fountains = c.execute('SELECT * FROM locations WHERE location_type = "Great Fairy Fountain" ORDER BY location_name ASC').fetchall()
+            for great_fairy_fountain in great_fairy_fountains:
+                great_fairy_fountain_id = great_fairy_fountain[0]
+                great_fairy_fountain_done = request.form.get(f'done_great_fairy_fountain_{great_fairy_fountain_id}')
+                if great_fairy_fountain_done is None:
+                    great_fairy_fountain_done = 0
+                else:
+                    great_fairy_fountain_done = 1
+                    print("great_fairy_fountain Done ->", great_fairy_fountain_id, ", ", great_fairy_fountain_done)
+                # print("great_fairy_fountain_id:", great_fairy_fountain_id)
+                # print("great_fairy_fountain_done:", great_fairy_fountain_done)
+                c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (great_fairy_fountain_done, great_fairy_fountain_id))
+                # print("Executed update statement for great_fairy_fountain_id:", great_fairy_fountain_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM locations WHERE location_type = 'Great Fairy Fountain' ORDER BY location_name ASC'''
+        c.execute(query)
+        great_fairy_fountains = c.fetchall()
+    return render_template("location-great_fairy_fountain.html", scroll_position=scroll_position, headline=headline, percentages=percentages, great_fairy_fountains=great_fairy_fountains)
 
 @app.route("/tower", methods=["GET", "POST"])
 def tower():
-    headline = "Towers!!"
+    headline = "Towers"
+    percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
@@ -878,7 +1158,7 @@ def tower():
         query = '''SELECT * FROM towers ORDER BY tower_name ASC'''
         c.execute(query)
         towers = c.fetchall()
-    return render_template("tower.html", scroll_position=scroll_position, headline=headline, towers=towers)
+    return render_template("tower.html", scroll_position=scroll_position, headline=headline, percentages=percentages, towers=towers)
 
 
 if __name__ == "__main__":
