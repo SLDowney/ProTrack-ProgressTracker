@@ -19,7 +19,7 @@
                         <label><input type="radio" name="chest_type" value="Top of the Pillar">Top of the Pillar</label><br>
                         <label><input type="radio" name="chest_type" value="Underwater Chest">Underwater Chest</label><br>
                         <label><input type="radio" name="chest_type" value="Between Rocks">Between Rocks</label><br>
-                        <label><input type="radio" name="chest_type" value="Other/Regular">Other/Regular</label><br>
+                        <label><input type="radio" name="chest_type" value="Other/Regular" checked>Other/Regular</label><br>
                     </div>
                 </div>
             </div>
@@ -38,6 +38,11 @@
             <div id="addchest">
                 <label id="chest_labels" class="labels">Region:</label>
                 <input type="text" id="chest_region" name="chest_region" placeholder="Enter Region" required>
+            </div>
+            <div class="col" id="addchest">
+                <label><input type="radio" name="chest_map" value="Depths">Depths</label><br>
+                <label><input type="radio" name="chest_map" value="Surface" checked>Surface</label><br>
+                <label><input type="radio" name="chest_map" value="Sky">Sky</label><br>
             </div>
             <div id="addchest">
                 <label id="chest_labels" class="labels">Side Quest:</label>
@@ -62,6 +67,7 @@
                     <th>Location</th>
                     <th>Region</th>
                     <th>Side Quest</th>
+                    <th>Map</th>
                     <th>Update</th>
                 </tr>
             </thead>
@@ -102,6 +108,7 @@
                         {% else %}
                         {% endif %}
                     </td>
+                    <td>{{chest[8]}}</td>
                     <td>
                         <button type="submit" id="chest_list_submit">Update</button>
                     </td>

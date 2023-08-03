@@ -7,8 +7,8 @@
         <input type="submit" id="towerSubmit" value="Update">
         <div class="item-container tower_container">
             {% for tower in towers %}
-                <div class="tower-col-7">
-                    <table class="tower_table">
+                <div class="col-md-8">
+                    <table class="comp_table">
                         <tr>
                             <th id="tower_th_1">Info</th>
                             <th id="tower_th_2">tower Info</th>
@@ -25,6 +25,14 @@
                             <td>Coordinates</td>
                             <td>{{tower[4]}}</td>
                         </tr>
+                        {% if tower[1] != 0 %}
+                        <tr>
+                            <td colspan="2">
+                                {{tower[5]}}
+                            </td>
+                        </tr>
+                        {% else %}
+                        {% endif %}
                         <tr>
                             <td colspan="2" class="tower_checkbox">
                                 {% if tower[1] == 0 %}

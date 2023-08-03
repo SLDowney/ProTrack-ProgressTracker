@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+{% for result in results %}
+    <div class="row">
+        <table  style="width: 100%;">
+            <colgroup>
+                <col span="1" style="width: 30%;">
+                <col span="2" style="width: 70%;">
+             </colgroup>
+            <tbody>
+            <tr>
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{result[2]}}</td>
+            </tr>
+            <tr>
+                <td>Region</td>
+                <td>{{result[3]}}</td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td>{{result[4]}}</td>
+            </tr>
+            <tr>
+                <td>Rewards</td>
+                <td>{{result[5]}}</td>
+            </tr>
+            <tr>
+                <td>Found</td>
+                <td>
+                    <form id = "form" action="{{ url_for('adventures') }}" method="POST" enctype="multipart/form-data">
+                        <label>
+                            <input type="radio" id="undone_{{ result[0] }}" name="done_adventure_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="adventure_radio_labels" for="undone_{{ result[0] }}">Unfound</label>
+                            <input type="radio" id="started_{{ result[0] }}"name="done_adventure_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="adventure_radio_labels" for="started_{{ result[0] }}">Started</label>
+                            <input type="radio" id="done_{{ result[0] }}"name="done_adventure_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="adventure_radio_labels" for="done_{{ result[0] }}">Done</label>
+                        </label>
+                        <input type="submit" id="AdventureSubmit" value="Update">
+                    </form>
+                    </td>
+            </tr>
+        </tbody>
+            </table>
+        <!-- <p>Name: {{result["char_name"]}}</p>
+        <p>Type: {{result["char_type"]}}</p>
+        <p>Health: {{result["char_health"]}}</p>
+        <p>Attack: {{result["char_attack"]}}</p>
+        <p>Defense: {{result["char_Defense"]}}</p>
+        <p>Magic: {{result["char_magic"]}}</p> -->
+        <br>
+    </div>
+
+{% endfor %}
+    
+{% endblock %}

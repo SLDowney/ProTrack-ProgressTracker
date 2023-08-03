@@ -4,7 +4,6 @@
 
 <div class="content-container">
     <form action="{{ url_for('compendium') }}" method="POST" enctype="multipart/form-data">
-        <input type="submit" id="compSubmit" value="Update">
         <h1>Creatures</h1>
         <div class="item-container">
             {% for creature in creatures %}
@@ -29,6 +28,7 @@
                                     <input type="checkbox" class="comp_checkbox" id="done_{{ creature[0] }}" name="done_comp_{{ creature[0] }}" value="1" checked>
                                 {% else %}
                                 {% endif %}
+                                <input type="submit" id="compSubmit" value="Update">
                             </td>
                         </tr>
                     </table>                    
@@ -41,8 +41,7 @@
                 <div class="comp-col-7">
                 <table class="comp_table">
                     <tr>
-                        <th>Info</th>
-                        <th>Compendium Info</th>
+                        <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
@@ -51,21 +50,16 @@
                     <tr>
                         <td>Item</td>
                         <td>{{monster[1]}}</td>
-                    </tr>
+                    </tr>                    
                     <tr>
-                        <td>Type</td>
-                        <td>{{monster[2]}}</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Status</td>
-                        <td>
+                        <td colspan="2" class="comp_checkbox">
                             {% if monster[3] == 0 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ monster[0] }}" name="done_comp_{{ monster[0] }}" value=0 unchecked>
                             {% elif monster[3] == 1 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ monster[0] }}" name="done_comp_{{ monster[0] }}" value=1 checked>
                             {% else %}
                             {% endif %}
+                            <input type="submit" id="compSubmit" value="Update">
                         </td>
                     </tr>
                 </table>
@@ -78,8 +72,7 @@
                 <div class="comp-col-7">
                     <table class="comp_table">
                     <tr>
-                        <th>Info</th>
-                        <th>Compendium Info</th>
+                        <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
@@ -88,21 +81,16 @@
                     <tr>
                         <td>Item</td>
                         <td>{{material[1]}}</td>
-                    </tr>
+                    </tr>                    
                     <tr>
-                        <td>Type</td>
-                        <td>{{material[2]}}</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Status</td>
-                        <td>
+                        <td colspan="2" class="comp_checkbox">
                             {% if material[3] == 0 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ material[0] }}" name="done_comp_{{ material[0] }}" value=0 unchecked>
                             {% elif material[3] == 1 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ material[0] }}" name="done_comp_{{ material[0] }}" value=1 checked>
                             {% else %}
                             {% endif %}
+                            <input type="submit" id="compSubmit" value="Update">
                         </td>
                     </tr>
                 </table>
@@ -116,8 +104,7 @@
                 <div class="comp-col-7">
                     <table class="comp_table">
                     <tr>
-                        <th>Info</th>
-                        <th>Compendium Info</th>
+                        <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
@@ -128,19 +115,14 @@
                         <td>{{equip[1]}}</td>
                     </tr>
                     <tr>
-                        <td>Type</td>
-                        <td>{{equip[2]}}</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Status</td>
-                        <td>
+                        <td colspan="2" class="comp_checkbox">
                             {% if equip[3] == 0 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ equip[0] }}" name="done_comp_{{ equip[0] }}" value=0 unchecked>
                             {% elif equip[3] == 1 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ equip[0] }}" name="done_comp_{{ equip[0] }}" value=1 checked>
                             {% else %}
                             {% endif %}
+                            <input type="submit" id="compSubmit" value="Update">
                         </td>
                     </tr>
                 </table>
@@ -153,8 +135,7 @@
                 <div class="comp-col-7">
                     <table class="comp_table">
                     <tr>
-                        <th>Info</th>
-                        <th>Compendium Info</th>
+                        <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
@@ -165,19 +146,14 @@
                         <td>{{treasure[1]}}</td>
                     </tr>
                     <tr>
-                        <td>Type</td>
-                        <td>{{treasure[2]}}</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Status</td>
-                        <td>
+                        <td colspan="2" class="comp_checkbox">
                             {% if treasure[3] == 0 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ treasure[0] }}" name="done_comp_{{ treasure[0] }}" value=0 unchecked>
                             {% elif treasure[3] == 1 %}
                                 <input type="checkbox" class="comp_checkbox" id="done_{{ treasure[0] }}" name="done_comp_{{ treasure[0] }}" value=1 checked>
                             {% else %}
                             {% endif %}
+                            <input type="submit" id="compSubmit" value="Update">
                         </td>
                     </tr>
                 </table>

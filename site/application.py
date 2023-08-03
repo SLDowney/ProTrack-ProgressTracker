@@ -55,7 +55,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM compendium")
         total_compendium = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM koroks")
+        c.execute("SELECT COUNT(*) FROM allkoroks")
         total_koroks = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM lightroots")
@@ -105,10 +105,10 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM caves WHERE cave_done = 2")
         completed_caves = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM compendium WHERE comp_found = 1")
+        c.execute("SELECT COUNT(*) FROM compendium WHERE comp_done = 1")
         completed_compendium = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM koroks WHERE korok_found = 1")
+        c.execute("SELECT COUNT(*) FROM allkoroks WHERE korok_done = 1")
         completed_koroks = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM lightroots WHERE root_done = 1")
@@ -299,8 +299,11 @@ def add_chest():
         chest_item = request.form['chest_item']
         chest_location = request.form['chest_location']
         chest_sideq = request.form['chest_sideq']
+        if chest_sideq == None:
+            chest_sideq = "X"
         chest_region = request.form['chest_region']
         chest_done = request.form.get(f'chest_done')
+        chest_map = request.form['chest_map']
         print("Chest_Done:", chest_done) 
         if chest_done == None:
             chest_done = "0"
@@ -308,9 +311,9 @@ def add_chest():
             chest_done = "1"       
 
         with closing(conn.cursor()) as c:
-            query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done)
-                        VALUES(?, ?, ?, ?, ?, ?, ?)'''
-            c.execute(query, (formatted_chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done))
+            query = '''INSERT INTO chests (chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done, chest_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+            c.execute(query, (formatted_chest_coord, chest_type, chest_item, chest_location, chest_region, chest_sideq, chest_done, chest_map))
             conn.commit()
             query = '''SELECT * FROM chests ORDER BY chest_id DESC LIMIT 1'''
             c.execute(query)
@@ -546,23 +549,24 @@ def koroks():
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            koroks = c.execute('SELECT * FROM koroks').fetchall()
+            koroks = c.execute('SELECT * FROM allkoroks').fetchall()
             for korok in koroks:
                 korok_id = korok[0]
-                korok_found = request.form.get(f'korok_found_{korok_id}')
-                if korok_found is None:
-                    korok_found = '0'
+                korok_done = request.form.get(f'korok_done_{korok_id}')
+                print("Korok_done:", korok_done)
+                if korok_done is None:
+                    korok_done = '0'
                 else:
-                    korok_found = '1'
+                    korok_done = '1'
                 print("korok_id:", korok_id)
-                print("korok_found:", korok_found)
-                c.execute('UPDATE koroks SET korok_found = ? WHERE korok_id = ?', (korok_found, korok_id))
+                print("korok_done:", korok_done)
+                c.execute('UPDATE allkoroks SET korok_done = ? WHERE korok_id = ?', (korok_done, korok_id))
                 print("Executed update statement for korok ID:", korok_id)
             conn.commit()
 
     # Retrieve all koroks from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM koroks')
+        c.execute('SELECT * FROM allkoroks')
         koroks = c.fetchall()
         print("result[1]:", koroks[0][1])
         print("korok id:", koroks[0][0])
@@ -572,11 +576,17 @@ def koroks():
 @app.route('/update-korok', methods=['POST'])
 def update_korok():
     korok_id = request.json.get('korok_id')
-    korok_found = request.json.get('korok_found')
+    korok_done = request.json.get('korok_done_{{ korok_id }}')
+    if korok_done is None:
+        korok_done = '0'
+    else:
+        korok_done = '1'
+    print("Korok_done:", korok_done)
+
 
     # Update the korok in the database with the new found status
     with closing(conn.cursor()) as c:
-        c.execute('UPDATE koroks SET korok_found = ? WHERE korok_id = ?', (korok_found, korok_id))
+        c.execute('UPDATE allkoroks SET korok_done = ? WHERE korok_id = ?', (korok_done, korok_id))
         conn.commit()
 
     return jsonify(success=True)
@@ -585,23 +595,23 @@ def update_korok():
 def add_korok():
     location = request.form.get('location')
     kType = request.form.get('kType')
-    coord_start = request.form.get('coord_start')
+    korok_coord = request.form.get('korok_coord')
     # Remove spaces and commas from the input
-    coord_start = coord_start.replace(' ', '').replace(',', '')
+    korok_coord = korok_coord.replace(' ', '').replace(',', '')
 
     # Format the chest_coord with commas while maintaining negative signs
-    formatted_coord_start = ''
+    formatted_korok_coord = ''
     i = 0
-    while i < len(coord_start):
-        section = coord_start[i:i+4]
+    while i < len(korok_coord):
+        section = korok_coord[i:i+4]
         if section.startswith('-'):
-            section = coord_start[i:i+5]
-            formatted_coord_start += section + ', '
+            section = korok_coord[i:i+5]
+            formatted_korok_coord += section + ', '
             i += 5
         else:
-            formatted_coord_start += section[:4] + ', '
+            formatted_korok_coord += section[:4] + ', '
             i += 4
-    formatted_coord_start = formatted_coord_start.rstrip(', ')
+    formatted_korok_coord = formatted_korok_coord.rstrip(', ')
     coord_end = request.form.get('coord_end')
     # Remove spaces and commas from the input
     coord_end = coord_end.replace(' ', '').replace(',', '')
@@ -620,12 +630,12 @@ def add_korok():
             i += 4
     formatted_coord_end = formatted_coord_end.rstrip(', ')
     description = request.form.get('description')
-    korok_found = request.form.get('korok_found')
+    korok_done = request.form.get('korok_done')
 
     # Insert the new korok into the database
     with closing(conn.cursor()) as c:
-        c.execute('INSERT INTO koroks (korok_found, korok_location, korok_type, korok_coord_start, korok_coord_end, korok_desc) VALUES (?, ?, ?, ?, ?, ?)',
-                  (korok_found, location, kType, formatted_coord_start, formatted_coord_end, description))
+        c.execute('INSERT INTO allkoroks (korok_done, korok_type, korok_coord) VALUES (?, ?, ?)',
+                  (korok_done, kType, formatted_korok_coord))
         conn.commit()
 
     # Redirect back to the koroks page after adding the korok
@@ -758,10 +768,9 @@ def compendium():
                 comp_id = comp[0]
                 comp_done = request.form.get(f'done_comp_{comp_id}')
                 if comp_done is None:
-                    print("comp_done is none:", comp_done)
-                    comp_done = c.execute('SELECT comp_done FROM compendium WHERE comp_id = ?', (comp_id,)).fetchone()[0]
+                    comp_done = 0
                 else:
-                    print("comp_done is not none:", comp_done)
+                    comp_done = 1
                 print("comp_id:", comp_id)
                 print("comp_done:", comp_done)
                 c.execute('UPDATE compendium SET comp_done = ? WHERE comp_id = ?', (comp_done, comp_id))
@@ -908,6 +917,20 @@ def sidequests():
         for result in results:
             info.append(result)
     return render_template("sidequests.html", headline=headline, percentages=percentages, info=info, results = results)
+
+@app.route("/adventures", methods=['GET', 'POST'])
+def adventures():
+    headline = "Side Adventures"
+    percentages = get_percentages()
+    with closing(conn.cursor()) as c:
+        query = '''Select * From adventure ORDER BY adventure_name ASC'''
+        c.execute(query)
+        results = c.fetchall()
+        info = []
+        for result in results:
+            info.append(result)
+    return render_template("adventures.html", headline=headline, percentages=percentages, info=info, results = results)
+
 
 @app.route("/mainqu", methods=["GET", "POST"])
 def mainqu():

@@ -12,6 +12,13 @@
     flex-basis: 10px; /* Adjust this width as needed */
     padding: 20px;
     position:fixed;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.nav-item {
+    line-height: 1;
+    align-self: center;
 }
 
 /* Style the content column */
@@ -25,6 +32,10 @@
     /* float: right;
     flex-direction: column;
     align-items: center; */
+}
+
+.col-md-8.content-container {
+    width:100%;
 }
 
 .percentage_table {
@@ -385,6 +396,12 @@ display checkmark when checked
     padding: 0;
 }
 
+#compSubmit {
+    width: 30%;
+    height: 40%;
+    margin: 0;
+}
+
 .form-check-label.BESTDRAGON {
     margin: 0 0 20px 20px;
 }
@@ -651,6 +668,10 @@ span {
     .navbar-nav .nav-link {
       color: #ffffff; /* Your custom link color */
     }
+
+    #navbarNav {
+        margin-left: 30%;
+    }
   
     /* Update the width for the items to have four columns in this media query */
     .item-container .comp-col-7 {
@@ -658,11 +679,18 @@ span {
       margin: 0px;
       box-sizing: border-box;
     }
+
+    .item-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: stretch;
+    }
   
     .comp_table {
       padding: 0;
       margin: 2%;
-      width: 100%;
+      width: 200px;
       height: 25vh; /* Adjust this value to control the vertical centering */
     }
   }

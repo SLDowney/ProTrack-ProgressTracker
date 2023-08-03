@@ -1,0 +1,901 @@
+korok_id,korok_done,korok_kid,korok_type,korok_coord,korok_name
+,,RP38,Korok Friends,"-4263.1, 95, -2176.5",KorokCarryProgressKeeper
+,,GH10,Korok Friends,"-4540.5, 633.5, 1344",KorokCarryProgressKeeper
+,,GH47,Korok Friends,"-4138.99, 151.36, 2259.98",KorokCarryProgressKeeper
+,,GC45,Korok Friends,"-4610.9, 143.5, 3198.5",KorokCarryProgressKeeper
+,,RP13,Korok Friends,"-3670.76, 429, -3383.01",KorokCarryProgressKeeper
+,,LB30,Korok Friends,"-3614.14, 395.17, -983",KorokCarryProgressKeeper
+,,GH03,Korok Friends,"-3580.6, 176.5, -12.5",KorokCarryProgressKeeper
+,,GH12,Korok Friends,"-3199.49, 584.89, 1169.53",KorokCarryProgressKeeper
+,,LB54,Korok Friends,"-2962, 249.5, -84.5",KorokCarryProgressKeeper
+,,GC22,Korok Friends,"-2982.4, 131, 2327.5",KorokCarryProgressKeeper
+,,GC35,Korok Friends,"-3344.99, 146.59, 3058.17",KorokCarryProgressKeeper
+,,GC42,Korok Friends,"-3818.56, 157.54, 3126.49",KorokCarryProgressKeeper
+,,PS13,Korok Friends,"-2339.82, 509.5, -2955.47",KorokCarryProgressKeeper
+,,RP06,Korok Friends,"-2890.94, 352.4, -3491.44",KorokCarryProgressKeeper
+,,RP26,Korok Friends,"-2834.8, 687.5, -2841.93",KorokCarryProgressKeeper
+,,PS21,Korok Friends,"-2795.5, 459.72, -2304.9",KorokCarryProgressKeeper
+,,LB43,Korok Friends,"-2084.43, 209.5, -482.3",KorokCarryProgressKeeper
+,,LB53,Korok Friends,"-2871.88, 284.77, -494.62",KorokCarryProgressKeeper
+,,GC09,Korok Friends,"-2430.6, 340.19, 2119.28",KorokCarryProgressKeeper
+,,GC50,Korok Friends,"-2491.4, 131.75, 3348.47",KorokCarryProgressKeeper
+,,PS07,Korok Friends,"-1382.98, 361.5, -3632.45",KorokCarryProgressKeeper
+,,PS14,Korok Friends,"-1541.8, 344, -2555.93",KorokCarryProgressKeeper
+,,TR17,Korok Friends,"-1433.48, 299, -1478.95",KorokCarryProgressKeeper
+,,HF10,Korok Friends,"-1550.65, 133.5, 1000.09",KorokCarryProgressKeeper
+,,HF01,Korok Friends,"-1797.98, 225, 323.45",KorokCarryProgressKeeper
+,,HF38,Korok Friends,"-1356.41, 151.86, 1307.46",KorokCarryProgressKeeper
+,,GC19,Korok Friends,"-1615.44, 100.53, 2403.14",KorokCarryProgressKeeper
+,,GC05,Korok Friends,"-1971.86, 139.55, 2085.11",KorokCarryProgressKeeper
+,,GC21,Korok Friends,"-1019, 304.5, 2640.6",KorokCarryProgressKeeper
+,,HF68,Korok Friends,"-1126.81, 249.73, 1970.13",KorokCarryProgressKeeper
+,,TR09,Korok Friends,"-322.37, 205.52, -3161.93",KorokCarryProgressKeeper
+,,LB02,Korok Friends,"-546, 373.5, -2223",KorokCarryProgressKeeper
+,,LL05,Korok Friends,"-779.44, 122.85, -938.84",KorokCarryProgressKeeper
+,,HF22,Korok Friends,"-776.07, 123.5, 500.62",KorokCarryProgressKeeper
+,,HF43,Korok Friends,"-39.05, 128, 1112.52",KorokCarryProgressKeeper
+,,HF50,Korok Friends,"-452, 125.5, 1649.6",KorokCarryProgressKeeper
+,,HF58,Korok Friends,"-694.28, 172, 1576.46",KorokCarryProgressKeeper
+,,PF34,Korok Friends,"-188.5, 125, 2243.66",KorokCarryProgressKeeper
+,,PF62,Korok Friends,"-304.48, 130.27, 3292.94",KorokCarryProgressKeeper
+,,TR10,Korok Friends,"489, 280.85, -3057.5",KorokCarryProgressKeeper
+,,TR03,Korok Friends,"514.22, 288.5, -3396.6",KorokCarryProgressKeeper
+,,TR21,Korok Friends,"543.2, 122.48, -1098.43",KorokCarryProgressKeeper
+,,SS07,Korok Friends,"428, 132.5, -501",KorokCarryProgressKeeper
+,,PF03,Korok Friends,"630.03, 117.82, 961.98",KorokCarryProgressKeeper
+,,SS26,Korok Friends,"795, 116, 507.9",KorokCarryProgressKeeper
+,,PF14,Korok Friends,"293, 133.17, 1204.5",KorokCarryProgressKeeper
+,,PF12,Korok Friends,"47.48, 163.5, 1691.05",KorokCarryProgressKeeper
+,,PF22,Korok Friends,"523, 161.5, 2199",KorokCarryProgressKeeper
+,,SS72,Korok Friends,"770.53, 241.5, 2138.18",KorokCarryProgressKeeper
+,,PF68,Korok Friends,"221.57, 175.5, 3533.8",KorokCarryProgressKeeper
+,,PF73,Korok Friends,"522, 156.26, 3464",KorokCarryProgressKeeper
+,,PF86,Korok Friends,"67.88, 111, 3759.13",KorokCarryProgressKeeper
+,,TR02,Korok Friends,"1025, 216.5, -3671",KorokCarryProgressKeeper
+,,EC06,Korok Friends,"1720.1, 535.93, -2610.61",KorokCarryProgressKeeper
+,,EC33,Korok Friends,"1982.51, 528.5, -2037.77",KorokCarryProgressKeeper
+,,EC15,Korok Friends,"1816.66, 507, -2645.48",KorokCarryProgressKeeper
+,,TR13,Korok Friends,"1250.28, 527.5, -3002.6",KorokCarryProgressKeeper
+,,EC36,Korok Friends,"1544.5, 388.5, -1808.51",KorokCarryProgressKeeper
+,,EC42,Korok Friends,"1534, 411.5, -1609",KorokCarryProgressKeeper
+,,SS13,Korok Friends,"1537.1, 115.5, -511.5",KorokCarryProgressKeeper
+,,SS30,Korok Friends,"960.98, 137.07, 201.78",KorokCarryProgressKeeper
+,,SS16,Korok Friends,"1502.18, 119.5, 334.47",KorokCarryProgressKeeper
+,,SS63,Korok Friends,"1169.4, 115.5, 1883",KorokCarryProgressKeeper
+,,SS60,Korok Friends,"1767.23, 120.76, 1864.98",KorokCarryProgressKeeper
+,,PF67,Korok Friends,"1611.22, 166.5, 3490.6",KorokCarryProgressKeeper
+,,PF82,Korok Friends,"1397.62, 107.61, 3642.27",KorokCarryProgressKeeper
+,,EC10,Korok Friends,"2176.44, 628.5, -2783",KorokCarryProgressKeeper
+,,EC54,Korok Friends,"2375.05, 236.68, -1403.28",KorokCarryProgressKeeper
+,,UZ13,Korok Friends,"2640.73, 263.38, -1111.53",KorokCarryProgressKeeper
+,,UZ50,Korok Friends,"2808.93, 252, -180.7",KorokCarryProgressKeeper
+,,UZ18,Korok Friends,"2542.26, 233.35, -641.99",KorokCarryProgressKeeper
+,,UZ44,Korok Friends,"2242.82, 120, -243.97",KorokCarryProgressKeeper
+,,SS28,Korok Friends,"2691.3, 217.05, 542.07",KorokCarryProgressKeeper
+,,SS27,Korok Friends,"1872.51, 344.07, 813.88",KorokCarryProgressKeeper
+,,ML19,Korok Friends,"2478.43, 116.16, 1740.21",KorokCarryProgressKeeper
+,,ML24,Korok Friends,"2644.97, 233, 2120.32",KorokCarryProgressKeeper
+,,RW24,Korok Friends,"2458.03, 325.5, 2911.18",KorokCarryProgressKeeper
+,,RW41,Korok Friends,"2245.49, 135, 3469.26",KorokCarryProgressKeeper
+,,RW42,Korok Friends,"2828.52, 106.5, 3886.45",KorokCarryProgressKeeper
+,,UM09,Korok Friends,"3965.74, 284.5, -3097.01",KorokCarryProgressKeeper
+,,EC03,Korok Friends,"3349.6, 327, -3664.5",KorokCarryProgressKeeper
+,,UM25,Korok Friends,"3747.84, 199.5, -2307.5",KorokCarryProgressKeeper
+,,UM26,Korok Friends,"3088.6, 302, -1757.78",KorokCarryProgressKeeper
+,,UZ22,Korok Friends,"3778.4, 636.5, -447",KorokCarryProgressKeeper
+,,UZ37,Korok Friends,"3531.7, 317, 65.07",KorokCarryProgressKeeper
+,,UZ73,Korok Friends,"3655.03, 109, 607.32",KorokCarryProgressKeeper
+,,UZ71,Korok Friends,"4001.55, 281.5, 184.31",KorokCarryProgressKeeper
+,,ML08,Korok Friends,"3498.97, 268.21, 1454.68",KorokCarryProgressKeeper
+,,ML42,Korok Friends,"3729.1, 307, 2159",KorokCarryProgressKeeper
+,,ML39,Korok Friends,"3248, 236.5, 2283",KorokCarryProgressKeeper
+,,ML26,Korok Friends,"2859.77, 146, 1910.28",KorokCarryProgressKeeper
+,,RW40,Korok Friends,"3544.68, 106.16, 3456.24",KorokCarryProgressKeeper
+,,UM07,Korok Friends,"4282, 277.5, -3270.5",KorokCarryProgressKeeper
+,,UM21,Korok Friends,"4202.73, 233.18, -2739.48",KorokCarryProgressKeeper
+,,UM17,Korok Friends,"4353.2, 184.06, -2537.93",KorokCarryProgressKeeper
+,,UM29,Korok Friends,"4290.57, 258.5, -1610.8",KorokCarryProgressKeeper
+,,UZ12,Korok Friends,"4054.92, 381.75, -947.96",KorokCarryProgressKeeper
+,,RW36,Korok Friends,"3688.03, 350.5, 3314.68",KorokCarryProgressKeeper
+,,GSI04,Korok Friends,"29.3, 1521.26, 1254.91",KorokCarryProgressKeeper
+,,GSI17,Korok Friends,"475.46, 1548.39, 1698.93",KorokCarryProgressKeeper
+,,RP08,Rock Lift,"-4004.7, 630.48, -3622.87",HiddenKorokGround
+,,RP05,Stationary Balloon,"-3975.35, 342.77, -3713.95",HiddenKorokFly
+,,RP04,Stationary Balloon,"-3973.68, 333.28, -3734.39",HiddenKorokFly
+,,RP21,Goal Ring (Race),"-4418.91, 477.48, -3181.17",HiddenKorokFly
+,,RP12,Puzzle Blocks,"-4509.21, 371, -3460.85",HiddenKorokFly
+,,RP15,Provide Shelter,"-4190.88, 348.13, -3373.56",HiddenKorokGround
+,,RP10,Catch the Seed,"-4272.71, 498.67, -3499",HiddenKorokFly
+,,RP07,Rock Lift,"-4430.51, 412.55, -3682.64",HiddenKorokGround
+,,RP23,Stationary Lights,"-4247.32, 301.12, -3125.4",HiddenKorokFly
+,,RP28,Pinwheel Balloons,"-4635.29, 348.94, -2819.37",HiddenKorokFly
+,,RP50,Flower Trail,"-4124.03, 303.5, -1935.27",HiddenKorokGround
+,,RP34,Rock Pattern,"-4066.93, 124.84, -2505.37",HiddenKorokGround
+,,RP42,Provide Shelter,"-4254.2, 123.63, -2145.75",HiddenKorokGround
+,,RP31,Rock Lift,"-3849.86, 135.37, -2737.93",HiddenKorokGround
+,,RP33,Pull the Plug,"-4332.4, 443.44, -2602.31",HiddenKorokFly
+,,RP45,Puzzle Blocks,"-4105.97, 295.75, -2048.25",HiddenKorokGround
+,,RP59,Rock Lift,"-4169.55, 215.86, -1695.96",HiddenKorokGround
+,,RP49,Stationary Lights,"-4480.84, 270.56, -1945.47",HiddenKorokFly
+,,RP61,Rock Pattern,"-4012.83, 269.54, -1636.97",HiddenKorokGround
+,,RP57,Flower Trail,"-4225.13, 232.21, -1736.76",HiddenKorokFly
+,,LB28,Offering Plate,"-4059.4, 211.85, -773.91",HiddenKorokFly
+,,GH13,Stationary Balloon,"-4389, 671.5, 715.25",HiddenKorokFly
+,,GH09,Rock Lift,"-4376.99, 557.19, 524.72",HiddenKorokGround
+,,GH06,Boulder Stand,"-4420.36, 628.02, 351.88",HiddenKorokFly
+,,GH49,Rock Lift,"-4148.04, 208.44, 1931.77",HiddenKorokGround
+,,GH24,Rock Pattern,"-4322.9, 628.63, 1090.38",HiddenKorokGround
+,,GH27,Stationary Lights,"-4691.99, 630.53, 1236.25",HiddenKorokFly
+,,GC04,Pinwheel Balloons,"-4687.36, 166.58, 1962.27",HiddenKorokFly
+,,GH44,Hanging Acorn,"-4363.35, 201.83, 1845.61",HiddenKorokFly
+,,GH28,Puzzle Blocks,"-4911.09, 562.45, 1242.71",HiddenKorokGround
+,,GC14,Flower Trail,"-4425.7, 168.63, 2262.22",HiddenKorokFly
+,,GC07,Land on Target,"-4438.02, 155.27, 2113.6",HiddenKorokFly
+,,GC24,Moving Lights,"-4132.1, 159.29, 2592.86",HiddenKorokGround
+,,GH52,Puzzle Blocks,"-4393.84, 207, 2015.27",HiddenKorokFly
+,,GC17,Through the Roof,"-4591.88, 151.75, 2349.1",HiddenKorokFly
+,,GC10,Catch the Seed,"-4710.06, 208.16, 2161.87",HiddenKorokFly
+,,GC49,Rock Lift,"-4909.82, 74.59, 3777.52",HiddenKorokGround
+,,RP17,Flower Trail,"-3772.03, 447.56, -3344.37",HiddenKorokFly
+,,RP11,Pinwheel Balloons,"-3466.01, 588.49, -3475.86",HiddenKorokFly
+,,RP03,Land on Target,"-4176.05, 325.76, -3816.11",HiddenKorokFly
+,,RP14,Through the Roof,"-3839.74, 392.37, -3416.9",HiddenKorokFly
+,,RP09,Stationary Lights,"-3412.59, 542.23, -3506.42",HiddenKorokFly
+,,RP02,Goal Ring (Race),"-3507.85, 344.64, -3836.26",HiddenKorokFly
+,,RP22,Puzzle Blocks,"-3941, 432.5, -3161.5",HiddenKorokFly
+,,RP16,Rock Lift,"-4038.38, 370.99, -3364.97",HiddenKorokGround
+,,RP24,Provide Shelter,"-3793.65, 352.31, -3027.43",HiddenKorokGround
+,,RP20,Through the Roof,"-3001.99, 680.37, -3220.05",HiddenKorokFly
+,,RP01,Moving Lights,"-3764.88, 375.32, -3845.18",HiddenKorokGround
+,,RP18,Rock Lift,"-3576.41, 493.87, -3266.75",HiddenKorokGround
+,,RP43,Rock Lift,"-3087.09, 226.93, -2119.89",HiddenKorokGround
+,,RP36,Rock Pattern,"-3162.34, 480.27, -2465.93",HiddenKorokGround
+,,RP29,Rock Lift,"-3752.8, 242.81, -2797.88",HiddenKorokGround
+,,RP32,Stationary Lights,"-3158.28, 701.07, -2689.44",HiddenKorokFly
+,,RP27,Rock Pattern,"-3064.01, 535.44, -2855.69",HiddenKorokGround
+,,RP46,Rock Lift,"-3958.43, 313.89, -2035.99",HiddenKorokGround
+,,RP39,Puzzle Blocks,"-3048.5, 223.45, -2360",HiddenKorokFly
+,,RP37,Goal Ring (Race),"-3292.94, 511.75, -2442.47",HiddenKorokFly
+,,RP25,Rock Lift,"-3350.7, 621.29, -2992.55",HiddenKorokGround
+,,RP41,Stationary Lights,"-3565.22, 258.16, -2256.53",HiddenKorokFly
+,,RP40,Flower Trail,"-3792.6, 285.76, -2319.18",HiddenKorokFly
+,,RP35,Rock Lift,"-3677.33, 426.12, -2466.63",HiddenKorokGround
+,,LB11,Rock Lift,"-3284.53, 293.75, -1340.56",HiddenKorokGround
+,,RP47,Rock Lift,"-3944.54, 315.05, -1969.23",HiddenKorokGround
+,,LB13,Hanging Acorn,"-3102.67, 315.57, -1316.05",HiddenKorokFly
+,,RP56,Pinwheel Balloons,"-3549.15, 290.94, -1752.22",HiddenKorokFly
+,,RP51,Rock Lift,"-3613.7, 507.69, -1880.03",HiddenKorokGround
+,,RP53,Rock Lift,"-3634.49, 273.06, -1808.9",HiddenKorokGround
+,,LB12,Land on Target,"-3848.26, 377.5, -1326.62",HiddenKorokFly
+,,RP54,Through the Roof,"-4062.35, 261.99, -1793.69",HiddenKorokFly
+,,RP44,Through the Roof,"-3423.7, 277.73, -2066.99",HiddenKorokFly
+,,LB20,Rock Lift,"-3147.93, 262.43, -1107.06",HiddenKorokGround
+,,RP55,Puzzle Blocks,"-3877.08, 216.98, -1762.75",HiddenKorokGround
+,,LB14,Puzzle Blocks,"-3442, 232.5, -1313",HiddenKorokFly
+,,LB22,Through the Roof,"-3715.55, 303.47, -1039.37",HiddenKorokFly
+,,LB10,Flower Trail,"-3598.84, 249.43, -1537.68",HiddenKorokFly
+,,RP58,Rock Lift,"-3985.51, 285.22, -1708.93",HiddenKorokGround
+,,RP60,Rock Lift,"-3696.41, 208.61, -1685.38",HiddenKorokGround
+,,LB09,Pull the Plug,"-3137.13, 229.95, -1553.15",HiddenKorokFly
+,,RP52,Repair Roof,"-3779.22, 368.39, -1865.63",HiddenKorokFly
+,,LB39,Stationary Balloon,"-3225.77, 268.7, -578.91",HiddenKorokFly
+,,LB46,Flower Trail,"-3609.13, 403.3, -357.58",HiddenKorokFly
+,,LB40,Stationary Balloon,"-3546.75, 299.73, -577.95",HiddenKorokFly
+,,LB24,Stationary Lights,"-3981.5, 219.63, -931.24",HiddenKorokFly
+,,LB32,Land on Target,"-3976.49, 231.85, -731.85",HiddenKorokFly
+,,GH02,Through the Roof,"-3600.14, 15.32, -110.9",HiddenKorokFly
+,,LB36,Catch the Seed,"-3444.21, 358.22, -661.6",HiddenKorokFly
+,,LB31,Moving Lights,"-3541.97, 292.5, -752.01",HiddenKorokGround
+,,LB38,Rock Lift,"-3011.53, 237.62, -584.29",HiddenKorokGround
+,,LB45,Puzzle Blocks,"-3532, 348.45, -488",HiddenKorokFly
+,,GH01,Puzzle Blocks,"-3820.33, 160.67, -178.33",HiddenKorokFly
+,,LB48,Goal Ring (Race),"-3200.54, 36.58, -343.28",HiddenKorokFly
+,,LB33,Through the Roof,"-3434.75, 279.69, -708.36",HiddenKorokFly
+,,LB37,Rock Lift,"-3551.74, 317.35, -594.93",HiddenKorokGround
+,,LB50,Flower Trail,"-3117.67, 216.97, -234.71",HiddenKorokGround
+,,LB27,Boulder Stand,"-3817.64, 236.86, -833.91",HiddenKorokFly
+,,GH04,Repair Roof,"-3467.5, 172.09, 168.48",HiddenKorokGround
+,,GH15,Rock Lift,"-3812.11, 654.04, 789.98",HiddenKorokGround
+,,GH07,Goal Ring (Race),"-3653.91, 381.98, 392.4",HiddenKorokFly
+,,GH14,Rock Pattern,"-3565.44, 662.44, 732.94",HiddenKorokGround
+,,GH19,Stationary Lights,"-3493.22, 721.72, 985.15",HiddenKorokFly
+,,GH11,Moving Lights,"-3963.92, 763, 609.36",HiddenKorokGround
+,,LB60,Rock Lift,"-3132.57, 315.37, 113.16",HiddenKorokGround
+,,GH17,Rock Lift,"-3600.73, 612.08, 916.12",HiddenKorokGround
+,,GH16,Goal Ring (Race),"-3674.24, 740, 798.67",HiddenKorokFly
+,,GH05,Provide Shelter,"-3968.65, 552.35, 323.53",HiddenKorokGround
+,,GH18,Rock Lift,"-4002.98, 820.09, 969.15",HiddenKorokGround
+,,GH21,Pinwheel Balloons,"-3245.85, 677.74, 1030.86",HiddenKorokFly
+,,GH37,Rock Pattern,"-3561.32, 558.33, 1558.73",HiddenKorokGround
+,,GH32,Rock Lift,"-3249.08, 506.96, 1463.79",HiddenKorokGround
+,,GH33,Goal Ring (Race),"-3806.28, 423.22, 1474.82",HiddenKorokFly
+,,GH23,Through the Roof,"-3163.34, 544.35, 1037.72",HiddenKorokFly
+,,GH45,Pinwheel Balloons,"-3574.96, 466.13, 1851.98",HiddenKorokFly
+,,GH41,Puzzle Blocks,"-3899, 399.5, 1644",HiddenKorokGround
+,,GH35,Rock Lift,"-3011.19, 683.03, 1501.24",HiddenKorokGround
+,,GH40,Offering Plate,"-3921.17, 347.59, 1590.68",HiddenKorokGround
+,,GH43,Hanging Acorn,"-3193.17, 459.39, 1744.5",HiddenKorokFly
+,,GH22,Provide Shelter,"-3102.29, 702.3, 1032.66",HiddenKorokGround
+,,GH48,Catch the Seed,"-3845.22, 414.16, 1895.25",HiddenKorokFly
+,,GH50,Hanging Acorn,"-3581.69, 310.59, 1985.41",HiddenKorokFly
+,,GH20,Flower Trail,"-3737.1, 640.96, 996.46",HiddenKorokGround
+,,GH51,Pull the Plug,"-3584.46, 351.98, 1990.62",HiddenKorokFly
+,,GH26,Puzzle Blocks,"-3872.94, 602.4, 1176.8",HiddenKorokFly
+,,GH46,Puzzle Blocks,"-3208.06, 184.68, 1855.34",HiddenKorokFly
+,,GH29,Pull the Plug,"-3060.1, 605.96, 1286.33",HiddenKorokFly
+,,GH38,Boulder Stand,"-3666.25, 577.2, 1564.68",HiddenKorokFly
+,,GC31,Stationary Lights,"-3853.03, 166.5, 2863.75",HiddenKorokFly
+,,GC32,Goal Ring (Race),"-3934.83, 192.37, 2940.99",HiddenKorokFly
+,,GH55,Rock Pattern,"-3320.43, 181.53, 2274.87",HiddenKorokGround
+,,GC25,Stationary Lights,"-3267.87, 227.68, 2609.28",HiddenKorokFly
+,,GC20,Through the Roof,"-3757.2, 158.28, 2442.9",HiddenKorokFly
+,,GC29,Catch the Seed,"-3610.66, 178.97, 2843.93",HiddenKorokFly
+,,GC15,Rock Lift,"-3749.12, 183.57, 2287.38",HiddenKorokGround
+,,GC30,Through the Roof,"-3827.14, 131.81, 2859.7",HiddenKorokGround
+,,GH53,Moving Lights,"-3315.51, 155.1, 2164.49",HiddenKorokGround
+,,GC34,Flower Trail,"-3588.62, 158.14, 3029.56",HiddenKorokGround
+,,GC37,Land on Target,"-3430.75, 177.97, 3128.03",HiddenKorokFly
+,,RP19,Rock Pattern,"-2603.83, 493.75, -3236.2",HiddenKorokGround
+,,PS01,Rock Lift,"-1972.18, 419.4, -3796.18",HiddenKorokGround
+,,PS03,Pinwheel Balloons,"-2359.33, 382.48, -3678.18",HiddenKorokFly
+,,PS27,Provide Shelter,"-2207.08, 429.57, -2091.16",HiddenKorokFly
+,,PS23,Hanging Acorn,"-2739.09, 450.44, -2267.73",HiddenKorokFly
+,,PS25,Pinwheel Balloons,"-2384.71, 500.47, -2137.02",HiddenKorokFly
+,,PS10,Land on Target,"-1969.17, 459.29, -3113.43",HiddenKorokFly
+,,RP30,Puzzle Blocks,"-2477.18, 621.32, -2748.18",HiddenKorokFly
+,,PS29,Puzzle Blocks,"-2635.19, 450.11, -2055.72",HiddenKorokFly
+,,PS28,Hanging Acorn,"-2074.54, 395.47, -2077.93",HiddenKorokGround
+,,PS16,Rock Pattern,"-2077.61, 407.12, -2589.77",HiddenKorokGround
+,,PS22,Boulder Stand,"-2268.43, 436.57, -2283.72",HiddenKorokFly
+,,RP48,Rock Pattern,"-2800.71, 378.21, -1947.75",HiddenKorokGround
+,,LB21,Stationary Lights,"-2233.75, 216.41, -1070.48",HiddenKorokFly
+,,LB04,Acorn in a Hole,"-2298.03, 403.48, -1908.36",HiddenKorokFly
+,,LB07,Rock Lift,"-2221.22, 275.5, -1580.39",HiddenKorokGround
+,,LB06,Puzzle Blocks,"-2818.43, 91.5, -1598.72",HiddenKorokFly
+,,LB15,Stationary Lights,"-2024.54, 390.41, -1304.41",HiddenKorokFly
+,,LB19,Puzzle Blocks,"-2436.08, 271.55, -1138.84",HiddenKorokFly
+,,PS30,Hanging Acorn,"-2530.6, 409.06, -1854.96",HiddenKorokFly
+,,LB05,Stationary Lights,"-2687.92, 374.84, -1662.26",HiddenKorokFly
+,,LB16,Goal Ring (Race),"-2653.77, 312.25, -1283.25",HiddenKorokFly
+,,LB26,Dive,"-2677.24, 343.67, -892.03",HiddenKorokFly
+,,LB41,Flower Trail,"-2919.95, 302.06, -546.2",HiddenKorokFly
+,,LB44,Rock Lift,"-2436.48, 331.05, -511.67",HiddenKorokGround
+,,LB47,Stationary Lights,"-2202.22, 256, -355.66",HiddenKorokFly
+,,LB29,Moving Lights,"-2061.48, 205.87, -769.47",HiddenKorokGround
+,,LB34,Rock Pattern,"-2824.62, 350.29, -703.53",HiddenKorokGround
+,,LB49,Goal Ring (Race),"-2913.73, 310.02, -240.41",HiddenKorokFly
+,,LB23,Rock Lift,"-2341.68, 211.13, -939.24",HiddenKorokGround
+,,HF12,Rock Lift,"-2600.97, 318.65, 669.41",HiddenKorokGround
+,,HF16,Through the Roof,"-2220.66, 316.27, 693.38",HiddenKorokFly
+,,HF09,Flower Trail,"-2497.84, 311.03, 567.67",HiddenKorokGround
+,,HF18,Rock Lift,"-2200.36, 275.91, 798.61",HiddenKorokGround
+,,LB61,Puzzle Blocks,"-2640.39, 238.6, 322.58",HiddenKorokGround
+,,HF06,Rock Pattern,"-2714.94, 192.34, 496.7",HiddenKorokGround
+,,HF03,Rock Lift,"-2279.53, 503.77, 402.49",HiddenKorokGround
+,,GH08,Land on Target,"-2921.34, 120.85, 481.79",HiddenKorokFly
+,,HF08,Land on Target,"-2437.12, 311.42, 554.49",HiddenKorokFly
+,,HF17,Boulder Stand,"-2352.18, 316.91, 741.71",HiddenKorokFly
+,,GH31,Goal Ring (Race),"-2961.95, 550.34, 1400.13",HiddenKorokFly
+,,GC03,Hanging Acorn,"-2329.3, 244.83, 1825.36",HiddenKorokFly
+,,GC01,Rock Lift,"-2198.34, 167.21, 1679.96",HiddenKorokGround
+,,GH34,Rock Lift,"-2140.24, 385.37, 1485.63",HiddenKorokGround
+,,HF27,Through the Roof,"-2394.5, 233.09, 1033.99",HiddenKorokFly
+,,GH25,Stationary Lights,"-2867.95, 518.52, 1123.86",HiddenKorokFly
+,,GH30,Through the Roof,"-2672.13, 623.96, 1356.71",HiddenKorokFly
+,,HF30,Rock Lift,"-2340.49, 249.69, 1104.35",HiddenKorokGround
+,,GC02,Rock Lift,"-2244.08, 211.13, 1740.12",HiddenKorokGround
+,,GH36,Rock Pattern,"-2643.69, 687.9, 1532.39",HiddenKorokGround
+,,GH39,Provide Shelter,"-2505.9, 641.65, 1589.93",HiddenKorokGround
+,,GH42,Pull the Plug,"-2818.68, 579.73, 1652.12",HiddenKorokFly
+,,GC12,Stationary Lights,"-2620.21, 173.35, 2198.09",HiddenKorokFly
+,,GC11,Rock Lift,"-2264.59, 356.96, 2163.4",HiddenKorokGround
+,,GC23,Hanging Acorn,"-2011.91, 327.74, 2469.91",HiddenKorokGround
+,,GC16,Goal Ring (Race),"-2261.63, 398.02, 2341.1",HiddenKorokFly
+,,GH54,Flower Trail,"-2936.8, 314.38, 2214.41",HiddenKorokGround
+,,GC28,Goal Ring (Race),"-2820.52, 173.6, 2831.7",HiddenKorokFly
+,,GC18,Hanging Acorn,"-2712.97, 235.09, 2355.53",HiddenKorokFly
+,,GC06,Rock Lift,"-2486.11, 227.06, 2054.55",HiddenKorokGround
+,,GC13,Boulder Stand,"-2243.78, 364.6, 2212.16",HiddenKorokFly
+,,GC40,Moving Lights,"-2428.18, 149.73, 3263.9",HiddenKorokGround
+,,GC51,Catch the Seed,"-2546.99, 143.84, 3952.73",HiddenKorokFly
+,,PS12,Through the Roof,"-997.01, 307.78, -3083.9",HiddenKorokFly
+,,PS02,Moving Lights,"-1670.57, 344.82, -3759.09",HiddenKorokGround
+,,PS05,Rock Lift,"-1762.55, 339.52, -3554.08",HiddenKorokGround
+,,PS04,Puzzle Blocks,"-1210, 301, -3601",HiddenKorokGround
+,,PS08,Rock Pattern,"-1093.35, 413.48, -3402.39",HiddenKorokFly
+,,PS11,Boulder Stand,"-1145.96, 457.33, -3086.25",HiddenKorokFly
+,,LB01,Rock Lift,"-1147.25, 72.49, -2534.86",HiddenKorokGround
+,,PS24,Rock Lift,"-1810.68, 379.3, -2198.08",HiddenKorokGround
+,,PS19,Offering Plate,"-1652.96, 346.02, -2437.38",HiddenKorokGround
+,,PS17,Through the Roof,"-1720.44, 347.54, -2556.73",HiddenKorokFly
+,,PS18,Rock Lift,"-1185.97, 4.87, -2481.94",HiddenKorokGround
+,,PS26,Pinwheel Balloons,"-1580.08, 70.23, -2133.26",HiddenKorokFly
+,,PS15,Puzzle Blocks,"-1052.14, 140.67, -2617.1",HiddenKorokFly
+,,PS20,Boulder Stand,"-1461.28, 251.26, -2365.66",HiddenKorokFly
+,,LB08,Stationary Lights,"-1226.59, 257.82, -1577.94",HiddenKorokFly
+,,LB17,Offering Plate,"-1074.8, 227.59, -1277.17",HiddenKorokGround
+,,LL08,Land on Target,"-891.73, 118.24, -1037.22",HiddenKorokFly
+,,LB18,Through the Roof,"-1730.12, 353.34, -1162.47",HiddenKorokFly
+,,LB55,Moving Lights,"-2031.05, 262.61, -87.74",HiddenKorokGround
+,,LB51,Stationary Lights,"-1588.95, 216.21, -228.9",HiddenKorokFly
+,,LB42,Hanging Acorn,"-1346.61, 201.07, -530.54",HiddenKorokFly
+,,LB25,Rock Lift,"-1287.87, 204.7, -897.48",HiddenKorokGround
+,,LL45,Rock Lift,"-1130.87, 144.74, -18.5",HiddenKorokGround
+,,LB52,Hanging Acorn,"-1148.64, 145.27, -221.75",HiddenKorokFly
+,,LL33,Rock Pattern,"-1017.12, 115.53, -569.4",HiddenKorokGround
+,,LB56,Pull the Plug,"-1399.06, 130, -80.03",HiddenKorokFly
+,,LB35,Boulder Stand,"-1163.93, 174.74, -666.21",HiddenKorokFly
+,,LL59,Hanging Acorn,"-1088.65, 165.67, 514.06",HiddenKorokFly
+,,LB59,Stationary Lights,"-1863.11, 223.61, 93.77",HiddenKorokFly
+,,LB58,Rock Lift,"-1702.41, 197.73, 83.9",HiddenKorokGround
+,,HF02,Rock Lift,"-1742, 226.56, 400.97",HiddenKorokGround
+,,LL55,Land on Target,"-1146.03, 144.77, 381.29",HiddenKorokFly
+,,HF04,Acorn in a Hole,"-1955.85, 312.91, 410.11",HiddenKorokGround
+,,HF24,Offering Plate,"-1816.16, 249.44, 971.92",HiddenKorokGround
+,,HF14,Stationary Lights,"-1650.89, 246.54, 688",HiddenKorokFly
+,,HF05,Moving Lights,"-1408.68, 149.95, 464.5",HiddenKorokGround
+,,LL61,Rock Pattern,"-1112.03, 200.01, 570.54",HiddenKorokGround
+,,HF25,Dive,"-1152.99, 119, 1012.41",HiddenKorokFly
+,,LL51,Puzzle Blocks,"-1352.14, 121.5, 191.95",HiddenKorokFly
+,,LL52,Catch the Seed,"-1095.83, 150.65, 197.19",HiddenKorokFly
+,,LB57,Pinwheel Balloons,"-1645.96, 233.78, 13.39",HiddenKorokGround
+,,HF15,Rock Lift,"-1343.57, 116, 689.2",HiddenKorokGround
+,,HF11,Rock Lift,"-1968.59, 254.26, 594.93",HiddenKorokGround
+,,HF19,Moving Lights,"-1557.44, 166.34, 824.3",HiddenKorokGround
+,,HF20,Catch the Seed,"-1440.15, 127.72, 846.88",HiddenKorokFly
+,,HF36,Repair Roof,"-1658.92, 214.19, 1321.96",HiddenKorokGround
+,,HF34,Offering Plate,"-1316.49, 139.34, 1261.08",HiddenKorokGround
+,,HF46,Stationary Balloon,"-1688.03, 96.61, 1600.46",HiddenKorokFly
+,,HF44,Pinwheel Balloons,"-1816.53, 207.85, 1534.68",HiddenKorokFly
+,,HF63,Stationary Lights,"-1432.54, 326.19, 1952.75",HiddenKorokFly
+,,HF56,Rock Lift,"-1700.27, 89.25, 1826.47",HiddenKorokGround
+,,HF41,Rock Lift,"-1518.37, 148.65, 1508.13",HiddenKorokGround
+,,HF33,Rock Lift,"-1771.4, 115.7, 1243.44",HiddenKorokGround
+,,HF35,Acorn in a Hole,"-1428.09, 142.35, 1297.98",HiddenKorokGround
+,,HF49,Flower Trail,"-1202.35, 189.39, 1690.78",HiddenKorokGround
+,,HF40,Puzzle Blocks,"-1763.73, 197.9, 1449.17",HiddenKorokFly
+,,HF29,Flower Trail,"-1967.9, 203.88, 1090.5",HiddenKorokGround
+,,HF37,Catch the Seed,"-1053.34, 175.04, 1328",HiddenKorokFly
+,,HF55,Moving Lights,"-1151.47, 260.87, 1788.2",HiddenKorokGround
+,,HF26,Hanging Acorn,"-1598.19, 123.75, 1015.71",HiddenKorokFly
+,,HF51,Pull the Plug,"-1705.5, 69.34, 1706.78",HiddenKorokFly
+,,PF30,Rock Pattern,"-1039.58, 133.68, 2397.38",HiddenKorokGround
+,,GC26,Rock Pattern,"-1556.75, 336.21, 2625.79",HiddenKorokGround
+,,HF62,Rock Lift,"-1516.51, 238.17, 1922.72",HiddenKorokGround
+,,HF67,Stationary Lights,"-1086.07, 251.54, 2050.02",HiddenKorokFly
+,,GC27,Puzzle Blocks,"-1938.02, 262.91, 2821.99",HiddenKorokGround
+,,GC08,Rock Pattern,"-1942.79, 187.01, 2131.32",HiddenKorokGround
+,,HF72,Rock Lift,"-1294.63, 417.59, 2213.61",HiddenKorokGround
+,,GC44,Stationary Lights,"-1178.45, 324.54, 3510.55",HiddenKorokFly
+,,GC38,Rock Lift,"-1944.79, 232.52, 3184.99",HiddenKorokGround
+,,GC46,Pinwheel Balloons,"-1794.89, 229.31, 3579.31",HiddenKorokFly
+,,GC48,Rock Pattern,"-1369.61, 500.88, 3724.03",HiddenKorokGround
+,,GC33,Through the Roof,"-1427.81, 387.36, 2976.29",HiddenKorokFly
+,,GC47,Puzzle Blocks,"-1451.8, 541.78, 3638.13",HiddenKorokGround
+,,GC41,Puzzle Blocks,"-1152.5, 381.62, 3303.88",HiddenKorokGround
+,,GC43,Rock Lift,"-1385.01, 539.97, 3493",HiddenKorokGround
+,,GC36,Pull the Plug,"-1609.81, 308.54, 3084.26",HiddenKorokFly
+,,TR07,Rock Pattern,"-476.68, 225.3, -3133.07",HiddenKorokGround
+,,PS06,Pinwheel Balloons,"-680.63, 393.31, -3534.88",HiddenKorokFly
+,,PS09,Acorn in a Hole,"-873.9, 333.16, -3313.1",HiddenKorokFly
+,,TR14,Pull the Plug,"-579.22, 492.36, -2603.12",HiddenKorokFly
+,,TR19,Acorn in a Hole,"-665.9, 179.47, -1190.94",HiddenKorokFly
+,,TR16,Dive,"-39.36, 234.86, -1690.86",HiddenKorokFly
+,,TR15,Stationary Lights,"-332.63, 305.48, -1747.45",HiddenKorokFly
+,,LB03,Offering Plate,"-669.65, 239.33, -1966.72",HiddenKorokGround
+,,LL26,Pinwheel Balloons,"-272.92, 239.93, -746.45",HiddenKorokFly
+,,LL24,Rock Lift,"-128.31, 202.34, -813.76",HiddenKorokGround
+,,LL01,Hanging Acorn,"-124.41, 141.89, -1192.74",HiddenKorokFly
+,,LL30,Rock Lift,"-237.41, 185.36, -632.46",HiddenKorokGround
+,,LL21,Rock Lift,"-287.34, 210.59, -839.58",HiddenKorokGround
+,,LL16,Flower Trail,"-426.95, 223.03, -890.66",HiddenKorokFly
+,,LL04,Pinwheel Balloons,"-438.33, 132.24, -1115.69",HiddenKorokFly
+,,LL25,Puzzle Blocks,"-344.48, 164.28, -785.73",HiddenKorokFly
+,,LL18,Rock Pattern,"-61.39, 274.03, -867.26",HiddenKorokGround
+,,LL03,Dive,"-297.47, 119.08, -1119.18",HiddenKorokFly
+,,LL02,Land on Target,"-282.17, 182.85, -1125.08",HiddenKorokFly
+,,LL20,Moving Lights,"-421.38, 191.49, -845.13",HiddenKorokGround
+,,LL22,Stationary Lights,"-351.24, 286.58, -827.73",HiddenKorokFly
+,,LL44,Acorn in a Hole,"-748.18, 136.49, -200.28",HiddenKorokFly
+,,LL29,Stationary Balloon,"-612.74, 118.04, -666.65",HiddenKorokFly
+,,LL42,Rock Lift,"-254.28, 151.89, -257.24",HiddenKorokGround
+,,LL23,Goal Ring (Race),"-941.9, 134.97, -819.68",HiddenKorokFly
+,,LL31,Dive,"-284.36, 118.18, -608.87",HiddenKorokFly
+,,LL12,Hanging Acorn,"-666.31, 115.67, -962.91",HiddenKorokGround
+,,LL37,Rock Lift,"-253.97, 134.92, -425.91",HiddenKorokGround
+,,LL41,Rock Lift,"-312.99, 130.5, -324.12",HiddenKorokGround
+,,LL34,Moving Lights,"-796.61, 187.67, -558.8",HiddenKorokGround
+,,LL43,Flower Trail,"-427.8, 144.3, -249.16",HiddenKorokFly
+,,LL28,Rock Lift,"-530, 139.57, -693.89",HiddenKorokGround
+,,LL35,Puzzle Blocks,"-664.68, 132.53, -546.97",HiddenKorokFly
+,,LL38,Through the Roof,"-86.67, 138.07, -401.43",HiddenKorokFly
+,,LL19,Moving Lights,"-675.15, 120.89, -860.53",HiddenKorokGround
+,,LL40,Through the Roof,"-945.49, 133.21, -348.3",HiddenKorokFly
+,,LL48,Rock Lift,"-923.51, 212.23, 44.93",HiddenKorokGround
+,,LL60,Rock Lift,"-588.74, 130.03, 559.2",HiddenKorokFly
+,,HF13,Rock Lift,"-764.75, 135.04, 673.62",HiddenKorokGround
+,,LL50,Pinwheel Balloons,"-425.96, 136.85, 146.88",HiddenKorokFly
+,,LL47,Stationary Balloon,"-795.13, 175.72, 14.06",HiddenKorokFly
+,,HF07,Acorn in a Hole,"-311.14, 131.03, 550.09",HiddenKorokFly
+,,LL56,Rock Lift,"-217.75, 157.85, 383.11",HiddenKorokGround
+,,HF23,Catch the Seed,"-124.78, 150.94, 938.17",HiddenKorokFly
+,,HF61,Moving Lights,"-238.07, 147.27, 1918.7",HiddenKorokGround
+,,HF39,Goal Ring (Race),"-594.84, 144.57, 1414.73",HiddenKorokFly
+,,HF60,Rock Lift,"-889.49, 212.09, 1907.83",HiddenKorokGround
+,,HF65,Stationary Lights,"-811.6, 298.21, 1964.11",HiddenKorokFly
+,,HF32,Rock Lift,"-664.31, 133.65, 1222.37",HiddenKorokGround
+,,HF47,Pinwheel Balloons,"-964.23, 208.58, 1606.87",HiddenKorokFly
+,,HF64,Stationary Balloon,"-829.98, 248.41, 1963.58",HiddenKorokFly
+,,HF45,Pinwheel Balloons,"-281.8, 160, 1576.24",HiddenKorokFly
+,,HF31,Rock Pattern,"-510.78, 127.68, 1176.87",HiddenKorokGround
+,,HF57,Through the Roof,"-950.71, 197.31, 1839.77",HiddenKorokFly
+,,HF42,Hanging Acorn,"-611.77, 179.39, 1525.45",HiddenKorokFly
+,,HF54,Land on Target,"-668.02, 183.74, 1779.63",HiddenKorokFly
+,,HF66,Puzzle Blocks,"-472, 182.5, 2039",HiddenKorokGround
+,,HF28,Rock Lift,"-599.08, 141.91, 1076.29",HiddenKorokGround
+,,HF52,Pull the Plug,"-952.28, 203.1, 1720.08",HiddenKorokFly
+,,PF48,Flower Trail,"-18.45, 222.37, 2974.66",HiddenKorokFly
+,,HF75,Rock Lift,"-102.99, 175.93, 2292.11",HiddenKorokGround
+,,PF36,Pinwheel Balloons,"205.77, 96.14, 2638.57",HiddenKorokFly
+,,PF33,Stationary Lights,"-9.59, 112.65, 2587.25",HiddenKorokFly
+,,HF70,Repair Roof,"-207.37, 125.83, 2205.12",HiddenKorokGround
+,,PF32,Stationary Lights,"-397.65, 104.42, 2559.8",HiddenKorokFly
+,,HF71,Through the Roof,"-930.53, 181.4, 2208.4",HiddenKorokFly
+,,PF27,Stationary Lights,"-636.95, 96.23, 2382",HiddenKorokFly
+,,PF35,Rock Lift,"-711.64, 204.77, 2624.98",HiddenKorokGround
+,,PF31,Hanging Acorn,"-65.67, 123.2, 2441.01",HiddenKorokFly
+,,PF43,Puzzle Blocks,"-467.75, 95.5, 2899",HiddenKorokGround
+,,HF73,Offering Plate,"-790.08, 193.59, 2229.78",HiddenKorokGround
+,,PF37,Goal Ring (Race),"25.32, 187.89, 2728.3",HiddenKorokFly
+,,HF74,Puzzle Blocks,"-886.36, 125.75, 2270.54",HiddenKorokGround
+,,PF88,Stationary Lights,"-241.96, 111.59, 3919.28",HiddenKorokFly
+,,PF63,Rock Lift,"-224.58, 177.19, 3340.61",HiddenKorokGround
+,,PF51,Rock Lift,"-150.91, 143.29, 3068.25",HiddenKorokGround
+,,PF56,Hanging Acorn,"-800.75, 199.21, 3257.71",HiddenKorokFly
+,,PF66,Moving Lights,"-414.88, 138.15, 3374.29",HiddenKorokGround
+,,PF69,Dive,"-105.41, 109.91, 3439.17",HiddenKorokFly
+,,GC39,Flower Trail,"-994.92, 356.58, 3254.33",HiddenKorokGround
+,,TR11,Rock Lift,"171.66, 282.04, -3036.58",HiddenKorokGround
+,,TR05,Rock Lift,"127.9, 286.82, -3151.01",HiddenKorokGround
+,,TR06,Land on Target,"52.11, 281.83, -3147.03",HiddenKorokFly
+,,TR12,Rock Lift,"785.73, 387.74, -2953.05",HiddenKorokGround
+,,TR04,Rock Lift,"859.09, 315.15, -3355.53",HiddenKorokGround
+,,TR08,Puzzle Blocks,"276.39, 287.66, -3119.6",HiddenKorokFly
+,,EC46,Rock Lift,"770.25, 193.08, -1415.68",HiddenKorokGround
+,,TR20,Hanging Acorn,"399, 115.27, -1174.28",HiddenKorokGround
+,,TR18,Hanging Acorn,"656.79, 144.95, -1371.21",HiddenKorokFly
+,,EC44,Hanging Acorn,"951.05, 266.22, -1536.43",HiddenKorokFly
+,,EC41,Goal Ring (Race),"758.7, 259.31, -1643.56",HiddenKorokFly
+,,SS01,Rock Lift,"966.93, 115.9, -1027.06",HiddenKorokGround
+,,EC35,Pinwheel Balloons,"985.68, 317.42, -1804.81",HiddenKorokFly
+,,LL46,Repair Roof,"761.79, 136.78, -11.08",HiddenKorokGround
+,,SS05,Flower Trail,"966.37, 194.27, -627.79",HiddenKorokFly
+,,LL27,Hanging Acorn,"269.73, 116.41, -701.14",HiddenKorokFly
+,,LL36,Flower Trail,"384.34, 159.78, -462.41",HiddenKorokFly
+,,SS03,Flower Trail,"849.97, 223.85, -792.65",HiddenKorokGround
+,,LL39,Rock Pattern,"715.76, 115.64, -368.13",HiddenKorokGround
+,,LL32,Acorn in a Hole,"133.31, 134.04, -599.7",HiddenKorokGround
+,,SS10,Through the Roof,"919.22, 195.13, -410.38",HiddenKorokFly
+,,SS06,Catch the Seed,"691.29, 167.03, -624.99",HiddenKorokFly
+,,SS04,Moving Lights,"617.42, 183.25, -754.28",HiddenKorokGround
+,,SS08,Dive,"541.93, 119, -510.34",HiddenKorokFly
+,,LL15,Moving Lights,"192.37, 132.47, -897.03",HiddenKorokGround
+,,LL53,Acorn in a Hole,"289.89, 133.23, 246.79",HiddenKorokGround
+,,SS17,Goal Ring (Race),"838.28, 121.05, 30.17",HiddenKorokFly
+,,LL57,Rock Lift,"754.16, 135.87, 450.53",HiddenKorokGround
+,,LL54,Rock Lift,"74.69, 139.88, 326.99",HiddenKorokGround
+,,HF21,Moving Lights,"211.24, 171.83, 886.09",HiddenKorokGround
+,,LL62,Rock Lift,"625.01, 126.6, 753.43",HiddenKorokGround
+,,SS21,Rock Pattern,"928.69, 145.52, 365.54",HiddenKorokGround
+,,SS20,Stationary Lights,"821.2, 137.96, 330.41",HiddenKorokFly
+,,LL49,Catch the Seed,"616.71, 161.84, 76",HiddenKorokFly
+,,LL58,Rock Lift,"501, 168.46, 470.17",HiddenKorokGround
+,,SS39,Pull the Plug,"959.05, 116.3, 943.8",HiddenKorokFly
+,,PF19,Offering Plate,"163.54, 151.31, 1940.1",HiddenKorokGround
+,,PF10,Repair Roof,"296.94, 115.7, 1497",HiddenKorokGround
+,,PF11,Acorn in a Hole,"734.7, 148.72, 1503.51",HiddenKorokFly
+,,PF06,Rock Lift,"333.22, 115.15, 1282.91",HiddenKorokGround
+,,PF18,Rock Lift,"297.4, 123.19, 1833.82",HiddenKorokGround
+,,PF15,Flower Trail,"459.18, 133.34, 1698.69",HiddenKorokGround
+,,PF02,Acorn in a Hole,"627.54, 120.3, 1161.56",HiddenKorokGround
+,,HF59,Flower Trail,"-0.83, 214.49, 1900.32",HiddenKorokFly
+,,HF48,Rock Lift,"147.64, 136.11, 1611.33",HiddenKorokGround
+,,PF07,Rock Lift,"843.39, 132.26, 1291.41",HiddenKorokGround
+,,PF04,Puzzle Blocks,"588.71, 117.21, 1232.77",HiddenKorokGround
+,,PF05,Catch the Seed,"543.27, 155.05, 1265.77",HiddenKorokFly
+,,PF16,Catch the Seed,"312.65, 180.44, 1765.5",HiddenKorokFly
+,,PF13,Through the Roof,"228.68, 120.52, 1608.88",HiddenKorokFly
+,,PF09,Boulder Stand,"609.14, 160.29, 1467.64",HiddenKorokFly
+,,HF53,Boulder Stand,"63.16, 153.2, 1753.35",HiddenKorokFly
+,,PF17,Boulder Stand,"653.39, 123.27, 1769.62",HiddenKorokFly
+,,HF69,Dive,"45.85, 94, 2133.84",HiddenKorokFly
+,,PF21,Goal Ring (Race),"458.95, 117.62, 2141.78",HiddenKorokFly
+,,PF28,Rock Lift,"567.27, 218.06, 2384.24",HiddenKorokGround
+,,PF39,Dive,"784.73, 116.99, 2764.27",HiddenKorokFly
+,,PF23,Flower Trail,"267.57, 144, 2214.7",HiddenKorokFly
+,,PF20,Moving Lights,"351.83, 114.47, 1999.7",HiddenKorokGround
+,,PF46,Puzzle Blocks,"699.97, 121.79, 2953.5",HiddenKorokFly
+,,PF25,Offering Plate,"637.17, 165.79, 2314.63",HiddenKorokFly
+,,PF40,Rock Lift,"339.97, 90.53, 2832.5",HiddenKorokGround
+,,PF29,Goal Ring (Race),"889.11, 183.79, 2394.23",HiddenKorokFly
+,,PF26,Boulder Stand,"342.95, 136.13, 2379.66",HiddenKorokFly
+,,PF41,Boulder Stand,"242.59, 142.54, 2874.61",HiddenKorokFly
+,,PF47,Boulder Stand,"115.84, 147.44, 2960.63",HiddenKorokFly
+,,PF42,Boulder Stand,"422.53, 136.21, 2884.37",HiddenKorokFly
+,,PF24,Boulder Stand,"895.11, 259.32, 2217.55",HiddenKorokFly
+,,PF79,Flower Trail,"814.09, 210.74, 3704.93",HiddenKorokFly
+,,PF80,Dive,"588.99, 140, 3740",HiddenKorokFly
+,,PF71,Stationary Lights,"953.83, 128.24, 3476.41",HiddenKorokFly
+,,PF60,Rock Lift,"206.4, 165.94, 3312.53",HiddenKorokGround
+,,PF85,Puzzle Blocks,"573, 140.3, 3853",HiddenKorokGround
+,,PF87,Hanging Acorn,"272.37, 109.52, 3905.6",HiddenKorokFly
+,,PF65,Pinwheel Balloons,"795.58, 186.64, 3345.53",HiddenKorokFly
+,,PF84,Pull the Plug,"101.45, 138.23, 3842.43",HiddenKorokFly
+,,PF77,Boulder Stand,"527.39, 176.6, 3665.9",HiddenKorokFly
+,,PF76,Boulder Stand,"389.64, 185.13, 3608.89",HiddenKorokFly
+,,TR01,Stationary Lights,"1400.26, 237.92, -3782.41",HiddenKorokFly
+,,EC17,Offering Plate,"1806.49, 509.74, -2530.36",HiddenKorokFly
+,,EC19,Stationary Balloon,"1593.55, 543.53, -2474.23",HiddenKorokFly
+,,EC21,Stationary Balloon,"1667.08, 558, -2409.71",HiddenKorokFly
+,,EC26,Rock Pattern,"1250.21, 427.86, -2292.84",HiddenKorokGround
+,,EC12,Rock Pattern,"1375.31, 467.28, -2843.72",HiddenKorokGround
+,,EC28,Land on Target,"1755.41, 589.82, -2224.93",HiddenKorokFly
+,,EC29,Dive,"1472.95, 405.91, -2219.65",HiddenKorokFly
+,,EC13,Stationary Lights,"1602.16, 574.85, -2827.43",HiddenKorokFly
+,,EC16,Rock Lift,"1724.5, 604.77, -2554.51",HiddenKorokGround
+,,EC32,Through the Roof,"1433.42, 443.5, -1952.83",HiddenKorokGround
+,,EC20,Dive,"1719.43, 501.49, -2422.3",HiddenKorokFly
+,,EC25,Puzzle Blocks,"1740.84, 531.02, -2329.96",HiddenKorokFly
+,,EC11,Hanging Acorn,"1567.5, 507.23, -2946.09",HiddenKorokFly
+,,EC30,Boulder Stand,"1999.35, 579.28, -2122.46",HiddenKorokFly
+,,EC31,Rock Lift,"1671.23, 447.4, -1981.33",HiddenKorokGround
+,,EC48,Acorn in a Hole,"1334.48, 277.29, -1317.58",HiddenKorokFly
+,,EC43,Stationary Lights,"1767.01, 416.91, -1537.34",HiddenKorokFly
+,,EC45,Stationary Lights,"1424.8, 471.07, -1533.82",HiddenKorokFly
+,,EC37,Boulder Stand,"1700.87, 458.47, -1755.72",HiddenKorokFly
+,,EC39,Boulder Stand,"1451.69, 424.01, -1746.15",HiddenKorokFly
+,,SS02,Stationary Balloon,"1107.17, 115.76, -858.4",HiddenKorokFly
+,,EC60,Acorn in a Hole,"1466.56, 133.82, -677.61",HiddenKorokFly
+,,EC59,Rock Lift,"1320.09, 122.6, -715.78",HiddenKorokGround
+,,SS11,Rock Lift,"1182.32, 263.4, -379.5",HiddenKorokGround
+,,EC58,Offering Plate,"1580.9, 186.93, -723.16",HiddenKorokFly
+,,SS15,Rock Lift,"1396.74, 132.18, -127.86",HiddenKorokGround
+,,EC57,Rock Lift,"1857.98, 197.29, -786.15",HiddenKorokGround
+,,SS09,Hanging Acorn,"1482.68, 116.75, -443.37",HiddenKorokFly
+,,SS12,Pinwheel Balloons,"1514.56, 141.14, -292.42",HiddenKorokFly
+,,SS14,Catch the Seed,"1118.14, 182.96, -229.31",HiddenKorokFly
+,,SS23,Stationary Balloon,"1981.63, 175.61, 448.95",HiddenKorokFly
+,,SS33,Rock Lift,"1626.48, 145.24, 781.15",HiddenKorokGround
+,,SS35,Rock Lift,"1282.3, 182.9, 834.46",HiddenKorokGround
+,,SS18,Rock Lift,"1892.36, 114.77, 151.01",HiddenKorokGround
+,,SS44,Flower Trail,"1245.41, 251.09, 1037.32",HiddenKorokFly
+,,SS19,Dive,"1308.46, 119, 177.91",HiddenKorokFly
+,,SS24,Rock Lift,"1824.72, 118.19, 459.5",HiddenKorokGround
+,,SS32,Hanging Acorn,"1115.5, 172, 731.75",HiddenKorokFly
+,,SS25,Catch the Seed,"1441.56, 120.7, 537.19",HiddenKorokFly
+,,SS38,Rock Lift,"1694.6, 416.18, 929.15",HiddenKorokGround
+,,SS42,Moving Lights,"1776.46, 225.5, 984.36",HiddenKorokGround
+,,PF01,Goal Ring (Race),"1040.53, 118.5, 1068.5",HiddenKorokFly
+,,SS36,Hanging Acorn,"1791.37, 223.62, 852.94",HiddenKorokFly
+,,SS40,Hanging Acorn,"1997.13, 281.93, 958.93",HiddenKorokFly
+,,SS50,Rock Lift,"1537.07, 167.65, 1301.75",HiddenKorokGround
+,,SS61,Stationary Balloon,"1153.93, 263.88, 1703.94",HiddenKorokFly
+,,SS51,Acorn in a Hole,"1291.45, 269.65, 1330.91",HiddenKorokFly
+,,SS57,Rock Lift,"1786.58, 116.21, 1551.79",HiddenKorokGround
+,,SS54,Flower Trail,"1597.99, 131.46, 1394.92",HiddenKorokFly
+,,SS66,Puzzle Blocks,"1241.12, 446.07, 1850.14",HiddenKorokGround
+,,SS55,Rock Lift,"1925.51, 187.32, 1489.51",HiddenKorokGround
+,,SS70,Land on Target,"1279.87, 526.11, 1962.67",HiddenKorokFly
+,,SS64,Pinwheel Balloons,"1521.52, 396.66, 1844.95",HiddenKorokGround
+,,SS41,Stationary Lights,"1757.6, 247.54, 984.19",HiddenKorokFly
+,,SS45,Catch the Seed,"1574.92, 259.79, 1044.85",HiddenKorokFly
+,,PF08,Dive,"1032.88, 118.99, 1305.72",HiddenKorokFly
+,,SS59,Catch the Seed,"1373.47, 337.41, 1679.8",HiddenKorokFly
+,,SS67,Pinwheel Balloons,"1251.62, 493.69, 1856.49",HiddenKorokFly
+,,SS69,Pull the Plug,"1326.12, 292.47, 1962.65",HiddenKorokFly
+,,SS68,Pull the Plug,"1651.85, 115.6, 1907.84",HiddenKorokFly
+,,RW19,Pinwheel Balloons,"1936.25, 494.65, 2777.23",HiddenKorokFly
+,,SS71,Stationary Lights,"1367.59, 293.86, 2272.79",HiddenKorokFly
+,,PF44,Rock Pattern,"1556.73, 291.02, 2899.23",HiddenKorokFly
+,,RW13,Hanging Acorn,"1959.98, 356.99, 2627.81",HiddenKorokFly
+,,RW06,Acorn in a Hole,"1999.11, 116.46, 2281.76",HiddenKorokGround
+,,RW18,Stationary Lights,"1775.27, 422.95, 2766.79",HiddenKorokFly
+,,PF49,Rock Lift,"1777.18, 188.45, 2990.83",HiddenKorokGround
+,,RW08,Flower Trail,"1946.45, 144.52, 2381.64",HiddenKorokGround
+,,PF38,Through the Roof,"1371.9, 195.95, 2763.65",HiddenKorokFly
+,,PF45,Rock Lift,"1774.74, 345.29, 2933.31",HiddenKorokGround
+,,RW11,Pull the Plug,"1940.25, 131.89, 2564.03",HiddenKorokFly
+,,PF70,Rock Lift,"1738.27, 155.66, 3468.02",HiddenKorokGround
+,,PF55,Stationary Balloon,"1023.26, 122.05, 3228.34",HiddenKorokFly
+,,PF75,Stationary Lights,"1793.9, 135.03, 3580.35",HiddenKorokFly
+,,PF83,Rock Lift,"1096, 107.85, 3832.78",HiddenKorokGround
+,,PF78,Dive,"1637.46, 284.52, 3675.98",HiddenKorokFly
+,,PF54,Through the Roof,"1235.09, 151.7, 3217.13",HiddenKorokFly
+,,PF58,Rock Lift,"1475.61, 191.94, 3263.53",HiddenKorokGround
+,,PF59,Puzzle Blocks,"1327.75, 199, 3275.25",HiddenKorokFly
+,,PF61,Puzzle Blocks,"1691.97, 171.5, 3324.43",HiddenKorokGround
+,,PF57,Flower Trail,"1532.96, 201.77, 3261.47",HiddenKorokGround
+,,PF52,Dive,"1793.12, 186.01, 3179",HiddenKorokFly
+,,PF81,Moving Lights,"1610.64, 197.33, 3802.17",HiddenKorokGround
+,,PF50,Catch the Seed,"1580.84, 333.79, 3033.53",HiddenKorokFly
+,,PF72,Catch the Seed,"1372.97, 277.51, 3508.73",HiddenKorokFly
+,,PF53,Catch the Seed,"1273.7, 210.15, 3190.65",HiddenKorokFly
+,,RW43,Goal Ring (Race),"2011.18, 110.53, 3957.02",HiddenKorokFly
+,,PF64,Offering Plate,"1847.43, 164.32, 3342.59",HiddenKorokGround
+,,PF74,Moving Lights,"1449.48, 222.65, 3531.73",HiddenKorokGround
+,,EC04,Stationary Lights,"2671.91, 482.06, -3442.48",HiddenKorokFly
+,,EC01,Pinwheel Balloons,"3078.4, 320.18, -3682.72",HiddenKorokFly
+,,EC08,Hanging Acorn,"2231.74, 551.66, -3042.21",HiddenKorokFly
+,,EC05,Through the Roof,"2405.97, 520.32, -3327.95",HiddenKorokFly
+,,EC02,Puzzle Blocks,"2233.67, 342.7, -3677.48",HiddenKorokFly
+,,EC09,Catch the Seed,"2172.32, 561.37, -3036.16",HiddenKorokFly
+,,EC07,Goal Ring (Race),"2155.55, 582.98, -3055.78",HiddenKorokFly
+,,EC22,Flower Trail,"2238.55, 635.53, -2363.35",HiddenKorokGround
+,,EC18,Stationary Balloon,"2780, 726.13, -2524.95",HiddenKorokFly
+,,EC23,Moving Lights,"2702.24, 726.23, -2347.98",HiddenKorokGround
+,,EC24,Puzzle Blocks,"2083, 608, -2330",HiddenKorokGround
+,,EC14,Puzzle Blocks,"2061.49, 586.54, -2755.89",HiddenKorokGround
+,,EC55,Moving Lights,"2674.01, 261.99, -1074.29",HiddenKorokGround
+,,EC50,Rock Lift,"1941.9, 245.23, -1207.57",HiddenKorokGround
+,,EC38,Rock Pattern,"2699.64, 224.54, -1748.27",HiddenKorokGround
+,,EC34,Flower Trail,"2268.56, 438.41, -1837.02",HiddenKorokFly
+,,EC47,Goal Ring (Race),"2751.78, 234.77, -1373.53",HiddenKorokFly
+,,EC52,Puzzle Blocks,"2720, 287, -1163",HiddenKorokFly
+,,EC53,Through the Roof,"2313.57, 295.22, -1132.86",HiddenKorokFly
+,,EC49,Catch the Seed,"2440.55, 259.77, -1241.54",HiddenKorokFly
+,,EC40,Pull the Plug,"2425.78, 252.89, -1723.12",HiddenKorokFly
+,,UZ52,Dive,"2306.27, 161.94, -14.92",HiddenKorokFly
+,,EC56,Rock Pattern,"2293.98, 215.01, -942.98",HiddenKorokGround
+,,UZ36,Pinwheel Balloons,"2334.96, 133.22, -273.71",HiddenKorokFly
+,,UZ41,Flower Trail,"2746.19, 243.01, -202.34",HiddenKorokGround
+,,UZ32,Stationary Lights,"2425.19, 301.36, -409.72",HiddenKorokFly
+,,UZ51,Puzzle Blocks,"2211.14, 158.2, -49.77",HiddenKorokFly
+,,UZ14,Moving Lights,"2554.63, 223.74, -767.25",HiddenKorokGround
+,,UZ47,Hanging Acorn,"2307.6, 210.04, -132.86",HiddenKorokGround
+,,UZ26,Goal Ring (Race),"2580.38, 287.95, -488.18",HiddenKorokFly
+,,UZ40,Acorn in a Hole,"2941.59, 312.48, -210.35",HiddenKorokGround
+,,UZ45,Rock Lift,"2471.85, 184.82, -150.5",HiddenKorokGround
+,,UZ42,Pull the Plug,"2782.66, 186.91, -197.79",HiddenKorokFly
+,,UZ63,Flower Trail,"3011.44, 298.76, 370.61",HiddenKorokGround
+,,UZ56,Rock Pattern,"2460.03, 184.74, 40.9",HiddenKorokGround
+,,SS34,Rock Pattern,"3010.54, 251.56, 785.91",HiddenKorokGround
+,,UZ57,Stationary Lights,"2960.88, 249.96, 53.34",HiddenKorokFly
+,,SS22,Hanging Acorn,"2638, 264.89, 368.31",HiddenKorokFly
+,,SS31,Offering Plate,"2239.74, 338.14, 726.32",HiddenKorokFly
+,,UZ53,Through the Roof,"2673.94, 212.81, 11.22",HiddenKorokFly
+,,UZ55,Rock Lift,"2851.06, 186.22, 27.82",HiddenKorokGround
+,,SS29,Rock Lift,"2546.82, 225.66, 584.69",HiddenKorokGround
+,,SS37,Boulder Stand,"2495.43, 308.79, 892.1",HiddenKorokFly
+,,SS49,Rock Lift,"2029.73, 265.68, 1166.69",HiddenKorokGround
+,,ML17,Dive,"2804.02, 119, 1851.32",HiddenKorokFly
+,,ML16,Stationary Balloon,"2528.4, 150.38, 1749.61",HiddenKorokFly
+,,SS52,Stationary Balloon,"2300.22, 224.66, 1357.35",HiddenKorokFly
+,,SS43,Rock Pattern,"2162.38, 460.49, 1035.9",HiddenKorokGround
+,,SS46,Hanging Acorn,"2545.85, 217.1, 1077.35",HiddenKorokFly
+,,SS47,Rock Lift,"2833.97, 207.56, 1118.86",HiddenKorokGround
+,,SS65,Stationary Lights,"2397.28, 129, 1846.62",HiddenKorokFly
+,,SS48,Flower Trail,"2704.94, 203.1, 1164.4",HiddenKorokGround
+,,SS53,Moving Lights,"2200.95, 161.77, 1373.5",HiddenKorokGround
+,,RW01,Stationary Lights,"2011.65, 122.03, 1896.03",HiddenKorokFly
+,,SS58,Through the Roof,"2510.34, 122.89, 1572.89",HiddenKorokFly
+,,SS62,Rock Lift,"2325.78, 132.95, 1828.58",HiddenKorokGround
+,,ML18,Pull the Plug,"2513.11, 244.32, 1866.41",HiddenKorokFly
+,,ML09,Pull the Plug,"2920.91, 485.99, 1392.43",HiddenKorokFly
+,,SS56,Boulder Stand,"2294.67, 174.77, 1511",HiddenKorokFly
+,,RW07,Stationary Balloon,"2277.72, 287, 2360.62",HiddenKorokFly
+,,RW20,Stationary Lights,"2635.05, 334.59, 2854.91",HiddenKorokFly
+,,RW17,Goal Ring (Race),"2579.32, 365.29, 2729.39",HiddenKorokFly
+,,RW03,Offering Plate,"2724.81, 256, 2122.34",HiddenKorokFly
+,,ML35,Rock Lift,"2809.94, 231.43, 2247.73",HiddenKorokGround
+,,RW05,Rock Pattern,"2413.45, 219.2, 2269.39",HiddenKorokGround
+,,RW22,Stationary Lights,"2713.26, 296.77, 2960.65",HiddenKorokFly
+,,RW14,Pinwheel Balloons,"2282.96, 289.25, 2656.87",HiddenKorokFly
+,,RW04,Dive,"2141.41, 118.94, 2223.38",HiddenKorokFly
+,,RW12,Offering Plate,"2142.33, 365.19, 2603.62",HiddenKorokGround
+,,ML27,Stationary Lights,"2837.27, 128.24, 2120.36",HiddenKorokFly
+,,RW02,Catch the Seed,"2052.21, 154.94, 2092.37",HiddenKorokFly
+,,ML32,Moving Lights,"2867.94, 140.2, 2187.45",HiddenKorokGround
+,,RW09,Puzzle Blocks,"2558.57, 360.67, 2484.76",HiddenKorokFly
+,,RW15,Rock Lift,"2043.95, 413.25, 2660.84",HiddenKorokGround
+,,ML28,Rock Lift,"2489.61, 138.97, 2122.53",HiddenKorokGround
+,,RW16,Pull the Plug,"2877.92, 297.77, 2685.26",HiddenKorokFly
+,,RW23,Moving Lights,"2294.31, 289.01, 3020.36",HiddenKorokGround
+,,RW32,Goal Ring (Race),"2363.39, 194.47, 3437.92",HiddenKorokFly
+,,RW34,Pinwheel Balloons,"2563.28, 346.13, 3598.71",HiddenKorokFly
+,,RW31,Rock Pattern,"2425.14, 185.15, 3403.4",HiddenKorokGround
+,,RW26,Land on Target,"2540.08, 170.88, 3291.42",HiddenKorokFly
+,,UM04,Rock Lift,"3267.37, 139.69, -3396.78",HiddenKorokGround
+,,UM14,Offering Plate,"3350.31, 164.96, -3074.14",HiddenKorokGround
+,,UM03,Land on Target,"3186.2, 196.22, -3458.82",HiddenKorokFly
+,,UM15,Land on Target,"3544.47, 187.87, -3023.96",HiddenKorokFly
+,,UM02,Pinwheel Balloons,"3453.03, 315.9, -3580.59",HiddenKorokGround
+,,UM13,Puzzle Blocks,"3151.26, 252.31, -3092.48",HiddenKorokGround
+,,UM05,Boulder Stand,"3772.29, 281.16, -3377.22",HiddenKorokFly
+,,UM20,Moving Lights,"3767.93, 124.79, -2690.37",HiddenKorokFly
+,,EC27,Repair Roof,"3031.75, 439.29, -2289.25",HiddenKorokGround
+,,UM22,Puzzle Blocks,"3539.2, 190.48, -2636.64",HiddenKorokGround
+,,UM27,Stationary Lights,"3326.53, 243.59, -2169.23",HiddenKorokFly
+,,UM35,Stationary Lights,"3299.3, 543.31, -1510.84",HiddenKorokFly
+,,UM33,Rock Lift,"4021.61, 242.62, -1621.95",HiddenKorokGround
+,,UM31,Rock Lift,"3648.95, 217.83, -1797.53",HiddenKorokGround
+,,UM32,Rock Lift,"3231.98, 332.33, -1787.29",HiddenKorokGround
+,,UZ01,Rock Lift,"3160.44, 362.87, -1425.98",HiddenKorokGround
+,,UM37,Flower Trail,"3645.12, 201.84, -1460.12",HiddenKorokGround
+,,UM41,Moving Lights,"3111.8, 425.29, -1298.45",HiddenKorokGround
+,,UM40,Puzzle Blocks,"3358.11, 398.13, -1300.16",HiddenKorokFly
+,,UZ04,Stationary Lights,"3073.9, 389.11, -1140.2",HiddenKorokFly
+,,UM38,Rock Lift,"3273.64, 390.99, -1397.95",HiddenKorokGround
+,,UZ03,Flower Trail,"3882.46, 353.24, -1341.74",HiddenKorokGround
+,,UM34,Ring the Bell,"3965.13, 241.27, -1611.09",HiddenKorokFly
+,,UZ05,Pull the Plug,"3868.78, 330.98, -1086",HiddenKorokFly
+,,EC51,Pull the Plug,"3011.96, 348.34, -1203.45",HiddenKorokFly
+,,UZ29,Goal Ring (Race),"3069.79, 379.76, -456.6",HiddenKorokFly
+,,UZ35,Rock Lift,"3219.53, 184.17, -282.01",HiddenKorokGround
+,,UZ08,Rock Lift,"3013.29, 485.01, -932.63",HiddenKorokGround
+,,UZ31,Stationary Balloon,"3588.67, 312.51, -416.07",HiddenKorokFly
+,,UZ48,Pinwheel Balloons,"3817.75, 318.98, -76.09",HiddenKorokFly
+,,UZ09,Rock Pattern,"3801.14, 381.83, -855.96",HiddenKorokGround
+,,UZ15,Dive,"3387.83, 283.42, -741.67",HiddenKorokFly
+,,UZ06,Rock Pattern,"3546.61, 500.3, -964.9",HiddenKorokGround
+,,UZ11,Puzzle Blocks,"3905.28, 490.57, -797.35",HiddenKorokFly
+,,UZ30,Flower Trail,"3678.04, 363.36, -450.09",HiddenKorokFly
+,,UZ34,Pinwheel Balloons,"3284.83, 355.57, -338.7",HiddenKorokFly
+,,UZ38,Goal Ring (Race),"2954.93, 327.91, -256.16",HiddenKorokFly
+,,UZ23,Rock Lift,"3329.76, 217.88, -532.85",HiddenKorokGround
+,,UZ24,Stationary Lights,"3322.39, 414.33, -515.95",HiddenKorokFly
+,,UZ39,Stationary Lights,"3192.14, 257.17, -226.67",HiddenKorokFly
+,,UZ20,Rock Pattern,"3167.67, 221.46, -586.41",HiddenKorokGround
+,,UZ66,Rock Lift,"3321.48, 127.47, 475.24",HiddenKorokGround
+,,UZ72,Offering Plate,"3203.27, 106.43, 661.71",HiddenKorokGround
+,,UZ64,Rock Pattern,"3944.02, 143.6, 413.1",HiddenKorokGround
+,,UZ54,Land on Target,"3272.69, 383.45, 13.03",HiddenKorokFly
+,,UZ58,Pinwheel Balloons,"2951.33, 422.71, 78.58",HiddenKorokFly
+,,UZ65,Dive,"3135.05, 119, 432.78",HiddenKorokFly
+,,UZ70,Flower Trail,"3711.97, 106.93, 622.12",HiddenKorokGround
+,,UZ62,Puzzle Blocks,"3526.79, 255.87, 367.99",HiddenKorokGround
+,,ML21,Moving Lights,"3715.13, 282.39, 1949.03",HiddenKorokGround
+,,ML15,Stationary Lights,"3741.65, 492.4, 1685.44",HiddenKorokFly
+,,ML14,Stationary Lights,"3528.71, 467.12, 1683.91",HiddenKorokFly
+,,ML13,Stationary Lights,"3895.72, 492.33, 1683.75",HiddenKorokFly
+,,ML05,Stationary Lights,"3562.14, 361.07, 1112.73",HiddenKorokFly
+,,ML22,Ring the Bell,"3365.99, 249.62, 1979.37",HiddenKorokFly
+,,ML07,Puzzle Blocks,"3250.02, 276.01, 1335.54",HiddenKorokGround
+,,ML12,Rock Pattern,"3237.13, 302.99, 1545.17",HiddenKorokGround
+,,ML06,Catch the Seed,"3741.57, 556.51, 1151.48",HiddenKorokFly
+,,ML31,Stationary Lights,"3286.33, 276.18, 2179.74",HiddenKorokFly
+,,RW21,Rock Pattern,"3099.94, 290.04, 2951.01",HiddenKorokFly
+,,ML45,Rock Lift,"3749.07, 126.55, 2629.29",HiddenKorokGround
+,,ML23,Land on Target,"2975.55, 124.76, 2025.2",HiddenKorokFly
+,,RW10,Dive,"3013.95, 234.28, 2537.1",HiddenKorokFly
+,,ML38,Pinwheel Balloons,"3415.21, 340.51, 2381.26",HiddenKorokFly
+,,ML41,Stationary Lights,"3932.92, 126.52, 2479.91",HiddenKorokFly
+,,ML25,Pinwheel Balloons,"3913.84, 237.89, 2100.54",HiddenKorokFly
+,,ML29,Stationary Lights,"3782.36, 392.52, 2122.65",HiddenKorokFly
+,,ML33,Rock Lift,"3675.93, 322.58, 2193.26",HiddenKorokGround
+,,ML34,Rock Lift,"3264.48, 212.46, 2225.93",HiddenKorokGround
+,,ML43,Puzzle Blocks,"3440.26, 318.49, 2517.03",HiddenKorokFly
+,,RW35,Stationary Lights,"3796.5, 125.01, 3614.86",HiddenKorokFly
+,,RW27,Acorn in a Hole,"3495.78, 332.65, 3311.49",HiddenKorokFly
+,,RW28,Stationary Lights,"3431.59, 128.04, 3325.06",HiddenKorokFly
+,,RW25,Rock Lift,"3665.76, 311.54, 3277.42",HiddenKorokGround
+,,RW39,Rock Lift,"3118.97, 106.72, 3719.79",HiddenKorokGround
+,,RW29,Goal Ring (Race),"3064.48, 126.04, 3395.47",HiddenKorokFly
+,,UM01,Pinwheel Balloons,"4793.51, 247.08, -3757.19",HiddenKorokFly
+,,UM11,Stationary Lights,"4542.98, 378.64, -3162.14",HiddenKorokFly
+,,UM06,Hanging Acorn,"4117.8, 308.58, -3286.25",HiddenKorokGround
+,,UM10,Rock Lift,"4157.26, 355.83, -3167.72",HiddenKorokGround
+,,UM12,Offering Plate,"4492.4, 352.24, -3147.97",HiddenKorokGround
+,,UM08,Flower Trail,"4435.4, 358.05, -3189.81",HiddenKorokFly
+,,UM24,Rock Lift,"4072.93, 179.39, -2452.56",HiddenKorokGround
+,,UM16,Dive,"4276.99, 255.71, -2946.72",HiddenKorokFly
+,,UM28,Rock Lift,"4527.52, 105.72, -2046.6",HiddenKorokGround
+,,UM18,Rock Lift,"4270.89, 253.63, -2826.92",HiddenKorokGround
+,,UM19,Puzzle Blocks,"4393.71, 228.23, -2721.31",HiddenKorokFly
+,,UM23,Stationary Lights,"4314.05, 187.65, -2518.41",HiddenKorokFly
+,,UM36,Repair Roof,"4133.55, 271.88, -1494.92",HiddenKorokGround
+,,UM39,Moving Lights,"4106.03, 271.88, -1376.55",HiddenKorokGround
+,,UM30,Rock Lift,"4598.68, 114.95, -1856.99",HiddenKorokGround
+,,UM42,Stationary Lights,"4045.49, 323.86, -1285.47",HiddenKorokFly
+,,UZ02,Stationary Lights,"4715.14, 288.98, -1418.29",HiddenKorokFly
+,,UZ49,Rock Lift,"4165.51, 455.02, -63.29",HiddenKorokGround
+,,UZ07,Goal Ring (Race),"4561.24, 284.57, -940.81",HiddenKorokFly
+,,UZ10,Through the Roof,"4077.58, 340.83, -821.02",HiddenKorokFly
+,,UZ16,Pull the Plug,"4174.72, 354.06, -698.99",HiddenKorokFly
+,,UZ17,Stationary Lights,"4484.52, 361.49, -678.08",HiddenKorokFly
+,,UZ21,Land on Target,"4635.29, 323.17, -566.09",HiddenKorokFly
+,,UZ46,Puzzle Blocks,"4271.5, 211.5, -137",HiddenKorokGround
+,,UZ19,Rock Pattern,"4388.59, 380.6, -612.01",HiddenKorokGround
+,,UZ25,Pinwheel Balloons,"4274.3, 443.84, -510.31",HiddenKorokFly
+,,UZ27,Rock Lift,"4101.72, 368.68, -474.36",HiddenKorokGround
+,,UZ33,Rock Lift,"4134.99, 521.56, -406.29",HiddenKorokGround
+,,UZ43,Puzzle Blocks,"4219.85, 385.11, -158.61",HiddenKorokFly
+,,UZ28,Boulder Stand,"4112.61, 486.61, -471.43",HiddenKorokFly
+,,ML02,Flower Trail,"4462.59, 168.53, 843.73",HiddenKorokGround
+,,UZ67,Through the Roof,"4441.34, 176.75, 480.19",HiddenKorokFly
+,,ML03,Moving Lights,"4523.79, 112.53, 1004.58",HiddenKorokGround
+,,UZ60,Goal Ring (Race),"4231.38, 109.9, 311.05",HiddenKorokFly
+,,UZ61,Rock Lift,"4459.47, 162.18, 357.05",HiddenKorokGround
+,,UZ69,Stationary Lights,"4142.34, 112.02, 557.37",HiddenKorokFly
+,,UZ59,Catch the Seed,"4325.01, 155.66, 141.69",HiddenKorokFly
+,,UZ68,Puzzle Blocks,"4395.41, 167.11, 535.14",HiddenKorokGround
+,,ML20,Rock Pattern,"4335.05, 318.07, 1870.69",HiddenKorokGround
+,,ML11,Flower Trail,"4506.22, 107.25, 1521.4",HiddenKorokGround
+,,ML01,Dive,"4188.94, 109.91, 811.86",HiddenKorokFly
+,,ML04,Pull the Plug,"4027.85, 454.94, 1094.71",HiddenKorokFly
+,,ML10,Boulder Stand,"4395.59, 176.07, 1458.23",HiddenKorokFly
+,,ML47,Stationary Lights,"3997.32, 121.77, 2995.61",HiddenKorokFly
+,,ML36,Rock Lift,"4516.26, 218.68, 2305.92",HiddenKorokGround
+,,ML40,Puzzle Blocks,"4394.53, 110.96, 2414.53",HiddenKorokGround
+,,ML44,Stationary Lights,"4118.99, 108.4, 2573.93",HiddenKorokFly
+,,ML30,Pull the Plug,"4591.71, 109.29, 2159.7",HiddenKorokFly
+,,ML37,Catch the Seed,"4038.35, 115.67, 2309.17",HiddenKorokFly
+,,ML46,Pull the Plug,"4083.58, 109.16, 2974.14",HiddenKorokFly
+,,RW38,Moving Lights,"4897.25, 107.9, 3692.97",HiddenKorokGround
+,,RW33,Stationary Lights,"4598.1, 127.39, 3561.75",HiddenKorokFly
+,,RW30,Pinwheel Balloons,"4491.06, 110.98, 3396.37",HiddenKorokFly
+,,RW37,Rock Lift,"4536.01, 150.64, 3663.12",HiddenKorokGround
+,,PFS02,Rock Lift,"967.08, 820.74, 3184.78",HiddenKorokGround
+,,PFS03,Dive,"1329.8, 575.76, 3404.35",HiddenKorokFly
+,,RPS01,Rock Lift,"-3218.41, 1477.8, -3376.99",HiddenKorokGround
+,,RPS02,Goal Ring (Race),"-2989.52, 950.15, -3141.73",HiddenKorokGround
+,,UZS02,Moving Lights,"3496.58, 1299.49, -579.41",HiddenKorokGround
+,,UZS01,Pinwheel Balloons,"3413.71, 1656.06, -617.88",HiddenKorokFly
+,,UMS03,Catch the Light,"3662.12, 1273.77, -1408.44",HiddenKorokFly
+,,UMS02,Land on Target,"4653.96, 1344.99, -2137.07",HiddenKorokFly
+,,HFS02,Rock Lift,"-793.57, 1041.82, 1601.78",HiddenKorokGround
+,,HFS01,Touch the Target,"-1402.8, 1138.36, 1522.87",HiddenKorokFly
+,,ECS02,Hanging Acorn,"1690.65, 1260.48, -1199.49",HiddenKorokFly
+,,ECS01,Touch the Target,"2049.99, 1396.16, -1201.01",HiddenKorokFly
+,,PFS01,Rock Lift,"126.06, 796.91, 2502.47",HiddenKorokGround
+,,SSS06,Rock Pattern,"1677.28, 798.66, 1897.96",HiddenKorokGround
+,,SSS07,Land on Target,"1336.72, 700.42, 2061.9",HiddenKorokFly
+,,SSS03,Rock Lift,"2344.92, 1991.43, 1752.77",HiddenKorokGround
+,,SSS05,Flower Trail,"2332.08, 1822.21, 1827.36",HiddenKorokGround
+,,SSS04,Goal Ring (Race),"2430.36, 1622.59, 1783.23",HiddenKorokFly
+,,SSS02,Rock Pattern,"2439.93, 1549.5, 1721.69",HiddenKorokGround
+,,RWS02,Touch the Target,"2932.88, 1363.61, 2991.81",HiddenKorokFly
+,,RWS01,Rock Lift,"2719.47, 1328.37, 2739.68",HiddenKorokGround
+,,GCS01,Land on Target,"-1929.45, 1255.55, 1823.98",HiddenKorokFly
+,,PSS01,Flower Trail,"-1683.65, 1091.84, -3572.73",HiddenKorokGround
+,,PSS03,Touch the Target,"-1662.7, 1082.28, -3285.3",HiddenKorokFly
+,,TRS01,Touch the Target,"524.49, 1967.67, -2748.37",HiddenKorokFly
+,,TRS02,Catch the Light,"285.12, 858.57, -1960.4",HiddenKorokFly
+,,LBS04,Catch the Light,"-2367.1, 724.78, -865.11",HiddenKorokFly
+,,SSS01,Catch the Light,"1776.32, 1071.93, 938.91",HiddenKorokFly
+,,MLS02,Catch the Light,"4579.5, 1234.3, 909.5",HiddenKorokFly
+,,MLS01,Pinwheel Balloons,"4818.28, 2046.72, 822.44",HiddenKorokFly
+,,MLS03,Catch the Light,"4747.48, 1934.87, 1155.58",HiddenKorokFly
+,,RPS03,Touch the Target,"-3917.26, 840.22, -2880.21",HiddenKorokFly
+,,RPS04,Land on Target,"-3101.78, 755.45, -2142.18",HiddenKorokFly
+,,LBS05,Land on Target,"-3959.79, 1608.93, -691.91",HiddenKorokFly
+,,LBS01,Land on Target,"-3645.03, 1900.55, -1048.27",HiddenKorokFly
+,,LBS02,Catch the Light,"-3620.81, 1769.02, -996.98",HiddenKorokFly
+,,LBS03,Hanging Acorn,"-3598.97, 1927.86, -978.57",HiddenKorokFly
+,,UZS03,Catch the Light,"3234.39, 1046.8, -461.52",HiddenKorokFly
+,,GHS01,Land on Target,"-3369.14, 2392.14, 50.82",HiddenKorokFly
+,,PSS02,Catch the Light,"-681.92, 1291.82, -3534.95",HiddenKorokFly
+,,GCS02,Catch the Light,"-1714.11, 1292.05, 3578.26",HiddenKorokFly
+,,UMS01,Catch the Light,"4795.92, 1291.13, -3755.85",HiddenKorokFly
+,,GSI16,Stationary Lights,"342.82, 2387.41, 1756",HiddenKorokFly
+,,GSI15,Stationary Lights,"376.85, 2460.17, 1731.84",HiddenKorokFly
+,,GSI05,Flower Trail,"512.73, 1525.46, 1317.84",HiddenKorokGround
+,,GSI01,Moving Lights,"246.09, 1554.91, 822.41",HiddenKorokGround
+,,GSI03,Rock Lift,"113.27, 1522.52, 1081.22",HiddenKorokGround
+,,GSI11,Rock Lift,"23.64, 1557.39, 1558.23",HiddenKorokGround
+,,GSI13,Rock Lift,"229.47, 1511.43, 1643.75",HiddenKorokGround
+,,GSI09,Stationary Balloon,"449.94, 1463.6, 1522.15",HiddenKorokFly
+,,GSI14,Catch the Seed,"622.09, 1616.09, 1657.79",HiddenKorokFly
+,,GSI02,Through the Roof,"463.57, 1528.61, 881.34",HiddenKorokFly
+,,GSI07,Dive,"313.05, 2132.16, 1436.13",HiddenKorokFly
+,,GSI06,Rock Pattern,"760.46, 1708.8, 1341.14",HiddenKorokGround
+,,GSI08,Rock Pattern,"424.22, 1606.05, 1503.57",HiddenKorokFly
+,,GSI12,Puzzle Blocks,"542.02, 1593.15, 1581.33",HiddenKorokFly
+,,GSI10,Puzzle Blocks,"630.9, 1554.57, 1531.1",HiddenKorokGround
+,,LL09,Stationary Balloon,"-394, 426.78, -998.87",HiddenKorokFly
+,,LL13,Rock Lift,"-254.2, 410.92, -943.86",HiddenKorokGround
+,,LL10,Stationary Lights,"-381.27, 497.78, -995.87",HiddenKorokFly
+,,LL14,Stationary Balloon,"-83.79, 425.16, -906.68",HiddenKorokFly
+,,LL07,Stationary Lights,"-254, 668.26, -1059",HiddenKorokFly
+,,LL11,Puzzle Blocks,"-52.51, 382.95, -971.35",HiddenKorokGround
+,,LL17,Pinwheel Balloons,"-360.42, 384.47, -885.02",HiddenKorokFly
+,,LL06,Ring the Bell,"-254, 575.45, -1061.77",HiddenKorokFly

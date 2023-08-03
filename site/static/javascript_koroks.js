@@ -116,11 +116,11 @@ window.addEventListener('DOMContentLoaded', function() {
     return '';
   }
   
-  sortByLocationBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    sortKoroks('location');
-    isLocationSortAscending = !isLocationSortAscending;
-  });
+  // sortByLocationBtn.addEventListener("click", function(event) {
+  //   event.preventDefault();
+  //   sortKoroks('location');
+  //   isLocationSortAscending = !isLocationSortAscending;
+  // });
 
   sortByCoordBtn.addEventListener("click", function(event) {
     event.preventDefault();
