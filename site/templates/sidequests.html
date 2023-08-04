@@ -1,7 +1,34 @@
 {% extends "layout.html" %}
 
 {% block body %} 
+<!-- Add a table to display the completion status for each region -->
+<table style="width: 100%;">
+    <tr>
+        <th>Region</th>
+        <th>Completed</th>
+        <th>Tapped</th>
+        <th>Unfound</th>
+    </tr>
+    {% for region in regions %}
+    <tr>
+        <td>{{ region }}</td>
+        <td>{{ region_status[region]['completed'] }} of {{ region_status[region]['total_shrines'] }}</td>
+        <td>{{ region_status[region]['tapped'] }} of {{ region_status[region]['total_shrines'] }}</td>
+        <td>{{ region_status[region]['unfound'] }} of {{ region_status[region]['total_shrines'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
+<form id="regionFilterForm" onsubmit="return filterByRegion()">
+    <label for="regionFilter">Filter by Region:</label>
+    <select id="regionFilter" name="regionFilter">
+        <option value="">All Regions</option>
+        {% for region in regions %}
+            <option value="{{ region }}">{{ region }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Filter">
+</form>
 {% for result in results %}
     <div class="row">
         <table  style="width: 100%;">
@@ -15,39 +42,43 @@
                 <th>Value</th>
             </tr>
             <tr>
-                <td>Chest #{{result[0]}}</td>
-                <td>{{result[1]}}</td>
-            </tr>
-            <tr>
-                <td>Coordinates</td>
+                <td>Name</td>
                 <td>{{result[2]}}</td>
             </tr>
             <tr>
-                <td>Type</td>
-                <td>{{result[3]}}</td>
+                <td>Coordinates</td>
+                <td>{{result[7]}}</td>
             </tr>
             <tr>
-                <td>Location</td>
+                <td>Contact</td>
                 <td>{{result[4]}}</td>
             </tr>
             <tr>
-                <td>Side Quest</td>
+                <td>Location</td>
                 <td>{{result[5]}}</td>
             </tr>
             <tr>
-                <td>Found</td>
+                <td>Region</td>
+                <td>{{result[6]}}</td>
+            </tr>
+            <tr>
+                <td>Rewards</td>
+                <td>{{result[8]}}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{result[3]}}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
                 <td>
-                    <form id = "form" action="{{ url_for('chests') }}" method="POST" enctype="multipart/form-data">
+                    <form id = "form" action="{{ url_for('sidequests') }}" method="POST" enctype="multipart/form-data">
                         <label>
-                            {% if result[6]== "FALSE" %}
-                                <input type="checkbox" id="found_chest"  name="found_chest_no" value="FALSE" unchecked>
-                                {{"Not Found"}}
-                            {% else %} 
-                                <input type="checkbox" id="found_chest" name="found_chest_yes" value="TRUE" checked>
-                                {{"Found!"}}
-                            {% endif %}
+                            <input type="radio" id="undone_{{ result[1] }}" name="done_sidequ_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="sidequ_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
+                            <input type="radio" id="started_{{ result[1] }}"name="done_sidequ_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="sidequ_radio_labels" for="started_{{ result[1] }}">Started</label>
+                            <input type="radio" id="done_{{ result[1] }}"name="done_sidequ_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="sidequ_radio_labels" for="done_{{ result[1] }}">Done</label>
+                            <input type="submit" id="SidequSubmit" value="Update">
                         </label>
-                        <input type="submit" id="addItemSubmit" value="Update">
                     </form>
                     </td>
             </tr>

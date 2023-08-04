@@ -12,6 +12,7 @@
                         <label><input type="radio" name="chest_type" value="Buried Chest">Buried Chest</label><br>
                         <label><input type="radio" name="chest_type" value="Floating Chest">Floating Chest</label><br>
                         <label><input type="radio" name="chest_type" value="Flux Construct">Flux Construct</label><br>
+                        <label><input type="radio" name="chest_type" value="Like Like">Like Like</label><br>
                     </div>
                     <div class="col">
                         <label><input type="radio" name="chest_type" value="Hanging Chest">Hanging Chest</label><br>
@@ -80,7 +81,11 @@
                         <input type="hidden" id="chest_id_{{ chest[0] }}" name="chest_id_{{ chest[0] }}" value="{{ chest[0] }}">
                         <input type="checkbox" id="chest_id_{{ chest[0] }}" name="chest_found_{{ chest[0] }}" value="1" {% if chest[7] == 1 %}checked{% elif chest[7] == 0 %} unchecked{% endif %}>
                     </td>
-                    <td>{{ chest[1] }}</td>
+                    <td>{% if chest[7] != 1 %}
+                        ???
+                        {% else %}
+                            {{ chest[1] }}
+                        {% endif %}</td>
                     <td>{{chest[2]}}</td>
                     <td>
                         {% if chest[3] == None %}

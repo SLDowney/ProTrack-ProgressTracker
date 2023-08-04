@@ -49,7 +49,7 @@
             {% for korok in koroks %}
             <tr>
                 <td>
-                    <input type="checkbox" name="korok_done_{{ korok[0] }}" value="1" {% if korok[1] == 1 %}checked{% endif %} onclick="updateKorok(this, '{{korok[0]}}')">
+                    <input type="checkbox" id="korok_done_{{ korok[0] }}" name="korok_done_{{ korok[0] }}" value="{{korok[1]}}" {% if korok[1] == 1 %}checked{% endif %} onclick="updateKorok(this, '{{korok[0]}}')">
                 </td>
                 <td>{{ korok[3] }}</td>
                 <td>{{ korok[4] }}</td>

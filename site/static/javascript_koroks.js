@@ -5,7 +5,7 @@ function updateKorok(checkbox, korokId) {
 
   const data = {
       korok_id: korokId,
-      korok_found: korokFound,
+      korok_done: korokFound,
   };
 
   console.log('Data sent to server:', data); // Add this line for debugging
@@ -60,16 +60,16 @@ window.addEventListener('DOMContentLoaded', function() {
       } else if (sortType === 'start') {
         aValue = a.cells[5].textContent.toLowerCase();
         bValue = b.cells[5].textContent.toLowerCase();
-      } else if (sortType === 'korok_found') {
+      } else if (sortType === 'korok_done') {
         aValue = a.cells[0].querySelector('input[type="checkbox"]').checked;
         bValue = b.cells[0].querySelector('input[type="checkbox"]').checked;
       }
 
       if (aValue && bValue) {
         if (aValue < bValue) {
-          return sortType === 'korok_found' ? (isFoundSortAscending ? -1 : 1) : -1;
+          return sortType === 'korok_done' ? (isFoundSortAscending ? -1 : 1) : -1;
         } else if (aValue > bValue) {
-          return sortType === 'korok_found' ? (isFoundSortAscending ? 1 : -1) : 1;
+          return sortType === 'korok_done' ? (isFoundSortAscending ? 1 : -1) : 1;
         } else {
           return 0;
         }
@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     sortKoroks('found');
     isFoundSortAscending = !isFoundSortAscending;
-  });
+});
 
  
 });

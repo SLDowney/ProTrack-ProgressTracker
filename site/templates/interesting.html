@@ -52,7 +52,7 @@
             {% for thing in interesting %}
             <tr>
                 <td>
-                    <input type="checkbox" name="misc_found_{{ thing[0] }}" value="1" {% if thing[1] == 1 %}checked{% endif %} onclick="updateitem(this, thing[0])">
+                    <input type="checkbox" id="misc_found_{{ thing[0] }}" value="1" {% if thing[1] == 1 %}checked{% endif %} onclick="updateitem(this, {{ thing[0] }})">
                 </td>
                 <td class="misc_td">{{ thing['misc_category'] }}</td>
                 <td class="misc_td">{{ thing['misc_thing'] }}</td>

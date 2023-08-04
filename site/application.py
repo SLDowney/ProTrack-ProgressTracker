@@ -151,6 +151,56 @@ def get_percentages():
         }
     return percentages
 
+def update_weapons_table(weapon_name, region, damage, buff):
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM Weapons WHERE weapon_name = ?', (weapon_name,))
+        c.execute('SELECT * FROM Weapons WHERE weapon_name = ?', (weapon_name,))
+        weapon_data = c.fetchone()
+
+        if weapon_data:
+            # If the weapon already exists, update regions, damage, buff, and weapon_num_found
+            existing_regions = weapon_data[1].split(', ') if weapon_data[1] else []
+            if region not in existing_regions:
+                updated_regions = ', '.join(existing_regions + [region])
+                c.execute('UPDATE Weapons SET weapon_regions = ? WHERE weapon_name = ?', (updated_regions, weapon_name))
+
+            existing_damage = weapon_data[2].split(', ') if weapon_data[2] else []
+            if damage not in existing_damage:
+                updated_damage = ', '.join(existing_damage + [damage])
+                c.execute('UPDATE Weapons SET weapon_damage = ? WHERE weapon_name = ?', (updated_damage, weapon_name))
+
+            if buff:
+                existing_buff = weapon_data[3].split(', ') if weapon_data[3] else []
+                if buff not in existing_buff:
+                    updated_buff = ', '.join(existing_buff + [buff])
+                    c.execute('UPDATE Weapons SET weapon_buff = ? WHERE weapon_name = ?', (updated_buff, weapon_name))
+
+            weapon_num_found = weapon_data[4]
+            if weapon_num_found is None:
+                weapon_num_found = 1
+            else:
+                weapon_num_found += 1
+            c.execute('UPDATE Weapons SET weapon_num_found = ? WHERE weapon_name = ?', (weapon_num_found, weapon_name))
+
+        else:
+            # If the weapon does not exist, add it to the Weapons table
+            c.execute('INSERT INTO Weapons (weapon_name, weapon_regions, weapon_damage, weapon_buff, weapon_num_found) VALUES (?, ?, ?, ?, ?)', (weapon_name, region, damage, buff, 1))
+    conn.commit()
+
+
+def calculate_progress_percentage(completed_locks, total_locks):
+    if total_locks == 0:
+        return 0
+    return (completed_locks / total_locks) * 100
+
+# Helper function to fetch temple progress data from the database
+def fetch_temple_progress():
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT temple_id, temple_name, temple_lock1, temple_lock2, temple_lock3, temple_lock4, temple_lock5, temple_boss, temple_complete FROM Temples")
+        temples_data = c.fetchall()
+        print("Temples_data:", temples_data)
+        return temples_data
+
 # Define a custom Jinja filter to format the key as desired
 @app.template_filter('format_percentage_key')
 def format_percentage_key(key):
@@ -167,8 +217,61 @@ def format_percentage_key(key):
 def index():
     headline = "Current Percentage Completed"
     percentages = get_percentages()
-    return render_template("index.html", headline=headline, percentages=percentages)
+    
+    # Fetch the temple progress data from the database
+    temples_data = fetch_temple_progress()
 
+    # Calculate progress percentage for each temple and create a list of dictionaries with (temple_name, progress_percentage)
+    progress_data = []
+    for temple in temples_data:
+        temple_id = temple[0]
+        print("generating progress data: temple_id:", temple_id)
+        temple_name = temple[1]
+        if temple_name == "Fire Temple" or temple_name == "Wind Temple":
+            locks = temple[2], temple[3], temple[4], temple[5], temple[6]
+        else:
+            locks = temple[2], temple[3], temple[4], temple[5]
+        completed_locks = sum(int(lock) for lock in locks if isinstance(lock, int))
+        if temple_name == "Fire Temple" or temple_name == "Wind Temple":
+            total_locks = 5  # Assuming there are 5 locks per temple, adjust if needed
+        else:
+            total_locks = 4
+        temple_boss = temple[7]
+        progress_percentage = calculate_progress_percentage(completed_locks, total_locks)
+        print("Calculated Progress Percentage")
+        progress_data.append({"temple_id": temple_id, "temple_name": temple_name, "progress_percentage": progress_percentage, "temple_name": temple_name, "locks": locks, "completed_locks": completed_locks, "temple_boss": temple_boss})
+    print("Progress_Data:", progress_data)
+
+
+    return render_template("index.html", headline=headline, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
+
+@app.route('/update_lock_status', methods=['POST'])
+def update_lock_status():
+    try:
+        # Get data from the request
+        data = request.get_json()
+        temple_name = data.get('temple_name')
+        temple_id = data.get('temple_id')
+        lock_index = data.get('lock_index')
+        status = data.get('status')
+        print("Data from JS:", data)
+
+        # Update the lock status in the database
+        with closing(conn.cursor()) as c:
+
+        # Assuming your Temples table has the columns temple_id, temple_lock1, temple_lock2, ..., temple_lock5
+            lock_column = f'temple_lock{lock_index}'
+            print("within lock update - lock_column:", lock_column)
+            c.execute(f"UPDATE Temples SET {lock_column} = ? WHERE temple_id = ?", (status, temple_id))
+            conn.commit()
+            print("Executed update statement for", temple_name)
+            print("Status:", status)
+            print("Temple_ID:", temple_id)
+
+
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
 
 @app.route("/locationnav")
 def locationnav():
@@ -238,7 +341,7 @@ def caves():
             'unfound': unfound,
             'total_caves': total_caves
         }
-    return render_template("caves.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, regions=regions, region_status=region_status)
+    return render_template("caves.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, regions=regions, region_status=region_status, total_caves=total_caves)
 
 @app.route('/chests', methods=['GET', 'POST'])
 def chests():
@@ -297,13 +400,42 @@ def add_chest():
         
         chest_type = request.form['chest_type']
         chest_item = request.form['chest_item']
+
+        # Find the opening and closing parentheses positions
+        opening_parenthesis_pos = chest_item.find("(")
+        closing_parenthesis_pos = chest_item.find(")")
+
+        if opening_parenthesis_pos != -1 and closing_parenthesis_pos != -1:
+            # Extract the weapon name and damage number
+            weapon_name = chest_item[:opening_parenthesis_pos].strip()
+            damage_and_buff = chest_item[opening_parenthesis_pos + 1:closing_parenthesis_pos].strip()
+
+            # Find the position of the comma to separate damage number and buff
+            comma_pos = damage_and_buff.find(",")
+            if comma_pos != -1:
+                damage_number = damage_and_buff[:comma_pos].strip()
+                buff = damage_and_buff[comma_pos + 1:].strip()
+            else:
+                # If there is no comma, consider the whole part as damage number and no buff
+                damage_number = damage_and_buff.strip()
+                buff = "No Buff"
+
+            print("Weapon Name:", weapon_name)
+            print("Damage Number:", damage_number)
+            print("Buff:", buff)
+        else:
+            print("Invalid chest item format.")
+
         chest_location = request.form['chest_location']
         chest_sideq = request.form['chest_sideq']
-        if chest_sideq == None:
+        if chest_sideq == None or chest_sideq == "":
             chest_sideq = "X"
         chest_region = request.form['chest_region']
         chest_done = request.form.get(f'chest_done')
         chest_map = request.form['chest_map']
+
+        update_weapons_table(weapon_name, chest_region, damage_number, buff)
+
         print("Chest_Done:", chest_done) 
         if chest_done == None:
             chest_done = "0"
@@ -443,20 +575,18 @@ def armors():
 
     if request.method == 'POST':
         armor_id = request.form['armorId']
-        armor_helm_found = request.form.get(f'have_{armor_id}_helm', '0')
-        armor_chest_found = request.form.get(f'have_{armor_id}_chest', '0')
-        armor_pants_found = request.form.get(f'have_{armor_id}_pants', '0')
+        armor_helm_found = request.form.get(f'have_{armor_id}_helm')
+        armor_chest_found = request.form.get(f'have_{armor_id}_chest')
+        armor_pants_found = request.form.get(f'have_{armor_id}_pants')
 
         with closing(conn.cursor()) as c:
-            c.execute('UPDATE armor_set SET a_helm = ? WHERE a_id = ?', (armor_helm_found, armor_id))
-            c.execute('UPDATE armor_set SET a_chest = ? WHERE a_id = ?', (armor_chest_found, armor_id))
-            c.execute('UPDATE armor_set SET a_pants = ? WHERE a_id = ?', (armor_pants_found, armor_id))
+            c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_helm_found, armor_id))
 
         conn.commit()
 
     # Retrieve all armors from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM armor_set ORDER BY a_set ASC')
+        c.execute('SELECT * FROM armor ORDER BY a_set ASC')
         armors = c.fetchall()
 
     return render_template('armors.html', headline=headline, percentages=percentages, armors=armors, scroll_position=scroll_position)
@@ -472,8 +602,8 @@ def update_armor():
     print("armor_found:", armor_found)
 
     with closing(conn.cursor()) as c:
-        c.execute('UPDATE armor_set SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
-        print("Executed armor_set update, collected, id: ", armor_found, armor_id)
+        c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+        print("Executed armor update, collected, id: ", armor_found, armor_id)
         conn.commit()
 
     return jsonify(success=True)
@@ -576,20 +706,26 @@ def koroks():
 @app.route('/update-korok', methods=['POST'])
 def update_korok():
     korok_id = request.json.get('korok_id')
-    korok_done = request.json.get('korok_done_{{ korok_id }}')
-    if korok_done is None:
-        korok_done = '0'
-    else:
-        korok_done = '1'
-    print("Korok_done:", korok_done)
+    korok_done = request.json.get('korok_done')
+    print("Data received from client:", korok_id, korok_done)  # Add this line for debugging
 
+    if korok_done is None:
+        korok_done = 0
+    else:
+        korok_done = korok_done
+
+    print("Korok_done after if/else:", korok_done)
 
     # Update the korok in the database with the new found status
-    with closing(conn.cursor()) as c:
-        c.execute('UPDATE allkoroks SET korok_done = ? WHERE korok_id = ?', (korok_done, korok_id))
-        conn.commit()
-
-    return jsonify(success=True)
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE allkoroks SET korok_done = ? WHERE korok_id = ?', (korok_done, korok_id))
+            print("update koroks korok_done = ", korok_done, ", korok_id = ", korok_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
 
 @app.route('/add_korok', methods=['POST'])
 def add_korok():
@@ -905,18 +1041,66 @@ def shrinequests():
             info.append(result)
     return render_template("shrinequests.html", headline=headline, percentages=percentages, info=info, results = results)
 
-@app.route("/sidequests")
+@app.route("/sidequests", methods=["GET", "POST"])
 def sidequests():
     headline = "Side Quests"
     percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    regions = [
+    "Great Sky Island",
+    "Hyrule Field",
+    "Tabantha",
+    "Great Hyrule Forest",
+    "North Hyrule Sky Archipelago",
+    "Akkala",
+    "Eldin",
+    "Lanayru",
+    "Necluda",
+    "Faron",
+    "Gerudo",
+]
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            side_ids = c.execute('SELECT side_id FROM sidequests').fetchall()
+            for side_id in side_ids:
+                side_id = side_id[0]
+                side_done = request.form.get(f'done_sidequ_{side_id}')
+                if side_done is None:
+                    side_done = c.execute('SELECT side_done FROM sidequests WHERE side_id = ?', (side_id,)).fetchone()[0]
+                else:
+                    print("side_done is not none:", side_done)
+                c.execute('UPDATE sidequests SET side_done = ? WHERE side_id = ?', (side_done, side_id))
+            conn.commit()
+
     with closing(conn.cursor()) as c:
-        query = '''Select * From sidequests ORDER BY side_quest ASC'''
+        query = '''SELECT * FROM sidequests ORDER BY side_id ASC'''
         c.execute(query)
+        selected_region = request.args.get('region')
         results = c.fetchall()
-        info = []
-        for result in results:
-            info.append(result)
-    return render_template("sidequests.html", headline=headline, percentages=percentages, info=info, results = results)
+        # Filter the results based on the selected region
+        if selected_region:
+            results = [result for result in results if result[4] == selected_region]   
+        info = [(result[0], result[1], result[2]) for result in results]
+    # Calculate the completion status for each region
+    region_status = {}
+    for region in regions:
+        total_sidequests = len([result for result in results if result[4] == region])
+        completed = len([result for result in results if result[4] == region and result[0] == 2])
+        started = len([result for result in results if result[4] == region and result[0] == 1])
+        unfound = len([result for result in results if result[4] == region and result[0] == 0])
+
+        region_status[region] = {
+            'completed': completed,
+            'started': started,
+            'unfound': unfound,
+            'total_sidequests': total_sidequests
+        }
+
+    return render_template("sidequests.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
 
 @app.route("/adventures", methods=['GET', 'POST'])
 def adventures():

@@ -2,18 +2,28 @@
 
 {% block body %} 
 
-    <table id="percentage_table">
-        <tr>
-            <th>Table</th>
-            <th>Completion Percentage</th>
-        </tr>
-        {% for key, value in percentages.items() %}
-        <tr>
-            <td>{{ key | format_percentage_key }}</td>
-            <td>{{ "%.2f" % value }}%</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
-    
+{% set status = 1 %}
+
+{% for data in progress_data %}
+    <div class="temple_progress">
+        <h3>{{ data.temple_name }}</h3>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{ data.progress_percentage }}%;" aria-valuenow="{{ data.progress_percentage }}" aria-valuemin="0" aria-valuemax="100">{{ data.progress_percentage }}%</div>
+          </div>
+          <form action="/update_lock_status">
+            {% for lock in data.locks %}
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="{{ loop.index }}" data-temple-id="{{ data.temple_id }}" {% if loop.index <= data.completed_locks %}checked{% endif %} onclick="updateLockStatus(this)">
+              Lock {{ loop.index }}
+            </label>
+            {% endfor %}
+            <label id="temple_boss_checkbox">
+              <input type="checkbox" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" {% if temple_boss == 1 %} checked {% endif %}> Temple Boss
+            </label>
+          </form>
+    </div>
+{% endfor %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock %}

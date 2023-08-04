@@ -78,4 +78,34 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     return '';
   }
+
+  function updateitem(itemId, checked) {
+    fetch('/update_thing', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        thingId: itemId,     // Assuming the 'thing[0]' contains the itemId
+        thingFound: checked, // Assuming 'checked' is the updated found status
+      }),
+    })
+      .then(function(response) {
+        // Handle the response from the server if needed
+      })
+      .catch(function(error) {
+        console.error('Error updating thing:', error);
+      });
+  }
+  
+
+  // Add event listener to checkboxes
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function(event) {
+      var itemId = checkbox.getAttribute('data-id');
+      var checked = checkbox.checked;
+      updateitem(itemId, checked);
+    });
+  });
 });

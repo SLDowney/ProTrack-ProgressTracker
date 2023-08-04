@@ -69,11 +69,11 @@ body {
 }
 
 #layout_headline {
-    margin-left: 50%;
+    margin-left: 0%; /* was at 50%, changed to 0 and updated h1 to text-align: center */
 }
 
 h1 {
-    /* text-align: center; */
+    text-align: center;
     font-family:'Arial', Helvetica, sans-serif;
 	font-size: 200%;
     color: rgb(0, 102, 189);
@@ -201,6 +201,14 @@ textarea {
 #percentage_table {
     margin-bottom: 10%;
     width: 550px;
+}
+
+.temple_progress {
+    margin-top: 5%;
+}
+
+#temple_boss_checkbox {
+    padding-left: 2%;
 }
 
 #ShrineSubmit {
