@@ -211,6 +211,10 @@ textarea {
     padding-left: 2%;
 }
 
+#Shrine_percent_table {
+    color:#ffffff;
+}
+
 #ShrineSubmit {
     float: right;
     margin: 5px 20px 5px 5px;

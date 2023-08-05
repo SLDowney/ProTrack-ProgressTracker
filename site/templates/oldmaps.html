@@ -2,66 +2,102 @@
 
 {% block body %} 
 
-{% for result in results %}
-    <div class="row">
-        <table  style="width: 100%;">
-            <colgroup>
-                <col span="1" style="width: 30%;">
-                <col span="2" style="width: 70%;">
-             </colgroup>
-            <tbody>
-            <tr>
-                <th>Stat</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td>{{result[0]}}</td>
-            </tr>
-            <tr>
-                <td>Coordinates</td>
-                <td>{{result[3]}}</td>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td>{{result[2]}}</td>
-            </tr>
-            <tr>
-                <td>Location</td>
-                <td>{{result[5]}}</td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td>{{result[6]}}</td>
-            </tr>
-            <tr>
-                <td>Found</td>
-                <td>
-                    <form id = "form" action="{{ url_for('chests') }}" method="POST" enctype="multipart/form-data">
-                        <label>
-                            {% if result[1]== "FALSE" %}
-                                <input type="checkbox" id="found_chest"  name="found_chest_no" value="FALSE" unchecked>
-                                {{"Not Found"}}
-                            {% else %} 
-                                <input type="checkbox" id="found_chest" name="found_chest_yes" value="TRUE" checked>
-                                {{"Found!"}}
-                            {% endif %}
-                        </label>
-                        <input type="submit" id="addItemSubmit" value="Update">
-                    </form>
-                    </td>
-            </tr>
-        </tbody>
-            </table>
-        <!-- <p>Name: {{result["char_name"]}}</p>
-        <p>Type: {{result["char_type"]}}</p>
-        <p>Health: {{result["char_health"]}}</p>
-        <p>Attack: {{result["char_attack"]}}</p>
-        <p>Defense: {{result["char_Defense"]}}</p>
-        <p>Magic: {{result["char_magic"]}}</p> -->
-        <br>
+{% for i in range(results|length) %}
+    {% set result = results[i] %}
+    {% if result[1] == "Map" %}
+        <div class="row">
+            <table style="width: 100%;">
+                <colgroup>
+                    <col span="1" style="width: 30%;">
+                    <col span="2" style="width: 70%;">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>Stat</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{{ result[1] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Coordinates</td>
+                        <td>{{ result[5] }}</td>
+                    </tr>
+                    {% if result[3] != 0 %}
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ result[4] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>{{ result[7] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ result[8] }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td>Found</td>
+                        <td>
+                            <form id="form_map_{{ result[0] }}" action="{{ url_for('oldmaps') }}" method="POST" enctype="multipart/form-data">
+                                <label>
+                                    <input type="radio" id="found_oldmap_{{ result[0] }}" name="found_oldmap_{{ result[0] }}" value=0 {% if result[3] == 0 %}checked{% endif %}><label class="shrine_radio_labels" for="found_oldmap_{{ result[0] }}">Not Found</label>
+                                    <input type="radio" id="found_oldmap_{{ result[0] }}" name="found_oldmap_{{ result[0] }}" value=1 {% if result[3] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="found_oldmap_{{ result[0] }}">Map Found</label>
+                                </label>
+                                <input type="submit" id="oldmapSubmit" value="Update">
+                            </form>
+                        </td>
+                    </tr>
+                    <!-- Display Corresponding Treasure Information -->
+                    {% if result[3] != 0 and i < results|length - 1 %}
+                    {% set next_result = results[i + 1] %}
+                    {% if next_result[1] == "Treasure" and result[3] == 1 %}
+                        <tr>
+                            <th colspan="2">Treasure</th>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>{{ next_result[1] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{ next_result[5] }}</td>
+                        </tr>
+                        {% if next_result[3] == 1 %}
+                        {% else %}
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ next_result[4] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{ next_result[7] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{ next_result[8] }}</td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td>Found</td>
+                            <td>
+                                <form id="form_treasure_{{ next_result[0] }}" action="{{ url_for('oldmaps') }}" method="POST" enctype="multipart/form-data">
+                                    <label>
+                                        <input type="radio" id="found_oldmap_treasure_{{ next_result[0] }}" name="found_oldmap_treasure_{{ next_result[0] }}" value=1 {% if next_result[3] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="found_oldmap_treasure_{{ next_result[0] }}">Map Found</label>
+                                        <input type="radio" id="found_oldmap_treasure_{{ next_result[0] }}" name="found_oldmap_treasure_{{ next_result[0] }}" value=2 {% if next_result[3] == 2 %}checked{% endif %}><label class="shrine_radio_labels" for="found_oldmap_treasure_{{ next_result[0] }}">Treasure Found!</label>
+                                    </label>
+                                    <input type="submit" id="oldmapSubmit" value="Update">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% endif %}
+            </tbody>
+        </table>
     </div>
-
+    {% endif %}
 {% endfor %}
-    
+
 {% endblock %}

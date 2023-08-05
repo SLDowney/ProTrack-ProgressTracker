@@ -5,19 +5,20 @@
     <!-- Add a table to display the completion status for each region -->
     <table style="width: 100%;">
         <tr>
-            <th>Region</th>
-            <th>Completed</th>
-            <th>Tapped</th>
-            <th>Unfound</th>
+            <th id="Shrine_percent_table">Region</th>
+            <th id="Shrine_percent_table">Completed</th>
+            <th id="Shrine_percent_table">Tapped</th>
+            <th id="Shrine_percent_table">Unfound</th>
         </tr>
         {% for region in regions %}
         <tr>
             <td>{{ region }}</td>
-            <td>{{ region_status[region]['completed'] }} of {{ region_status[region]['total_shrines'] }}</td>
-            <td>{{ region_status[region]['tapped'] }} of {{ region_status[region]['total_shrines'] }}</td>
-            <td>{{ region_status[region]['unfound'] }} of {{ region_status[region]['total_shrines'] }}</td>
+            <td>{{ "%0.2f" % (region_status[region]['completed'] / region_status[region]['total_shrines'] * 100) }}%</td>
+            <td>{{ "%0.2f" % (region_status[region]['tapped'] / region_status[region]['total_shrines'] * 100) }}%</td>
+            <td>{{ "%0.2f" % (region_status[region]['unfound'] / region_status[region]['total_shrines'] * 100) }}%</td>
         </tr>
         {% endfor %}
+
     </table>
 
     <form id="regionFilterForm" onsubmit="return filterByRegion()">

@@ -423,6 +423,8 @@ def add_chest():
             print("Weapon Name:", weapon_name)
             print("Damage Number:", damage_number)
             print("Buff:", buff)
+            update_weapons_table(weapon_name, chest_region, damage_number, buff)
+
         else:
             print("Invalid chest item format.")
 
@@ -433,8 +435,6 @@ def add_chest():
         chest_region = request.form['chest_region']
         chest_done = request.form.get(f'chest_done')
         chest_map = request.form['chest_map']
-
-        update_weapons_table(weapon_name, chest_region, damage_number, buff)
 
         print("Chest_Done:", chest_done) 
         if chest_done == None:
@@ -1015,18 +1015,93 @@ def add_thing():
     # Redirect back to the interesting page after adding the thing
     return redirect('/interesting')
 
-@app.route("/oldmaps")
+@app.route("/oldmaps", methods=["GET", "POST"])
 def oldmaps():
     headline = "Old Maps"
     percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    regions = [
+    "Great Sky Island",
+    "Hyrule Field",
+    "Tabantha",
+    "Great Hyrule Forest",
+    "North Hyrule Sky Archipelago",
+    "Akkala",
+    "Eldin",
+    "Lanayru",
+    "Necluda",
+    "Faron",
+    "Gerudo",
+]
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            oldmaps = c.execute('SELECT * FROM oldmaps').fetchall()
+            for map in oldmaps:
+                if map[1] == "Map":
+                    map_id = map[0]
+                    map_collected = request.form.get(f'found_oldmap_{map[0]}')
+                    print("Map_id, Map_collected:", map_id, ", ", map_collected)
+                    if map_collected is None:
+                        map_collected = c.execute('SELECT map_collected FROM oldmaps WHERE map_id = ?', (int(map[0]),)).fetchone()[0] or 0
+                        print("IF statement Map_collected:", map_collected)
+                    else:
+                        print("map_collected is not none:", map_collected)
+                    c.execute('UPDATE oldmaps SET map_collected = ? WHERE map_id = ?', (map_collected, map_id))
+                    print("Executed map Update statement with map_collected ->", map_collected, " and map_id ->", map_id)
+                    print("")
+               
+                elif map[1] == "Treasure":
+                    treasure_id = map[0]
+                    print("Treasure_id: ", treasure_id)
+                    treasure_collected = request.form.get(f'found_oldmap_treasure_{map[0]}')
+                    if treasure_collected is None:
+                        try:
+                            print("in TRY block -> Treasure_ID:", treasure_id)
+                            treasure_collected = c.execute('SELECT map_collected FROM oldmaps WHERE map_id = ?', (int(map[0]),)).fetchone()[0] or 0
+                            print("IF statement Treasure_collected:", treasure_collected)
+                            print("")
+                        except Exception as e:
+                            print("Exception occurred! Treasure_id:", treasure_id, "Treasure_collected:", treasure_collected)
+                            treasure_collected = 0  # Set a default value of 0 if it's still None
+                    else:
+                        treasure_collected = int(treasure_collected)  # Convert to int here
+                        print("treasure_collected is not None:", treasure_collected)
+
+                    c.execute('UPDATE oldmaps SET map_collected = ? WHERE map_id = ?', (treasure_collected, treasure_id))
+                    print("Executed treasure Update statement with treasure_collected ->", treasure_collected, " and treasure_id ->", treasure_id)
+                else:
+                    print("Else! not Map or Treasure. map[0] ->", map[0])
+                print("")
+                conn.commit()
+
     with closing(conn.cursor()) as c:
-        query = '''Select * From oldmaps ORDER BY map_name ASC'''
+        query = '''SELECT * FROM oldmaps ORDER BY map_id ASC'''
         c.execute(query)
+        selected_region = request.args.get('region')
         results = c.fetchall()
-        info = []
-        for result in results:
-            info.append(result)
-    return render_template("oldmaps.html", headline=headline, percentages=percentages, info=info, results = results)
+        # Filter the results based on the selected region
+        if selected_region:
+            results = [result for result in results if result[4] == selected_region]   
+        info = [(result[0], result[1], result[2]) for result in results]
+    # Calculate the completion status for each region
+    region_status = {}
+    for region in regions:
+        total_oldmaps = len([result for result in results if result[4] == region])
+        found = len([result for result in results if result[4] == region and result[0] == 1])
+        unfound = len([result for result in results if result[4] == region and result[0] == 0])
+
+        region_status[region] = {
+            'found': found,
+            'found': found,
+            'unfound': unfound,
+            'total_oldmaps': total_oldmaps
+        }
+
+    return render_template("oldmaps.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
 
 @app.route("/shrinequests")
 def shrinequests():
