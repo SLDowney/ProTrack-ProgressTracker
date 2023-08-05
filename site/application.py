@@ -154,7 +154,6 @@ def get_percentages():
 def update_weapons_table(weapon_name, region, damage, buff):
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM Weapons WHERE weapon_name = ?', (weapon_name,))
-        c.execute('SELECT * FROM Weapons WHERE weapon_name = ?', (weapon_name,))
         weapon_data = c.fetchone()
 
         if weapon_data:
@@ -456,6 +455,143 @@ def add_chest():
         headline = "Error in insert operation. Please try again."
         return redirect('/chests')
     return redirect('/chests')
+
+@app.route('/misc', methods=['GET', 'POST'])
+def misc():
+    headline = "Miscellaneous"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            miscs = c.execute('SELECT * FROM misc').fetchall()
+            for misc in miscs:
+                misc_id = misc[0]
+                misc_found = request.form.get(f'misc_found_{misc_id}')
+                if misc_found is None:
+                    misc_found = '0'
+                else:
+                    misc_found = '1'
+                print("misc_id:", misc_id)
+                print("misc_found:", misc_found)
+                c.execute('UPDATE misc SET misc_done = ? WHERE misc_id = ?', (misc_found, misc_id))
+                print("Executed update statement for misc ID:", misc_id)
+            conn.commit()
+
+    # Retrieve all miscs from the database
+    with closing(conn.cursor()) as c:
+        things = []
+        c.execute('SELECT * FROM misc')
+        miscs = c.fetchall()
+        # c.execute('SELECT * FROM food')
+        # food = c.fetchall
+        # things.extend(miscs)
+        # things.extend(food)
+        # print("Things:", things)
+
+    return render_template('misc.html', miscs=miscs, scroll_position=scroll_position, headline=headline, percentages=percentages)
+
+
+@app.route("/add_misc", methods=["POST"])
+def add_misc():
+    try:
+        misc_coord = request.form['misc_coord']
+        # Remove spaces and commas from the input
+        misc_coord = misc_coord.replace(' ', '').replace(',', '')
+
+        # Format the misc_coord with commas while maintaining negative signs
+        formatted_misc_coord = ''
+        i = 0
+        while i < len(misc_coord):
+            section = misc_coord[i:i+4]
+            if section.startswith('-'):
+                section = misc_coord[i:i+5]
+                formatted_misc_coord += section + ', '
+                i += 5
+            else:
+                formatted_misc_coord += section[:4] + ', '
+                i += 4
+        formatted_misc_coord = formatted_misc_coord.rstrip(', ')
+        
+        misc_type = request.form['misc_type']
+        misc_item = request.form['misc_item']
+        misc_secondary = request.form['misc_secondary']
+        misc_location = request.form['misc_location']
+        misc_region = request.form['misc_region']
+        misc_done = request.form.get(f'misc_done')
+        misc_map = request.form['misc_map']
+
+        print("misc_Done:", misc_done) 
+        if misc_done == None:
+            misc_done = "0"
+        else:
+            misc_done = "1"
+
+        if misc_type == "Weapon":
+            # Find the opening and closing parentheses positions
+            opening_parenthesis_pos = misc_item.find("(")
+            closing_parenthesis_pos = misc_item.find(")")
+
+            if opening_parenthesis_pos != -1 and closing_parenthesis_pos != -1:
+                # Extract the weapon name and damage number
+                weapon_name = misc_item[:opening_parenthesis_pos].strip()
+                damage_and_buff = misc_item[opening_parenthesis_pos + 1:closing_parenthesis_pos].strip()
+
+                # Find the position of the comma to separate damage number and buff
+                comma_pos = damage_and_buff.find(",")
+                if comma_pos != -1:
+                    damage_number = damage_and_buff[:comma_pos].strip()
+                    buff = damage_and_buff[comma_pos + 1:].strip()
+                else:
+                    # If there is no comma, consider the whole part as damage number and no buff
+                    damage_number = damage_and_buff.strip()
+                    buff = "No Buff"
+
+                print("Weapon Name:", weapon_name)
+                print("Damage Number:", damage_number)
+                print("Buff:", buff)
+                update_weapons_table(weapon_name, misc_region, damage_number, buff)
+
+            else:
+                print("Invalid misc item format.")     
+
+        with closing(conn.cursor()) as c:
+            if misc_type == "Cherry Blossom Trees":
+                query = '''INSERT INTO cherry_blossom_trees (cherry_coord, cherry_location, cherry_region, cherry_found)
+                        VALUES(?, ?, ?, ?)'''
+                c.execute(query, (formatted_misc_coord, misc_location, misc_region, misc_done))                
+
+            if misc_type == "Monster":
+                query = '''INSERT INTO enemies (e_coord, e_monster, e_color, e_location,e_region, e_found, e_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (formatted_misc_coord, misc_item, misc_secondary, misc_location, misc_region, misc_done, misc_map))
+                                    
+            if misc_type == "Hearty":
+                query = '''INSERT INTO food (food_category, food_item, food_tier, food_coord, food_location, food_region, food_found, food_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+                print("inserted into food")
+                c.execute(query, (misc_type, misc_item, misc_secondary, formatted_misc_coord, misc_location, misc_region, misc_done, misc_map))
+                                    
+            if misc_type == "Chest":
+                query = '''INSERT INTO chests (chest_type, chest_item, chest_coord, chest_location, chest_region, chest_sideq, chest_done, chest_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map))
+            if misc_type == "Other":
+                query = '''INSERT INTO misc (misc_type, misc_item, misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map))
+            conn.commit()
+            query = '''SELECT * FROM misc ORDER BY misc_id DESC LIMIT 1'''
+            c.execute(query)
+            row = c.fetchone()
+
+    except sqlite3.OperationalError as e:
+        print(e)
+        headline = "Error in insert operation. Please try again."
+        return redirect('/misc')
+    return redirect('/misc')
 
 @app.route('/camp_chest', methods=['GET', 'POST'])
 def camp_chest():

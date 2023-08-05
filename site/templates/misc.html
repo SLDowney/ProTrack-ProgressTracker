@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+    <form id="add_misc" method="POST" action="/add_misc">
+        <div id="new_chest_container">
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Type:</label>
+                <div class="row">
+                    <div class="col">
+                        <label><input type="radio" name="misc_type" value="Cherry Blossom Trees">Cherry Blossom Trees</label><br>
+                        <label><input type="radio" name="misc_type" value="Chest">Chest</label><br>
+                        <label><input type="radio" name="misc_type" value="Hearty">Hearty</label><br>
+                        <label><input type="radio" name="misc_type" value="Monster">Monster</label><br>
+                        <label><input type="radio" name="misc_type" value="Weapon">Weapon</label><br>
+                        <label><input type="radio" name="misc_type" value="Other" checked>Other</label><br>
+                    </div>
+                </div>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Coordinates:</label>
+                <input type="text" id="misc_coord" name="misc_coord" placeholder="0000 0000 0000" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Item:</label>
+                <input type="text" id="misc_item" name="misc_item" placeholder="Item" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Secondary:</label>
+                <input type="text" id="misc_secondary" name="misc_secondary" placeholder="Secondary">
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Location:</label>
+                <input type="text" id="misc_location" name="misc_location" placeholder="Enter Location" required>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Region:</label>
+                <input type="text" id="misc_region" name="misc_region" placeholder="Enter Region" required>
+            </div>
+            <div class="col" id="addchest">
+                <label><input type="radio" name="misc_map" value="Depths">Depths</label><br>
+                <label><input type="radio" name="misc_map" value="Surface" checked>Surface</label><br>
+                <label><input type="radio" name="misc_map" value="Sky">Sky</label><br>
+            </div>
+            <div id="addchest">
+                <label id="chest_labels" class="labels">Collected:</label>
+                <input type="checkbox" id="misc_done" name="misc_done" value="0" unchecked>
+            </div>
+        </div>
+        <input type="submit" id="addItemSubmit" value="Submit">
+    </form>
+
+    <form id="miscform" method="POST" action="/miscs">
+        <table class="chests-table">
+            <thead>    
+                <tr>
+                    <th>Done</th>
+                    <th><button id="sort-by-name-btn" onclick="sortmiscs('name')">Item</button></th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th><button id="sort-by-coord-btn" onclick="sortmiscs('coord')">Coordinates</button></th>
+                    <th>Region</th>
+                    <th>Map</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+    
+            <tbody id="miscs-list">
+                {% for misc in miscs %}
+                <tr>
+                    <td>
+                        <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                        <input type="hidden" id="misc_id_{{ misc[0] }}" name="misc_id_{{ misc[0] }}" value="{{ misc[0] }}">
+                        <input type="checkbox" id="misc_id_{{ misc[0] }}" name="misc_found_{{ misc[0] }}" value="1" {% if misc[7] == 1 %}checked{% elif misc[7] == 0 %} unchecked{% endif %}>
+                    </td>
+                    <td>{% if misc[7] != 1 %}
+                        ???
+                        {% else %}
+                            {{ misc[1] }}
+                        {% endif %}</td>
+                    <td>{{misc[2]}}</td>
+                    <td>
+                        {% if misc[5] == None %}
+                        {% else %}
+                            {{misc[5]}}
+                        {% endif %}
+                    </td> 
+                    <td>
+                        {% if misc[4] == None %}
+                        {% else %}
+                            {{misc[4]}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if misc[6] == None %}
+                        {% else %}
+                            {{misc[6]}}
+                        {% endif %}
+                    </td>
+                    <td>{{misc[8]}}</td>
+                    <td>
+                        <button type="submit" id="misc_list_submit">Update</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>  
+    <script src="{{ url_for('static', filename='javascript_misc.js') }}"></script>
+{% endblock %}
