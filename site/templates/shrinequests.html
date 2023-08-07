@@ -14,42 +14,56 @@
                 <th>Stat</th>
                 <th>Value</th>
             </tr>
+            {% if result[1] == 0 %}
+            
             <tr>
-                <td>Chest #{{result[0]}}</td>
-                <td>{{result[1]}}</td>
+                <td>Location</td>
+                <td>{{result[4]}}</td>
             </tr>
+            {% elif result[1] == 1 %}
             <tr>
-                <td>Coordinates</td>
+                <td>Name</td>
                 <td>{{result[2]}}</td>
             </tr>
             <tr>
-                <td>Type</td>
-                <td>{{result[3]}}</td>
+                <td>Contact</td>
+                <td>{{result[5]}}</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>{{result[4]}}</td>
+            </tr>
+            {% elif result[1] == 2 %}
+            <tr>
+                <td>Name</td>
+                <td>{{result[2]}}</td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td>{{result[5]}}</td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>{{result[4]}}</td>
             </tr>
             <tr>
-                <td>Side Quest</td>
-                <td>{{result[5]}}</td>
+                <td>Shrine</td>
+                <td>{{result[3]}}</td>
             </tr>
+            {% else %}
+            {% endif %}
             <tr>
                 <td>Found</td>
                 <td>
-                    <form id = "form" action="{{ url_for('chests') }}" method="POST" enctype="multipart/form-data">
+                    <form id = "shrinequ_form" action="{{ url_for('shrinequests') }}" method="POST" enctype="multipart/form-data">
                         <label>
-                            {% if result[6]== "FALSE" %}
-                                <input type="checkbox" id="found_chest"  name="found_chest_no" value="FALSE" unchecked>
-                                {{"Not Found"}}
-                            {% else %} 
-                                <input type="checkbox" id="found_chest" name="found_chest_yes" value="TRUE" checked>
-                                {{"Found!"}}
-                            {% endif %}
+                            <input type="radio" id="undone_{{ result[0] }}" name="done_shrinequ_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="shrine_radio_labels" for="undone_{{ result[0] }}">Unfound</label>
+                            <input type="radio" id="started_{{ result[0] }}"name="done_shrinequ_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="started_{{ result[0] }}">Started</label>
+                            <input type="radio" id="done_{{ result[0] }}"name="done_shrinequ_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="shrine_radio_labels" for="done_{{ result[0] }}">Done</label>
+                            <input type="submit" id="ShrineQuSubmit" value="Update">
                         </label>
-                        <input type="submit" id="addItemSubmit" value="Update">
                     </form>
-                    </td>
+                </td>
             </tr>
         </tbody>
             </table>

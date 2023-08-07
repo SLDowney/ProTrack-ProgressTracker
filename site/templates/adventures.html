@@ -18,6 +18,7 @@
                 <td>Name</td>
                 <td>{{result[2]}}</td>
             </tr>
+            {% if result[1] == 1 %}
             <tr>
                 <td>Region</td>
                 <td>{{result[3]}}</td>
@@ -26,10 +27,22 @@
                 <td>Contact</td>
                 <td>{{result[4]}}</td>
             </tr>
+            {% else %}
+            {% endif %}
+            {% if result[0] == 27 %}
+            <tr>
+                <td>Starting Reward</td>
+                <td>Huge Crystallized Charge</td>
+            </tr>
+            {% else %}
+            {% endif %}
+            {% if result[1] == 2 %}
             <tr>
                 <td>Rewards</td>
                 <td>{{result[5]}}</td>
             </tr>
+            {% else %}
+            {% endif %}
             <tr>
                 <td>Found</td>
                 <td>

@@ -5,7 +5,7 @@
         <label for="e_monster">Monster:</label>
         <input type="text" class="add_enemy_textbox" id="e_monster" name="e_monster" required><br>
         <label for="e_color">Tier:</label>
-        <input type="text" class="add_enemy_textbox" id="e_color" name="e_color" required><br>
+        <input type="text" class="add_enemy_textbox" id="e_color" name="e_color"><br>
         <label for="e_coord">Coordinates:</label>
         <input type="text" class="add_enemy_textbox" id="e_coord" name="e_coord" required><br>
         <label for="e_location">Location:</label>
@@ -24,9 +24,12 @@
         <thead>
             <tr>
                 <th><button id="sort-by-found-btn" onclick="sortenemies('e_found')">Done</button></th>
-                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Tier</button></th>
                 <th><button id="sort-by-type-btn" onclick="sortenemies('e_monster')">Monster</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Tier</button></th>
                 <th><button id="sort-by-coord-btn" onclick="sortenemies('e_coord')">Coordinates</button></th>
+                <th>Location</th>
+                <th>Region</th>
+                <th>Map</th>
             </tr>
         </thead>
         <tbody id="enemies-body">
@@ -35,8 +38,8 @@
                 <td>
                     <input type="checkbox" name="e_found_{{ enemy[0] }}" value="1" {% if enemy[1] == 1 %}checked{% endif %} onclick="updateenemy(this, enemy[0])">
                 </td>
-                <td class="e_td">{{ enemy['e_color'] }}</td>
                 <td class="e_td">{{ enemy['e_monster'] }}</td>
+                <td class="e_td">{{ enemy['e_color'] }}</td>
                 <td class="e_td">{{ enemy['e_coord'] }}</td>
                 <td class="e_td">{{ enemy['e_location'] }}</td>
                 <td class="e_td">{{ enemy['e_region'] }}</td>

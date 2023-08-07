@@ -155,10 +155,12 @@ def update_weapons_table(weapon_name, region, damage, buff):
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM Weapons WHERE weapon_name = ?', (weapon_name,))
         weapon_data = c.fetchone()
+        for data in weapon_data:
+            print("weapon_data:", data)
 
         if weapon_data:
             # If the weapon already exists, update regions, damage, buff, and weapon_num_found
-            existing_regions = weapon_data[1].split(', ') if weapon_data[1] else []
+            existing_regions = weapon_data[3].split(', ') if weapon_data[3] else []
             if region not in existing_regions:
                 updated_regions = ', '.join(existing_regions + [region])
                 c.execute('UPDATE Weapons SET weapon_regions = ? WHERE weapon_name = ?', (updated_regions, weapon_name))
@@ -174,11 +176,12 @@ def update_weapons_table(weapon_name, region, damage, buff):
                     updated_buff = ', '.join(existing_buff + [buff])
                     c.execute('UPDATE Weapons SET weapon_buff = ? WHERE weapon_name = ?', (updated_buff, weapon_name))
 
-            weapon_num_found = weapon_data[4]
+            weapon_num_found = weapon_data[5]
+            print("Weapon_num_found:", weapon_num_found)
             if weapon_num_found is None:
                 weapon_num_found = 1
             else:
-                weapon_num_found += 1
+                weapon_num_found = int(weapon_num_found) + 1
             c.execute('UPDATE Weapons SET weapon_num_found = ? WHERE weapon_name = ?', (weapon_num_found, weapon_name))
 
         else:
@@ -421,7 +424,6 @@ def add_chest():
 
             print("Weapon Name:", weapon_name)
             print("Damage Number:", damage_number)
-            print("Buff:", buff)
             update_weapons_table(weapon_name, chest_region, damage_number, buff)
 
         else:
@@ -551,6 +553,7 @@ def add_misc():
 
                 print("Weapon Name:", weapon_name)
                 print("Damage Number:", damage_number)
+                print("Misc_region:", misc_region)
                 print("Buff:", buff)
                 update_weapons_table(weapon_name, misc_region, damage_number, buff)
 
@@ -578,6 +581,11 @@ def add_misc():
                 query = '''INSERT INTO chests (chest_type, chest_item, chest_coord, chest_location, chest_region, chest_sideq, chest_done, chest_map)
                         VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
                 c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map))
+            if misc_type == "Schema":
+                query = '''INSERT INTO schemas (schema_type, schema_name, schema_coord, schema_location, schema_region, schema_parts, schema_done)
+                        VALUES(?, ?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done))
+        
             if misc_type == "Other":
                 query = '''INSERT INTO misc (misc_type, misc_item, misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map)
                         VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
@@ -1035,7 +1043,7 @@ def compendium():
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            comps = c.execute('SELECT comp_id FROM compendium ORDER BY comp_id ASC').fetchall()
+            comps = c.execute('SELECT * FROM compendium ORDER BY comp_id ASC').fetchall()
             for comp in comps:
                 comp_id = comp[0]
                 comp_done = request.form.get(f'done_comp_{comp_id}')
@@ -1043,12 +1051,9 @@ def compendium():
                     comp_done = 0
                 else:
                     comp_done = 1
-                print("comp_id:", comp_id)
-                print("comp_done:", comp_done)
                 c.execute('UPDATE compendium SET comp_done = ? WHERE comp_id = ?', (comp_done, comp_id))
-                print("Executed update statement for comp_id:", comp_id)
             conn.commit()
-
+    
     with closing(conn.cursor()) as c:
         query = '''SELECT * FROM compendium ORDER BY comp_id ASC'''
         c.execute(query)
@@ -1069,7 +1074,38 @@ def compendium():
                 equipment.append(result)
             if result[2] == "Treasure":
                 treasures.append(result)
-    return render_template("compendium.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, creatures=creatures, monsters=monsters, materials=materials, equipment=equipment, treasures=treasures)
+
+        # Redirect to the compendium page if there are no search results
+        return render_template("compendium.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, creatures=creatures, monsters=monsters, materials=materials, equipment=equipment, treasures=treasures)
+
+# @app.route('/update_compendium', methods=['POST'])
+# def update_compendium():
+#     percentages = get_percentages()
+#     print("update_compendium")
+#     # Get the comp_id and comp_done value from the form
+#     comp_id = request.form['comp_id']
+#     print("Comp_id:", comp_id)
+#     comp_done = 1
+#     print("comp_done:", comp_done)
+
+#     # Check if the form was submitted from the search page
+#     search_item = request.form.get('search_item')  # Initialize to empty string if 'search_item' is not present
+#     print("search_item:", search_item)
+#     # Check if the user searched for an item
+#     if search_item:
+#         # Perform the search in your database to find matching items
+#         with closing(conn.cursor()) as c:
+#             c.execute('SELECT * FROM compendium WHERE comp_item LIKE ?', ('%' + search_item + '%',))
+#             search_results = c.fetchall()
+#             # Check if there are any search results
+#             if search_results:
+#                 # Pass the search results to the HTML template
+#                 print("in search results")
+#                 return render_template("compendium.html", search_results=search_results, percentages=percentages)
+    
+
+#     # Redirect back to the compendium page after updating the database
+#     return redirect('/compendium')
 
 @app.route('/interesting', methods=['GET', 'POST'])
 def interesting():
@@ -1239,18 +1275,67 @@ def oldmaps():
 
     return render_template("oldmaps.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
 
-@app.route("/shrinequests")
+@app.route("/shrinequests", methods=["GET", "POST"])
 def shrinequests():
     headline = "Shrine Quests"
     percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    regions = [
+    "Great Sky Island",
+    "Hyrule Field",
+    "Tabantha",
+    "Great Hyrule Forest",
+    "North Hyrule Sky Archipelago",
+    "Akkala",
+    "Eldin",
+    "Lanayru",
+    "Necluda",
+    "Faron",
+    "Gerudo",
+]
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            shrinequ_shrines = c.execute('SELECT * FROM shrinequests').fetchall()
+            for shrinequ_shrine in shrinequ_shrines:
+                shrinequ_id = shrinequ_shrine[0]
+                shrinequ_done = request.form.get(f'done_shrinequ_{shrinequ_id}')
+                if shrinequ_done is None:
+                    print("shrinequ_done is None:", shrinequ_done, "ID ->", shrinequ_id)
+                    shrinequ_done = c.execute('SELECT shrinequ_done FROM shrinequests WHERE shrinequ_id = ?', (shrinequ_id,)).fetchone()[0]
+                else:
+                    print("shrinequ_done is not none:", shrinequ_done)
+                c.execute('UPDATE shrinequests SET shrinequ_done = ? WHERE shrinequ_id = ?', (shrinequ_done, shrinequ_id))
+            conn.commit()
+
     with closing(conn.cursor()) as c:
-        query = '''Select * From shrinequests ORDER BY map_name ASC'''
+        query = '''SELECT * FROM shrinequests ORDER BY shrinequ_name ASC'''
         c.execute(query)
+        selected_region = request.args.get('region')
         results = c.fetchall()
-        info = []
-        for result in results:
-            info.append(result)
-    return render_template("shrinequests.html", headline=headline, percentages=percentages, info=info, results = results)
+        # Filter the results based on the selected region
+        if selected_region:
+            results = [result for result in results if result[4] == selected_region]   
+        info = [(result[0], result[1], result[2]) for result in results]
+    # Calculate the completion status for each region
+    region_status = {}
+    for region in regions:
+        total_shrinequs = len([result for result in results if result[4] == region])
+        completed = len([result for result in results if result[4] == region and result[0] == 2])
+        started = len([result for result in results if result[4] == region and result[0] == 1])
+        unfound = len([result for result in results if result[4] == region and result[0] == 0])
+
+        region_status[region] = {
+            'completed': completed,
+            'started': started,
+            'unfound': unfound,
+            'total_shrinequs': total_shrinequs
+        }
+
+    return render_template("shrinequests.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
 
 @app.route("/sidequests", methods=["GET", "POST"])
 def sidequests():

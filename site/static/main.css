@@ -400,6 +400,10 @@ display checkmark when checked
     justify-content: center;
 } 
 
+.hidden-item {
+    visibility: hidden;
+}
+
 .comp_checkbox {
     width: 100px;
     height: 50px;
@@ -409,9 +413,12 @@ display checkmark when checked
 }
 
 #compSubmit {
-    width: 30%;
-    height: 40%;
+    width: auto;
     margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;    
+    /* font-size: 120%; */
+
 }
 
 .form-check-label.BESTDRAGON {
@@ -500,8 +507,9 @@ display checkmark when checked
 }
 
 #koroks-table {
-    width: 75%;
-    margin-left: 10%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #addkorok {
@@ -639,15 +647,25 @@ span {
 .tower_container {
     display:inline-block;
     justify-content: left;
-    width: 200%;
+    width: 100%;
+    margin-left:auto;
+    margin-right: auto;
 } 
+
+.tower_table {
+    width: 100%;
+    margin-left:auto;
+    margin-right: auto;
+
+}
 
 .tower_checkbox {
     width: 100px;
     height: 50px;
     margin-top: 5px;
     margin-bottom: 5px;
-    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* For larger screens */
 @media (min-width: 992px) {
@@ -695,8 +713,7 @@ span {
     .item-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: stretch;
+        justify-content: space-between;
     }
   
     .comp_table {

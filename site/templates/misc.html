@@ -12,6 +12,7 @@
                         <label><input type="radio" name="misc_type" value="Hearty">Hearty</label><br>
                         <label><input type="radio" name="misc_type" value="Monster">Monster</label><br>
                         <label><input type="radio" name="misc_type" value="Weapon">Weapon</label><br>
+                        <label><input type="radio" name="misc_type" value="Schema">Schema</label><br>
                         <label><input type="radio" name="misc_type" value="Other" checked>Other</label><br>
                     </div>
                 </div>
@@ -49,7 +50,7 @@
         <input type="submit" id="addItemSubmit" value="Submit">
     </form>
 
-    <form id="miscform" method="POST" action="/miscs">
+    <form id="miscform" method="POST" action="/misc">
         <table class="chests-table">
             <thead>    
                 <tr>
@@ -72,11 +73,7 @@
                         <input type="hidden" id="misc_id_{{ misc[0] }}" name="misc_id_{{ misc[0] }}" value="{{ misc[0] }}">
                         <input type="checkbox" id="misc_id_{{ misc[0] }}" name="misc_found_{{ misc[0] }}" value="1" {% if misc[7] == 1 %}checked{% elif misc[7] == 0 %} unchecked{% endif %}>
                     </td>
-                    <td>{% if misc[7] != 1 %}
-                        ???
-                        {% else %}
-                            {{ misc[1] }}
-                        {% endif %}</td>
+                    <td>{{ misc[1] }}</td>
                     <td>{{misc[2]}}</td>
                     <td>
                         {% if misc[5] == None %}
