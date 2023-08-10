@@ -958,4 +958,18 @@ span {
         margin-bottom: 10%;
         width: 550px;
     }
+
+    body {
+        background-image: url('/static/images/background-mobile.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        /* box-shadow: inset 0 0 0 1300px rgb(255, 255, 255, 0.7); */
+        /* border: 15px dashed rgb(0, 102, 189, 0.5); */
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    
+    }
 }
