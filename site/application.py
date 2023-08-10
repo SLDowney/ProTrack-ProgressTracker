@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, abort, redirect, session
 import os
 from werkzeug.utils import secure_filename
 from flask import jsonify
+import re
 
 
 app = Flask(__name__)
@@ -155,8 +156,6 @@ def update_weapons_table(weapon_name, region, damage, buff):
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM Weapons WHERE weapon_name = ?', (weapon_name,))
         weapon_data = c.fetchone()
-        for data in weapon_data:
-            print("weapon_data:", data)
 
         if weapon_data:
             # If the weapon already exists, update regions, damage, buff, and weapon_num_found
@@ -198,9 +197,8 @@ def calculate_progress_percentage(completed_locks, total_locks):
 # Helper function to fetch temple progress data from the database
 def fetch_temple_progress():
     with closing(conn.cursor()) as c:
-        c.execute("SELECT temple_id, temple_name, temple_lock1, temple_lock2, temple_lock3, temple_lock4, temple_lock5, temple_boss, temple_complete FROM Temples")
+        c.execute("SELECT temple_id, temple_name, temple_lock, temple_boss, temple_complete FROM Temples")
         temples_data = c.fetchall()
-        print("Temples_data:", temples_data)
         return temples_data
 
 # Define a custom Jinja filter to format the key as desired
@@ -227,53 +225,55 @@ def index():
     progress_data = []
     for temple in temples_data:
         temple_id = temple[0]
-        print("generating progress data: temple_id:", temple_id)
         temple_name = temple[1]
         if temple_name == "Fire Temple" or temple_name == "Wind Temple":
-            locks = temple[2], temple[3], temple[4], temple[5], temple[6]
+            locks = temple[2]
         else:
-            locks = temple[2], temple[3], temple[4], temple[5]
-        completed_locks = sum(int(lock) for lock in locks if isinstance(lock, int))
+            locks = temple[2]
+        completed_locks = int(locks)
         if temple_name == "Fire Temple" or temple_name == "Wind Temple":
-            total_locks = 5  # Assuming there are 5 locks per temple, adjust if needed
+            total_locks = [1, 2, 3, 4, 5] 
         else:
-            total_locks = 4
-        temple_boss = temple[7]
-        progress_percentage = calculate_progress_percentage(completed_locks, total_locks)
-        print("Calculated Progress Percentage")
-        progress_data.append({"temple_id": temple_id, "temple_name": temple_name, "progress_percentage": progress_percentage, "temple_name": temple_name, "locks": locks, "completed_locks": completed_locks, "temple_boss": temple_boss})
-    print("Progress_Data:", progress_data)
+            total_locks = [1, 2, 3, 4]
+        temple_boss = temple[3]
+        temple_complete = temple[4]
+        progress_percentage = calculate_progress_percentage(completed_locks, (len(total_locks) + 1 ))
+        progress_data.append({"temple_id": temple_id, "temple_name": temple_name, "progress_percentage": progress_percentage, "locks": locks, "completed_locks": completed_locks, "temple_boss": temple_boss, "temple_complete":temple_complete})
 
 
     return render_template("index.html", headline=headline, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
 
 @app.route('/update_lock_status', methods=['POST'])
 def update_lock_status():
+    print("UDPATE LOCK STATUS")
     try:
         # Get data from the request
         data = request.get_json()
-        temple_name = data.get('temple_name')
+        print("DATA ->", data)
         temple_id = data.get('temple_id')
         lock_index = data.get('lock_index')
-        status = data.get('status')
-        print("Data from JS:", data)
+        value = data.get('value')
+        temple_boss = data.get('temple_boss')  # Get temple_boss value from frontend
 
-        # Update the lock status in the database
+        # Update the lock status and temple boss checkmark in the database
         with closing(conn.cursor()) as c:
-
-        # Assuming your Temples table has the columns temple_id, temple_lock1, temple_lock2, ..., temple_lock5
+            # Assuming your Temples table has the columns temple_id, temple_lock1, ..., temple_lock5, and temple_boss
             lock_column = f'temple_lock{lock_index}'
-            print("within lock update - lock_column:", lock_column)
-            c.execute(f"UPDATE Temples SET {lock_column} = ? WHERE temple_id = ?", (status, temple_id))
+            print("Lock_index ->", lock_index)
+            print("lock_column ->", lock_column)
+            print("temple_boss ->", temple_boss)
+            if lock_index != None:
+                c.execute(f"UPDATE Temples SET temple_lock = ? WHERE temple_id = ?", (value, temple_id))
+                print(f"Executed lock update. SET temple_lock = {value} WHERE temple_id = {temple_id}")
+            else:
+                c.execute(f"UPDATE Temples SET temple_boss = ? WHERE temple_id = ?", (temple_boss, temple_id))
+                print("Executed boss update")
             conn.commit()
-            print("Executed update statement for", temple_name)
-            print("Status:", status)
-            print("Temple_ID:", temple_id)
-
 
         return jsonify({"success": True})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
 
 @app.route("/locationnav")
 def locationnav():
@@ -424,8 +424,7 @@ def add_chest():
 
             print("Weapon Name:", weapon_name)
             print("Damage Number:", damage_number)
-            update_weapons_table(weapon_name, chest_region, damage_number, buff)
-
+            
         else:
             print("Invalid chest item format.")
 
@@ -436,6 +435,9 @@ def add_chest():
         chest_region = request.form['chest_region']
         chest_done = request.form.get(f'chest_done')
         chest_map = request.form['chest_map']
+
+        update_weapons_table(weapon_name, chest_region, damage_number, buff)
+
 
         print("Chest_Done:", chest_done) 
         if chest_done == None:
@@ -577,15 +579,18 @@ def add_misc():
                 print("inserted into food")
                 c.execute(query, (misc_type, misc_item, misc_secondary, formatted_misc_coord, misc_location, misc_region, misc_done, misc_map))
                                     
-            if misc_type == "Chest":
-                query = '''INSERT INTO chests (chest_type, chest_item, chest_coord, chest_location, chest_region, chest_sideq, chest_done, chest_map)
+            if misc_type == "Zonai":
+                query = '''INSERT INTO misc (misc_type, misc_item, misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map)
                         VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
                 c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map))
             if misc_type == "Schema":
                 query = '''INSERT INTO schemas (schema_type, schema_name, schema_coord, schema_location, schema_region, schema_parts, schema_done)
                         VALUES(?, ?, ?, ?, ?, ?, ?)'''
                 c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done))
-        
+            if misc_type == "Flower-Shaped Island":
+                query = '''INSERT INTO misc (misc_type, misc_item, misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+                c.execute(query, (misc_type, misc_item, formatted_misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map))
             if misc_type == "Other":
                 query = '''INSERT INTO misc (misc_type, misc_item, misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map)
                         VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
@@ -719,12 +724,10 @@ def armors():
 
     if request.method == 'POST':
         armor_id = request.form['armorId']
-        armor_helm_found = request.form.get(f'have_{armor_id}_helm')
-        armor_chest_found = request.form.get(f'have_{armor_id}_chest')
-        armor_pants_found = request.form.get(f'have_{armor_id}_pants')
+        armor_found = request.form.get(f'armor_id_{armor_id}')
 
         with closing(conn.cursor()) as c:
-            c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_helm_found, armor_id))
+            c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
 
         conn.commit()
 
@@ -732,25 +735,73 @@ def armors():
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM armor ORDER BY a_set ASC')
         armors = c.fetchall()
+        # Initialize a list to store armor set lists
+        armor_sets = []
 
-    return render_template('armors.html', headline=headline, percentages=percentages, armors=armors, scroll_position=scroll_position)
+        # Create lists for each armor set
+        for row in armors:
+            a_id, a_set, a_name, a_piece, a_collected, a_upgrade1, a_items1, a_upgrade2, a_items2, \
+            a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems = row
 
-@app.route('/armors/update', methods=['POST'])
-def update_armor():
-    data = request.get_json()
-    for d in data:
-        print("D ! ->:", d)
-    armor_id = data['armorId']
-    armor_found = data['armorFound']
-    print("armor_id:", armor_id)
-    print("armor_found:", armor_found)
+            # Find or create the list for the current armor set
+            armor_set = next((set_list for set_list in armor_sets if set_list[0][0] == a_set), None)
+            if armor_set is None:
+                armor_set = [[a_set]]
+                armor_sets.append(armor_set)
+
+            # Add collected status and other columns to the appropriate piece in the list
+            armor_piece = [a_id, a_piece, a_collected,a_upgrade1, a_items1, a_upgrade2, a_items2, a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems]
+            armor_set.append(armor_piece)
 
     with closing(conn.cursor()) as c:
-        c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
-        print("Executed armor update, collected, id: ", armor_found, armor_id)
-        conn.commit()
+            c.execute('SELECT * FROM fairyfountains ORDER BY fairy_id')
+            fairies = c.fetchall()
 
-    return jsonify(success=True)
+            for fairy in fairies:
+                fairy_id = fairy[0]
+                fairy_name = fairy[1]
+                fairy_done = request.form.get(f"fairy_{fairy[1]}")
+                if fairy_done == None:
+                    fairy_done = 0
+                else:
+                    fairy_done = 1
+            
+            c.execute('UPDATE fairyfountains SET fairy_found = ? WHERE fairy_id = ?', (fairy_done, fairy_id))
+            print("UPDATE FAIRY FOUNTAIN -> Done:", fairy_done, "ID:", fairy_id)
+
+    return render_template('armors.html', headline=headline, percentages=percentages, fairies=fairies, armor_sets=armor_sets, scroll_position=scroll_position)
+
+@app.route('/update_armor/<int:armor_id>/<int:armor_found>', methods=['POST'])
+def update_armor(armor_id, armor_found):
+    try:
+
+        
+        
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+            
+            # Handle great fairy checkboxes
+            for i in range(1, 5):
+                great_fairy_checkbox = request.form.get(f'great_fairy_{i}')
+                print("Great Fairy Checkbox ->", great_fairy_checkbox)
+                if great_fairy_checkbox:
+                    c.execute(f'UPDATE armor SET a_upgraded{i} = 1 WHERE a_id = ?', (armor_id,))
+                else:
+                    c.execute(f'UPDATE armor SET a_upgraded{i} = 0 WHERE a_id = ?', (armor_id,))
+            
+            # Handle upgrade checkboxes
+            for i in range(1, 5):
+                upgrade_checkbox = request.form.get(f'upgraded_{i}')
+                if upgrade_checkbox:
+                    upgrade_value = int(upgrade_checkbox)
+                    c.execute(f'UPDATE armor SET a_upgraded{i} = ? WHERE a_id = ?', (upgrade_value, armor_id))
+            
+            conn.commit()
+
+            return jsonify(success=True)
+    except Exception as e:
+        return jsonify(success=False, error=str(e))
+
 
 @app.route("/shrines", methods=["GET", "POST"])
 def shrines():
@@ -920,6 +971,67 @@ def add_korok():
 
     # Redirect back to the koroks page after adding the korok
     return redirect('/koroks')
+
+@app.route('/ponypoints', methods=['GET', 'POST'])
+def ponypoints():
+    headline = "Pony Points"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            points = c.execute('SELECT * FROM ponypoints').fetchall()
+            for point in points:
+                points_id = point[0]
+                points_done = request.form.get(f'points_done_{points_id}')
+                points_reward = point[4]
+                print("points_done:", points_done)
+                print("Points_reward:", points_reward)
+                if points_done is None:
+                    points_done = '0'
+                else:
+                    points_done = '1'
+                print("points_id:", points_id)
+                print("points_done:", points_done)
+                c.execute('UPDATE ponypoints SET points_done = ? WHERE points_id = ?', (points_done, points_id))
+                print("Executed update statement for point ID:", points_id)
+            conn.commit()
+
+    # Retrieve all points from the database
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM ponypoints')
+        points = c.fetchall()
+        print("points:", points)
+
+    return render_template('ponypoints.html', headline=headline, percentages=percentages, points=points, scroll_position=scroll_position)
+
+@app.route('/update-point', methods=['POST'])
+def update_point():
+    points_id = request.json.get('point_id')
+    points_done = request.json.get('point_done')
+    with closing(conn.cursor()) as c:
+        points_reward = c.execute('SELECT points_rewards FROM ponypoints WHERE points_id = ?', (points_id,)).fetchone()[0]
+    print("Data received from client:", points_id, points_done, points_reward)  # Add this line for debugging
+
+    if points_done is None:
+        points_done = 0
+    else:
+        points_done = points_done
+
+    print("points_done after if/else:", points_done)
+
+    # Update the point in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE ponypoints SET points_done = ? WHERE points_id = ?', (points_done, points_id))
+            print("update ponypoints points_done = ", points_done, ", points_id = ", points_id, " and points rewards:", points_reward)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
 
 @app.route('/enemies', methods=['GET', 'POST'])
 def enemies():
@@ -1360,6 +1472,15 @@ def sidequests():
 ]
 
     if request.method == 'POST':
+
+        with closing(conn.cursor()) as c:
+            c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Well'")
+            total_wells = c.fetchone()[0]
+
+            c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Well'")
+            completed_wells = c.fetchone()[0]
+    
+
         with closing(conn.cursor()) as c:
             side_ids = c.execute('SELECT side_id FROM sidequests').fetchall()
             for side_id in side_ids:
@@ -1396,7 +1517,7 @@ def sidequests():
             'total_sidequests': total_sidequests
         }
 
-    return render_template("sidequests.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
+    return render_template("sidequests.html", scroll_position=scroll_position, headline=headline,  percentages=percentages, info=info, results=results, regions=regions, region_status=region_status, total_wells=total_wells, completed_wells=completed_wells)
 
 @app.route("/adventures", methods=['GET', 'POST'])
 def adventures():

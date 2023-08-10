@@ -62,12 +62,16 @@
                 <td>{{result[6]}}</td>
             </tr>
             <tr>
-                <td>Rewards</td>
-                <td>{{result[8]}}</td>
-            </tr>
-            <tr>
                 <td>Description</td>
                 <td>{{result[3]}}</td>
+            </tr>
+            <tr>
+                <td>Rewards</td>
+                {% if result[2] == "Where Are the Wells?" %}
+                <td>{{ result[8] }} <br>Wells Discovered: {{completed_wells}}</td>
+                {% else %}
+                <td>{{result[8]}}</td>
+                {% endif %}
             </tr>
             <tr>
                 <td>Status</td>

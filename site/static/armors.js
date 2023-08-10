@@ -1,91 +1,81 @@
-window.addEventListener('DOMContentLoaded', function() {
-  // Function to hide all armor upgrade sections
-  function hideAllArmorUpgrades() {
-    document.querySelectorAll('.armor_upgrade').forEach(function(section) {
-      section.style.display = 'none';
-    });
-  }
+document.addEventListener("DOMContentLoaded", function () {
+  const armorForm = document.getElementById("armorForm");
 
-  function updateArmorSections() {
-    // Use the correct class name for the Great Fairy checkboxes
-    var checkedGreatFairies = document.querySelectorAll('.form-checkbox-input:checked');
+  armorForm.addEventListener("change", (event) => {
+    const target = event.target;
 
-    // Hide all armor upgrade sections initially
-    hideAllArmorUpgrades();
+    if (target.classList.contains("great-fairy-checkboxes") || target.classList.contains("collected-checkbox")) {
+      const armorId = target.id.replace("armor_id_", "");
+      const armorValue = target.checked ? "1" : "0";
 
-    // Show the specific armor upgrade section based on the number of Great Fairies checked
-    if (checkedGreatFairies.length >= 1) {
-      document.querySelectorAll('.level-1').forEach(function(section) {
-        section.style.display = 'block';
+      // Send the request to update armor collected status
+      fetch(`/update_armor/${armorId}/${armorValue}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(`Armor ${armorId} collected status updated: ${armorValue}`);
+          const armorSet = target.closest(".armor_set");
+          updateUpgradesDisplay(armorSet);
+        } else {
+          console.error("Error updating armor collected status:", data.error);
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating armor collected status:", error);
       });
     }
-    if (checkedGreatFairies.length >= 2) {
-      document.querySelectorAll('.level-2').forEach(function(section) {
-        section.style.display = 'block';
-      });
-    }
-    if (checkedGreatFairies.length >= 3) {
-      document.querySelectorAll('.level-3').forEach(function(section) {
-        section.style.display = 'block';
-      });
-    }
-    if (checkedGreatFairies.length >= 4) {
-      document.querySelectorAll('.level-4').forEach(function(section) {
-        section.style.display = 'block';
-      });
-    }
-  }
-
-  // Add event listeners to the Great Fairy checkboxes
-  document.querySelectorAll('input[name^="greatFairy_"]').forEach(function(checkbox) {
-    checkbox.addEventListener('change', updateArmorSections);
   });
 
-  // Initially hide all armor upgrade sections
-  hideAllArmorUpgrades();
+  function updateUpgradesDisplay(armorSet) {
+    const greatFairyCheckboxes = armorSet.querySelectorAll(".great-fairy-checkboxes");
+    const collectedCheckbox = armorSet.querySelector(".collected-checkbox");
+    if (!collectedCheckbox) {
+      return; // Exit if the collected-checkbox cannot be found
+    }
 
-  // Update armor sections when the page loads
-  updateArmorSections();
+    const upgrades = armorSet.querySelectorAll(".armor_set_piece_upgrade");
 
-  var armorForm = document.getElementById("armor-form");
+    const numGreatFairies = Array.from(greatFairyCheckboxes).filter((checkbox) => checkbox.checked).length;
+    const level1Checkbox = armorSet.querySelector(".level1-checkbox");
+    const level2Checkbox = armorSet.querySelector(".level2-checkbox");
+    const level3Checkbox = armorSet.querySelector(".level3-checkbox");
+    const level4Checkbox = armorSet.querySelector(".level4-checkbox");
 
-  armorForm.addEventListener("submit", function(event) {
-    console.log("Submit clicked");
-    event.preventDefault(); // Prevent form submission
-    console.log("after prevent default")
-
-    var checkboxes = document.querySelectorAll('input[name^="have_"]');
-    console.log("Checkboxes -> ", checkboxes)
-    checkboxes.forEach(function(checkbox) {
-      console.log("forEach checkbox");
-      var armorId = checkbox.value;
-      var armorFound = checkbox.checked ? '1' : '0';
-
-      // Perform AJAX request to update armor in the database
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/armors/update", true);
-      xhr.setRequestHeader("Content-Type", "application/json");
-
-      xhr.onreadystatechange = function() {
-        console.log("onreadystatechange");
-        console.log("Ready state:", xhr.readyState);
-        console.log("Status:", xhr.status);
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          console.log("Request completed");
-          if (xhr.status === 200) {
-            console.log("Armor updated successfully");
-          } else {
-            console.error("Failed to update armor");
-          }
-        }
-      };
-
-      xhr.onerror = function() {
-        console.error("An error occurred during the request");
-      };
-
-      var data = JSON.stringify({ armorId: armorId, armorFound: armorFound });
-      xhr.send(data);
+    upgrades.forEach(function (upgrade) {
+      upgrade.style.display = "none";
     });
+
+    if (numGreatFairies >= 1 && collectedCheckbox.checked) {
+      armorSet.querySelector(".armor_set_piece_upgrade1").style.display = "table-row-group";
+    }
+
+    if (numGreatFairies >= 2 && level1Checkbox && level1Checkbox.checked) {
+      armorSet.querySelector(".armor_set_piece_upgrade2").style.display = "table-row-group";
+    }
+
+    if (numGreatFairies >= 3 && level2Checkbox && level2Checkbox.checked) {
+      armorSet.querySelector(".armor_set_piece_upgrade3").style.display = "table-row-group";
+    }
+
+    if (numGreatFairies >= 4 && level3Checkbox && level3Checkbox.checked) {
+      armorSet.querySelector(".armor_set_piece_upgrade4").style.display = "table-row-group";
+    }
+  }
+
+  // Hide all upgrade divs on page load
+  const upgradeDivs = document.querySelectorAll(".armor_set_piece_upgrade");
+  upgradeDivs.forEach(function (upgrade) {
+    upgrade.style.display = "none";
+  });
+
+  // Trigger initial update for each armor set
+  const armorSets = document.querySelectorAll(".armor_set");
+  armorSets.forEach(function (armorSet) {
+    updateUpgradesDisplay(armorSet);
   });
 });

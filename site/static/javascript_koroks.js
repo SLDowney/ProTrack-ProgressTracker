@@ -1,4 +1,4 @@
-// javascript_koroks.js
+var koroksTable = document.getElementById('koroks-table');
 
 function updateKorok(checkbox, korokId) {
   const korokFound = checkbox.checked ? 1 : 0;
@@ -26,6 +26,49 @@ function updateKorok(checkbox, korokId) {
       console.error('Error:', error);
   });
 }
+function sortKoroks(sortType) {
+  var koroks = Array.from(koroksTable.getElementsByTagName('tr'));
+  koroks.shift(); // Remove header row from sorting
+
+  koroks.sort(function(a, b) {
+    var aValue, bValue;
+
+    if (sortType === 'location') {
+      aValue = a.cells[1].textContent.toLowerCase();
+      bValue = b.cells[1].textContent.toLowerCase();
+    } else if (sortType === 'coord') {
+      aValue = extractCoord(a);
+      bValue = extractCoord(b);
+    } else if (sortType === 'type') {
+      aValue = a.cells[3].textContent.toLowerCase();
+      bValue = b.cells[3].textContent.toLowerCase();
+    } else if (sortType === 'start') {
+      aValue = a.cells[5].textContent.toLowerCase();
+      bValue = b.cells[5].textContent.toLowerCase();
+    } else if (sortType === 'korok_done') {
+      aValue = a.cells[0].querySelector('input[type="checkbox"]').checked;
+      bValue = b.cells[0].querySelector('input[type="checkbox"]').checked;
+    }
+
+    if (aValue && bValue) {
+      if (aValue < bValue) {
+        return sortType === 'korok_done' ? (isFoundSortAscending ? -1 : 1) : -1;
+      } else if (aValue > bValue) {
+        return sortType === 'korok_done' ? (isFoundSortAscending ? 1 : -1) : 1;
+      } else {
+        return 0;
+      }
+    } else if (aValue) {
+      return -1;
+    } else if (bValue) {
+      return 1;
+    }
+  });
+  var tbody = koroksTable.querySelector('tbody');
+    koroks.forEach(function(korok) {
+      tbody.appendChild(korok);
+    });
+}
 
 window.addEventListener('DOMContentLoaded', function() {
   var sortByLocationBtn = document.getElementById("sort-by-location-btn");
@@ -41,50 +84,9 @@ window.addEventListener('DOMContentLoaded', function() {
   var isStartSortAscending = true;
   var isFoundSortAscending = true;
 
-  function sortKoroks(sortType) {
-    var koroks = Array.from(koroksTable.getElementsByTagName('tr'));
-    koroks.shift(); // Remove header row from sorting
+  
+    
 
-    koroks.sort(function(a, b) {
-      var aValue, bValue;
-
-      if (sortType === 'location') {
-        aValue = a.cells[1].textContent.toLowerCase();
-        bValue = b.cells[1].textContent.toLowerCase();
-      } else if (sortType === 'coord') {
-        aValue = extractCoord(a);
-        bValue = extractCoord(b);
-      } else if (sortType === 'type') {
-        aValue = a.cells[3].textContent.toLowerCase();
-        bValue = b.cells[3].textContent.toLowerCase();
-      } else if (sortType === 'start') {
-        aValue = a.cells[5].textContent.toLowerCase();
-        bValue = b.cells[5].textContent.toLowerCase();
-      } else if (sortType === 'korok_done') {
-        aValue = a.cells[0].querySelector('input[type="checkbox"]').checked;
-        bValue = b.cells[0].querySelector('input[type="checkbox"]').checked;
-      }
-
-      if (aValue && bValue) {
-        if (aValue < bValue) {
-          return sortType === 'korok_done' ? (isFoundSortAscending ? -1 : 1) : -1;
-        } else if (aValue > bValue) {
-          return sortType === 'korok_done' ? (isFoundSortAscending ? 1 : -1) : 1;
-        } else {
-          return 0;
-        }
-      } else if (aValue) {
-        return -1;
-      } else if (bValue) {
-        return 1;
-      }
-    });
-
-    var tbody = koroksTable.querySelector('tbody');
-    koroks.forEach(function(korok) {
-      tbody.appendChild(korok);
-    });
-  }
 
   function updatePercentageCounter() {
     var totalKoroks = koroksTable.getElementsByTagName('tr').length - 1; // Exclude the header row
@@ -133,12 +135,6 @@ window.addEventListener('DOMContentLoaded', function() {
     sortKoroks('type');
     isTypeSortAscending = !isTypeSortAscending;
   });
-
-  // sortByStartBtn.addEventListener("click", function(event) {
-  //   event.preventDefault();
-  //   sortKoroks('coord_start');
-  //   isStartSortAscending = !isStartSortAscending;
-  // });
 
   sortByFoundBtn.addEventListener("click", function(event) {
     event.preventDefault();

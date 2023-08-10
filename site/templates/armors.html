@@ -1,96 +1,327 @@
 {% extends "layout.html" %}
 
-{% block body %} 
+{% block body %}
 
-    <h2>{{ headline }}</h2>
+<div class="col-md-8">
+    <p>Great Fairies Opened</p>
+    {% for fairy in fairies %}
+    <input type="checkbox" class="great-fairy-checkboxes" id="fairy_{{fairy[0]}}" name="fairy_{{fairy[0]}}" value="{{fairy[2]}}" {% if fairy[2] == 1 %}checked{% elif fairy[2] == 0 %} unchecked{% endif %}>Great Fairy {{fairy[1]}}<br>
+    {% endfor %}
+</div>
 
-    <div class="container greatfairies">
-        <div class="row">
-            <div class="col-sm-1">
-                <input class="form-checkbox-input" type="checkbox" id="greatFairy_1" name="greatFairy_1" value="FALSE">
-            </div>
-            <div class="col-sm-11">
-                <label class="form-checkbox-label greatfairy" for="greatFairy_1">Great Fairy 1</label>
-            </div> 
+<h2>Sets</h2>
+<form id="armorForm" method="POST" action="/armors">
+    {% for armor in armor_sets %}
+<div class="col-md-8">
+    <div class="row armor_set">
+        <div class="row armor_set_head">
+            <h2 id="armor_set_name">{{armor[0][0]}}</h2><br>
         </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input class="form-checkbox-input" type="checkbox" id="greatFairy_2" name="greatFairy_2" value="FALSE">
-            </div>
-            <div class="col-sm-11">
-                <label class="form-checkbox-label greatfairy" for="greatFairy_2">Great Fairy 2</label>
-            </div> 
+        <div class="row armor_set_piece">
+            <table>
+                <thead id="armor_table">
+                    {% if armor[0][0] == "Archaic" %}
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    <th>Pants</th>
+                    {% else %}
+                    <th>Helm</th>
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    {% endif %}
+                </thead>
+                <tbody class="armor_checkbox" id="armor_table">
+                    <tr>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="{{ armor[1][2] }}">
+                            <input type="checkbox" class="collected-checkbox" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="{{ armor[1][2] }}" {% if armor[1][2] == "1" %}checked{% elif armor[1][2] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="{{ armor[2][2] }}">
+                            <input type="checkbox" class="collected-checkbox" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="{{ armor[2][2] }}" {% if armor[2][2] == "1" %}checked{% elif armor[2][2] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="{{ armor[3][2] }}">
+                            <input type="checkbox" class="collected-checkbox" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="{{ armor[3][2] }}" {% if armor[3][2] == "1" %}checked{% elif armor[3][2] == "0" %} unchecked{% endif %}>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input class="form-checkbox-input" type="checkbox" id="greatFairy_3" name="greatFairy_3" value="FALSE">
-            </div>
-            <div class="col-sm-11">
-                <label class="form-checkbox-label greatfairy" for="greatFairy_3">Great Fairy 3</label>
-            </div> 
+        <div class="row armor_upgrade_head">
+            <h2 id="armor_set_name">&star;</h2><br>
         </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input class="form-checkbox-input" type="checkbox" id="greatFairy_4" name="greatFairy_4" value="FALSE">
-            </div>
-            <div class="col-sm-11">
-                <label class="form-checkbox-label greatfairy" for="greatFairy_4">Great Fairy 4</label>
-            </div>                        
+        <div class="row armor_set_piece_upgrade1">
+            <table>
+                <thead id="armor_table">
+                    {% if armor[0][0] == "Archaic" %}
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    <th>Pants</th>
+                    {% else %}
+                    <th>Helm</th>
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    {% endif %}
+                </thead>
+                <tbody class="armor_set_piece_upgrade level1-upgrade" id="armor_table">
+                    <tr>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="{{ armor[1][3] }}">
+                            <input type="checkbox" class="level1-checkbox" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="level1" {% if armor[1][3] == "1" %}checked{% elif armor[1][3] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="{{ armor[2][3] }}">
+                            <input type="checkbox" class="level1-checkbox" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="level1" {% if armor[2][3] == "1" %}checked{% elif armor[2][3] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="{{ armor[3][3] }}">
+                            <input type="checkbox" class="level1-checkbox" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="level1" {% if armor[3][3] == "1" %}checked{% elif armor[3][3] == "0" %} unchecked{% endif %}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                {% if armor[1][4] == None %}
+                                    ???
+                                {% else %}
+                                    {{armor[1][4]}}
+                                {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[2][4] == None %}
+                                ???
+                            {% else %}
+                                {{armor[2][4]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[3][4] == None %}
+                                ???
+                            {% else %}
+                                {{armor[3][4]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row armor_upgrade_head">
+            <h2 id="armor_set_name">&star;&star;</h2><br>
+        </div>
+        <div class="row armor_set_piece_upgrade2">
+            <table>
+                <thead id="armor_table">
+                    {% if armor[0][0] == "Archaic" %}
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    <th>Pants</th>
+                    {% else %}
+                    <th>Helm</th>
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    {% endif %}
+                </thead>
+                <tbody class="armor_set_piece_upgrade level2-upgrade" id="armor_table">
+                    <tr>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="{{ armor[1][5] }}">
+                            <input type="checkbox" class="level2-checkbox" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="level2" {% if armor[1][5] == "1" %}checked{% elif armor[1][5] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="{{ armor[2][5] }}">
+                            <input type="checkbox" class="level2-checkbox" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="level2" {% if armor[2][5] == "1" %}checked{% elif armor[2][5] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="{{ armor[3][5] }}">
+                            <input type="checkbox" class="level2-checkbox" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="level2" {% if armor[3][5] == "1" %}checked{% elif armor[3][5] == "0" %} unchecked{% endif %}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                {% if armor[1][6] == None %}
+                                    ???
+                                {% else %}
+                                    {{armor[1][6]}}
+                                {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[2][6] == None %}
+                                ???
+                            {% else %}
+                                {{armor[2][6]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[3][6] == None %}
+                                ???
+                            {% else %}
+                                {{armor[3][6]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row armor_upgrade_head">
+            <h2 id="armor_set_name">&star;&star;&star;</h2><br>
+        </div>
+        <div class="row armor_set_piece_upgrade3">
+            <table>
+                <thead id="armor_table">
+                    {% if armor[0][0] == "Archaic" %}
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    <th>Pants</th>
+                    {% else %}
+                    <th>Helm</th>
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    {% endif %}
+                </thead>
+                <tbody class="armor_set_piece_upgrade level3-upgrade" id="armor_table">
+                    <tr>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="{{ armor[1][7] }}">
+                            <input type="checkbox" class="level3-checkbox" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="level3" {% if armor[1][7] == "1" %}checked{% elif armor[1][7] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="{{ armor[2][7] }}">
+                            <input type="checkbox" class="level3-checkbox" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="level3" {% if armor[2][7] == "1" %}checked{% elif armor[2][7] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="{{ armor[3][7] }}">
+                            <input type="checkbox" class="level3-checkbox" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="level3" {% if armor[3][7] == "1" %}checked{% elif armor[3][7] == "0" %} unchecked{% endif %}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                {% if armor[1][8] == None %}
+                                    ???
+                                {% else %}
+                                    {{armor[1][8]}}
+                                {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[2][8] == None %}
+                                ???
+                            {% else %}
+                                {{armor[2][8]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[3][8] == None %}
+                                ???
+                            {% else %}
+                                {{armor[3][8]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row armor_upgrade_head">
+            <h2 id="armor_set_name">&star;&star;&star;&star;</h2><br>
+        </div>
+        <div class="row armor_set_piece_upgrade4">
+            <table>
+                <thead id="armor_table">
+                    {% if armor[0][0] == "Archaic" %}
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    <th>Pants</th>
+                    {% else %}
+                    <th>Helm</th>
+                    <th>Chest</th>
+                    <th>Pants</th>
+                    {% endif %}
+                </thead>
+                <tbody class="armor_set_piece_upgrade level4-upgrade"id="armor_table">
+                    <tr>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="{{ armor[1][9] }}">
+                            <input type="checkbox" class="level4-checkbox" id="armor_id_{{ armor[1][0] }}" name="armor_id_{{ armor[1][0] }}" value="level4" {% if armor[1][9] == "1" %}checked{% elif armor[1][9] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="{{ armor[2][9] }}">
+                            <input type="checkbox" class="level4-checkbox" id="armor_id_{{ armor[2][0] }}" name="armor_id_{{ armor[2][0] }}" value="level4" {% if armor[2][9] == "1" %}checked{% elif armor[2][9] == "0" %} unchecked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                            <input type="hidden" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="{{ armor[3][9] }}">
+                            <input type="checkbox" class="level4-checkbox" id="armor_id_{{ armor[3][0] }}" name="armor_id_{{ armor[3][0] }}" value="level4" {% if armor[3][9] == "1" %}checked{% elif armor[3][9] == "0" %} unchecked{% endif %}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                {% if armor[1][10] == None %}
+                                    ???
+                                {% else %}
+                                    {{armor[1][10]}}
+                                {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[2][10] == None %}
+                                ???
+                            {% else %}
+                                {{armor[2][10]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                            {% if armor[3][10] == None %}
+                                ???
+                            {% else %}
+                                {{armor[3][10]}}
+                            {% endif %}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <br>
-    <form id="armor-form" method="POST" action="/armors/update">
-        <div class="container">
-            {% set grouped_armors = {} %}
-            {% for armor in armors %}
-                {% set set_name = armor[1] %}
-                {% if set_name not in grouped_armors %}
-                    {% set _ = grouped_armors.update({set_name: [armor]}) %}
-                {% else %}
-                    {% set _ = grouped_armors[set_name].append(armor) %}
-                {% endif %}
-            {% endfor %}
-    
-            {% for set_name, armor_list in grouped_armors.items() %}
-                <div class="row">
-                    <div class="col-sm-12" id="armor_set">{{ set_name }}</div>
-                    {% for armor in armor_list %}
-                        <div class="col-sm-4">
-                            <div class="">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="have_{{ armor[0] }}_helm" name="have_{{ armor[0] }}_helm" {% if armor[2] == 1 %}checked{% endif %} >
-                                    <label class="form-check-label" for="have_{{ armor[0] }}_helm">Helm</label>
-                                </div>                        
-                            </div>                    
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="have_{{ armor[0] }}_chest" name="have_{{ armor[0] }}_chest" {% if armor[3] == 1 %}checked{% endif %} >
-                                    <label class="form-check-label" for="have_{{ armor[0] }}_chest">Chest</label>
-                                </div>                        
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="have_{{ armor[0] }}_pants" name="have_{{ armor[0] }}_pants" {% if armor[4] == 1 %}checked{% endif %} >
-                                    <label class="form-check-label" for="have_{{ armor[0] }}_pants">Pants</label>
-                                </div>                        
-                            </div>
-                        </div>
-                        <input type="hidden" name="{{ armor[0] }}" value="{{ armor[0] }}">
-                    {% endfor %}
-                    <div class="col-sm-12" id="armor_update_button">
-                        <button type="submit" class="btn btn-block custom-btn">submit</button>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </form>
-    
-    
+</div>
+{% endfor %}
+</form>
 
-    <script src="{{ url_for('static', filename='armors.js') }}"></script>
+
+
+<script src="{{ url_for('static', filename='armors.js') }}"></script>
 
 {% endblock %}

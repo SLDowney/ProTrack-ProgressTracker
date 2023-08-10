@@ -38,21 +38,6 @@
     width:100%;
 }
 
-.percentage_table {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 350px; /* Adjust the width as needed */
-    background-color: #ffffff; /* Optional background color for the table */
-    border-collapse: collapse;
-}
-
-.percentage_table th,
-.percentage_table td {
-    padding: 8px;
-    border: 1px solid #ccc;
-}
-
 body {
     /* background-image: url('/static/background1.jpg'); */
     background-attachment: fixed;
@@ -115,6 +100,16 @@ p {
     border: 2px solid rgba(0, 0, 0, 0.5);
 
 }
+.row.armor_set {
+    display: flex;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 1%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+}
 
 .col {
     flex: 50%;
@@ -134,7 +129,7 @@ th {
     font-size: 100%;
     border: 2px solid rgba(0, 0, 0, 0.5);
     background-color: #434343;
-    color: #434343;
+    color: #ffffff;
     padding: 0px 0 0 10px;
 
 }
@@ -198,17 +193,31 @@ textarea {
     justify-items:flex-start;
 }
 
-#percentage_table {
-    margin-bottom: 10%;
-    width: 550px;
+
+
+#temple_boss_checkbox {
+    padding-left: 2%;
 }
 
 .temple_progress {
     margin-top: 5%;
+    width: 75%;
 }
 
-#temple_boss_checkbox {
-    padding-left: 2%;
+.progress-bar-img img {
+    width: 90px;
+    height: 90px;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
+.col-lg-1 {
+    float:right;
+}
+
+.index_temples {
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #Shrine_percent_table {
@@ -267,6 +276,7 @@ textarea {
     width:min-content;
     margin-left: -15%;
     margin-right: 0;
+    margin-bottom: 5%;
 }
 
 .chests-table th {
@@ -362,13 +372,59 @@ display checkmark when checked
 }
 */
 
-#armor_set {
+/* #set_piece {
+    display:inline-flex;
     text-align: center; 
     padding: 0 0 0 0;
     border: #000000;
     border-style: solid;
     background-color: #01d5ff9c;
     height: 50px;
+    width: 100%;
+} */
+
+.armor_set_head {
+    justify-content: center;
+    padding: 0 0 0 0;
+    margin: 0;
+    background-color: #62ff019c;
+    height: auto;
+    width: 100%;
+}
+
+.armor_upgrade_head {
+    justify-content: center;
+    padding: 0 0 0 0;
+    margin: 0;
+    background-color: #e1ff00;
+    height: auto;
+    width: 100%;
+}
+
+.armor_set_piece {
+    width:100%;
+    background-color: #cd06ff73;
+}
+
+.armor_set_piece_upgrade1 {
+    width:100%;
+    background-color: #ff060673;
+}
+.armor_set_piece_upgrade2 {
+    width:100%;
+    background-color: #eaff0673;
+}
+.armor_set_piece_upgrade3 {
+    width:100%;
+    background-color: #06fff773;
+}
+.armor_set_piece_upgrade4 {
+    width:100%;
+    background-color: #ff0000d6;
+}
+
+#armor_table {
+    text-align: center;
 }
 
 .armor_upgrade {
@@ -377,6 +433,17 @@ display checkmark when checked
 
 .armor_items {
     text-align: left;
+}
+
+.armor_checkbox input[type=checkbox]{
+    width: 100px;
+    height: 40px;
+    margin-top: 5%;
+}
+
+#armor_set_name {
+    margin: 0;
+    padding: 0;
 }
 
 .col-sm-12 {
@@ -394,11 +461,13 @@ display checkmark when checked
 }
 
 /* Updated CSS for the custom "comp-col-7" class */
-.item-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-} 
+#points-table {
+    width:100%;
+}
+
+#table-head-points {
+    width: fit-content;
+}
 
 .hidden-item {
     visibility: hidden;
@@ -560,21 +629,17 @@ display checkmark when checked
     margin-left: 27%;
 }
 
-#items-table-th {
-    color: #ffffff;
-}
-
 .add_item_checkbox {
     vertical-align: middle;
     position: relative;
     bottom: 1px;
 }
 
-#items-table {
-    margin-left: 8%;
+#miscform {
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 5%;
     margin-bottom: 5%;
-    width: auto;
 }
 
 .add_item_textbox {
@@ -702,6 +767,26 @@ span {
     #navbarNav {
         margin-left: 30%;
     }
+
+    .percentage_table {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 350px; /* Adjust the width as needed */
+        background-color: #ffffff; /* Optional background color for the table */
+        border-collapse: collapse;
+    }
+    
+    .percentage_table th,
+    .percentage_table td {
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    #percentage_table {
+        margin-bottom: 10%;
+        width: 550px;
+    }
   
     /* Update the width for the items to have four columns in this media query */
     .item-container .comp-col-7 {
@@ -728,9 +813,12 @@ span {
 @media (min-width: 601px) and (max-width: 991px) {
     .navbar {
         position: static; /* Reset position for mobile */
-        width: 100%; /* Reset width for mobile */
-        padding-top: 10%; /* Reset padding for mobile */
-        flex-direction: row; /* Arrange items horizontally for mobile */
+        width: 150%; /* Reset width for mobile */
+        padding-top: 10%;
+        /* flex-direction: row; */
+        justify-content: center;
+        background-color: lightgreen;
+        color: #000000;
     }
 
     /* .navbar-collapse {
@@ -761,12 +849,54 @@ span {
         width: 100%;
         height: 25vh; /* Adjust this value to control the vertical centering */
     }
-}
+
+    .percentage_table {
+        position: relative;
+        margin-left: 500%;
+        margin-right:auto;
+        margin-top: 50%;
+        width: max-content; /* Adjust the width as needed */
+        background-color: #ffffff; /* Optional background color for the table */
+        border-collapse: collapse;
+    }
+    
+    .percentage_table th,
+    .percentage_table td {
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    #percentage_table {
+        margin-bottom: 10%;
+        width: 550px;
+    }
+  
+    }
 
 
 
 @media (max-width: 600px) {
     .navbar-collapse {
         order: 2;
+    }
+    .percentage_table {
+        position: relative;
+        margin-left: 500%;
+        margin-right:auto;
+        margin-top: 5%;
+        width: max-content; /* Adjust the width as needed */
+        background-color: #ffffff; /* Optional background color for the table */
+        border-collapse: collapse;
+    }
+    
+    .percentage_table th,
+    .percentage_table td {
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    #percentage_table {
+        margin-bottom: 10%;
+        width: 550px;
     }
 }

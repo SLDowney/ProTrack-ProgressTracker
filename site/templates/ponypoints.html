@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+    <div id="points-counter">
+        <p>Percentage of points Found: <span id="percentage-found">0</span>%</p>
+    </div>
+    
+    <table id="points-table">
+        <thead>
+            <tr>
+                <th id="table-head-points">Done</th>
+                <th>Gathered</th>
+                <th>Total</th>
+                <th>Rewards</th>
+            </tr>
+        </thead>
+        <tbody id="points-body">
+            {% for point in points %}
+            <tr>
+                <td>
+                    <input type="checkbox" id="points_done_{{ point[0] }}" name="points_done_{{ point[0] }}" value="{{point[1]}}" {% if point[1] == 1 %}checked{% endif %} onclick="updatepoint(this, '{{ point[0] }}'); rewardToggle(this, '{{ point[0] }}')">
+                </td>
+                <td>{{ point[2] }}</td>
+                <td>{{ point[3] }}</td>
+                <td id="point_rewards_{{ point[0] }}" data-rewards="{{ point[4] }}">{{ point[4] }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='ponypoints.js') }}"></script>
+{% endblock %}
