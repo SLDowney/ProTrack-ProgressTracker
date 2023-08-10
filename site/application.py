@@ -277,7 +277,7 @@ def update_lock_status():
 
 @app.route("/locationnav")
 def locationnav():
-    headline = "Locations!"
+    headline = ""
     percentages = get_percentages()
     return render_template("locationnav.html", headline=headline, percentages=percentages)
 

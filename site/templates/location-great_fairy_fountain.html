@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
 <div class="content-container">
     <form action="{{ url_for('great_fairy_fountain') }}" method="POST" enctype="multipart/form-data">
-        <input type="submit" id="great_fairy_fountainSubmit" value="Update">
         <div class="item-container location_container">
             {% for great_fairy_fountain in great_fairy_fountains %}
                 <div class="location-col-7">
@@ -26,13 +29,16 @@
                             <td>{{great_fairy_fountain[4]}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="location_checkbox">
+                            <td class="location_checkbox">
                                 {% if great_fairy_fountain[1] == 0 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ great_fairy_fountain[0] }}" name="done_great_fairy_fountain_{{ great_fairy_fountain[0] }}" value="0" unchecked>
                                 {% elif great_fairy_fountain[1] == 1 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ great_fairy_fountain[0] }}" name="done_great_fairy_fountain_{{ great_fairy_fountain[0] }}" value="1" checked>
                                 {% else %}
                                 {% endif %}
+                            </td>
+                            <td>
+                                <input type="submit" id="great_fairy_fountainSubmit" value="Update">
                             </td>
                         </tr>
                     </table>                    

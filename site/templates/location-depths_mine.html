@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
 <div class="content-container">
     <form action="{{ url_for('depths_mine') }}" method="POST" enctype="multipart/form-data">
-        <input type="submit" id="depths_mineSubmit" value="Update">
         <div class="item-container location_container">
             {% for depths_mine in depths_mines %}
                 <div class="location-col-7">
@@ -26,13 +29,16 @@
                             <td>{{depths_mine[4]}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="location_checkbox">
+                            <td class="location_checkbox">
                                 {% if depths_mine[1] == 0 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ depths_mine[0] }}" name="done_depths_mine_{{ depths_mine[0] }}" value="0" unchecked>
                                 {% elif depths_mine[1] == 1 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ depths_mine[0] }}" name="done_depths_mine_{{ depths_mine[0] }}" value="1" checked>
                                 {% else %}
                                 {% endif %}
+                            </td>
+                            <td>
+                                <input type="submit" id="depths_mineSubmit" value="Update">
                             </td>
                         </tr>
                     </table>                    

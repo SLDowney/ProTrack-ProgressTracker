@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
 <div class="content-container">
     <form action="{{ url_for('location') }}" method="POST" enctype="multipart/form-data">
-        <input type="submit" id="locationSubmit" value="Update">
         <div class="item-container location_container">
             {% for location in locations %}
                 <div class="location-col-7">
@@ -26,13 +29,16 @@
                             <td>{{location[4]}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="location_checkbox">
+                            <td class="location_checkbox">
                                 {% if location[1] == 0 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ location[0] }}" name="done_location_{{ location[0] }}" value="0" unchecked>
                                 {% elif location[1] == 1 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ location[0] }}" name="done_location_{{ location[0] }}" value="1" checked>
                                 {% else %}
                                 {% endif %}
+                            </td>
+                            <td>
+                                <input type="submit" id="locationSubmit" value="Update">
                             </td>
                         </tr>
                     </table>                    
