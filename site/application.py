@@ -77,6 +77,9 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM towers")
         total_towers = c.fetchone()[0]
 
+        c.execute("SELECT COUNT(*) FROM device_dispenser")
+        total_dispensers = c.fetchone()[0]
+
         # Fetch the number of completed rows for each table
         c.execute("SELECT COUNT(*) FROM shrines WHERE shrine_done = 2")
         completed_shrines = c.fetchone()[0]
@@ -130,6 +133,9 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM towers WHERE tower_done = 1")
         completed_towers = c.fetchone()[0]
 
+        c.execute("SELECT COUNT(*) FROM device_dispenser WHERE dis_done = 1")
+        completed_dispensers = c.fetchone()[0]
+
         # Calculate the percentage completion for the additional tables
         percentages = {
             "percentage_chasms": calculate_completion_percentage(completed_chasms, total_chasms),
@@ -139,16 +145,17 @@ def get_percentages():
             "percentage_locations": calculate_completion_percentage(completed_locations, total_locations),
             "percentage_shrines": calculate_completion_percentage(completed_shrines, total_shrines),
             "percentage_addison": calculate_completion_percentage(completed_addison, total_addison),
-            "percentage_adventure": calculate_completion_percentage(completed_adventure, total_adventure),
+            "percentage_side_adventures": calculate_completion_percentage(completed_adventure, total_adventure),
             "percentage_caves": calculate_completion_percentage(completed_caves, total_caves),
             "percentage_compendium": calculate_completion_percentage(completed_compendium, total_compendium),
             "percentage_koroks": calculate_completion_percentage(completed_koroks, total_koroks),
             "percentage_lightroots": calculate_completion_percentage(completed_lightroots, total_lightroots),
-            "percentage_mainqu": calculate_completion_percentage(completed_mainqu, total_mainqu),
-            "percentage_oldmaps": calculate_completion_percentage(completed_oldmaps, total_oldmaps),
-            "percentage_shrinequests": calculate_completion_percentage(completed_shrinequests, total_shrinequests),
-            "percentage_sidequests": calculate_completion_percentage(completed_sidequests, total_sidequests),
-            "percentage_towers": calculate_completion_percentage(completed_towers, total_towers)
+            "percentage_main_quests": calculate_completion_percentage(completed_mainqu, total_mainqu),
+            "percentage_old_maps": calculate_completion_percentage(completed_oldmaps, total_oldmaps),
+            "percentage_shrine_quests": calculate_completion_percentage(completed_shrinequests, total_shrinequests),
+            "percentage_side_quests": calculate_completion_percentage(completed_sidequests, total_sidequests),
+            "percentage_towers": calculate_completion_percentage(completed_towers, total_towers),
+            "percentage_dispensers": calculate_completion_percentage(completed_dispensers, total_dispensers)
         }
     return percentages
 
@@ -896,23 +903,17 @@ def koroks():
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM allkoroks')
         koroks = c.fetchall()
-        print("result[1]:", koroks[0][1])
-        print("korok id:", koroks[0][0])
-
     return render_template('koroks.html', headline=headline, percentages=percentages, completed_koroks=completed_koroks, koroks=koroks, scroll_position=scroll_position)
 
 @app.route('/update-korok', methods=['POST'])
 def update_korok():
     korok_id = request.json.get('korok_id')
     korok_done = request.json.get('korok_done')
-    print("Data received from client:", korok_id, korok_done)  # Add this line for debugging
 
     if korok_done is None:
         korok_done = 0
     else:
         korok_done = korok_done
-
-    print("Korok_done after if/else:", korok_done)
 
     # Update the korok in the database with the new found status
     try:
@@ -1758,11 +1759,15 @@ def great_fairy_fountain():
 
 @app.route("/location-device_dispenser", methods=["GET", "POST"])
 def device_dispenser():
-    headline = "device_dispensers"
+    headline = "Device Dispensers"
     percentages = get_percentages()
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
+
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT COUNT(*) FROM device_dispenser WHERE dis_done = 1")
+        completed_dispenser = c.fetchone()[0]
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
@@ -1786,10 +1791,86 @@ def device_dispenser():
         c.execute(query)
         device_dispensers = c.fetchall()
         print("device_dispensers ->", device_dispensers)
-    return render_template("location-device_dispenser.html", scroll_position=scroll_position, headline=headline, percentages=percentages, device_dispensers=device_dispensers)
+    return render_template("location-device_dispenser.html", scroll_position=scroll_position, headline=headline, percentages=percentages, device_dispensers=device_dispensers, completed_dispenser=completed_dispenser)
 
+@app.route('/update-device_dispenser', methods=['POST'])
+def update_device_dispenser():
+    dis_id = request.json.get('dis_id')
+    dis_done = request.json.get('dis_done')
 
+    if dis_done is None:
+        dis_done = 0
+    else:
+        dis_done = dis_done
 
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE device_dispenser SET dis_done = ? WHERE dis_id = ?', (dis_done, dis_id))
+            print("update dispensers dis_done = ", dis_done, ", dis_id = ", dis_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+
+@app.route("/location-coliseum", methods=["GET", "POST"])
+def coliseum():
+    headline = "Coliseums"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Coliseum'")
+        completed_dispenser = c.fetchone()[0]
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            coliseums = c.execute('SELECT * FROM locations WHERE location_type = "Coliseum" ORDER BY location_name ASC').fetchall()
+            for coliseum in coliseums:
+                coli_id = coliseum[0]
+                coli_done = request.form.get(f'done_coliseum_{coli_id}')
+                if coli_done is None:
+                    coli_done = 0
+                else:
+                    coli_done = 1
+                    print("coliseum Done ->", coli_id, ", ", coli_done)
+                # print("coli_id:", coli_id)
+                # print("coli_done:", coli_done)
+                c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (coli_done, coli_id))
+                # print("Executed update statement for coli_id:", coli_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM locations WHERE location_type = "Coliseum" ORDER BY location_name ASC'''
+        c.execute(query)
+        coliseums = c.fetchall()
+        print("coliseums ->", coliseums)
+    return render_template("location-coliseum.html", scroll_position=scroll_position, headline=headline, percentages=percentages, coliseums=coliseums, completed_dispenser=completed_dispenser)
+
+@app.route('/update-coliseum', methods=['POST'])
+def update_coliseum():
+    coli_id = request.json.get('coli_id')
+    coli_done = request.json.get('coli_done')
+
+    if coli_done is None:
+        coli_done = 0
+    else:
+        coli_done = coli_done
+
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (coli_done, coli_id))
+            print("update_coliseum coli_done = ", coli_done, ", coli_id = ", coli_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+    
 @app.route("/tower", methods=["GET", "POST"])
 def tower():
     headline = "Towers"

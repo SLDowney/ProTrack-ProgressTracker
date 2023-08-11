@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
+<div class="content-container">
+    <form action="{{ url_for('coliseum') }}" method="POST" enctype="multipart/form-data">
+        <div class="item-container location_container">
+            {% for coliseum in coliseums %}
+                <div class="location-col-7">
+                    <table id="device_dispensers-table" class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">coliseum Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{coliseum[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{coliseum[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{coliseum[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="location_checkbox">
+                                {% if coliseum[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ coliseum[0] }}" name="done_coliseum_{{ coliseum[0] }}" value="0" unchecked onclick="updatecoliseum(this, '{{ coliseum[0] }}')">
+                                {% elif coliseum[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ coliseum[0] }}" name="done_coliseum_{{ coliseum[0] }}" value="1" checked onclick="updatecoliseum(this, '{{ coliseum[0] }}')">
+                                {% else %}
+                                {% endif %}
+                            </td>
+                            
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='coliseum.js') }}"></script>
+{% endblock %}

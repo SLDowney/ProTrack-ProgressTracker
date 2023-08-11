@@ -108,7 +108,7 @@ p {
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 1%;
-    border: 2px solid rgba(0, 0, 0, 0.5);
+    /* border: 2px solid rgba(0, 0, 0, 0.5); */
 
 }
 .row.armor_set {
@@ -707,6 +707,10 @@ span {
     width:30%;
 }
 
+#location_th_2 {
+    width:70%;
+}
+
 /* .location_container {
     display:inline-block;
     justify-content: center;
@@ -757,7 +761,7 @@ span {
 .locations-nav {
     background-color: #404040;
     height: 75px;
-    width: 75%;
+    /* width: 75%; */
     margin-left: auto;
     margin-right: auto;
 }
@@ -788,6 +792,28 @@ span {
     margin-top: 5%;
     font-size: xx-large;
     font-variant: small-caps;
+}
+
+#dis_zonai {
+    text-align: center;
+    background-color: #6a6a6a;
+    color: #ffffff;
+}
+
+.dis_items {
+    text-align: center;
+}
+
+#counter {
+    color: #000000;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 65%;
+    justify-content: flex-end;
+    background-color: #cccccc7d;
+    background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgba(255, 255, 255, 0), rgb(255 255 255 / 20%));
 }
 /* For larger screens */
 @media (min-width: 992px) {
@@ -843,7 +869,6 @@ span {
     .percentage_table th,
     .percentage_table td {
         padding: 8px;
-        border: 1px solid #ccc;
     }
 
     #percentage_table {
@@ -862,6 +887,7 @@ span {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        margin-bottom: 5%;
     }
   
     .comp_table {
@@ -975,5 +1001,41 @@ span {
         margin-right: auto;
         width: auto;
     
+    }
+
+    .locations-nav {
+        background-color: #404040;
+        height: 75px;
+        /* width: 75%; */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .locations-nav-container {
+        margin-top: 5%;
+    }
+    
+    .locations-nav-home {
+        background-color: #404040;
+        height: 75px;
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .location-buttons {
+        background-color: transparent;
+        border: none;
+        padding-top: 1.5%;
+        margin: 0;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        font-size: xx-large;
+        font-variant: small-caps;
     }
 }
