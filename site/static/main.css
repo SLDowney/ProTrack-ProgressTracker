@@ -31,9 +31,8 @@
 
 .item-container {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .location-col-7 {
@@ -606,11 +605,16 @@ display checkmark when checked
 }
 
 #koroks-counter {
-    color:#000000;
+    color: #000000;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    /* width: 80%; */
+    justify-content: space-between;
+    background-color: #cccccc7d;
+    background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgba(255, 255, 255, 0), rgb(255 255 255 / 20%));
 }
+
 
 #add_enemy{
     margin-left: 25%;

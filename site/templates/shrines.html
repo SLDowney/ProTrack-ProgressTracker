@@ -115,6 +115,7 @@
                     <tr>
                         <td>Status</td>
                         <td>
+                            <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
                             <input type="radio" id="undone_{{ result[1] }}" name="done_shrine_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="shrine_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
                             <input type="radio" id="tapped_{{ result[1] }}"name="done_shrine_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="tapped_{{ result[1] }}">Tapped</label>
                             <input type="radio" id="done_{{ result[1] }}"name="done_shrine_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class="shrine_radio_labels" for="done_{{ result[1] }}">Done</label>

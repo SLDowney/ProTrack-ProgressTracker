@@ -74,7 +74,6 @@ window.addEventListener('DOMContentLoaded', function() {
   var sortByLocationBtn = document.getElementById("sort-by-location-btn");
   var sortByCoordBtn = document.getElementById("sort-by-coord-btn");
   var sortByTypeBtn = document.getElementById("sort-by-type-btn");
-  // var sortByStartBtn = document.getElementById("sort-by-start-btn");
   var sortByFoundBtn = document.getElementById("sort-by-found-btn");
   var koroksTable = document.getElementById('koroks-table');
 
@@ -118,11 +117,11 @@ window.addEventListener('DOMContentLoaded', function() {
     return '';
   }
   
-  // sortByLocationBtn.addEventListener("click", function(event) {
-  //   event.preventDefault();
-  //   sortKoroks('location');
-  //   isLocationSortAscending = !isLocationSortAscending;
-  // });
+  sortByLocationBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    sortKoroks('location');
+    isLocationSortAscending = !isLocationSortAscending;
+  });
 
   sortByCoordBtn.addEventListener("click", function(event) {
     event.preventDefault();

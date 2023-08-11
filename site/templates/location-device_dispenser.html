@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
+<div id="points-counter">
+    <p>Percentage of points Found: <span id="percentage-found">0</span>%</p>
+</div>
+<div class="content-container">
+    <form action="{{ url_for('device_dispenser') }}" method="POST" enctype="multipart/form-data">
+        <div class="item-container location_container">
+            {% for device_dispenser in device_dispensers %}
+                <div class="location-col-7">
+                    <table class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">device_dispenser Info</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{device_dispenser[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{device_dispenser[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{device_dispenser[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td class="location_checkbox">
+                                {% if device_dispenser[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ device_dispenser[0] }}" name="done_device_dispenser_{{ device_dispenser[0] }}" value="0" unchecked>
+                                {% elif device_dispenser[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ device_dispenser[0] }}" name="done_device_dispenser_{{ device_dispenser[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                                <input type="submit" id="device_dispenserSubmit" value="Update">
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

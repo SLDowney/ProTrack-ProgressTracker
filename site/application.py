@@ -436,7 +436,7 @@ def add_chest():
         chest_done = request.form.get(f'chest_done')
         chest_map = request.form['chest_map']
 
-        update_weapons_table(weapon_name, chest_region, damage_number, buff)
+        # update_weapons_table(weapon_name, chest_region, damage_number, buff)
 
 
         print("Chest_Done:", chest_done) 
@@ -871,7 +871,10 @@ def koroks():
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
-
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT COUNT(*) FROM allkoroks WHERE korok_done = 1")
+        completed_koroks = c.fetchone()[0]
+    
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
             koroks = c.execute('SELECT * FROM allkoroks').fetchall()
@@ -896,7 +899,7 @@ def koroks():
         print("result[1]:", koroks[0][1])
         print("korok id:", koroks[0][0])
 
-    return render_template('koroks.html', headline=headline, percentages=percentages, koroks=koroks, scroll_position=scroll_position)
+    return render_template('koroks.html', headline=headline, percentages=percentages, completed_koroks=completed_koroks, koroks=koroks, scroll_position=scroll_position)
 
 @app.route('/update-korok', methods=['POST'])
 def update_korok():
@@ -1471,15 +1474,14 @@ def sidequests():
     "Gerudo",
 ]
 
-    if request.method == 'POST':
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Well'")
+        total_wells = c.fetchone()[0]
 
-        with closing(conn.cursor()) as c:
-            c.execute("SELECT COUNT(*) FROM locations WHERE location_type = 'Well'")
-            total_wells = c.fetchone()[0]
-
-            c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Well'")
-            completed_wells = c.fetchone()[0]
+        c.execute("SELECT COUNT(*) FROM locations WHERE location_done = 1 AND location_type = 'Well'")
+        completed_wells = c.fetchone()[0]
     
+    if request.method == 'POST':
 
         with closing(conn.cursor()) as c:
             side_ids = c.execute('SELECT side_id FROM sidequests').fetchall()
@@ -1753,6 +1755,40 @@ def great_fairy_fountain():
         c.execute(query)
         great_fairy_fountains = c.fetchall()
     return render_template("location-great_fairy_fountain.html", scroll_position=scroll_position, headline=headline, percentages=percentages, great_fairy_fountains=great_fairy_fountains)
+
+@app.route("/location-device_dispenser", methods=["GET", "POST"])
+def device_dispenser():
+    headline = "device_dispensers"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position)
+
+    if request.method == 'POST':
+        with closing(conn.cursor()) as c:
+            device_dispensers = c.execute('SELECT * FROM device_dispenser ORDER BY dis_id ASC').fetchall()
+            for device_dispenser in device_dispensers:
+                device_dispenser_id = device_dispenser[0]
+                device_dispenser_done = request.form.get(f'done_device_dispenser_{device_dispenser_id}')
+                if device_dispenser_done is None:
+                    device_dispenser_done = 0
+                else:
+                    device_dispenser_done = 1
+                    print("device_dispenser Done ->", device_dispenser_id, ", ", device_dispenser_done)
+                # print("device_dispenser_id:", device_dispenser_id)
+                # print("device_dispenser_done:", device_dispenser_done)
+                c.execute('UPDATE device_dispenser SET dis_done = ? WHERE dis_id = ?', (device_dispenser_done, device_dispenser_id))
+                # print("Executed update statement for device_dispenser_id:", device_dispenser_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        query = '''SELECT * FROM device_dispenser ORDER BY dis_id ASC'''
+        c.execute(query)
+        device_dispensers = c.fetchall()
+        print("device_dispensers ->", device_dispensers)
+    return render_template("location-device_dispenser.html", scroll_position=scroll_position, headline=headline, percentages=percentages, device_dispensers=device_dispensers)
+
+
 
 @app.route("/tower", methods=["GET", "POST"])
 def tower():

@@ -32,7 +32,8 @@
     </form>
 
     <div id="koroks-counter">
-        <p>Percentage of Koroks Found: <span id="percentage-found">0</span>%</p>
+        <p><span>{{completed_koroks}} / 900</span></p>
+        <p><span id="percentage-found">0</span>%</p>
     </div>
     
     <table id="koroks-table">
@@ -40,9 +41,9 @@
             <tr>
                 <th><button id="sort-by-found-btn" onclick="sortKoroks('korok_done')">Found</button></th>
                 <!-- <th><button id="sort-by-location-btn" onclick="sortKoroks('location_num')">Location/Num</button></th> -->
-                <th><button id="sort-by-type-btn" onclick="sortKoroks('korok_type')">Type</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortKoroks('korok_location')">Type</button></th>
                 <th><button id="sort-by-coord-btn" onclick="sortKoroks('korok_coord')">Coordinates</button></th>
-                <!-- <th style="color: white;">Description</th> -->
+                <th><button id="sort-by-type-btn" onclick="sortKoroks('korok_type')">Map Location</button></th>
             </tr>
         </thead>
         <tbody id="koroks-body">
@@ -51,9 +52,9 @@
                 <td>
                     <input type="checkbox" id="korok_done_{{ korok[0] }}" name="korok_done_{{ korok[0] }}" value="{{korok[1]}}" {% if korok[1] == 1 %}checked{% endif %} onclick="updateKorok(this, '{{korok[0]}}')">
                 </td>
-                <td>{{ korok[3] }}</td>
-                <td>{{ korok[4] }}</td>
-                <td>{{ korok[5] }}</td>
+                <td id="korok_type">{{ korok[3] }}</td>
+                <td id="korok_coord">{{ korok[4] }}</td>
+                <td id="korok_location">{{ korok[5] }}</td>
             </tr>
             {% endfor %}
         </tbody>
