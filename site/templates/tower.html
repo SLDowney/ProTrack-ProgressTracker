@@ -4,11 +4,10 @@
 
 <div class="content-container">
     <form action="{{ url_for('tower') }}" method="POST" enctype="multipart/form-data">
-        <input type="submit" id="towerSubmit" value="Update">
         <div class="item-container tower_container">
             {% for tower in towers %}
                 <div class="col-md-8">
-                    <table class="tower_table">
+                    <table class="location_table" id="tower-table">
                         <tr>
                             <th id="tower_th_1">Info</th>
                             <th id="tower_th_2">tower Info</th>
@@ -36,9 +35,9 @@
                         <tr>
                             <td colspan="2" class="tower_checkbox">
                                 {% if tower[1] == 0 %}
-                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="0" unchecked>
+                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="0" unchecked onclick="updatetower(this, '{{tower[0]}}')">
                                 {% elif tower[1] == 1 %}
-                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="1" checked>
+                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="1" checked onclick="updatetower(this, '{{tower[0]}}')">
                                 {% else %}
                                 {% endif %}
                             </td>
@@ -49,4 +48,5 @@
         </div>
     </form>
 </div>
+<script src="{{ url_for('static', filename='tower.js') }}"></script>
 {% endblock %}

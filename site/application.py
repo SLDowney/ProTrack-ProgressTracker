@@ -352,6 +352,27 @@ def caves():
         }
     return render_template("caves.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, regions=regions, region_status=region_status, total_caves=total_caves)
 
+@app.route('/update-cave', methods=['POST'])
+def update_caves():
+    cave_id = request.json.get('cave_id')
+    cave_done = request.json.get('cave_done')
+
+    if cave_done is None:
+        cave_done = 0
+    else:
+        cave_done = cave_done
+
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE caves SET cave_done = ? WHERE cave_id = ?', (cave_done, cave_id))
+            print("update_caves cave_done = ", cave_done, ", cave_id = ", cave_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+
 @app.route('/chests', methods=['GET', 'POST'])
 def chests():
     headline = "Chests"
@@ -1194,34 +1215,26 @@ def compendium():
         # Redirect to the compendium page if there are no search results
         return render_template("compendium.html", scroll_position=scroll_position, headline=headline, percentages=percentages, results=results, creatures=creatures, monsters=monsters, materials=materials, equipment=equipment, treasures=treasures)
 
-# @app.route('/update_compendium', methods=['POST'])
-# def update_compendium():
-#     percentages = get_percentages()
-#     print("update_compendium")
-#     # Get the comp_id and comp_done value from the form
-#     comp_id = request.form['comp_id']
-#     print("Comp_id:", comp_id)
-#     comp_done = 1
-#     print("comp_done:", comp_done)
+@app.route('/update-comp', methods=['POST'])
+def update_compendium():
+    comp_id = request.json.get('comp_id')
+    comp_done = request.json.get('comp_done')
 
-#     # Check if the form was submitted from the search page
-#     search_item = request.form.get('search_item')  # Initialize to empty string if 'search_item' is not present
-#     print("search_item:", search_item)
-#     # Check if the user searched for an item
-#     if search_item:
-#         # Perform the search in your database to find matching items
-#         with closing(conn.cursor()) as c:
-#             c.execute('SELECT * FROM compendium WHERE comp_item LIKE ?', ('%' + search_item + '%',))
-#             search_results = c.fetchall()
-#             # Check if there are any search results
-#             if search_results:
-#                 # Pass the search results to the HTML template
-#                 print("in search results")
-#                 return render_template("compendium.html", search_results=search_results, percentages=percentages)
-    
+    if comp_done is None:
+        comp_done = 0
+    else:
+        comp_done = comp_done
 
-#     # Redirect back to the compendium page after updating the database
-#     return redirect('/compendium')
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE compendium SET comp_done = ? WHERE comp_id = ?', (comp_done, comp_id))
+            print("update_compendium comp_done = ", comp_done, ", comp_id = ", comp_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
 
 @app.route('/interesting', methods=['GET', 'POST'])
 def interesting():
@@ -1695,6 +1708,27 @@ def well():
         wells = c.fetchall()
     return render_template("location-well.html", scroll_position=scroll_position, headline=headline, percentages=percentages, wells=wells)
 
+@app.route('/update-well', methods=['POST'])
+def update_well():
+    well_id = request.json.get('well_id')
+    well_done = request.json.get('well_done')
+
+    if well_done is None:
+        well_done = 0
+    else:
+        well_done = well_done
+
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE locations SET location_done = ? WHERE location_id = ?', (well_done, well_id))
+            print("update_well well_done = ", well_done, ", well_id = ", well_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+    
 @app.route("/location-depths_mine", methods=["GET", "POST"])
 def depths_mine():
     headline = "Depths Mines"
@@ -1901,6 +1935,26 @@ def tower():
         towers = c.fetchall()
     return render_template("tower.html", scroll_position=scroll_position, headline=headline, percentages=percentages, towers=towers)
 
+@app.route('/update-tower', methods=['POST'])
+def update_tower():
+    tower_id = request.json.get('tower_id')
+    tower_done = request.json.get('tower_done')
 
+    if tower_done is None:
+        tower_done = 0
+    else:
+        tower_done = tower_done
+
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE towers SET tower_done = ? WHERE tower_id = ?', (tower_done, tower_id))
+            print("update_tower tower_done = ", tower_done, ", tower_id = ", tower_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+    
 if __name__ == "__main__":
     app.run(debug=True)

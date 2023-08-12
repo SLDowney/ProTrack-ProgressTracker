@@ -11,7 +11,7 @@
         <div class="item-container location_container">
             {% for well in wells %}
                 <div class="location-col-7">
-                    <table class="location_table">
+                    <table class="location_table" id="well-table">
                         <tr>
                             <th id="location_th_1">Info</th>
                             <th id="location_th_2">well Info</th>
@@ -29,16 +29,13 @@
                             <td>{{well[4]}}</td>
                         </tr>
                         <tr>
-                            <td class="location_checkbox">
+                            <td colspan="3" class="location_checkbox">
                                 {% if well[1] == 0 %}
-                                    <input type="checkbox" class="location_checkbox" id="done_{{ well[0] }}" name="done_well_{{ well[0] }}" value="0" unchecked>
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ well[0] }}" name="done_well_{{ well[0] }}" value="0" unchecked onclick="updatewell(this, '{{well[0]}}')">
                                 {% elif well[1] == 1 %}
-                                    <input type="checkbox" class="location_checkbox" id="done_{{ well[0] }}" name="done_well_{{ well[0] }}" value="1" checked>
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ well[0] }}" name="done_well_{{ well[0] }}" value="1" checked onclick="updatewell(this, '{{well[0]}}')">
                                 {% else %}
                                 {% endif %}
-                            </td>
-                            <td>
-                                <input type="submit" id="wellSubmit" value="Update">
                             </td>
                         </tr>
                     </table>                    
@@ -47,4 +44,5 @@
         </div>
     </form>
 </div>
+<script src="{{ url_for('static', filename='well.js') }}"></script>
 {% endblock %}

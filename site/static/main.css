@@ -213,6 +213,7 @@ textarea {
 .temple_progress {
     margin-top: 5%;
     width: 75%;
+    float: right;
 }
 
 .progress-bar-img img {
@@ -223,7 +224,9 @@ textarea {
 }
 
 .col-lg-1 {
-    float:right;
+    float: left;
+    margin-top: 15%;
+    margin-left: 15%;
 }
 
 .index_temples {
@@ -498,7 +501,11 @@ display checkmark when checked
     margin-top: 5%;
     margin-bottom: 5%;    
     /* font-size: 120%; */
+}
 
+#comp_white {
+    color:white;
+    opacity: 0;
 }
 
 .form-check-label.BESTDRAGON {

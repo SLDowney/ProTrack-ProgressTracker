@@ -77,10 +77,13 @@
                         </tr>
                         {% else %}
                         {% endif %}
+                        {% if result[7] != None and result[10] != ""  %}
                         <tr>
                             <td>Treasure</td>
                             <td>{{result[7]}}</td>
                         </tr>
+                        {% else %}
+                        {% endif %}
                         {% if result[8] != None and result[10] != ""  %}
                         <tr>
                             <td>Side Quest</td>
@@ -126,15 +129,12 @@
                     <tr>
                         <td>Status</td>
                         <td>
-                            <input type="radio" id="undone_{{ result[1] }}" name="done_cave_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="cave_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
-                            <input type="radio" id="found_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="cave_radio_labels" for="found_{{ result[1] }}">Discovered</label>
-                            <input type="radio" id="done_{{ result[1] }}"name="done_cave_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class="cave_radio_labels" for="done_{{ result[1] }}">Completed</label>
-                            <input type="submit" id="CaveSubmit" value="Update">
+                            <input type="radio" id="done_{{ result[12] }}" name="undone_{{ result[12] }}" value="0" {% if result[0] == 0 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="undone_{{ result[12] }}">Unfound</label>
+                            <input type="radio" id="done_{{ result[12] }}" name="started_{{ result[12] }}" value="1" {% if result[0] == 1 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="started_{{ result[12] }}">Discovered</label>
+                            <input type="radio" id="done_{{ result[12] }}" name="done_{{ result[12] }}" value="2" {% if result[0] == 2 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="done_{{ result[12] }}">Completed</label>
                         </td>
                     </tr>
-
                     {% endfor %}
-
                 </tbody>
             </table>
         </div>
