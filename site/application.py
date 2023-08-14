@@ -785,26 +785,12 @@ def armors():
             c.execute('SELECT * FROM fairyfountains ORDER BY fairy_id')
             fairies = c.fetchall()
 
-            for fairy in fairies:
-                fairy_id = fairy[0]
-                fairy_name = fairy[1]
-                fairy_done = request.form.get(f"fairy_{fairy[1]}")
-                if fairy_done == None:
-                    fairy_done = 0
-                else:
-                    fairy_done = 1
-            
-            c.execute('UPDATE fairyfountains SET fairy_found = ? WHERE fairy_id = ?', (fairy_done, fairy_id))
-            print("UPDATE FAIRY FOUNTAIN -> Done:", fairy_done, "ID:", fairy_id)
-
     return render_template('armors.html', headline=headline, percentages=percentages, fairies=fairies, armor_sets=armor_sets, scroll_position=scroll_position)
 
 @app.route('/update_armor/<int:armor_id>/<int:armor_found>', methods=['POST'])
 def update_armor(armor_id, armor_found):
     try:
 
-        
-        
         with closing(conn.cursor()) as c:
             c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
             
@@ -816,15 +802,34 @@ def update_armor(armor_id, armor_found):
                     c.execute(f'UPDATE armor SET a_upgraded{i} = 1 WHERE a_id = ?', (armor_id,))
                 else:
                     c.execute(f'UPDATE armor SET a_upgraded{i} = 0 WHERE a_id = ?', (armor_id,))
-            
-            # Handle upgrade checkboxes
-            for i in range(1, 5):
-                upgrade_checkbox = request.form.get(f'upgraded_{i}')
-                if upgrade_checkbox:
-                    upgrade_value = int(upgrade_checkbox)
-                    c.execute(f'UPDATE armor SET a_upgraded{i} = ? WHERE a_id = ?', (upgrade_value, armor_id))
-            
             conn.commit()
+            
+
+            return jsonify(success=True)
+    except Exception as e:
+        return jsonify(success=False, error=str(e))
+    
+@app.route('/update_greatfairies/<int:fairyId>/<int:fairyFound>', methods=['POST'])
+def update_greatfairies(fairyId, fairyFound):
+    try:
+        
+        with closing(conn.cursor()) as c:
+            c.execute('SELECT * FROM fairyfountains ORDER BY fairy_id')
+            fairies = c.fetchall()
+
+            for fairy in fairies:
+                fairy_id = fairy[0]
+                fairy_name = fairy[2]
+                fairy_done = request.form.get(f"fairy_{fairy[1]}")
+                if fairy_done == None:
+                    fairy_done = 0
+                else:
+                    fairy_done = 1
+        
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE fairyfountains SET fairy_found = ? WHERE fairy_id = ?', (1, fairy_id))
+            print("Fairy Found ->", fairyFound)
+            print("Fairy ID ->", fairy_id)
 
             return jsonify(success=True)
     except Exception as e:

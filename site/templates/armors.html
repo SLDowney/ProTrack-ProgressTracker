@@ -3,10 +3,12 @@
 {% block body %}
 
 <div class="col-md-8">
-    <p>Great Fairies Opened</p>
-    {% for fairy in fairies %}
-    <input type="checkbox" class="great-fairy-checkboxes" id="fairy_{{fairy[0]}}" name="fairy_{{fairy[0]}}" value="{{fairy[2]}}" {% if fairy[2] == 1 %}checked{% elif fairy[2] == 0 %} unchecked{% endif %}>Great Fairy {{fairy[1]}}<br>
-    {% endfor %}
+    <form id="fairyForm" method="POST" action="/update_greatfairies">
+        <p>Great Fairies Opened</p>
+        {% for fairy in fairies %}
+        <input type="checkbox" class="great-fairy-checkboxes" id="fairy_{{fairy[0]}}" name="fairy_{{fairy[0]}}" value="{{fairy[1]}}" {% if fairy[1] == 1 %}checked{% elif fairy[1] == 0 %} unchecked{% endif %} onclick="updatefairy(this, '{{fairy[0]}}')">Great Fairy {{fairy[2]}}<br>
+        {% endfor %}
+    </form>
 </div>
 
 <h2>Sets</h2>
@@ -321,7 +323,7 @@
 </form>
 
 
-
+<script src="{{ url_for('static', filename='fairyfountains.js') }}"></script>
 <script src="{{ url_for('static', filename='armors.js') }}"></script>
 
 {% endblock %}
