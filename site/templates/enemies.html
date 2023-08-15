@@ -2,21 +2,18 @@
 
 {% block body %} 
     <form id="add_enemy" method="POST" action="/add_enemy">
-        <label for="e_monster">Monster:</label>
-        <input type="text" class="add_enemy_textbox" id="e_monster" name="e_monster" required><br>
-        <label for="e_color">Tier:</label>
-        <input type="text" class="add_enemy_textbox" id="e_color" name="e_color"><br>
-        <label for="e_coord">Coordinates:</label>
-        <input type="text" class="add_enemy_textbox" id="e_coord" name="e_coord" required><br>
-        <label for="e_location">Location:</label>
-        <input type="text" class="add_enemy_textbox" id="e_location" name="e_location"><br>
+        <label for="e_monster">Monster:</label><input type="text" class="add_enemy_textbox" id="e_monster" name="e_monster" required><br>
+        <label for="e_color">Tier:</label><input type="text" class="add_enemy_textbox" id="e_color" name="e_color"><br>
+        <label for="e_coord">Coordinates:</label><input type="text" class="add_enemy_textbox" id="e_coord" name="e_coord" required><br>
+        <label for="e_location">Location:</label><input type="text" class="add_enemy_textbox" id="e_location" name="e_location"><br>
         <label for="e_region">Region:</label>
         <input type="text" class="add_enemy_textbox" id="e_region" name="e_region"><br>
+        <div class="enemy_radio">   
             <label><input type="radio" id="e_map" name="e_map" value="Depths">Depths</label>
             <label><input type="radio" id="e_map" name="e_map" value="Surface" checked>Surface</label>
             <label><input type="radio" id="e_map" name="e_map" value="Sky">Sky</label><br>
-        <label for="e_found">Found:</label>
-        <input type="checkbox" class="add_enemy_checkbox" id="e_found" name="e_found" value="1" checked><br>
+        </div>
+        <label for="e_found">Found:</label><input type="checkbox" class="add_enemy_checkbox" id="e_found" name="e_found" value="1" checked><br>
         <button type="submit" id="add_enemy_submit">Add Enemy</button>
     </form>
 

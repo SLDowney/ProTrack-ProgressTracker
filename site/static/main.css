@@ -406,6 +406,9 @@ display checkmark when checked
     width: 100%;
 }
 
+.armor_upgrade_container {
+    display: none;
+}
 .armor_upgrade_head {
     justify-content: center;
     padding: 0 0 0 0;
@@ -416,21 +419,25 @@ display checkmark when checked
 }
 
 .armor_set_piece {
-    width:100%;
+    width: 100%;
     background-color: #cd06ff73;
+    margin-bottom: 0;
 }
 
 .armor_set_piece_upgrade1 {
     width:100%;
     background-color: #ff060673;
+    margin-bottom: 0;
 }
 .armor_set_piece_upgrade2 {
     width:100%;
     background-color: #eaff0673;
+    margin-bottom: 0;
 }
 .armor_set_piece_upgrade3 {
     width:100%;
     background-color: #06fff773;
+    margin-bottom: 0;
 }
 .armor_set_piece_upgrade4 {
     width:100%;
@@ -455,7 +462,7 @@ display checkmark when checked
     margin-top: 5%;
 }
 
-#armor_set_name {
+.armor_set_name {
     margin: 0;
     padding: 0;
 }
@@ -639,9 +646,11 @@ display checkmark when checked
     margin-left: 2px;
 }
 
-.add_enemy_textbox {
+.add_enemy_textbox{
     float: right;
-    margin-right: 40%;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 1%;
 }
 
 .add_enemy_checkbox {
@@ -656,6 +665,10 @@ display checkmark when checked
     vertical-align: middle;
     position: relative;
     bottom: 1px;
+}
+
+.enemy_radio{
+    margin-left: 25%;
 }
 
 #miscform {
