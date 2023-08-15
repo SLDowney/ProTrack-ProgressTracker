@@ -20,19 +20,15 @@
                         {% if result[1] == 2 %}
                         <tr>
                             <td>Name</td>
-                            <td>{{result[2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact</td>
                             <td>{{result[3]}}</td>
                         </tr>
                         <tr>
-                            <td>Location</td>
+                            <td>Contact</td>
                             <td>{{result[4]}}</td>
                         </tr>
                         <tr>
-                            <td>Coordinates</td>
-                            <td>{{result[5]}}</td>
+                            <td>Location</td>
+                            <td>{{result[7]}}</td>
                         </tr>
                         <tr>
                             <td>Rewards</td>
@@ -41,35 +37,30 @@
                         {% elif result[1] == 1 %}
                         <tr>
                             <td>Name</td>
-                            <td>{{result[2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact</td>
                             <td>{{result[3]}}</td>
                         </tr>
                         <tr>
-                            <td>Location</td>
+                            <td>Contact</td>
                             <td>{{result[4]}}</td>
                         </tr>
                         <tr>
-                            <td>Coordinates</td>
-                            <td>{{result[5]}}</td>
+                            <td>Location</td>
+                            <td>{{result[7]}}</td>
                         </tr>
                         
                         {% elif result[1] == 0 %}
                         <tr>
                             <td>Name</td>
-                            <td>{{result[2]}}</td>
+                            <td>{{result[3]}}</td>
                         </tr>
                         {% endif %}
 
                     <tr>
                         <td>Status</td>
                         <td>
-                            <input type="radio" id="undone_{{ result[0] }}" name="done_mainqu_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="mainqu_radio_labels" for="undone_{{ result[0] }}">Not Started</label>
-                            <input type="radio" id="started_{{ result[0] }}"name="done_mainqu_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="mainqu_radio_labels" for="mainqu_{{ result[0] }}">Started</label>
-                            <input type="radio" id="done_{{ result[0] }}"name="done_mainqu_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
-                            <input type="submit" id="mainquSubmit" value="Update">
+                            <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="mainqu_radio_labels" for="undone_{{ result[0] }}">Not Started</label>
+                            <input type="radio" id="started_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="mainqu_radio_labels" for="mainqu_{{ result[0] }}">Started</label>
+                            <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
                         </td>
                     </tr>
 
@@ -79,4 +70,5 @@
             </table>
         </div>
     </form>
+<script src="{{ url_for('static', filename='mainquests.js') }}"></script>
 {% endblock %}

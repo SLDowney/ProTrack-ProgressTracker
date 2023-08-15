@@ -10,14 +10,7 @@
             <th id="Shrine_percent_table">Tapped</th>
             <th id="Shrine_percent_table">Unfound</th>
         </tr>
-        {% for region in regions %}
-        <tr>
-            <td>{{ region }}</td>
-            <td>{{ "%0.2f" % (region_status[region]['completed'] / region_status[region]['total_shrines'] * 100) }}%</td>
-            <td>{{ "%0.2f" % (region_status[region]['tapped'] / region_status[region]['total_shrines'] * 100) }}%</td>
-            <td>{{ "%0.2f" % (region_status[region]['unfound'] / region_status[region]['total_shrines'] * 100) }}%</td>
-        </tr>
-        {% endfor %}
+        <!--  -->
 
     </table>
 
@@ -47,68 +40,68 @@
                             <th>Shrine Info</th>
                         </tr>
 
-                        {% if result[0] == 2 %}
+                        {% if result[1] == 2 %}
                         <tr>
                             <td>Shrine</td>
-                            <td>{{result[1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
                             <td>{{result[2]}}</td>
                         </tr>
                         <tr>
-                            <td>Location</td>
+                            <td>Name</td>
                             <td>{{result[3]}}</td>
                         </tr>
                         <tr>
-                            <td>Region</td>
+                            <td>Location</td>
                             <td>{{result[4]}}</td>
                         </tr>
                         <tr>
-                            <td>Coordinates</td>
+                            <td>Region</td>
                             <td>{{result[5]}}</td>
                         </tr>
                         <tr>
-                            <td>Rewards</td>
-                            <td>{{result[7]}}</td>
+                            <td>Coordinates</td>
+                            <td>{{result[6]}}</td>
                         </tr>
-                        {% if result[8] != None %}
+                        <tr>
+                            <td>Rewards</td>
+                            <td>{{result[8]}}</td>
+                        </tr>
+                        {% if result[9] != None %}
                         <tr>
                             <td>Enemies</td>
-                            <td>{{result[8]}}</td>
+                            <td>{{result[9]}}</td>
                         </tr>
                         {% else %}
                         {% endif %}
-                        {% if result[6] != None %}
+                        {% if result[7] != None %}
                         <tr>
                             <td>Side Quest</td>
-                            <td>{{result[6]}}</td>
+                            <td>{{result[7]}}</td>
                         </tr>
                         {% else %}
                         {% endif %}    
                         
-                        {% elif result[0] == 1 %}
+                        {% elif result[1] == 1 %}
                         <tr>
                             <td>Shrine</td>
-                            <td>{{result[1]}}</td>
+                            <td>{{result[2]}}</td>
                         </tr>
                         <tr>
                             <td>Location</td>
-                            <td>{{result[3]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Region</td>
                             <td>{{result[4]}}</td>
                         </tr>
                         <tr>
-                            <td>Coordinates</td>
+                            <td>Region</td>
                             <td>{{result[5]}}</td>
                         </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{result[6]}}</td>
+                        </tr>
                         
-                        {% elif result[0] == 0 %}
+                        {% elif result[1] == 0 %}
                         <tr>
                             <td>Shrine</td>
-                            <td>{{result[1]}}</td>
+                            <td>{{result[2]}}</td>
                         </tr>
                         {% endif %}
 
@@ -116,10 +109,9 @@
                         <td>Status</td>
                         <td>
                             <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
-                            <input type="radio" id="undone_{{ result[1] }}" name="done_shrine_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="shrine_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
-                            <input type="radio" id="tapped_{{ result[1] }}"name="done_shrine_{{ result[1] }}" value="1" {% if result[0] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="tapped_{{ result[1] }}">Tapped</label>
-                            <input type="radio" id="done_{{ result[1] }}"name="done_shrine_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class="shrine_radio_labels" for="done_{{ result[1] }}">Done</label>
-                            <input type="submit" id="ShrineSubmit" value="Update">
+                            <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="shrine_radio_labels" for="undone_{{ result[0] }}">Unfound</label>
+                            <input type="radio" id="tapped_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="shrine_radio_labels" for="tapped_{{ result[0] }}">Tapped</label>
+                            <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="shrine_radio_labels" for="done_{{ result[0] }}">Done</label>
                         </td>
                     </tr>
 

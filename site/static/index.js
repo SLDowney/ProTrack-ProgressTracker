@@ -6,7 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressElements = document.querySelectorAll(".progress");
   progressElements.forEach((progressElement) => {
     const templeId = progressElement.dataset.templeId;
+    const templeName = progressElement.dataset.templeName;
     progressBars[templeId] = progressElement.querySelector(".progress-bar");
+  });
+
+  const templeBossCheckmarks = document.getElementsByClassName("temple-boss-checkmark");
+      Array.from(templeBossCheckmarks).forEach((templeBossCheckmark) => {
+        if (templeBossCheckmark.checked) {
+          const templeId = templeBossCheckmark.dataset.templeId;
+          progressBars[templeId].style.backgroundColor = "green";
+        }
   });
 
   // Add event listener to the entire form to handle checkbox clicks
@@ -15,12 +24,56 @@ document.addEventListener("DOMContentLoaded", function () {
     if (target.classList.contains("temple-boss-checkbox")) {
       updateTempleBossStatus(target);
     } else if (
-      target.classList.contains("lock-checkbox") ||
-      target.classList.contains("done-checkbox")
+      target.classList.contains("_locks")
     ) {
       updateLockStatus(target);
     }
   });
+  const initialLocksChecked = document.querySelectorAll("input[name$='_locks']:checked");
+  
+  let totalLocks = 0;
+  locksChecked = []
+  initialLocksChecked.forEach((initialLocks) => {
+
+      locksChecked.push(initialLocks.value)
+
+  })
+  console.log("Locks?!", locksChecked)
+  //console.log("Initial Locks Checked ->", locksChecked)
+  // Iterate through each progress element and update the width
+  progressElements.forEach((progressElement) => {
+    //console.log("Progress Element ->", progressElement)
+    const templeId = progressElement.dataset.templeId;
+    const templeName = progressElement.dataset.templeName;
+    if (templeId == 1) {
+      locksCompleted = locksChecked[0]
+    }
+    if (templeId == 2) {
+      locksCompleted = locksChecked[1]
+    }
+    if (templeId == 3) {
+      locksCompleted = locksChecked[2]
+    }
+    if (templeId == 4) {
+      locksCompleted = locksChecked[3]
+    }
+    if (templeId == 5) {
+      locksCompleted = locksChecked[4]
+    }
+
+    if (templeId == 1 || templeId == 3) {
+       totalLocks = 5; // Replace with the total number of locks per temple
+    } 
+    else {
+      totalLocks = 4;
+    }
+    // Calculate the initial progress percentage based on checked locks
+    const initialProgressPercentage = (locksCompleted / totalLocks) * 100;
+
+    // Set the initial width of the progress bar
+    progressBars[templeId].style.width = `${initialProgressPercentage}%`;
+});
+
 });
 
 // Function to update the lock status in the database
@@ -49,19 +102,19 @@ function updateLockStatus(checkbox) {
   .then((response) => response.json())
   .then((data) => {
     if (data.success) {
-      // Update the progress bar in the DOM immediately
-      console.log("progressBars ->", progressBars)
-      progressBars = progressBars[templeId];
-      
+      // Update the progress bar in the DOM immediately 
       if (templeId == 1 || templeId == 3) {
         progress_percentage = lockIndex * 20
       }
       else {
         progress_percentage = lockIndex * 25
       }
-
-      progressBars.style.width = `${progress_percentage}%`;
-      console.log("Progress Percentage ->", progress_percentage)
+		const progressBarId = templeId; // Replace with the ID you want to target
+        console.log("progressBarID ->", progressBarId)
+        let progressBars = document.getElementById(progressBarId);
+		console.log("progressBars ->", progressBars)
+		progressBars.style.width = `${progress_percentage}%`;
+		console.log("Progress Percentage ->", progress_percentage)
 
       // Update temple boss checkmark visibility
       const templeBossCheckmark = document.getElementById("temple-boss-checkmark");
@@ -121,15 +174,26 @@ function updateTempleBossStatus(checkbox) {
         let progressBars = document.getElementById(progressBarId);
         console.log("progressBars ->", progressBars)
         // Calculate the color based on progress_percentage
-        const color = progress_percentage >= 100 ? "green" : "blue"; // Change color thresholds as needed
+        const color = progress_percentage >= 80 ? "green" : "blue"; // Change color thresholds as needed
 
         // Set the background color of the progress bar
         progressBars.style.backgroundColor = color;
 
         console.log("progressBars.style.backgroundColor ->", color)
       }
+
+      // Toggle the hidden_display class based on checkbox state
+      const progressBarImg = document.querySelector(".progress-bar-img");
+      if (checkbox.checked) {
+        progressBarImg.classList.remove("hidden_display");
+        console.log("Temple ID:", templeId, " removed class")
+      } else {
+        progressBarImg.classList.add("hidden_display");
+        console.log("Temple ID:", templeId, " added class")
+      }
       // Update temple boss checkmark visibility
-      const templeBossCheckmark = document.querySelector("temple-boss-checkmark");
+      const templeBossCheckmark = document.getElementById("temple-boss-checkmark");
+      console.log("temple boss checkmark error:", templeBossCheckmark)
       if (templeBossCheckmark) {
         templeBossCheckmark.style.display = value === 1 ? "inline" : "none";
       }

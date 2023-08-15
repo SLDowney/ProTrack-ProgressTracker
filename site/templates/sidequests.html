@@ -43,11 +43,11 @@
             </tr>
             <tr>
                 <td>Name</td>
-                <td>{{result[2]}}</td>
+                <td>{{result[3]}}</td>
             </tr>
             <tr>
                 <td>Coordinates</td>
-                <td>{{result[7]}}</td>
+                <td>{{result[5]}}</td>
             </tr>
             <tr>
                 <td>Contact</td>
@@ -55,22 +55,22 @@
             </tr>
             <tr>
                 <td>Location</td>
-                <td>{{result[5]}}</td>
+                <td>{{result[7]}}</td>
             </tr>
             <tr>
                 <td>Region</td>
-                <td>{{result[6]}}</td>
+                <td>{{result[8]}}</td>
             </tr>
             <tr>
                 <td>Description</td>
-                <td>{{result[3]}}</td>
+                <td>{{result[6]}}</td>
             </tr>
             <tr>
                 <td>Rewards</td>
-                {% if result[2] == "Where Are the Wells?" %}
-                <td>{{ result[8] }} <br>Wells Discovered: {{completed_wells}}</td>
+                {% if result[3] == "Where Are the Wells?" %}
+                <td>{{ result[9] }} <br>Wells Discovered: {{completed_wells}}</td>
                 {% else %}
-                <td>{{result[8]}}</td>
+                <td>{{result[9]}}</td>
                 {% endif %}
             </tr>
             <tr>
@@ -78,10 +78,9 @@
                 <td>
                     <form id = "form" action="{{ url_for('sidequests') }}" method="POST" enctype="multipart/form-data">
                         <label>
-                            <input type="radio" id="undone_{{ result[1] }}" name="done_sidequ_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="sidequ_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
-                            <input type="radio" id="started_{{ result[1] }}"name="done_sidequ_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="sidequ_radio_labels" for="started_{{ result[1] }}">Started</label>
-                            <input type="radio" id="done_{{ result[1] }}"name="done_sidequ_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="sidequ_radio_labels" for="done_{{ result[1] }}">Done</label>
-                            <input type="submit" id="SidequSubmit" value="Update">
+                            <input type="radio" id="undone_{{ result[1] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="sidequ_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
+                            <input type="radio" id="started_{{ result[1] }}" name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="sidequ_radio_labels" for="started_{{ result[1] }}">Started</label>
+                            <input type="radio" id="done_{{ result[1] }}" name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="sidequ_radio_labels" for="done_{{ result[1] }}">Done</label>
                         </label>
                     </form>
                     </td>
@@ -98,5 +97,5 @@
     </div>
 
 {% endfor %}
-    
+<script src="{{ url_for('static', filename='sidequests.js') }}"></script>
 {% endblock %}

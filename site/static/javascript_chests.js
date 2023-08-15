@@ -5,6 +5,19 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var isNameSortAscending = true;
   var isCoordSortAscending = true;
+  console.log("-----------------------------")
+  var chestTable = document.getElementById('chestform');
+
+  // Add the event listener to the checkboxes to update the counter and Rewards column
+  Array.from(chestTable.querySelectorAll('input[type="checkbox"]')).forEach(function (checkbox) {
+      checkbox.addEventListener('click', function () {
+
+        // Update Rewards cell when checkbox is clicked
+        const chestId = checkbox.id.replace('chest_id_', ''); // Extract chest ID
+      
+        updatechest(checkbox, chestId); // Pass chestReward to updatechest function
+      });
+  });
 
   if (sortByNameBtn && sortByCoordBtn && chestsList) {
     sortByNameBtn.addEventListener("click", function(event) {
@@ -65,3 +78,45 @@ window.addEventListener('DOMContentLoaded', function() {
     return coordParts.join('');
   }
 });
+
+var chestTable = document.getElementById('chestform');
+
+function updatechest(checkbox, chestId) {
+  console.log("--------UPDATE chest ---------")
+  const chestFound = checkbox.value;
+
+  const data = {
+    chest_id: parseInt(chestId),
+    chest_done: parseInt(chestFound),
+  };
+  console.log("DATA ->", data)
+  
+  if (chestFound == 1) {
+    fetch('/chest_update', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chest_id: chestId  // Pass the variable to the server
+      })
+    })
+  }
+  
+  fetch('/update_chests', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Handle the response if needed
+      console.log('Response from server:', data);
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}

@@ -4,9 +4,9 @@ window.addEventListener('DOMContentLoaded', function () {
   // Add the event listener to the radio buttons to update the counter and Rewards column
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {
-      const shrineId = radio.name.replace('done_', ''); // Extract shrine ID;
-      console.log("shrineID ->", shrineId)
-      updateshrine(radio, shrineId)
+      const sideId = radio.name.replace('done_', ''); // Extract side ID;
+      console.log("sideID ->", sideId)
+      updateside(radio, sideId)
       // itemToggle(radio);
     });
     // itemToggle(radio);
@@ -17,12 +17,12 @@ window.addEventListener('DOMContentLoaded', function () {
 // Function to handle form submission and filtering by region
 function filterByRegion() {
   var selectedRegion = document.getElementById('regionFilter').value;
-  var shrineForm = document.getElementById('shrineform');
-  shrineForm.action = "/shrines"; // Use the relative URL
+  var sideForm = document.getElementById('sideform');
+  sideForm.action = "/sidequests"; // Use the relative URL
   if (selectedRegion) {
-      shrineForm.action += "?region=" + encodeURIComponent(selectedRegion); // Include the region query parameter
+      sideForm.action += "?region=" + encodeURIComponent(selectedRegion); // Include the region query parameter
   }
-  shrineForm.submit();
+  sideForm.submit();
   return false;
 }
 
@@ -32,29 +32,29 @@ document.getElementById('regionFilterForm').addEventListener('submit', function 
   filterByRegion(); // Call the filterByRegion() function to handle the form submission
 });
 
-function updateshrine(radio, shrineId) {
-  console.log("--------UPDATE shrine ---------")
-  const shrineFound = radio.value;
+function updateside(radio, sideId) {
+  console.log("--------UPDATE side ---------")
+  const sideFound = radio.value;
 
   const data = {
-    shrine_id: parseInt(shrineId),
-    shrine_done: parseInt(shrineFound),
+    side_id: parseInt(sideId),
+    side_done: parseInt(sideFound),
   };
   console.log("DATA ->", data)
   
-  if (shrineFound == 2) {
-    fetch('/shrine_update', {
+  if (sideFound == 2) {
+    fetch('/side_update', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        shrine_id: shrineId  // Pass the variable to the server
+        side_id: sideId  // Pass the variable to the server
       })
     })
   }
   
-  fetch('/update-shrines', {
+  fetch('/update-sidequests', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

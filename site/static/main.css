@@ -234,6 +234,10 @@ textarea {
     margin-right:auto;
 }
 
+.hidden_display {
+    display: none;
+}
+
 #Shrine_percent_table {
     color:#ffffff;
 }
@@ -669,6 +673,10 @@ display checkmark when checked
 
 .enemy_radio{
     margin-left: 25%;
+}
+
+.col.misc_col {
+    width: auto;
 }
 
 #miscform {

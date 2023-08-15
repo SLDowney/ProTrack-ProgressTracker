@@ -16,20 +16,20 @@
             </tr>
             <tr>
                 <td>Name</td>
-                <td>{{result[2]}}</td>
+                <td>{{result[3]}}</td>
             </tr>
             {% if result[1] == 1 %}
             <tr>
                 <td>Region</td>
-                <td>{{result[3]}}</td>
+                <td>{{result[8]}}</td>
             </tr>
             <tr>
                 <td>Contact</td>
-                <td>{{result[4]}}</td>
+                <td>{{result[5]}}</td>
             </tr>
             {% else %}
             {% endif %}
-            {% if result[0] == 27 %}
+            {% if result[3] == "Master Kohga of the Yiga Clan" %}
             <tr>
                 <td>Starting Reward</td>
                 <td>Huge Crystallized Charge</td>
@@ -38,8 +38,16 @@
             {% endif %}
             {% if result[1] == 2 %}
             <tr>
-                <td>Rewards</td>
+                <td>Region</td>
+                <td>{{result[8]}}</td>
+            </tr>
+            <tr>
+                <td>Contact</td>
                 <td>{{result[5]}}</td>
+            </tr>
+            <tr>
+                <td>Rewards</td>
+                <td>{{result[9]}}</td>
             </tr>
             {% else %}
             {% endif %}

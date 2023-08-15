@@ -121,7 +121,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM mainqu WHERE mainqu_done = 2")
         completed_mainqu = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM oldmaps WHERE map_type = 'Map' AND map_collected = 'TRUE'")
+        c.execute("SELECT COUNT(*) FROM oldmaps WHERE map_type = 'Treasure' AND map_collected = 1")
         completed_oldmaps = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM shrinequests WHERE shrinequ_done = 2")
@@ -158,6 +158,109 @@ def get_percentages():
             "percentage_dispensers": calculate_completion_percentage(completed_dispensers, total_dispensers)
         }
     return percentages
+
+@app.route('/side_update', methods=['POST'])
+def side_update():
+    data = request.get_json()  # Get the JSON data from the request
+    side = data.get('side_id')
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM Quests WHERE quest_id = ?', (side,))
+        side_info = c.fetchone()
+        
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (side_info[7],))
+        print("Executed update statement with cave_name as ->", side_info[7])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (side_info[9],))
+        c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (side_info[9],))
+        print("Executed update statement with a_name as ->", side_info[9])
+    conn.commit()
+
+    print("IN UPDATE FUNCTION ->", side_info[9])
+    return "success"
+
+@app.route('/shrine_update', methods=['POST'])
+def shrine_update():
+    data = request.get_json()  # Get the JSON data from the request
+    print("data ->", data)
+    shrine = data.get('shrine_id')
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM shrines WHERE shrine_id = ?', (shrine,))
+        shrine_info = c.fetchone()
+        
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (shrine_info[10],))
+        print("Executed update statement with cave_name as ->", shrine_info[10])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (shrine_info[8],))
+        c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (shrine_info[8],))
+        print("Executed update statement with a_name as ->", shrine_info[8])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
+        if "Crystal" in shrine_info[7]:
+            c.execute('UPDATE shrinequests SET shrinequ_done = 2 WHERE shrinequ_name = ?', (shrine_info[7],))
+        else:
+            c.execute('UPDATE shrinequests SET shrinequ_done = 1 WHERE shrinequ_name = ?', (shrine_info[7],))
+        print("Executed update statement with shrinequ_name as ->", shrine_info[7])
+    conn.commit()
+
+    print("IN UPDATE FUNCTION ->", shrine_info[2])
+    return "success"
+
+@app.route('/chest_update', methods=['POST'])
+def chest_update():
+    data = request.get_json()  # Get the JSON data from the request
+    chest = data.get('chest_id')
+    print("chest:", chest)
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM chests WHERE chest_id = ?', (chest,))
+        chest_info = c.fetchone()
+        print("Chest Info ->", chest_info[1])
+        
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (chest_info[1],))
+        print("Executed update statement with a_name as ->", chest_info[1])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (chest_info[4],))
+        print("Executed update statement with cave_name as ->", chest_info[4])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE sidequests SET side_done = 1 WHERE side_quest = ?', (chest_info[6],))
+        print("Executed update statement with side_quest as ->", chest_info[6])
+    conn.commit()
+    print("IN UPDATE FUNCTION ->", chest_info[1])
+    return "success"
+
+@app.route('/main_update', methods=['POST'])
+def main_update():
+    data = request.get_json()  # Get the JSON data from the request
+    print("data ->", data)
+    main = data.get('main_id')
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM Quests WHERE quest_type = "Main" AND quest_id = ?', (main,))
+        main_info = c.fetchone()
+        
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE locations SET location_done = 1 WHERE location_name = ?', (main_info[7],))
+        print("Executed update statement with location_name as ->", main_info[3])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (main_info[9],))
+        c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (main_info[9],))
+        print("Executed update statement with a_name as ->", main_info[9])
+    conn.commit()
+
+    print("IN UPDATE FUNCTION ->", main_info[2])
+    return "success"
 
 def update_weapons_table(weapon_name, region, damage, buff):
     with closing(conn.cursor()) as c:
@@ -488,6 +591,27 @@ def add_chest():
         return redirect('/chests')
     return redirect('/chests')
 
+@app.route('/update_chests', methods=['POST'])
+def update_chests():
+    chest_id = request.json.get('chest_id')
+    chest_done = request.json.get('chest_done')
+
+    if chest_done is None:
+        chest_done = 0
+    else:
+        chest_done = chest_done
+
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE chests SET chest_done = ? WHERE chest_id = ?', (chest_done, chest_id))
+            print("update_chests chest_done = ", chest_done, ", chest_id = ", chest_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+
 @app.route('/misc', methods=['GET', 'POST'])
 def misc():
     headline = "Miscellaneous"
@@ -606,7 +730,13 @@ def add_misc():
                         VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
                 print("inserted into food")
                 c.execute(query, (misc_type, misc_item, misc_secondary, formatted_misc_coord, misc_location, misc_region, misc_done, misc_map))
-                                    
+
+            if misc_type == "Endura":
+                query = '''INSERT INTO food (food_category, food_item, food_tier, food_coord, food_location, food_region, food_found, food_map)
+                        VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
+                print("inserted into food")
+                c.execute(query, (misc_type, misc_item, misc_secondary, formatted_misc_coord, misc_location, misc_region, misc_done, misc_map))
+                                  
             if misc_type == "Zonai":
                 query = '''INSERT INTO misc (misc_type, misc_item, misc_coord, misc_location, misc_region, misc_secondary, misc_done, misc_map)
                         VALUES(?, ?, ?, ?, ?, ?, ?, ?)'''
@@ -896,6 +1026,27 @@ def shrines():
         }
 
     return render_template("shrines.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results, regions=regions, region_status=region_status)
+
+@app.route('/update-shrines', methods=['POST'])
+def update_shrines():
+    shrine_id = request.json.get('shrine_id')
+    shrine_done = request.json.get('shrine_done')
+
+    if shrine_done is None:
+        shrine_done = 0
+    else:
+        shrine_done = shrine_done
+
+    # Update the shrine in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE shrines SET shrine_done = ? WHERE shrine_id = ?', (shrine_done, shrine_id))
+            print("update_shrines shrine_done = ", shrine_done, ", shrine_id = ", shrine_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
 
 @app.route('/koroks', methods=['GET', 'POST'])
 def koroks():
@@ -1503,19 +1654,20 @@ def sidequests():
     if request.method == 'POST':
 
         with closing(conn.cursor()) as c:
-            side_ids = c.execute('SELECT side_id FROM sidequests').fetchall()
+            side_ids = c.execute('SELECT quest_id FROM quests').fetchall()
             for side_id in side_ids:
                 side_id = side_id[0]
                 side_done = request.form.get(f'done_sidequ_{side_id}')
                 if side_done is None:
-                    side_done = c.execute('SELECT side_done FROM sidequests WHERE side_id = ?', (side_id,)).fetchone()[0]
+                    side_done = c.execute('SELECT quest_done FROM quests WHERE quest_type = "Side" AND quest_id = ?', (side_id,)).fetchone()[0]
                 else:
-                    print("side_done is not none:", side_done)
-                c.execute('UPDATE sidequests SET side_done = ? WHERE side_id = ?', (side_done, side_id))
+                    print("quest_done is not none:", side_done)
+                c.execute('UPDATE quests SET quest_done = ? WHERE quest_type = "Side" AND quest_id = ?', (side_done, side_id))
+                print("quest_id ->", side_id)
             conn.commit()
 
     with closing(conn.cursor()) as c:
-        query = '''SELECT * FROM sidequests ORDER BY side_id ASC'''
+        query = '''SELECT * FROM quests WHERE quest_type = "Side" ORDER BY quest_id ASC'''
         c.execute(query)
         selected_region = request.args.get('region')
         results = c.fetchall()
@@ -1526,7 +1678,7 @@ def sidequests():
     # Calculate the completion status for each region
     region_status = {}
     for region in regions:
-        total_sidequests = len([result for result in results if result[4] == region])
+        total_quests = len([result for result in results if result[4] == region])
         completed = len([result for result in results if result[4] == region and result[0] == 2])
         started = len([result for result in results if result[4] == region and result[0] == 1])
         unfound = len([result for result in results if result[4] == region and result[0] == 0])
@@ -1535,17 +1687,38 @@ def sidequests():
             'completed': completed,
             'started': started,
             'unfound': unfound,
-            'total_sidequests': total_sidequests
+            'total_quests': total_quests
         }
 
     return render_template("sidequests.html", scroll_position=scroll_position, headline=headline,  percentages=percentages, info=info, results=results, regions=regions, region_status=region_status, total_wells=total_wells, completed_wells=completed_wells)
+
+@app.route('/update-sidequests', methods=['POST'])
+def update_quests():
+    side_id = request.json.get('side_id')
+    side_done = request.json.get('side_done')
+
+    if side_done is None:
+        side_done = 0
+    else:
+        side_done = side_done
+
+    # Update the quest in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE quests SET quest_done = ? WHERE quest_id = ?', (side_done, side_id))
+            print("update_sides quest_done = ", side_done, ", quest_id = ", side_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
 
 @app.route("/adventures", methods=['GET', 'POST'])
 def adventures():
     headline = "Side Adventures"
     percentages = get_percentages()
     with closing(conn.cursor()) as c:
-        query = '''Select * From adventure ORDER BY adventure_name ASC'''
+        query = '''Select * From Quests WHERE quest_type = "Adventure" ORDER BY quest_name ASC'''
         c.execute(query)
         results = c.fetchall()
         info = []
@@ -1564,27 +1737,48 @@ def mainqu():
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            mainqus = c.execute('SELECT mainqu_id FROM mainqu').fetchall()
+            mainqus = c.execute('SELECT quest_id FROM Quests WHERE quest_type = "Main"').fetchall()
             for mainqu in mainqus:
                 mainqu_id = mainqu[0]
                 mainqu_done = request.form.get(f'done_mainqu_{mainqu_id}')
                 if mainqu_done is None:
                     print("mainqu_done is none:", mainqu_done)
-                    mainqu_done = c.execute('SELECT mainqu_done FROM mainqu WHERE mainqu_id = ?', (mainqu_id,)).fetchone()[0]
+                    mainqu_done = c.execute('SELECT quest_done FROM Quests WHERE quest_id = ?', (mainqu_id,)).fetchone()[0]
                 else:
                     print("mainqu_done is not none:", mainqu_done)
                 print("mainqu_id:", mainqu_id)
                 print("mainqu_done:", mainqu_done)
-                c.execute('UPDATE mainqu SET mainqu_done = ? WHERE mainqu_id = ?', (mainqu_done, mainqu_id))
+                c.execute('UPDATE Quests SET quest_done = ? WHERE quest_id = ?', (mainqu_done, mainqu_id))
                 print("Executed update statement for mainqu_id:", mainqu_id)
             conn.commit()
 
     with closing(conn.cursor()) as c:
-        query = '''SELECT * FROM mainqu ORDER BY mainqu_id ASC'''
+        query = '''SELECT * FROM Quests WHERE quest_type = "Main" ORDER BY quest_id ASC'''
         c.execute(query)
         results = c.fetchall()
         info = [(result[0], result[1], result[2]) for result in results]
     return render_template("mainqu.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
+
+@app.route('/update-mainquests', methods=['POST'])
+def mainquests():
+    main_id = request.json.get('main_id')
+    main_done = request.json.get('main_done')
+
+    if main_done is None:
+        main_done = 0
+    else:
+        main_done = main_done
+
+    # Update the main in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE Quests SET quest_done = ? WHERE quest_id = ?', (main_done, main_id))
+            print("Quests Quest_done = ", main_done, ", Quest_id = ", main_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
 
 @app.route("/addison", methods=["GET", "POST"])
 def addison():
