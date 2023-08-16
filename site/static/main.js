@@ -1,5 +1,3 @@
-// main.js
-
 // Function to update great fairies
 function updatefairy(checkbox, id) {
     // Update the database and perform any necessary UI updates

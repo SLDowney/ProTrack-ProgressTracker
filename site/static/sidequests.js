@@ -42,19 +42,19 @@ function updateside(radio, sideId) {
   };
   console.log("DATA ->", data)
   
-  if (sideFound == 2) {
-    fetch('/side_update', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        side_id: sideId  // Pass the variable to the server
-      })
+  fetch('/side_update', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      side_id: sideId,  // Pass the variable to the server
+      side_done: parseInt(sideFound)
+
     })
-  }
+  })
   
-  fetch('/update-sidequests', {
+  fetch('/update_sidequests', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

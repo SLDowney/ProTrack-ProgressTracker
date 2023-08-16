@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
           progressBars[templeId].style.backgroundColor = "green";
         }
   });
-
+  console.log("form ->", document.getElementsByName("form"))
   // Add event listener to the entire form to handle checkbox clicks
   document.querySelector("form").addEventListener("change", (event) => {
     const target = event.target;
