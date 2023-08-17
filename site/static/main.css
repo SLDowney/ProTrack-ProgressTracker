@@ -145,6 +145,21 @@ th {
 
 }
 
+.main_secondary {
+    background-color: #7b7b7b;
+}
+
+.main_checkbox {
+    height: 40px;
+    width: 40px;
+    margin: 10%;
+    margin-left: 25%;
+}
+
+.main_body {
+    margin-top: 5%;
+}
+
 td {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 125%;

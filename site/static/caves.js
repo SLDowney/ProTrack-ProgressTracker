@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // Add the event listener to the radio buttons to update the counter and Rewards column
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {
-      const caveId = radio.id.replace('done_', ''); // Extract cave ID
+      const caveId = radio.name.replace('done_', ''); // Extract cave ID
       console.log("caveID ->", caveId)
       console.log("radio.value:", radio.value)
 

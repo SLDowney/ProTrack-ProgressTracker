@@ -4,19 +4,19 @@
 
     <form id="mainquform" action="{{ url_for('mainqu') }}" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <table style="width: 100%;">
+            {% for result in results %}
+            <table class="main_body" style="width: 100%;">
                 <colgroup>
                     <col span="1">
                     <col span="2">
                 </colgroup>
-                
-                {% for result in results %}
-                    <tbody>
+                    <thead>
                         <tr>
                             <th>Info</th>
                             <th>Main Quest</th>
                         </tr>
-
+                    </thead>
+                    <tbody>
                         {% if result[1] == 2 %}
                         <tr>
                             <td>Name</td>
@@ -33,7 +33,15 @@
                         <tr>
                             <td>Rewards</td>
                             <td>{{result[9]}}</td>
-                        </tr>                    
+                        </tr> 
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="mainqu_radio_labels" for="undone_{{ result[0] }}">Not Started</label>
+                                <input type="radio" id="started_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="mainqu_radio_labels" for="mainqu_{{ result[0] }}">Started</label>
+                                <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
+                            </td>
+                        </tr>                   
                         {% elif result[1] == 1 %}
                         <tr>
                             <td>Name</td>
@@ -47,26 +55,178 @@
                             <td>Location</td>
                             <td>{{result[7]}}</td>
                         </tr>
-                        
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="mainqu_radio_labels" for="undone_{{ result[0] }}">Not Started</label>
+                                <input type="radio" id="started_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="mainqu_radio_labels" for="mainqu_{{ result[0] }}">Started</label>
+                                <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
+                            </td>
+                        </tr>
+                            {% if result[0] == 10 %}
+                                <tr>
+                                    <th class="main_secondary">Info</th>
+                                    <th class="main_secondary">Sub Quest</th>
+                                </tr>
+                                <tr id="secondary_item_{{ main_riju[0][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_riju[0][0]}}" type="checkbox" name="secondary_{{ main_riju[0][0] }}" value='{{ main_riju[0][1] }}' {% if main_riju[0][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_riju[0][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{ main_riju[1][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_riju[1][0]}}" type="checkbox" name="secondary_{{ main_riju[1][0] }}" value='{{ main_riju[1][1] }}' {% if main_riju[1][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_riju[1][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_riju[2][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_riju[2][0]}}" type="checkbox" name="secondary_{{ main_riju[2][0] }}" value='{{ main_riju[2][1] }}' {% if main_riju[2][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_riju[2][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_riju[3][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_riju[3][0]}}" type="checkbox" name="secondary_{{ main_riju[3][0] }}" value='{{ main_riju[3][1] }}' {% if main_riju[3][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_riju[3][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_riju[4][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_riju[4][0]}}" type="checkbox" name="secondary_{{ main_riju[4][0] }}" value='{{ main_riju[4][1] }}' {% if main_riju[4][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_riju[4][7] }}</td>
+                                </tr>
+                            {% elif result[0] == 11 %}
+                                <tr>
+                                    <th class="main_secondary">Info</th>
+                                    <th class="main_secondary">Sub Quest</th>
+                                </tr>
+                                <tr id="secondary_item_{{ main_yunobo[0][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_yunobo[0][0]}}" type="checkbox" name="secondary_{{ main_yunobo[0][0] }}" value='{{ main_yunobo[0][1] }}' {% if main_yunobo[0][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_yunobo[0][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{ main_yunobo[1][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_yunobo[1][0]}}" type="checkbox" name="secondary_{{ main_yunobo[1][0] }}" value='{{ main_yunobo[1][1] }}' {% if main_yunobo[1][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_yunobo[1][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_yunobo[2][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_yunobo[2][0]}}" type="checkbox" name="secondary_{{ main_yunobo[2][0] }}" value='{{ main_yunobo[2][1] }}' {% if main_yunobo[2][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_yunobo[2][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_yunobo[3][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_yunobo[3][0]}}" type="checkbox" name="secondary_{{ main_yunobo[3][0] }}" value='{{ main_yunobo[3][1] }}' {% if main_yunobo[3][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_yunobo[3][7] }}</td>
+                                </tr>
+                            {% elif result[0] == 13 %}
+                                <tr>
+                                    <th class="main_secondary">Info</th>
+                                    <th class="main_secondary">Sub Quest</th>
+                                </tr>
+                                <tr id="secondary_item_{{ main_sidon[0][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[0][0]}}" type="checkbox" name="secondary_{{ main_sidon[0][0] }}" value='{{ main_sidon[0][1] }}' {% if main_sidon[0][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_sidon[0][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{ main_sidon[1][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[1][0]}}" type="checkbox" name="secondary_{{ main_sidon[1][0] }}" value='{{ main_sidon[1][1] }}' {% if main_sidon[1][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_sidon[1][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_sidon[2][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[2][0]}}" type="checkbox" name="secondary_{{ main_sidon[2][0] }}" value='{{ main_sidon[2][1] }}' {% if main_sidon[2][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_sidon[2][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_sidon[3][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[3][0]}}" type="checkbox" name="secondary_{{ main_sidon[3][0] }}" value='{{ main_sidon[3][1] }}' {% if main_sidon[3][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_sidon[3][7] }}</td>
+                                </tr>
+								<tr id="secondary_item_{{ main_sidon[4][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[4][0]}}" type="checkbox" name="secondary_{{ main_sidon[4][0] }}" value='{{ main_sidon[4][1] }}' {% if main_sidon[1][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_sidon[4][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_sidon[5][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[5][0]}}" type="checkbox" name="secondary_{{ main_sidon[5][0] }}" value='{{ main_sidon[5][1] }}' {% if main_sidon[2][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_sidon[5][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_sidon[6][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_sidon[6][0]}}" type="checkbox" name="secondary_{{ main_sidon[6][0] }}" value='{{ main_sidon[6][1] }}' {% if main_sidon[6][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_sidon[6][7] }}</td>
+                                </tr>
+
+                            {% elif result[0] == 8 %}
+                                <tr>
+                                    <th class="main_secondary">Info</th>
+                                    <th class="main_secondary">Sub Quest</th>
+                                </tr>
+                                <tr id="secondary_item_{{ main_tulin[0][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_tulin[0][0]}}" type="checkbox" name="secondary_{{ main_tulin[0][0] }}" value='{{ main_tulin[0][1] }}' {% if main_tulin[0][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_tulin[0][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{ main_tulin[1][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_tulin[1][0]}}" type="checkbox" name="secondary_{{ main_tulin[1][0] }}" value='{{ main_tulin[1][1] }}' {% if main_tulin[1][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_tulin[1][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_tulin[2][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_tulin[2][0]}}" type="checkbox" name="secondary_{{ main_tulin[2][0] }}" value='{{ main_tulin[2][1] }}' {% if main_tulin[2][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_tulin[2][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_tulin[3][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_tulin[3][0]}}" type="checkbox" name="secondary_{{ main_tulin[3][0] }}" value='{{ main_tulin[3][1] }}' {% if main_tulin[3][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_tulin[3][7] }}</td>
+                                </tr>
+                            
+                            {% elif result[0] == 18 %}
+                                <tr>
+                                    <th class="main_secondary">Info</th>
+                                    <th class="main_secondary">Sub Quest</th>
+                                </tr>
+                                <tr id="secondary_item_{{ main_spirit[0][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_spirit[0][0]}}" type="checkbox" name="secondary_{{ main_spirit[0][0] }}" value='{{ main_spirit[0][1] }}' {% if main_spirit[0][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_spirit[0][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{ main_spirit[1][0] }}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_spirit[1][0]}}" type="checkbox" name="secondary_{{ main_spirit[1][0] }}" value='{{ main_spirit[1][1] }}' {% if main_spirit[1][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_spirit[1][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_spirit[2][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_spirit[2][0]}}" type="checkbox" name="secondary_{{ main_spirit[2][0] }}" value='{{ main_spirit[2][1] }}' {% if main_spirit[2][1] == 1 %} checked{% endif %}></td>
+                                    <td>{{ main_spirit[2][7] }}</td>
+                                </tr>
+                                <tr id="secondary_item_{{main_spirit[3][0]}}">
+                                    <input type="hidden" id="{{result[0]}}" name="{{result[0]}}" value="{{result[0]}}">
+                                    <td><input class="main_checkbox main_check_{{result[0]}}" id="secondary_{{ main_spirit[3][0]}}" type="checkbox" name="secondary_{{ main_spirit[3][0] }}" value='{{ main_spirit[3][1] }}' {% if main_spirit[3][1] == 1 %} checked {% endif %}></td>
+                                    <td>{{ main_spirit[3][7] }}</td>
+                                </tr>
+                            {% endif %}
                         {% elif result[1] == 0 %}
                         <tr>
                             <td>Name</td>
                             <td>{{result[3]}}</td>
                         </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="mainqu_radio_labels" for="undone_{{ result[0] }}">Not Started</label>
+                                <input type="radio" id="started_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="mainqu_radio_labels" for="mainqu_{{ result[0] }}">Started</label>
+                                <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
+                            </td>
+                        </tr>
                         {% endif %}
-
-                    <tr>
-                        <td>Status</td>
-                        <td>
-                            <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="mainqu_radio_labels" for="undone_{{ result[0] }}">Not Started</label>
-                            <input type="radio" id="started_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="mainqu_radio_labels" for="mainqu_{{ result[0] }}">Started</label>
-                            <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
-                        </td>
-                    </tr>
-
-                    {% endfor %}
-
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </form>

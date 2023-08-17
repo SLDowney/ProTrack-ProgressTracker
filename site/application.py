@@ -277,6 +277,7 @@ def adventures_update():
     print("data ->", data)
     adventure = data.get('adventure_id')
     done = data.get('adventure_done')
+    print("data done ->", done)
 
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM Quests WHERE quest_type = "Adventure" AND quest_id = ?', (adventure,))
@@ -284,7 +285,7 @@ def adventures_update():
         
     with closing(conn.cursor()) as c:
         c.execute('UPDATE locations SET location_done = 1 WHERE location_name = ?', (adventure_info[7],))
-        print("Executed update statement with location_name as ->", adventure_info[3])
+        print("Executed update statement with location_name as ->", adventure_info[7])
     conn.commit()
 
     with closing(conn.cursor()) as c:
@@ -299,7 +300,7 @@ def adventures_update():
             print("Executed update statement with quest_id as ->", adventure_info[0])
         conn.commit()
 
-    print("IN UPDATE FUNCTION ->", adventure_info[2])
+    print("IN UPDATE FUNCTION ->", adventure_info[0])
     return "success"
 
 def update_weapons_table(weapon_name, region, damage, buff):
@@ -1875,16 +1876,38 @@ def mainqu():
                 c.execute('UPDATE Quests SET quest_done = ? WHERE quest_id = ?', (mainqu_done, mainqu_id))
                 print("Executed update statement for mainqu_id:", mainqu_id)
             conn.commit()
+        with closing(conn.cursor()) as c:
+            secondarys = c.execute('SELECT * FROM mainqu_2').fetchall()
+            for secondary in secondarys:
+                secondary_id = secondary[0]
+                secondary_done = request.form.get(f'secondary_{secondary_id}')
+                if secondary_done is None:
+                    print("secondary_done is none:", secondary_done)
+                    secondary_done = c.execute('SELECT mainqu2_done FROM mainqu_2 WHERE mainqu2_id = ?', (secondary_id,)).fetchone()[0]
+                else:
+                    print("secondary_done is not none:", secondary_done)
+                print("secondary_id:", secondary_id)
+                print("secondary_done:", secondary_done)
+                c.execute('UPDATE mainqu_2 SET mainqu2_done = ? WHERE mainqu2_id = ?', (secondary_done, secondary_id))
+                print("Executed update statement for secondary_id:", secondary_id)
+            conn.commit()
+
+    with closing(conn.cursor()) as c:
+        main_riju = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 10').fetchall()
+        main_sidon = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 13').fetchall()
+        main_yunobo = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 11').fetchall()
+        main_tulin = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 8').fetchall()
+        main_spirit = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 18').fetchall()
 
     with closing(conn.cursor()) as c:
         query = '''SELECT * FROM Quests WHERE quest_type = "Main" ORDER BY quest_id ASC'''
         c.execute(query)
         results = c.fetchall()
         info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("mainqu.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
+    return render_template("mainqu.html", main_riju=main_riju, main_sidon=main_sidon, main_yunobo=main_yunobo, main_tulin=main_tulin, main_spirit=main_spirit, scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
 
-@app.route('/update-mainquests', methods=['POST'])
-def mainquests():
+@app.route('/update_mainquests', methods=['POST'])
+def update_mainquests():
     main_id = request.json.get('main_id')
     main_done = request.json.get('main_done')
 
@@ -1903,6 +1926,28 @@ def mainquests():
     except Exception as e:
         print("Error:", e)  # Add this line for debugging
         return jsonify(success=False, error=str(e))
+    
+@app.route('/update_secondary', methods=['POST'])
+def update_secondary():
+    secondary_id = request.json.get('secondary_id')
+    secondary_done = request.json.get('secondary_done')
+
+    if secondary_done is None:
+        secondary_done = 0
+    else:
+        secondary_done = secondary_done
+
+    # Update the main in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE mainqu_2 SET mainqu2_done = ? WHERE mainqu2_id = ?', (secondary_done, secondary_id))
+            print("mainqu_2 mainqu2_done = ", secondary_done, ", mainqu2_id = ", secondary_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+
 
 @app.route("/addison", methods=["GET", "POST"])
 def addison():

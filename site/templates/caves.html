@@ -129,8 +129,8 @@
                     <tr>
                         <td>Status</td>
                         <td>
-                            <input type="radio" id="done_{{ result[12] }}" name="undone_{{ result[12] }}" value="0" {% if result[0] == 0 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="undone_{{ result[12] }}">Unfound</label>
-                            <input type="radio" id="done_{{ result[12] }}" name="started_{{ result[12] }}" value="1" {% if result[0] == 1 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="started_{{ result[12] }}">Discovered</label>
+                            <input type="radio" id="undone_{{ result[12] }}" name="done_{{ result[12] }}" value="0" {% if result[0] == 0 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="undone_{{ result[12] }}">Unfound</label>
+                            <input type="radio" id="started_{{ result[12] }}" name="done_{{ result[12] }}" value="1" {% if result[0] == 1 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="started_{{ result[12] }}">Discovered</label>
                             <input type="radio" id="done_{{ result[12] }}" name="done_{{ result[12] }}" value="2" {% if result[0] == 2 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')"><label class="cave_radio_labels" for="done_{{ result[12] }}">Completed</label>
                         </td>
                     </tr>
