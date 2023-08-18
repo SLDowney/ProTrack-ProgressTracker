@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+        <div class="locations-nav-container">
+            <div class="row">
+                <div class="col">
+                    <div class="locations-nav">
+                        <a href="{{ url_for('index') }}">
+                            <button class="location-buttons">Home</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('sidequests') }}">
+                            <button class="location-buttons">Side Quests</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('adventures') }}">
+                            <button class="location-buttons">Side Adventures</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="locations-nav">
+                        <a href="{{ url_for('mainqu') }}">
+                            <button class="location-buttons">Main Quests</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('shrinequests') }}">
+                            <button class="location-buttons">Shrine Quests</button>
+                        </a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    {% endblock %}

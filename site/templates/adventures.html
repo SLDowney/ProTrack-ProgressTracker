@@ -4,13 +4,14 @@
 
     <form id="adventureform" action="{{ url_for('adventures') }}" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <table style="width: 100%;">
+            {% for result in results %}
+            <table class="main_body" style="width: 100%;">
                 <colgroup>
                     <col span="1">
                     <col span="2">
                 </colgroup>
                 
-                {% for result in results %}
+                
                     <tbody>
                         <tr>
                             <th>Info</th>
@@ -36,7 +37,7 @@
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td>{{result[6]}}</td>
+                            <td>{{result[5]}}</td>
                         </tr>                    
                         {% elif result[1] == 1 %}
                         <tr>
@@ -53,7 +54,7 @@
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td>{{result[6]}}</td>
+                            <td>{{result[5]}}</td>
                         </tr>
                         {% if result[3] == "Presenting: The Travel Medallion!" %}
                         <tr>
@@ -87,11 +88,9 @@
                             <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="adventure_radio_labels" for="done_{{ result[0] }}">Completed</label>
                         </td>
                     </tr>
-
-                    {% endfor %}
-
                 </tbody>
             </table>
+            {% endfor %}
         </div>
     </form>
 <script src="{{ url_for('static', filename='adventures.js') }}"></script>

@@ -47,7 +47,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM addison")
         total_addison = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM adventure")
+        c.execute("SELECT COUNT(*) FROM Quests WHERE quest_type = 'Adventure'")
         total_adventure = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM caves")
@@ -62,7 +62,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM lightroots")
         total_lightroots = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM mainqu")
+        c.execute("SELECT COUNT(*) FROM Quests WHERE quest_type = 'Main'")
         total_mainqu = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM oldmaps")
@@ -71,7 +71,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM shrinequests")
         total_shrinequests = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM sidequests")
+        c.execute("SELECT COUNT(*) FROM Quests WHERE quest_type = 'Side'")
         total_sidequests = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM towers")
@@ -103,7 +103,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM addison WHERE addison_done = 1")
         completed_addison = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM adventure WHERE adventure_done = 2")
+        c.execute("SELECT COUNT(*) FROM Quests WHERE quest_type = 'Adventure' AND quest_done = 2")
         completed_adventure = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM caves WHERE cave_done = 2")
@@ -118,7 +118,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM lightroots WHERE root_done = 1")
         completed_lightroots = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM mainqu WHERE mainqu_done = 2")
+        c.execute("SELECT COUNT(*) FROM Quests WHERE quest_type = 'Main' AND quest_done = 2")
         completed_mainqu = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM oldmaps WHERE map_type = 'Treasure' AND map_collected = 1")
@@ -127,7 +127,7 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM shrinequests WHERE shrinequ_done = 2")
         completed_shrinequests = c.fetchone()[0]
 
-        c.execute("SELECT COUNT(*) FROM sidequests WHERE side_done = 2")
+        c.execute("SELECT COUNT(*) FROM Quests WHERE quest_type = 'Side' AND quest_done = 2")
         completed_sidequests = c.fetchone()[0]
 
         c.execute("SELECT COUNT(*) FROM towers WHERE tower_done = 1")
@@ -164,21 +164,27 @@ def side_update():
     data = request.get_json()  # Get the JSON data from the request
     side = data.get('side_id')
     side_done = data.get('side_done')
+    
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM Quests WHERE quest_id = ?', (side,))
         side_info = c.fetchone()
 
     if  side_done == 1:
         with closing(conn.cursor()) as c:
-            c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (side_info[7],))
+            if side_info[10] != None:
+                search_strings = side_info[10].split('\r\n')
+                query = """UPDATE caves SET cave_done = 1 WHERE {} """.format(" OR ".join(["cave_name LIKE '%' || ? || '%'" for _ in search_strings]))
+                c.execute(query, search_strings)  # Pass the search_strings list as bindings
+            else:
+                c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (side_info[7],))
             print("Executed update statement with cave_name as ->", side_info[7])
         conn.commit()
 
-        with closing(conn.cursor()) as c:
-            c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (side_info[9],))
-            c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (side_info[9],))
-            print("Executed update statement with a_name as ->", side_info[9])
-        conn.commit()
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (side_info[9],))
+        c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (side_info[9],))
+        print("Executed update statement with a_name as ->", side_info[9])
+    conn.commit()
     
     if side_done != 0:
         with closing(conn.cursor()) as c:
@@ -186,8 +192,32 @@ def side_update():
             print("Executed update statement with location_name as ->", side_info[7])
         conn.commit()
 
-        print("IN UPDATE FUNCTION ->", side_info[9])
-        return "success"
+    if side_info[10] != None:
+        with closing(conn.cursor()) as c:
+            search_strings = side_info[10].split('\r\n')
+            print("Search Strings ->", search_strings)
+            query = """UPDATE locations SET location_done = 1 WHERE {} """.format(" OR ".join(["location_name LIKE '%' || ? || '%'" for _ in search_strings]))
+            c.execute(query, search_strings)  # Pass the search_strings list as bindings
+            print("Executed update statement with location_name as ->", side_info[10])
+        conn.commit()
+    
+    print("Side ->", side)
+    print("Side_Done ->", side_done)
+
+    if side == "242" and side_done == 2:
+        with closing(conn.cursor()) as c:
+            print("Updating Quickshot Course")
+            c.execute('UPDATE Quests SET quest_done = 1 WHERE quest_id = 243')
+        conn.commit()
+    
+    if side == "243" and side_done == 2:
+        print("Updating Death Mountain Course")
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE Quests SET quest_done = 1 WHERE quest_id = 241')
+        conn.commit()
+
+    print("IN UPDATE FUNCTION ->", side_info[9])
+    return "success"
 
 @app.route('/shrine_update', methods=['POST'])
 def shrine_update():
@@ -199,6 +229,11 @@ def shrine_update():
         shrine_info = c.fetchone()
         
     with closing(conn.cursor()) as c:
+        c.execute('UPDATE locations SET location_done = 1 WHERE location_name = ?', (shrine_info[4],))
+        print("Executed update statement with location_name as ->", shrine_info[4])
+    conn.commit()
+
+    with closing(conn.cursor()) as c:
         c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (shrine_info[10],))
         print("Executed update statement with cave_name as ->", shrine_info[10])
     conn.commit()
@@ -209,13 +244,14 @@ def shrine_update():
         print("Executed update statement with a_name as ->", shrine_info[8])
     conn.commit()
 
-    with closing(conn.cursor()) as c:
-        if "Crystal" in shrine_info[7]:
-            c.execute('UPDATE shrinequests SET shrinequ_done = 2 WHERE shrinequ_name = ?', (shrine_info[7],))
-        else:
-            c.execute('UPDATE shrinequests SET shrinequ_done = 1 WHERE shrinequ_name = ?', (shrine_info[7],))
-        print("Executed update statement with shrinequ_name as ->", shrine_info[7])
-    conn.commit()
+    if shrine_info[7] != None:
+        with closing(conn.cursor()) as c:
+            if "Crystal" in shrine_info[7]:
+                c.execute('UPDATE shrinequests SET shrinequ_done = 2 WHERE shrinequ_name = ?', (shrine_info[7],))
+            else:
+                c.execute('UPDATE shrinequests SET shrinequ_done = 1 WHERE shrinequ_name = ?', (shrine_info[7],))
+            print("Executed update statement with shrinequ_name as ->", shrine_info[7])
+        conn.commit()
 
     print("IN UPDATE FUNCTION ->", shrine_info[2])
     return "success"
@@ -283,10 +319,14 @@ def adventures_update():
         c.execute('SELECT * FROM Quests WHERE quest_type = "Adventure" AND quest_id = ?', (adventure,))
         adventure_info = c.fetchone()
         
-    with closing(conn.cursor()) as c:
-        c.execute('UPDATE locations SET location_done = 1 WHERE location_name = ?', (adventure_info[7],))
-        print("Executed update statement with location_name as ->", adventure_info[7])
-    conn.commit()
+    if adventure_info[10] != None:
+        with closing(conn.cursor()) as c:
+            search_strings = adventure_info[10].split('\r\n')
+            print("Search Strings ->", search_strings)
+            query = """UPDATE locations SET location_done = 1 WHERE {} """.format(" OR ".join(["location_name LIKE '%' || ? || '%'" for _ in search_strings]))
+            c.execute(query, search_strings)  # Pass the search_strings list as bindings
+            print("Executed update statement with location_name as ->", adventure_info[10])
+        conn.commit()
 
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (adventure_info[9],))
@@ -441,6 +481,22 @@ def locationnav():
     headline = ""
     percentages = get_percentages()
     return render_template("locationnav.html", headline=headline, percentages=percentages)
+
+@app.route("/questnav")
+def questnav():
+    print("LocationNav")
+
+    headline = ""
+    percentages = get_percentages()
+    return render_template("questnav.html", headline=headline, percentages=percentages)
+
+@app.route("/collectnav")
+def collectnav():
+    print("LocationNav")
+
+    headline = ""
+    percentages = get_percentages()
+    return render_template("collectnav.html", headline=headline, percentages=percentages)
 
 @app.route("/caves", methods=["GET", "POST"])
 def caves():
@@ -1877,27 +1933,27 @@ def mainqu():
                 print("Executed update statement for mainqu_id:", mainqu_id)
             conn.commit()
         with closing(conn.cursor()) as c:
-            secondarys = c.execute('SELECT * FROM mainqu_2').fetchall()
+            secondarys = c.execute('SELECT * FROM SubQuests').fetchall()
             for secondary in secondarys:
                 secondary_id = secondary[0]
                 secondary_done = request.form.get(f'secondary_{secondary_id}')
                 if secondary_done is None:
                     print("secondary_done is none:", secondary_done)
-                    secondary_done = c.execute('SELECT mainqu2_done FROM mainqu_2 WHERE mainqu2_id = ?', (secondary_id,)).fetchone()[0]
+                    secondary_done = c.execute('SELECT subquest_done FROM SubQuests WHERE subquest_id = ?', (secondary_id,)).fetchone()[0]
                 else:
                     print("secondary_done is not none:", secondary_done)
                 print("secondary_id:", secondary_id)
                 print("secondary_done:", secondary_done)
-                c.execute('UPDATE mainqu_2 SET mainqu2_done = ? WHERE mainqu2_id = ?', (secondary_done, secondary_id))
+                c.execute('UPDATE SubQuests SET subquest_done = ? WHERE subquest_id = ?', (secondary_done, secondary_id))
                 print("Executed update statement for secondary_id:", secondary_id)
             conn.commit()
 
     with closing(conn.cursor()) as c:
-        main_riju = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 10').fetchall()
-        main_sidon = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 13').fetchall()
-        main_yunobo = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 11').fetchall()
-        main_tulin = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 8').fetchall()
-        main_spirit = c.execute('SELECT * FROM mainqu_2 WHERE mainqu_id = 18').fetchall()
+        main_riju = c.execute('SELECT * FROM SubQuests WHERE quest_id = 10').fetchall()
+        main_sidon = c.execute('SELECT * FROM SubQuests WHERE quest_id = 13').fetchall()
+        main_yunobo = c.execute('SELECT * FROM SubQuests WHERE quest_id = 11').fetchall()
+        main_tulin = c.execute('SELECT * FROM SubQuests WHERE quest_id = 8').fetchall()
+        main_spirit = c.execute('SELECT * FROM SubQuests WHERE quest_id = 18').fetchall()
 
     with closing(conn.cursor()) as c:
         query = '''SELECT * FROM Quests WHERE quest_type = "Main" ORDER BY quest_id ASC'''
@@ -1940,8 +1996,8 @@ def update_secondary():
     # Update the main in the database with the new found status
     try:
         with closing(conn.cursor()) as c:
-            c.execute('UPDATE mainqu_2 SET mainqu2_done = ? WHERE mainqu2_id = ?', (secondary_done, secondary_id))
-            print("mainqu_2 mainqu2_done = ", secondary_done, ", mainqu2_id = ", secondary_id)
+            c.execute('UPDATE SubQuests SET subquest_done = ? WHERE subquest_id = ?', (secondary_done, secondary_id))
+            print("SubQuests subquest_done = ", secondary_done, ", subquest_id = ", secondary_id)
             conn.commit()
         return jsonify(success=True)
     except Exception as e:
