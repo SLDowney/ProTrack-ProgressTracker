@@ -1,6 +1,22 @@
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
 
+  var radioes = document.querySelectorAll('.shrine_radio');
+
+  radioes.forEach(function (radio) {
+    // Check the initial state of the radio and apply the class accordingly
+    var shrineId = radio.name.replace('done_', ''); // Extract point ID
+    var shrineIDElements = document.querySelectorAll(".shrine_" + shrineId);
+
+    shrineIDElements.forEach(function (element) {
+      if (radio.value == "2") {
+        console.log("Radio Value ->", radio.value)
+        console.log("Element ->", element)
+        element.classList.remove("hidden_display"); // Show info
+      } 
+    });
+  });
+
   // Add the event listener to the radio buttons to update the counter and Rewards column
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {
@@ -72,14 +88,17 @@ function updateshrine(radio, shrineId) {
     });
 }
 
-// function itemToggle(radio) {
-//   var compId = radio.id.replace('done_', ''); // Extract comp ID
-//   var compItemElement = document.getElementById("comp_item_" + compId);
-//   var items = compItemElement.nextElementSibling.textContent; // Get rewards value using getAttribute
+function infoToggle(radio) {
+  var shrineId = radio.name.replace('done_', ''); // Extract point ID
+  console.log("shrine ID ->", shrineId)
+  var shrineIDElements = document.querySelectorAll(".shrine_" + shrineId);
+  console.log("shrine Elements ->", shrineIDElements)
 
-//   if (radio.checked) {
-//     compItemElement.textContent = items; // Show rewards value
-//   } else {
-//     compItemElement.textContent = "???"; // Show "???" when unchecked
-//   }
-// }
+  shrineIDElements.forEach(function (element) {
+    if (radio.value == "2") {
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
+    }
+  });
+}

@@ -108,6 +108,7 @@ p {
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 1%;
+    width: 100%;
     /* border: 2px solid rgba(0, 0, 0, 0.5); */
 
 }
@@ -119,7 +120,7 @@ p {
     border: 2px solid rgba(0, 0, 0, 0.5);
     flex-direction: column;
     align-content: stretch;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .col {
@@ -279,6 +280,10 @@ textarea {
 
 #new_chest_container input[type=checkbox] {
     margin-left: 20%;
+    
+}
+#new_chest_container { 
+    background-color: #ffffffa8;
 }
 
 #addchest {
@@ -286,6 +291,7 @@ textarea {
     width: 70%;
     margin-left: 10%;
     margin-bottom: 10px;
+    margin-top: 2%;
 }
 
 #chest_labels {
@@ -428,9 +434,6 @@ display checkmark when checked
     width: 100%;
 }
 
-.armor_upgrade_container {
-    display: none;
-}
 .armor_upgrade_head {
     justify-content: center;
     padding: 0 0 0 0;
@@ -441,28 +444,23 @@ display checkmark when checked
 }
 
 .armor_set_piece {
-    width: 100%;
     background-color: #cd06ff73;
     margin-bottom: 0;
 }
 
 .armor_set_piece_upgrade1 {
-    width:100%;
     background-color: #ff060673;
     margin-bottom: 0;
 }
 .armor_set_piece_upgrade2 {
-    width:100%;
     background-color: #eaff0673;
     margin-bottom: 0;
 }
 .armor_set_piece_upgrade3 {
-    width:100%;
     background-color: #06fff773;
     margin-bottom: 0;
 }
 .armor_set_piece_upgrade4 {
-    width:100%;
     background-color: #ff0000d6;
 }
 
@@ -472,6 +470,10 @@ display checkmark when checked
 
 .armor_upgrade {
     background-color: yellow;
+}
+
+.armor_upgrade_items {
+    font-size: large;
 }
 
 .armor_items {
@@ -774,6 +776,8 @@ span {
 
 .location_table {
     width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #tower_th_1 {
@@ -818,7 +822,7 @@ span {
 
 .locations-nav-home {
     background-color: #404040;
-    height: 75px;
+    height: 70px;
     width: 65%;
     margin-left: auto;
     margin-right: auto;
@@ -932,8 +936,9 @@ span {
     .item-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
         margin-bottom: 5%;
+        flex-direction: column;
+        align-content: center;
     }
   
     .comp_table {

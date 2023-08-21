@@ -84,6 +84,13 @@
                         </tr>
                         {% else %}
                         {% endif %}
+                        {% if result[13] in armors %}
+                        <tr>
+                            <td>Armor</td>
+                            <td>{{result[13]}}</td>
+                        </tr>
+                        {% else %}
+                        {% endif %}
                         {% if result[8] != None and result[10] != ""  %}
                         <tr>
                             <td>Side Quest</td>

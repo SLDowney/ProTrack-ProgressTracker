@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
+<div id="counter">
+    <p><span>{{completed_yiga}} / Yiga Schematics</span></p>
+    <p><span>{{completed_stone}} / Schema Stones</span></p>
+</div>
+<div class="content-container">
+    <form action="{{ url_for('location_schemas') }}" method="POST" enctype="multipart/form-data">
+        <div class="item-container location_container">
+            <div class="col">
+                {% for schema in schemas %}
+                {% if schema[2] == "Yiga" %}
+                    <table id="schemas-table" class="location_table" colspan="3">
+                        <thead colspan="3">
+                            <tr>
+                                <th id="location_th_1">Info</th>
+                                <th id="location_th_2" colspan="2">Schema</th>
+                            </tr>
+                        </thead>
+                        <tbody colspan="3">   
+                            <tr>
+                                <td colspan="1">Coordinates</td>
+                                <td colspan="2">{{schema[4]}}</td>
+                            </tr>
+                            {% if schema[1] == 1 %}
+                            <tr>
+                                <td colspan="1">Name</td>
+                                <td colspan="2">{{schema[3]}}</td>
+                            </tr><tr>
+                                <td colspan="1">Coordinates</td>
+                                <td colspan="2">{{schema[4]}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">Location</td>
+                                <td colspan="2">{{schema[5]}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">Region</td>
+                                <td colspan="2">{{schema[6]}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="1">Parts</td>
+                                <td colspan="2">{{schema[7]}}</td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <td colspan="3" class="location_checkbox">
+                                    <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                                    {% if schema[1] == 0 %}
+                                        <input type="checkbox" class="location_checkbox" id="done_{{ schema[0] }}" name="done_schema_{{ schema[0] }}" value="0" unchecked onclick="updateschema(this, '{{ schema[0] }}')">
+                                    {% elif schema[1] == 1 %}
+                                        <input type="checkbox" class="location_checkbox" id="done_{{ schema[0] }}" name="done_schema_{{ schema[0] }}" value="1" checked onclick="updateschema(this, '{{ schema[0] }}')">
+                                    {% else %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                </div>
+                {% elif schema[2] == "Stone" %}
+                <div class="col">
+                    <table id="schemas-table" class="location_table" colspan="3">
+                        <thead colspan="3">
+                            <tr>
+                                <th id="location_th_1">Info</th>
+                                <th id="location_th_2" colspan="2">Schema</th>
+                            </tr>
+                        </thead>
+                        <tbody colspan="3">   
+                            <tr>
+                                <td colspan="1">Coordinates</td>
+                                <td colspan="2">{{schema[4]}}</td>
+                            </tr>
+                            {% if schema[1] == 1 %}
+                            <tr>
+                                <td colspan="1">Name</td>
+                                <td colspan="2">{{schema[3]}}</td>
+                            </tr><tr>
+                                <td colspan="1">Coordinates</td>
+                                <td colspan="2">{{schema[4]}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">Location</td>
+                                <td colspan="2">{{schema[5]}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">Region</td>
+                                <td colspan="2">{{schema[6]}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="1">Parts</td>
+                                <td colspan="2">{{schema[7]}}</td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <td colspan="3" class="location_checkbox">
+                                    <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
+                                    {% if schema[1] == 0 %}
+                                        <input type="checkbox" class="location_checkbox" id="done_{{ schema[0] }}" name="done_schema_{{ schema[0] }}" value="0" unchecked onclick="updateschema(this, '{{ schema[0] }}')">
+                                    {% elif schema[1] == 1 %}
+                                        <input type="checkbox" class="location_checkbox" id="done_{{ schema[0] }}" name="done_schema_{{ schema[0] }}" value="1" checked onclick="updateschema(this, '{{ schema[0] }}')">
+                                    {% else %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {% endif %}                    
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='schemas.js') }}"></script>
+{% endblock %}

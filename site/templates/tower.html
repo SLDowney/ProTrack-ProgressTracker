@@ -1,11 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-
+<div class="locations-nav-home">
+    <a href="{{ url_for('collectnav') }}">
+        <button class="location-buttons">Findables</button>
+    </a>
+</div>
+<br>
 <div class="content-container">
     <form action="{{ url_for('tower') }}" method="POST" enctype="multipart/form-data">
+        {% for tower in towers %}
         <div class="item-container tower_container">
-            {% for tower in towers %}
+            
                 <div class="col-md-8">
                     <table class="location_table" id="tower-table">
                         <tr>
@@ -24,28 +30,26 @@
                             <td>Coordinates</td>
                             <td>{{tower[4]}}</td>
                         </tr>
-                        {% if tower[1] != 0 %}
-                        <tr>
+                        <tr class="tower_{{tower[0]}} hidden_display">
                             <td colspan="2">
                                 {{tower[5]}}
                             </td>
                         </tr>
-                        {% else %}
-                        {% endif %}
                         <tr>
-                            <td colspan="2" class="tower_checkbox">
+                            <td colspan="2">
                                 {% if tower[1] == 0 %}
-                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="0" unchecked onclick="updatetower(this, '{{tower[0]}}')">
+                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="0" unchecked onclick="infoToggle(this)">
                                 {% elif tower[1] == 1 %}
-                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="1" checked onclick="updatetower(this, '{{tower[0]}}')">
+                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="1" checked onclick="infoToggle(this)">
                                 {% else %}
                                 {% endif %}
                             </td>
                         </tr>
                     </table>                    
                 </div>
-            {% endfor %}
+            
         </div>
+        {% endfor %}
     </form>
 </div>
 <script src="{{ url_for('static', filename='tower.js') }}"></script>

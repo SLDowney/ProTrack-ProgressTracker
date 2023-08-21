@@ -71,7 +71,15 @@
                             <td>3</td>
                             {% endif %}
                         </tr>
-                        {% else %}
+                        {% elif result[3] == "Messages from an Ancient Era" %}
+                        <tr>
+                            <td>Flower-Shaped Islands Found:</td>
+                            <td>{{completed_flowers}} of 12</td>
+                        </tr>
+                        <tr>
+                            <td>Rewards</td>
+                            <td>{{completed_flowers}}00 Rupees</td>
+                        </tr>
                         {% endif %}
                         {% elif result[1] == 0 %}
                         <tr>

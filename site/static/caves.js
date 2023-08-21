@@ -35,13 +35,25 @@ document.getElementById('regionFilterForm').addEventListener('submit', function 
 
 function updatecave(radio, caveId) {
   console.log("--------UPDATE cave ---------")
-  const caveFound = radio.value;
+  const caveFound = radio.value; 
 
   const data = {
     cave_id: parseInt(caveId),
     cave_done: parseInt(caveFound),
   };
   console.log("DATA ->", data)
+
+  if (caveFound == 2) {
+    fetch('/cave_update', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        cave_id: caveId  // Pass the variable to the server
+      })
+    })
+  }
 
   fetch('/update-cave', {
     method: 'POST',

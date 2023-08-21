@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
+    <div id="counter">
+        <p>Bargainer Statues Found: {{ completed_bargains }}</p>
+    </div>
+    <div class="item-container location_container">
+        <table class="location_table" id="bargains-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Poes</th>
+                </tr>
+            </thead>
+            <tbody id="bargains-body">
+                {% for bargain in bargains %}
+                <tr>
+                    <td>{{ bargain[2] }}</td>
+                    <td>{{ bargain[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody> 
+        </table>
+    </div>
+
+    <div class="content-container">
+        <form action="{{ url_for('bargainer') }}" method="POST" enctype="multipart/form-data">
+            <div class="item-container location_container">
+                {% for bargainer_statue in bargainer_statues %}
+                    <div class="location-col-7">
+                        <table class="location_table" id="bargainer_statue-table">
+                            <tr>
+                                <th id="location_th_1">Info</th>
+                                <th id="location_th_2">Bargainer Statue Info</th>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>{{bargainer_statue[2]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td>{{bargainer_statue[3]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Coordinates</td>
+                                <td>{{bargainer_statue[4]}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="location_checkbox">
+                                    {% if bargainer_statue[1] == 0 %}
+                                        <input type="checkbox" class="location_checkbox" id="done_{{ bargainer_statue[0] }}" name="done_bargainer{{ bargainer_statue[0] }}" value="0" unchecked onclick="updatebargain(this, '{{bargainer_statue[0]}}')">
+                                    {% elif bargainer_statue[1] == 1 %}
+                                        <input type="checkbox" class="location_checkbox" id="done_{{ bargainer_statue[0] }}" name="done_bargainer{{ bargainer_statue[0] }}" value="1" checked onclick="updatebargain(this, '{{bargainer_statue[0]}}')">
+                                    {% else %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>                    
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='bargainer.js') }}"></script>
+{% endblock %}

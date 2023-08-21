@@ -2,46 +2,50 @@
 
 {% block body %} 
 
+<div id="counter">
+    <p>Number of Lightroots Found: {{completed_lightroots}}</p>
+</div>
+
+<div class="content-container">
     <form id="rootform" action="{{ url_for('lightroots') }}" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            <table style="width: 100%;">
-                <colgroup>
-                    <col span="1">
-                    <col span="2">
-                </colgroup>
-                
-                {% for result in results %}
-                    <tbody>
+        <div class="item-container location_container">
+            {% for result in results %}
+            <div class="row">
+                <table style="width: 100%;">
+                    <colgroup>
+                        <col span="1">
+                        <col span="2">
+                    </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>Info</th>
+                                <th>Lightroot Info</th>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[2]}}</td>
+                            </tr>
+                            <tr class="root_{{result[0]}} hidden_display">
+                                <td>Coordinates</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                            <tr class="root_{{result[0]}} hidden_display">
+                                <td>Region</td>
+                                <td>{{result[4]}}</td>
+                            </tr>
                         <tr>
-                            <th>Info</th>
-                            <th>Lightroot Info</th>
+                            <td>Status</td>
+                            <td>
+                                <input type="checkbox" class="location_checkbox" id="done_{{ result[0] }}" name="done_root_{{ result[0] }}" value="0" {% if result[1] == 1 %}checked Found{% elif result[1] == 0 %} unchecked Unfound{% endif %}>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>{{result[1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Coordinates</td>
-                            <td>{{result[2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Region</td>
-                            <td>{{result[3]}}</td>
-                        </tr>
-                        
-                    <tr>
-                        <td>Status</td>
-                        <td>
-                            <input type="radio" id="undone_{{ result[1] }}" name="done_root_{{ result[1] }}" value="0" {% if result[0] == 0 %}checked{% endif %}><label class="root_radio_labels" for="undone_{{ result[1] }}">Unfound</label>
-                            <input type="radio" id="done_{{ result[1] }}"name="done_root_{{ result[1] }}" value="2" {% if result[0] == 2 %}checked{% endif %}><label class=roote_radio_labels" for="done_{{ result[1] }}">Completed</label>
-                            <input type="submit" id="RootSubmit" value="Update">
-                        </td>
-                    </tr>
-
-                {% endfor %}
-
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
         </div>
     </form>
+</div>
+    <script src="{{ url_for('static', filename='lightroots.js') }}"></script>
+
 {% endblock %}

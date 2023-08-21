@@ -11,10 +11,10 @@
         <div class="item-container location_container">
             {% for chasm in chasms %}
                 <div class="location-col-7">
-                    <table class="location_table">
+                    <table id="chasm-table" class="location_table">
                         <tr>
                             <th id="location_th_1">Info</th>
-                            <th id="location_th_2">chasm Info</th>
+                            <th id="location_th_2">Chasm Info</th>
                         </tr>
                         <tr>
                             <td>Name</td>
@@ -29,16 +29,13 @@
                             <td>{{chasm[4]}}</td>
                         </tr>
                         <tr>
-                            <td class="location_checkbox">
+                            <td colspan="3" class="location_checkbox">
                                 {% if chasm[1] == 0 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ chasm[0] }}" name="done_chasm_{{ chasm[0] }}" value="0" unchecked>
                                 {% elif chasm[1] == 1 %}
                                     <input type="checkbox" class="location_checkbox" id="done_{{ chasm[0] }}" name="done_chasm_{{ chasm[0] }}" value="1" checked>
                                 {% else %}
                                 {% endif %}
-                            </td>
-                            <td>
-                                <input type="submit" id="chasmSubmit" value="Update">
                             </td>
                         </tr>
                     </table>                    
@@ -47,4 +44,6 @@
         </div>
     </form>
 </div>
+<script src="{{ url_for('static', filename='chasm.js') }}"></script>
+
 {% endblock %}

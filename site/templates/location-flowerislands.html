@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<div class="locations-nav-home">
+    <a href="{{ url_for('locationnav') }}">
+        <button class="location-buttons">Locations</button>
+    </a>
+</div>
+<div class="content-container">
+    <form action="{{ url_for('flowerislands') }}" method="POST" enctype="multipart/form-data">
+        <div class="item-container location_container">
+            {% for flowerisland in flowerislands %}
+                <div class="location-col-7">
+                    <table id="flowerisland-table" class="location_table">
+                        <tr>
+                            <th id="location_th_1">Info</th>
+                            <th id="location_th_2">flowerisland Info</th>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{flowerisland[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{flowerisland[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Doesn't / Fall</td>
+                            <td>{{flowerisland[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="location_checkbox">
+                                {% if flowerisland[1] == 0 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ flowerisland[0] }}" name="done_flowerisland_{{ flowerisland[0] }}" value="0" unchecked>
+                                {% elif flowerisland[1] == 1 %}
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ flowerisland[0] }}" name="done_flowerisland_{{ flowerisland[0] }}" value="1" checked>
+                                {% else %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='flowerislands.js') }}"></script>
+
+{% endblock %}

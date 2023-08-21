@@ -4,12 +4,14 @@
 
         <div class="locations-nav-container">
             <div class="row">
+                <div class="locations-nav">
+                    <a href="{{ url_for('index') }}">
+                        <button class="location-buttons">Home</button>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col">
-                    <div class="locations-nav">
-                        <a href="{{ url_for('index') }}">
-                            <button class="location-buttons">Home</button>
-                        </a>
-                    </div>
                     <div class="locations-nav">
                         <a href="{{ url_for('chasm') }}">
                             <button class="location-buttons">Chasms</button>
@@ -23,6 +25,16 @@
                     <div class="locations-nav">
                         <a href="{{ url_for('coliseum') }}">
                             <button class="location-buttons">Coliseums</button>
+                        </a>
+                    </div> 
+                    <div class="locations-nav">
+                        <a href="{{ url_for('bargainer') }}">
+                            <button class="location-buttons">Bargainer Statues</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('flowerislands') }}">
+                            <button class="location-buttons">Flower-Shaped Islands</button>
                         </a>
                     </div> 
                 </div>
@@ -47,7 +59,11 @@
                             <button class="location-buttons">Device Dispensers</button>
                         </a>
                     </div> 
-                    
+                    <div class="locations-nav">
+                        <a href="{{ url_for('location_schemas') }}">
+                            <button class="location-buttons">Schemas</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
