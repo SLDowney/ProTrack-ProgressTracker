@@ -47,48 +47,60 @@
                 <td>{{result[3]}}</td>
             </tr>
             {% if result[1] == 1 %}
+            {% if result[6] != None %}
             <tr>
                 <td>Coordinates</td>
                 <td>{{result[6]}}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td>Contact</td>
                 <td>{{result[4]}}</td>
             </tr>
+            {% if result[7] != None %}
             <tr>
                 <td>Location</td>
                 <td>{{result[7]}}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td>Region</td>
                 <td>{{result[8]}}</td>
             </tr>
+            {% if result[5] != None %}
             <tr>
                 <td>Description</td>
                 <td>{{result[5]}}</td>
             </tr>
             {% endif %}
+            {% endif %}
             {% if result[1] == 2 %}
+            {% if result[6] != None %}
             <tr>
                 <td>Coordinates</td>
                 <td>{{result[6]}}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td>Contact</td>
                 <td>{{result[4]}}</td>
             </tr>
+            {% if result[7] != None %}
             <tr>
                 <td>Location</td>
                 <td>{{result[7]}}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td>Region</td>
                 <td>{{result[8]}}</td>
             </tr>
+            {% if result[5] != None %}
             <tr>
                 <td>Description</td>
                 <td>{{result[5]}}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td>Rewards</td>
                 {% if result[3] == "Where Are the Wells?" %}

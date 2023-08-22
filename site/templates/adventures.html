@@ -27,18 +27,22 @@
                             <td>Contact</td>
                             <td>{{result[4]}}</td>
                         </tr>
+                        {% if result[7] != None %}
                         <tr>
                             <td>Location</td>
                             <td>{{result[7]}}</td>
                         </tr>
+                        {% endif %}
                         <tr>
                             <td>Rewards</td>
                             <td>{{result[9]}}</td>
                         </tr>
+                        {% if result[5] != None %}
                         <tr>
                             <td>Description</td>
                             <td>{{result[5]}}</td>
                         </tr>                    
+                        {% endif %}
                         {% elif result[1] == 1 %}
                         <tr>
                             <td>Name</td>
@@ -48,14 +52,18 @@
                             <td>Contact</td>
                             <td>{{result[4]}}</td>
                         </tr>
+                        {% if result[7] != None %}
                         <tr>
                             <td>Location</td>
                             <td>{{result[7]}}</td>
                         </tr>
+                        {% endif %}
+                        {% if result[5] != None %}
                         <tr>
                             <td>Description</td>
                             <td>{{result[5]}}</td>
-                        </tr>
+                        </tr>                    
+                        {% endif %}
                         {% if result[3] == "Presenting: The Travel Medallion!" %}
                         <tr>
                             <td>Towers Found:</td>
