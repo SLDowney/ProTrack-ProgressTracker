@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
   
-  var coliseumsTable = document.getElementById('coliseums-table');
+  var coliseumsTable = document.getElementById('location_table');
   
   // Add the event listener to the checkboxes to update the counter when checkboxes are clicked
   Array.from(coliseumsTable.querySelectorAll('input[type="checkbox"]')).forEach(function(checkbox) {
@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
 });
-var coliseumsTable = document.getElementById('coliseums-table');
+var coliseumsTable = document.getElementById('location_table');
 
 function updatecoliseum(checkbox, coliseumId) {
   const coliseumFound = checkbox.checked ? 1 : 0;

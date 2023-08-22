@@ -1519,7 +1519,7 @@ def enemies():
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            enemies = c.execute('SELECT * FROM enemies').fetchall()
+            enemies = c.execute('SELECT * FROM Enemy').fetchall()
             for enemy in enemies:
                 e_id = enemy[0]
                 e_found = request.form.get(f'e_found_{e_id}')
@@ -1529,16 +1529,14 @@ def enemies():
                     e_found = '1'
                 print("e_id:", e_id)
                 print("e_found:", e_found)
-                c.execute('UPDATE enemies SET e_found = ? WHERE e_id = ?', (e_found, e_id))
-                print("Executed update statement for enemy ID:", e_id)
+                c.execute('UPDATE Enemy SET e_done = ? WHERE e_id = ?', (e_found, e_id))
+                print("Executed update statement for Enemy ID:", e_id)
             conn.commit()
 
     # Retrieve all enemies from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM enemies')
+        c.execute('SELECT * FROM Enemy')
         enemies = c.fetchall()
-        print("result[6]:", enemies[0][6])
-        print("enemy id:", enemies[0][0])
 
     return render_template('enemies.html', headline=headline, percentages=percentages, enemies=enemies, scroll_position=scroll_position)
 
@@ -1549,42 +1547,42 @@ def update_enemy():
 
     # Update the enemy in the database with the new found status
     with closing(conn.cursor()) as c:
-        c.execute('UPDATE enemies SET e_found = ? WHERE e_id = ?', (e_found, e_id))
+        c.execute('UPDATE Enemy SET e_done = ? WHERE e_id = ?', (e_found, e_id))
         conn.commit()
 
     return jsonify(success=True)
 
-@app.route('/add_enemy', methods=['POST'])
-def add_enemy():
-    e_monster = request.form.get('e_monster')
-    e_color = request.form.get('e_color')
-    e_coord = request.form.get('e_coord')
-    # Remove spaces and commas from the input
-    e_coord = e_coord.replace(' ', '').replace(',', '')
+# @app.route('/add_enemy', methods=['POST'])
+# def add_enemy():
+#     e_monster = request.form.get('e_monster')
+#     e_color = request.form.get('e_color')
+#     e_coord = request.form.get('e_coord')
+#     # Remove spaces and commas from the input
+#     e_coord = e_coord.replace(' ', '').replace(',', '')
 
-    # Format the chest_coord with commas while maintaining negative signs
-    formatted_e_coord = ''
-    i = 0
-    while i < len(e_coord):
-        section = e_coord[i:i+4]
-        if section.startswith('-'):
-            section = e_coord[i:i+5]
-            formatted_e_coord += section + ', '
-            i += 5
-        else:
-            formatted_e_coord += section[:4] + ', '
-            i += 4
-    formatted_e_coord = formatted_e_coord.rstrip(', ')
-    e_location = request.form.get('e_location')
-    e_region = request.form.get('e_region')
-    e_map = request.form.get('e_map')
-    e_found = request.form.get('e_found')
+#     # Format the chest_coord with commas while maintaining negative signs
+#     formatted_e_coord = ''
+#     i = 0
+#     while i < len(e_coord):
+#         section = e_coord[i:i+4]
+#         if section.startswith('-'):
+#             section = e_coord[i:i+5]
+#             formatted_e_coord += section + ', '
+#             i += 5
+#         else:
+#             formatted_e_coord += section[:4] + ', '
+#             i += 4
+#     formatted_e_coord = formatted_e_coord.rstrip(', ')
+#     e_location = request.form.get('e_location')
+#     e_region = request.form.get('e_region')
+#     e_map = request.form.get('e_map')
+#     e_found = request.form.get('e_found')
 
-    # Insert the new enemy into the database
-    with closing(conn.cursor()) as c:
-        c.execute('INSERT INTO enemies (e_found, e_monster, e_color, e_coord, e_location, e_region, e_map) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                  (e_found, e_monster, e_color, formatted_e_coord, e_location, e_region, e_map))
-        conn.commit()
+#     # Insert the new enemy into the database
+#     with closing(conn.cursor()) as c:
+#         c.execute('INSERT INTO Enemy (e_done, e_monster, e_color, e_coord, e_location, e_region, e_map) VALUES (?, ?, ?, ?, ?, ?, ?)',
+#                   (e_found, e_monster, e_color, formatted_e_coord, e_location, e_region, e_map))
+#         conn.commit()
 
     # Redirect back to the enemies page after adding the enemy
     return redirect('/enemies')

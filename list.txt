@@ -1,20 +1,72 @@
-1
-Fanplane IconFanplane
-Coordinates: -0821, -1940, -0523
-Associated Quest:
-Master Kohga of the Yiga Clan
-2
-Hot-Air Balloon IconHot-Air Balloon
-Coordinates: -0256, 0153, 0020
-Associated Quest:
-A Mystery in the Depths
-3
-Hovercraft IconHovercraft
-Coordinates: -3846, -2941, -0487
-Associated Quest:
-Master Kohga of the Yiga Clan
-12
-Bolt Boat IconBolt Boat
-Coordinates: 3257, 0593, -0750
-Associated Quest:
-Master Kohga of the Yiga Clan
+3277
+-3408
+-0481
+-0109
+-0802
+-0488
+-4393
+1935
+-0563
+-2527
+-0107
+-0577
+-3109
+1287
+-0608
+2985
+1449
+-0731
+-1364
+-0789
+0009
+4181
+2228
+0015
+0770
+-1223
+0025
+0202
+0531
+0027
+3277
+-3408
+0027
+0677
+0506
+0028
+-0109
+-0802
+0035
+-0770
+0811
+0046
+0587
+-1934
+0064
+-1092
+-1659
+0074
+-4393
+1935
+0111
+1263
+-1223
+0114
+-2550
+-0111
+0128
+-1448
+1026
+0137
+-3109
+1287
+0156
+3951
+1189
+0243
+2974
+1488
+0284
+-3987
+-1703
+0310

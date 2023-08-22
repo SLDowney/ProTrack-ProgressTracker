@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-    
+<form id="enemy" method="POST" action="/enemy">
     <table id="enemies-table">
         <thead>
             <tr>
@@ -15,20 +15,21 @@
             </tr>
         </thead>
         <tbody id="enemies-body">
-            {% for enemy in enemies %}
+            {% for en in enemy %}
             <tr>
                 <td>
-                    <input type="checkbox" name="e_found_{{ enemy[0] }}" value="1" {% if enemy[1] == 1 %}checked{% endif %} onclick="updateenemy(this, enemy[0])">
+                    <input type="checkbox" name="e_found_{{ en[0] }}" value="1" {% if en[1] == 1 %}checked{% endif %} onclick="updateen(this, en[0])">
                 </td>
-                <td class="e_td">{{ enemy[4] }}</td>
-                <td class="e_td">{{ enemy[3] }}</td>
-                <td class="e_td">{{ enemy[2] }}</td>
-                <td class="e_td">{{ enemy['e_location'] }}</td>
-                <td class="e_td">{{ enemy['e_region'] }}</td>
-                <td class="e_td">{{ enemy['e_map'] }}</td>
+                <td class="e_td">{{ en['e_monster'] }}</td>
+                <td class="e_td">{{ en['e_color'] }}</td>
+                <td class="e_td">{{ en['e_coord'] }}</td>
+                <td class="e_td">{{ en['e_location'] }}</td>
+                <td class="e_td">{{ en['e_region'] }}</td>
+                <td class="e_td">{{ en['e_map'] }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <script src="{{ url_for('static', filename='enemies.js') }}"></script>
+</form>
+    <script src="{{ url_for('static', filename='enemy.js') }}"></script>
 {% endblock %}
