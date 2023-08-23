@@ -27,8 +27,8 @@
         <form id="comp_main" action="{{ url_for('compendium') }}" method="POST" enctype="multipart/form-data">
             <h1>Creatures</h1>
             <div class="item-container">
-                {% for creature in creatures %}
                     <div class="comp-md-8">
+                        {% for creature in creatures %}
                         <table class="location_table" id="well-table">
                             <tr>
                                 <th colspan="2">Info</th>
@@ -55,9 +55,10 @@
                                 </td>
                             </tr>
                             
-                        </table>                    
+                        </table>  
+                        {% endfor %}                  
                     </div>
-                {% endfor %}
+                
             </div>
         <h1>Monsters</h1>
         <div class="item-container">

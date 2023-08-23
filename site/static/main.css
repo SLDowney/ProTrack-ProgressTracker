@@ -1019,13 +1019,19 @@ span {
     .navbar-collapse {
         order: 2;
     }
+
+    .navbar-toggler {
+        margin-left: 35%;
+        color:#247681
+    }
+
     .percentage_table {
         position: relative;
-        margin-left: 500%;
-        margin-right:auto;
+        /* margin-left: auto; */
+        /* margin-right: auto; */
         margin-top: 5%;
-        width: max-content; /* Adjust the width as needed */
-        background-color: #ffffff; /* Optional background color for the table */
+        width: auto;
+        background-color: #ffffff;
         border-collapse: collapse;
     }
     
@@ -1041,16 +1047,16 @@ span {
     }
 
     body {
-        background-image: url('/static/images/background-mobile.jpg');
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.063), rgb(148, 255, 109), rgba(255, 255, 255, 0.112)), url('/static/images/background-mobile.jpg');
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
         /* box-shadow: inset 0 0 0 1300px rgb(255, 255, 255, 0.7); */
         /* border: 15px dashed rgb(0, 102, 189, 0.5); */
-        margin-top: 50px;
-        margin-left: auto;
+        /* margin-top: 50px; */
+        /* margin-left: auto;
         margin-right: auto;
-        width: auto;
+        width: auto; */
     
     }
 
@@ -1064,12 +1070,13 @@ span {
     
     .locations-nav-container {
         margin-top: 5%;
+        display: inline-block;
     }
     
     .locations-nav-home {
         background-color: #404040;
         height: 75px;
-        width: 65%;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -1088,5 +1095,18 @@ span {
         margin-top: 5%;
         font-size: xx-large;
         font-variant: small-caps;
+    }
+
+    .item-container {
+        display: flex;
+        flex-direction: column;
+    /* justify-content: space-between; */
+    }
+
+    .location_table {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2%;
     }
 }

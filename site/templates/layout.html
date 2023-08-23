@@ -6,7 +6,6 @@
     <title>ProTrack</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
-    <h1 id="layout_headline">{{headline}}</h1>
 </head>
 <body>
     <div class="col-md-2">
@@ -55,7 +54,7 @@
             </div>
         </nav>
     </div>
-      
+    <h1 id="layout_headline">{{headline}}</h1>
     
     <div class="col-md-8">
         {% block body %}
