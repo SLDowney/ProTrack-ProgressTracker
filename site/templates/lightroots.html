@@ -3,7 +3,7 @@
 {% block body %} 
 
 <div id="counter">
-    <p>Number of Lightroots Found: {{completed_lightroots}}</p>
+    <p>Lightroots Found: {{completed_lightroots}}</p>
 </div>
 
 <div class="content-container">
@@ -34,8 +34,7 @@
                                 <td>{{result[4]}}</td>
                             </tr>
                         <tr>
-                            <td>Status</td>
-                            <td>
+                            <td colspan="3">
                                 <input type="checkbox" class="location_checkbox" id="done_{{ result[0] }}" name="done_root_{{ result[0] }}" value="0" {% if result[1] == 1 %}checked Found{% elif result[1] == 0 %} unchecked Unfound{% endif %}>
                             </td>
                         </tr>

@@ -1060,6 +1060,23 @@ span {
     
     }
 
+    #counter {
+        color: #000000;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        width: 100%;
+        justify-content: center;
+        background-color: #cccccc7d;
+        background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgba(255, 255, 255, 0), rgb(255 255 255 / 20%));
+    }
+
+    label {
+        display: flex;
+        margin-top: 10px;
+    }
+
     .locations-nav {
         background-color: #404040;
         height: 75px;
@@ -1108,5 +1125,45 @@ span {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 2%;
+    }
+
+    .armorForm {
+        width: 50%;
+    }
+
+    .row.armor_set {
+        display: flex;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-bottom: 5%;
+        border: 2px solid rgb(0 0 0 / 0%);
+        align-content: flex-start;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    #armor_collected {
+        width: 75%;
+    }
+
+    .armor_checkbox input[type=checkbox] {
+        width: 70%;
+        height: 24px;
+        margin-top: 5%;
+    }
+
+    .armor_set_head {
+        justify-content: center;
+        padding: 0 0 0 0;
+        margin: 0;
+        background-color: #62ff019c;
+        height: auto;
+        width: 275%;
+    }
+
+    .armor_set_name {
+        margin: 0;
+        /* padding: 0; */
+        font-size: x-large;
     }
 }
