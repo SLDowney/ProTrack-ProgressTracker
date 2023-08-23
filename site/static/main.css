@@ -1178,4 +1178,23 @@ span {
         border-radius: 4px;
         cursor: pointer;
     }
+
+    #shrine-index {
+        position: fixed;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background-color: #99999979;
+    }
+
+    /* Style for individual index links */
+    .shrine-index-link {
+        text-decoration: none;
+        color: #0066bd;
+        cursor: pointer;
+        /* align-items: center; */
+    }
 }

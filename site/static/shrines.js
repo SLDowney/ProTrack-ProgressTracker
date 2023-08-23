@@ -115,3 +115,20 @@ document.getElementById("return-to-top").addEventListener("click", function () {
       behavior: "smooth"
   });
 });
+
+function scrollToLetter(letter) {
+  const section = document.getElementById(`letter-${letter}`);
+  if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+// Add click event listeners to index links
+const indexLinks = document.querySelectorAll('.shrine-index-link');
+indexLinks.forEach(link => {
+  link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const letter = event.target.textContent;
+      scrollToLetter(letter);
+  });
+});
