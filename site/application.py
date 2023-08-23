@@ -1522,7 +1522,7 @@ def enemies():
             enemies = c.execute('SELECT * FROM Enemy').fetchall()
             for enemy in enemies:
                 e_id = enemy[0]
-                e_found = request.form.get(f'e_found_{e_id}')
+                e_found = request.json.get('enemyFound')
                 if e_found is None:
                     e_found = '0'
                 else:
@@ -1540,14 +1540,17 @@ def enemies():
 
     return render_template('enemies.html', headline=headline, percentages=percentages, enemies=enemies, scroll_position=scroll_position)
 
-@app.route('/update-enemy', methods=['POST'])
+@app.route('/update_enemy', methods=['POST'])
 def update_enemy():
-    e_id = request.json.get('enemyId')
-    e_found = request.json.get('enemyFound')
+    e_id = request.json.get('enemy_id')
+    e_found = request.json.get('enemy_done')
+    print("e_id ->", e_id)
+    print("e_found ->", e_found)
 
     # Update the enemy in the database with the new found status
     with closing(conn.cursor()) as c:
         c.execute('UPDATE Enemy SET e_done = ? WHERE e_id = ?', (e_found, e_id))
+        print("Executed update statement for Enemy ID:", e_id)
         conn.commit()
 
     return jsonify(success=True)

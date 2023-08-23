@@ -11,206 +11,206 @@
           {% if data.temple_id == 1 %}
           <div class="singe_temples">
           {% if "Yunobo of Goron City" in finished_mains %}
-          <h3>{{ data.temple_name }}</h3>
-          <div class="progress" data-temple-id="{{ data.temple_id }}">
-            <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage }}%;" aria-valuenow="{{ data.progress_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-              <form name ="form" action="/update_lock_status" class="temple-input">
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Undone
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 1
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 2
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 3
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 4
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="5" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 5 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 5
-                </label>
-                <label class="query-selector-checkbox">
-                    <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
-                    Temple Boss
-                </label>
-              </form>
-              <div class="col-lg-1 progress-bar-img">
-                <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
-              </div>
-          </div>
-              {% endif %}
-            
-              {% elif data.temple_id == 2 %}
-              <div class="singe_temples">
-              {% if "Sidon of the Zora" in finished_mains %}
-              <h3>{{ data.temple_name }}</h3>
-              <div class="progress" data-temple-id="{{ data.temple_id }}">
-                <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage  }}%;" aria-valuenow="{{ data.progress_percentage  }}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-                  <form name ="form" action="/update_lock_status" class="temple-input">
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Undone
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 1
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 2
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 3
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 4
-                    </label>
-                    <label class="query-selector-checkbox">
-                      <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
-                      Temple Boss
-                    </label>
-                  </form>
-                  <div class="col-lg-1 progress-bar-img">
-                    <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
-                </div>
-                  {% endif %}
-                  </div>
-              {% elif data.temple_id == 3 %}
-              <div class="singe_temples">
-              {% if "Tulin of Rito Village" in finished_mains %}
-              <h3>{{ data.temple_name }}</h3>
-          <div class="progress" data-temple-id="{{ data.temple_id }}">
-            <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage }}%;" aria-valuenow="{{ data.progress_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-              <form name ="form" action="/update_lock_status" class="temple-input">
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Undone
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 1
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 2
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 3
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 4
-                </label>
-                <label>
-                  <input type="radio" name="{{ data.temple_name }}_locks" value="5" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 5 %}checked{% endif %} onclick="updateLockStatus(this)">
-                  Lock 5
-                </label>
-                <label class="query-selector-checkbox">
-                    <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
-                    Temple Boss
-                </label>
-              </form>
-              <div class="col-lg-1 progress-bar-img">
-                <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
+            <h3>{{ data.temple_name }}</h3>
+            <div class="progress" data-temple-id="{{ data.temple_id }}">
+              <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage }}%;" aria-valuenow="{{ data.progress_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-              {% endif %}
-              </div>
-              {% elif data.temple_id == 4 %}
-              <div class="singe_temples">
+            <form name ="form" action="/update_lock_status" class="temple-input">
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Undone
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 1
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 2
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 3
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 4
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="5" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 5 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 5
+              </label>
+              <label class="query-selector-checkbox">
+                  <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
+                  Temple Boss
+              </label>
+            </form>
+            <div class="col-lg-1 progress-bar-img">
+              <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
+            </div>
+          
+          {% endif %}
+          </div>
+          {% elif data.temple_id == 2 %}
+          <div class="singe_temples">
+          {% if "Sidon of the Zora" in finished_mains %}
+            <h3>{{ data.temple_name }}</h3>
+            <div class="progress" data-temple-id="{{ data.temple_id }}">
+              <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage  }}%;" aria-valuenow="{{ data.progress_percentage  }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <form name ="form" action="/update_lock_status" class="temple-input">
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Undone
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 1
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 2
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 3
+              </label>
+              <label>
+                <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
+                Lock 4
+              </label>
+              <label class="query-selector-checkbox">
+                <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
+                Temple Boss
+              </label>
+            </form>
+            <div class="col-lg-1 progress-bar-img">
+                  <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
+            </div>
+          {% endif %}
+          </div>
+          {% elif data.temple_id == 3 %}
+          <div class="singe_temples">
+          {% if "Tulin of Rito Village" in finished_mains %}
+          <h3>{{ data.temple_name }}</h3>
+      <div class="progress" data-temple-id="{{ data.temple_id }}">
+        <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage }}%;" aria-valuenow="{{ data.progress_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+          <form name ="form" action="/update_lock_status" class="temple-input">
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
+              Undone
+            </label>
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
+              Lock 1
+            </label>
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
+              Lock 2
+            </label>
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
+              Lock 3
+            </label>
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
+              Lock 4
+            </label>
+            <label>
+              <input type="radio" name="{{ data.temple_name }}_locks" value="5" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 5 %}checked{% endif %} onclick="updateLockStatus(this)">
+              Lock 5
+            </label>
+            <label class="query-selector-checkbox">
+                <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
+                Temple Boss
+            </label>
+          </form>
+          <div class="col-lg-1 progress-bar-img">
+            <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
+        </div>
+          {% endif %}
+          </div>
+          {% elif data.temple_id == 4 %}
+          <div class="singe_temples">
               {% if "Riju of Gerudo Town" in finished_mains %}
               <h3>{{ data.temple_name }}</h3>
               <div class="progress" data-temple-id="{{ data.temple_id }}">
-                <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage  }}%;" aria-valuenow="{{ data.progress_percentage  }}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage  }}%;" aria-valuenow="{{ data.progress_percentage  }}" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
-                  <form name ="form" action="/update_lock_status" class="temple-input">
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Undone
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 1
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 2
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 3
-                    </label>
-                    <label>
-                      <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
-                      Lock 4
-                    </label>
-                    <label class="query-selector-checkbox">
-                      <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
-                      Temple Boss
-                    </label>
-                  </form>
-                  <div class="col-lg-1 progress-bar-img">
-                    <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
-                    {% endif %}
-                  </div>
-                  {% elif data.temple_id == 4 %}
-                  <div class="singe_temples">
-                  {% if "Find the Fifth Sage" in finished_mains %}
-                    <h3>{{ data.temple_name }}</h3>
-                    <div class="progress" data-temple-id="{{ data.temple_id }}">
-                      <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage  }}%;" aria-valuenow="{{ data.progress_percentage  }}" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                        <form name ="form" action="/update_lock_status" class="temple-input">
-                          <label>
-                            <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
-                            Undone
-                          </label>
-                          <label>
-                            <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
-                            Lock 1
-                          </label>
-                          <label>
-                            <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
-                            Lock 2
-                          </label>
-                          <label>
-                            <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
-                            Lock 3
-                          </label>
-                          <label>
-                            <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
-                            Lock 4
-                          </label>
-                          <label class="query-selector-checkbox">
-                            <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
-                            Temple Boss
-                          </label>
-                        </form>
-                        <div class="col-lg-1 progress-bar-img">
-                          <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
-                        </div>
-                  {% endif %}
+              <form name ="form" action="/update_lock_status" class="temple-input">
+                <label>
+                  <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
+                  Undone
+                </label>
+                <label>
+                  <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
+                  Lock 1
+                </label>
+                <label>
+                  <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
+                  Lock 2
+                </label>
+                <label>
+                  <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
+                  Lock 3
+                </label>
+                <label>
+                  <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
+                  Lock 4
+                </label>
+                <label class="query-selector-checkbox">
+                  <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
+                  Temple Boss
+                </label>
+              </form>
+              <div class="col-lg-1 progress-bar-img">
+                <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
                 {% endif %}
+              </div>
+          </div>
+          {% elif data.temple_id == 5 %}
+          <div class="singe_temples">
+              {% if "Find the Fifth Sage" in finished_mains %}
+                <h3>{{ data.temple_name }}</h3>
+                <div class="progress" data-temple-id="{{ data.temple_id }}">
+                  <div class="progress-bar" id="{{ data.temple_id }}" role="progressbar" style="width: {{ data.progress_percentage  }}%;" aria-valuenow="{{ data.progress_percentage  }}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                    <form name ="form" action="/update_lock_status" class="temple-input">
+                      <label>
+                        <input type="radio" name="{{ data.temple_name }}_locks" value="0" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 0 %}checked{% endif %} onclick="updateLockStatus(this)">
+                        Undone
+                      </label>
+                      <label>
+                        <input type="radio" name="{{ data.temple_name }}_locks" value="1" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 1 %}checked{% endif %} onclick="updateLockStatus(this)">
+                        Lock 1
+                      </label>
+                      <label>
+                        <input type="radio" name="{{ data.temple_name }}_locks" value="2" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 2 %}checked{% endif %} onclick="updateLockStatus(this)">
+                        Lock 2
+                      </label>
+                      <label>
+                        <input type="radio" name="{{ data.temple_name }}_locks" value="3" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 3 %}checked{% endif %} onclick="updateLockStatus(this)">
+                        Lock 3
+                      </label>
+                      <label>
+                        <input type="radio" name="{{ data.temple_name }}_locks" value="4" data-temple-id="{{ data.temple_id }}" {% if data.completed_locks == 4 %}checked{% endif %} onclick="updateLockStatus(this)">
+                        Lock 4
+                      </label>
+                      <label class="query-selector-checkbox">
+                        <input type="checkbox" id="temple-boss-checkmark" class="temple-boss-checkmark" name="{{ data.temple_name }}_boss" value="{{ data.temple_boss }}" data-temple-id="{{ data.temple_id }}" {% if data.temple_boss == 1 %} checked {% endif %} onclick="updateTempleBossStatus(this)">
+                        Temple Boss
+                      </label>
+                    </form>
+                    <div class="col-lg-1 progress-bar-img">
+                      <img src="/static/images/{{ data.temple_name|lower|replace(' ', '_') }}.png" alt="{{ data.temple_name }}">
+                    </div>
+              {% endif %}
+          </div>
+          {% endif %}
         </div>
-
-   
-
-  {% endfor %}
+    {% endfor %}
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

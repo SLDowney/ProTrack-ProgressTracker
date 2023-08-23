@@ -1,34 +1,45 @@
+function infoToggle(radio) {
+  const shrineId = radio.name.replace('done_', ''); // Extract shrine ID;
+  console.log("shrine ID ->", shrineId)
+  var shrineIDElements = document.querySelectorAll(".shrine_" + shrineId);
+  console.log("shrine Elements ->", shrineIDElements)
+
+  shrineIDElements.forEach(function (element) {
+    if (radio.value == "2") {
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
+    }
+    if (radio.value == "1") {
+      console.log("ELEMENT ->", element)
+
+      if (element.id == "shrine_location" || element.id == "shrine_coord" || element.id == "shrine_region") {
+        element.classList.remove("hidden_display");
+      } else {
+          element.classList.add("hidden_display"); // Hide info
+      }
+
+    }
+  });
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
 
-  var radioes = document.querySelectorAll('.shrine_radio');
-
-  radioes.forEach(function (radio) {
-    // Check the initial state of the radio and apply the class accordingly
-    var shrineId = radio.name.replace('done_', ''); // Extract point ID
-    var shrineIDElements = document.querySelectorAll(".shrine_" + shrineId);
-
-    shrineIDElements.forEach(function (element) {
-      if (radio.value == "2") {
-        console.log("Radio Value ->", radio.value)
-        console.log("Element ->", element)
-        element.classList.remove("hidden_display"); // Show info
-      } 
-    });
-  });
-
-  // Add the event listener to the radio buttons to update the counter and Rewards column
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {
       const shrineId = radio.name.replace('done_', ''); // Extract shrine ID;
       console.log("shrineID ->", shrineId)
       updateshrine(radio, shrineId)
-      // itemToggle(radio);
+      infoToggle(radio);
     });
-    // itemToggle(radio);
+    if (radio.checked) {
+      infoToggle(radio);
+    }
+    //infoToggle(radio);
   });
+  
 });
-
 
 // Function to handle form submission and filtering by region
 function filterByRegion() {
@@ -88,17 +99,3 @@ function updateshrine(radio, shrineId) {
     });
 }
 
-function infoToggle(radio) {
-  var shrineId = radio.name.replace('done_', ''); // Extract point ID
-  console.log("shrine ID ->", shrineId)
-  var shrineIDElements = document.querySelectorAll(".shrine_" + shrineId);
-  console.log("shrine Elements ->", shrineIDElements)
-
-  shrineIDElements.forEach(function (element) {
-    if (radio.value == "2") {
-      element.classList.remove("hidden_display"); // Show info
-    } else {
-      element.classList.add("hidden_display"); // Hide info
-    }
-  });
-}

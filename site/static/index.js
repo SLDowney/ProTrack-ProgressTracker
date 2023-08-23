@@ -17,17 +17,21 @@ document.addEventListener("DOMContentLoaded", function () {
           progressBars[templeId].style.backgroundColor = "green";
         }
   });
-  console.log("form ->", document.getElementsByName("form"))
+  console.log("form ->", document.getElementsByClassName("temple-input"))
   // Add event listener to the entire form to handle checkbox clicks
-  document.querySelector("form").addEventListener("change", (event) => {
-    const target = event.target;
-    if (target.classList.contains("temple-boss-checkbox")) {
-      updateTempleBossStatus(target);
+  Array.from(document.getElementsByClassName("temple-input")).forEach(function (event) {
+    event.addEventListener('change', function () {
+      const target = event.target;
+      console.log("EVENT ?! ->", event)
+    if (event.classList.contains("temple-boss-checkbox")) {
+      updateTempleBossStatus(event);
     } else if (
-      target.classList.contains("_locks")
+      event.classList.contains("_locks")
     ) {
-      updateLockStatus(target);
+      updateLockStatus(event);
     }
+    });
+  
   });
   const initialLocksChecked = document.querySelectorAll("input[name$='_locks']:checked");
   
