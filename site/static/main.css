@@ -1166,4 +1166,16 @@ span {
         /* padding: 0; */
         font-size: x-large;
     }
+
+    #return-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 }

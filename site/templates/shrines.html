@@ -79,16 +79,16 @@
                         {% else %}
                         {% endif %}
                         <tr>
-                            <td colspan="3">
+                            <td colspan="2">
                                 <input type="hidden" id="scroll_position" name="scroll_position" value="{{ scroll_position }}">
                                 <label class="shrine_radio_labels" for="undone_{{ result[0] }}"><input class="shrine_radio" type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}>Unfound</label>
                                 <label class="shrine_radio_labels" for="tapped_{{ result[0] }}"><input class="shrine_radio" type="radio" id="tapped_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}>Tapped</label>
                                 <label class="shrine_radio_labels" for="done_{{ result[0] }}"><input class="shrine_radio" type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}>Done</label>
                             </td>
+                            
                         </tr>
-                    
-
-                </tbody>
+                        <a href="#top" id="return-to-top">Return to Top</a>
+                    </tbody>
             </table>
         </div>
         {% endfor %}

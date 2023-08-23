@@ -99,3 +99,19 @@ function updateshrine(radio, shrineId) {
     });
 }
 
+window.addEventListener("scroll", function () {
+  var button = document.getElementById("return-to-top");
+  if (window.scrollY > 300) {
+      button.style.display = "block";
+  } else {
+      button.style.display = "none";
+  }
+});
+
+// Smooth scrolling to the top when the button is clicked
+document.getElementById("return-to-top").addEventListener("click", function () {
+  window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+  });
+});
