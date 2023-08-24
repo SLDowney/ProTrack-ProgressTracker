@@ -1,15 +1,59 @@
+function infoToggle(radio) {
+  const sideId = radio.name.replace('done_', ''); // Extract side ID;
+  //console.log("side ID ->", sideId)
+  var sideIdElements = document.querySelectorAll(".subquest_" + sideId);
+  //console.log("sub Elements ->", sideIdElements)
+
+  sideIdElements.forEach(function (element) {
+    if (radio.value == "1") {
+      //console.log("ELEMENT 2 ->", element)
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
+    }
+  });
+}
+function secondToggle(radio) {
+  const secondId = radio.name.replace('secondary_', ''); // Extract side ID;
+  console.log("Second ID ->", secondId)
+  console.log("radio value ->", radio.value)
+  var secondIdElements = document.querySelectorAll(".tiertwo_" + secondId);
+  console.log("Query Selector ->", ".tiertwo_" + secondId)
+  console.log("second Elements ->", secondIdElements)
+
+  secondIdElements.forEach(function (element) {
+    if (radio.value == "1") {
+      console.log("ELEMENT 2 ->", element)
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
+    }
+  });
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
 
   // Add the event listener to the radio buttons to update the counter and Rewards column
-  Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
+  Array.from(document.getElementsByClassName('main_radio')).forEach(function (radio) {
     radio.addEventListener('change', function () {
       const sideId = radio.name.replace('done_', ''); // Extract side ID;
       console.log("sideID ->", sideId)
       updateside(radio, sideId)
-      // itemToggle(radio);
+      infoToggle(radio)
     });
-    // itemToggle(radio);
+    infoToggle(radio)
+    secondToggle(radio);
+  });
+  Array.from(document.querySelectorAll('.two_radio')).forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      const subId = radio.name.replace('secondary_', ''); // Extract sub ID;
+      const sideName = radio.className.replace('quest_', ''); //Extract side ID;
+      console.log("subId ->", subId)
+      updatesub(radio, subId, sideName)
+      secondToggle(radio);
+    });
+    secondToggle(radio);
   });
 });
 
@@ -55,6 +99,35 @@ function updateside(radio, sideId) {
   })
   
   fetch('/update_sidequests', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Handle the response if needed
+      console.log('Response from server:', data);
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function updatesub(radio, subId, sideName) {
+  console.log("--------UPDATE side ---------")
+  const subFound = radio.value;
+
+  const data = {
+    sub_id: parseInt(subId),
+    sub_done: parseInt(subFound),
+    side_name: sideName
+  };
+  console.log("DATA ->", data)
+  
+  fetch('/update_subquests', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -20,14 +20,13 @@ window.addEventListener('DOMContentLoaded', function () {
     checkbox.addEventListener('click', function () {
 
         // Update Rewards cell when checkbox is clicked
-        const towerId = checkbox.id.replace('tower_done_', ''); // Extract tower ID
+        const towerId = checkbox.id.replace('done_', ''); // Extract tower ID
       
         updatetower(checkbox, towerId); // Pass towerReward to updatetower function
         infoToggle(checkbox)
     });
-});
- 
   });
+});
 
 var towerTable = document.getElementById('tower-table');
 
@@ -41,7 +40,7 @@ function updatetower(checkbox, towerId) {
   };
   console.log("DATA ->", data)
 
-  fetch('/update-tower', {
+  fetch('/update_tower', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

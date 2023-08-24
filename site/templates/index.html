@@ -213,6 +213,26 @@
     {% endfor %}
   </div>
 </div>
+
+{% if fabrics[0] != None %}
+<div class="fabrics-table location_table">
+  <h2>Paraglider Fabrics</h2>
+  <table>
+    <tr>
+      <th colspan="1">Image</th>
+      <th colspan="1">Name</th>
+      <th colspan="3">Collection</th>
+    </tr>
+    {% for fabric in fabrics %}
+    <tr>
+      <td>Image for fabric {{fabric[0]}}</td>
+      <td>{{fabric[2]}}</td>
+      <td>{{fabric[3]}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock %}

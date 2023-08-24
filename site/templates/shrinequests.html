@@ -23,7 +23,7 @@
             {% elif result[1] == 1 %}
             <tr>
                 <td>Name</td>
-                <td>{{result[2]}}</td>
+                <td id="{{ result[2]|replace(' ', '') }}">{{result[2]}}</td>
             </tr>
             <tr>
                 <td>Contact</td>
@@ -36,7 +36,7 @@
             {% elif result[1] == 2 %}
             <tr>
                 <td>Name</td>
-                <td>{{result[2]}}</td>
+                <td id="{{ result[2]|replace(' ', '') }}">{{result[2]}}</td>
             </tr>
             <tr>
                 <td>Contact</td>
@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <td>Shrine</td>
-                <td>{{result[3]}}</td>
+                <td><a href="shrines#{{result[3]}}">{{result[3]}}</a></td>
             </tr>
             {% else %}
             {% endif %}

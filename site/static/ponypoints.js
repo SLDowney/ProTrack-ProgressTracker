@@ -46,6 +46,18 @@ function updatepoint(checkbox, pointId, pointReward) {
   console.log("DATA ->", data)
   console.log("REWARDS ->", data.point_reward)
 
+  fetch('/ponypoints_update', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      point_id: parseInt(pointId),
+      point_done: pointFound,
+      point_reward: pointReward  // Pass the variable to the server
+    })
+  })
+
   fetch('/update-point', {
     method: 'POST',
     headers: {

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+    <div id="gems-counter">
+        <p>Percentage of gems Found: <span id="percentage-found">0</span>%</p>
+    </div>
+    
+    <table id="gems-table">
+        <thead>
+            <tr>
+                <th id="table-head-gems">Done</th>
+                <th>Gathered</th>
+                <th>Total</th>
+                <th>Rewards</th>
+            </tr>
+        </thead>
+        <tbody id="gems-body">
+            {% for gem in gems %}
+            <tr>
+                <td>
+                    <input type="checkbox" id="gems_done_{{ gem[0] }}" name="gems_done_{{ gem[0] }}" value="{{gem[1]}}" {% if gem[1] == 1 %}checked{% endif %} onclick="updategem(this, '{{ gem[0] }}'); rewardToggle(this, '{{ gem[0] }}')">
+                </td>
+                <td>{{ gem[2] }}</td>
+                <td>{{ gem[3] }}</td>
+                <td id="gem_rewards_{{ gem[0] }}" data-rewards="{{ gem[4] }}">{{ gem[4] }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='bgems.js') }}"></script>
+{% endblock %}

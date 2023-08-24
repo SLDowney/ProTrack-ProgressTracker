@@ -11,14 +11,13 @@
     <form action="{{ url_for('tower') }}" method="POST" enctype="multipart/form-data">
         {% for tower in towers %}
         <div class="item-container tower_container">
-            
                 <div class="col-md-8">
                     <table class="location_table" id="tower-table">
                         <tr>
                             <th id="tower_th_1">Info</th>
                             <th id="tower_th_2">tower Info</th>
                         </tr>
-                        <tr>
+                        <tr> 
                             <td>Name</td>
                             <td>{{tower[2]}}</td>
                         </tr>
@@ -38,9 +37,9 @@
                         <tr>
                             <td colspan="2">
                                 {% if tower[1] == 0 %}
-                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="0" unchecked onclick="infoToggle(this)">
+                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="0" unchecked onclick="infoToggle(this), updatetower(this, '{{tower[0]}}')">
                                 {% elif tower[1] == 1 %}
-                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="1" checked onclick="infoToggle(this)">
+                                    <input type="checkbox" class="tower_checkbox" id="done_{{ tower[0] }}" name="done_tower_{{ tower[0] }}" value="1" checked onclick="infoToggle(this), updatetower(this, '{{tower[0]}}')">
                                 {% else %}
                                 {% endif %}
                             </td>

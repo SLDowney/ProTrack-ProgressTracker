@@ -31,6 +31,7 @@
 </form>
 <form id = "form" action="{{ url_for('sidequests') }}" method="POST" enctype="multipart/form-data">
 {% for result in results %}
+{% if result[11] == 1 %}
     <div class="row">
         <table  style="width: 100%;">
             <colgroup>
@@ -39,7 +40,7 @@
              </colgroup>
             <tbody>
             <tr>
-                <th>Stat</th>
+                <th id="th_1">Stat</th>
                 <th>Value</th>
             </tr>
             <tr>
@@ -113,22 +114,50 @@
             <tr>
                 <td>Status</td>
                 <td>
-                    <input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="sidequ_radio_labels" for="undone_{{ result[0] }}">Unfound</label>
-                    <input type="radio" id="started_{{ result[0] }}" name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="sidequ_radio_labels" for="started_{{ result[0] }}">Started</label>
-                    <input type="radio" id="done_{{ result[0] }}" name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="sidequ_radio_labels" for="done_{{ result[0] }}">Done</label>
+                    <input type="radio" class="main_radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="sidequ_radio_labels" for="undone_{{ result[0] }}">Unfound</label>
+                    <input type="radio" class="main_radio" id="started_{{ result[0] }}" name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="sidequ_radio_labels" for="started_{{ result[0] }}">Started</label>
+                    <input type="radio" class="main_radio" id="done_{{ result[0] }}" name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="sidequ_radio_labels" for="done_{{ result[0] }}">Done</label>
                 </td>
             </tr>
+            {% for sub in subqus %}
+                {% if sub[2] == result[0] %}
+                <table class="subquests">
+                    <tr id="subquests" class="subquest_{{sub[2]}} hidden_display">
+                        <th id="sub_1" class="main_secondary">Info</th>
+                        <th id="sub_2" class="main_secondary">Sub Quest</th>
+                    </tr>
+                    <tr id="subquests" class="subquest_{{sub[2]}} hidden_display">
+                        <td><input class="main_checkbox main_check_{{sub[0]}}" id="quest_{{sub[3]}}" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[0] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
+                        <td>{{sub[3]}}</td>
+                    </tr>
+                </table>
+                {% endif %}
+            {% endfor %}
+            <table class="subquests">
+            {% for two in tier_two %}
+                {% if two[13] == result[3] %}
+                    <tr id="secondquests" class="tiertwo_{{result[0]}} hidden_display">
+                        <th id="sub_1" class="main_secondary">Info</th>
+                        <th id="sub_2" class="main_secondary">Sub Quest</th>
+                    </tr>
+                    <tr id="secondquests" class="tiertwo_{{result[0]}} hidden_display">
+                        <td>{{two[3]}}</td>
+                    </tr>
+                    <tr id="secondquests" class="tiertwo_{{result[0]}} hidden_display">
+                        <td>
+                            <input type="radio" class="quest_{{two[3]}} two_radio" id="undone_{{ two[0] }}" name="secondary_{{ two[0] }}" value="0" {% if two[1] == 0 %}checked{% endif %}><label class="sidequ_radio_labels" for="undone_{{ two[0] }}">Unfound</label>
+                            <input type="radio" class="quest_{{two[3]}} two_radio" id="started_{{ two[0] }}" name="secondary_{{ two[0] }}" value="1" {% if two[1] == 1 %}checked{% endif %}><label class="sidequ_radio_labels" for="started_{{ two[0] }}">Started</label>
+                            <input type="radio" class="quest_{{two[3]}} two_radio" id="done_{{ two[0] }}" name="secondary_{{ two[0] }}" value="2" {% if two[1] == 2 %}checked{% endif %}><label class="sidequ_radio_labels" for="done_{{ two[0] }}">Done</label>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
         </tbody>
             </table>
-        <!-- <p>Name: {{result["char_name"]}}</p>
-        <p>Type: {{result["char_type"]}}</p>
-        <p>Health: {{result["char_health"]}}</p>
-        <p>Attack: {{result["char_attack"]}}</p>
-        <p>Defense: {{result["char_Defense"]}}</p>
-        <p>Magic: {{result["char_magic"]}}</p> -->
-        <br>
     </div>
 
+{% endif %}
 {% endfor %}
 </form>
 

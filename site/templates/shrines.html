@@ -1,29 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-
+<div id="shrines-counter">
+    <p>Completed: {{completed_shrines}}</p>
+    <p>Tapped {{tapped_shrines}}</p>
+    <p>Undiscovered: {{undone_shrines}}</p>
+</div>
     <!-- Add a table to display the completion status for each region -->
-    <table style="width: 100%;">
-        <tr>
-            <th id="Shrine_percent_table">Region</th>
-            <th id="Shrine_percent_table">Completed</th>
-            <th id="Shrine_percent_table">Tapped</th>
-            <th id="Shrine_percent_table">Unfound</th>
-        </tr>
-        <!--  -->
-
-    </table>
-
-    <form id="regionFilterForm" onsubmit="return filterByRegion()">
-        <label for="regionFilter">Filter by Region:</label>
-        <select id="regionFilter" name="regionFilter">
-            <option value="">All Regions</option>
-            {% for region in regions %}
-                <option value="{{ region }}">{{ region }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Filter">
-    </form>
+    
 <!-- Index or navigation section -->
 <div id="shrine-index">
     <a href="#letter-a" class="shrine-index-link">A</a>
@@ -60,12 +44,12 @@
                 
                     <tbody>
                         <tr>
-                            <th>Info</th>
+                            <th id="shrine_th_1">Info</th>
                             <th>Shrine Info</th>
                         </tr>
                         <tr>
                             <td>Shrine</td>
-                            <td>{{result[2]}}</td>
+                            <td id="{{result[2]}}">{{result[2]}}</td>
                         </tr>
                         <tr id="shrine_name" class="shrine_{{result[0]}} hidden_display">
                             <td>Name</td>
@@ -97,7 +81,7 @@
                         {% if result[7] != None %}
                         <tr id="shrine_side" class="shrine_{{result[0]}} hidden_display">
                             <td>Side Quest</td>
-                            <td>{{result[7]}}</td>
+                            <td><a href="shrinequests#{{ result[7]|replace(' ', '') }}">{{result[7]}}</a></td>
                         </tr>
                         {% else %}
                         {% endif %}
