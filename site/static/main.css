@@ -1276,7 +1276,7 @@ span {
         bottom: 20px; /* Adjust the distance from the bottom as needed */
         left: 20px; /* Adjust the distance from the right as needed */
         z-index: 1; /* Ensure the button appears above other content */
-        background-color: #007bff00; 
+        background-color: #8b8b8b75; 
         color: #002397; /* Button text color */
         padding: 10px 20px;
         border: none;
@@ -1287,5 +1287,54 @@ span {
         background-color: #0057b300; /* Change color on hover */
     }
 
-     
+    .fabrics-table {
+        display: none; /* Initially hide the container */
+        overflow: hidden;
+        transition: height 0.5s ease-in-out;
+    }
+    
+    #fabrics-table {
+        width: 90%;
+        /* Your table styles go here */
+    }
+
+    #fabricToggle {
+        /* position: fixed; */
+        /* bottom: 20px;  Adjust the distance from the bottom as needed */
+        /* left: 20px;  Adjust the distance from the right as needed */
+        /* z-index: 1;  Ensure the button appears above other content */
+        width: 90%;
+        /* margin-top: 5%;
+        margin-bottom: 5%; */
+        margin-left: 5%;
+        background-color: #303030; 
+        color: #ffffff; /* Button text color */
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* #fabricToggle:hover {
+        background-color: #0057b300; 
+    } */
+
+     #paraglider-h2 {
+        display: none;
+     }
+
+     #templeToggle {
+        /* position: fixed; */
+        /* bottom: 20px;  Adjust the distance from the bottom as needed */
+        /* left: 20px;  Adjust the distance from the right as needed */
+        /* z-index: 1;  Ensure the button appears above other content */
+        width: 98%;
+        /* margin-top: 5%;
+        margin-bottom: 5%; */
+        margin-left: 1%;
+        background-color: #303030; 
+        color: #ffffff; /* Button text color */
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
 }

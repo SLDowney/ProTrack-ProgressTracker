@@ -209,3 +209,32 @@ function updateTempleBossStatus(checkbox) {
     console.error("Error updating boss status:", error);
   });
 }
+
+$(document).ready(function() {
+  $("#fabricToggle").click(function() {
+      $(".fabrics-table").slideToggle();
+      $(".index_temples").slideToggle();
+  });
+
+  // Check if the screen width is less than a certain threshold (e.g., 600px)
+  function checkWindowSize() {
+      if ($(window).width() <= 600) {
+          $(".fabrics-table").hide();
+      } else {
+          $(".fabrics-table").show();
+      }
+      if ($(window).width() <= 600) {
+        $(".index_temples").hide();
+    } else {
+        $(".index_temples").show();
+    }
+  }
+
+  // Initially check the window size and adjust the table visibility
+  checkWindowSize();
+
+  // Listen for window resize events
+  $(window).resize(function() {
+      checkWindowSize();
+  });
+});

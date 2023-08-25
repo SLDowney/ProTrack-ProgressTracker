@@ -4,6 +4,7 @@
 
 {% set status = 1 %}
 
+<button id="templeToggle">Temple Progress</button>
 <div class="row progress_row">
   <div class="index_temples">
     {% for data in progress_data %}
@@ -215,8 +216,9 @@
 </div>
 
 {% if fabrics[0] != None %}
+<button id="fabricToggle">Paraglider Fabrics</button>
 <div class="fabrics-table location_table">
-  <h2>Paraglider Fabrics</h2>
+  <h2 id="paraglider-h2">Paraglider Fabrics</h2>
   <table id="fabrics-table">
     <tr>
       <th colspan="1">Paraglider</th>
