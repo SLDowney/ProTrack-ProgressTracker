@@ -10,7 +10,7 @@
 <body>
     <div class="col-md-2">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#"><img src="static//images/logo.png" alt="totk logo"></a>
+            <a class="navbar-brand" href="/"><img src="static//images/logo.png" alt="totk logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">&#x2193;</span>
@@ -70,12 +70,17 @@
                 <th>Table</th>
                 <th>Completion Percentage</th>
             </tr>
-            {% for key, value in percentages.items() %}
-            <tr>
-                <td>{{ key | format_percentage_key }}</td>
-                <td>{{ "%.2f" % value }}%</td>
-            </tr>
+            {% for result, value in percentages | dictsort %}
+                {% set formatted_key, alt = result | format_percentage_key %}
+
+                <tr>
+                    <td><a href="{{ alt }}">{{ formatted_key }}</a></td>
+                    <td>{{ "%.2f" % value }}%</td>
+                </tr>
             {% endfor %}
+
+
+
         </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

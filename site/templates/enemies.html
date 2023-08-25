@@ -11,7 +11,6 @@
                 <th><button id="sort-by-coord-btn" onclick="sortenemies('enemy[2]')">Coordinates</button></th>
                 <th>Location</th>
                 <th>Region</th>
-                <th>Map</th>
             </tr>
         </thead>
         <tbody id="enemies-body">
@@ -25,7 +24,6 @@
                 <td class="e_td">{{ enemy[2] }}</td>
                 <td class="e_td">{{ enemy['e_location'] }}</td>
                 <td class="e_td">{{ enemy['e_region'] }}</td>
-                <td class="e_td">{{ enemy['e_map'] }}</td>
             </tr>
             {% endfor %}
         </tbody>

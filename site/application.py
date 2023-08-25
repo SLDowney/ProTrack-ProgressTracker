@@ -139,13 +139,13 @@ def get_percentages():
         # Calculate the percentage completion for the additional tables
         percentages = {
             "percentage_chasms": calculate_completion_percentage(completed_chasms, total_chasms),
-            "percentage_great_fairy_fountains": calculate_completion_percentage(completed_great_fairy_fountains, total_great_fairy_fountains),
+            "percentage_fairy_fountains": calculate_completion_percentage(completed_great_fairy_fountains, total_great_fairy_fountains),
             "percentage_depths_mines": calculate_completion_percentage(completed_depths_mines, total_depths_mines),
             "percentage_wells": calculate_completion_percentage(completed_wells, total_wells),
             "percentage_locations": calculate_completion_percentage(completed_locations, total_locations),
             "percentage_shrines": calculate_completion_percentage(completed_shrines, total_shrines),
             "percentage_addison": calculate_completion_percentage(completed_addison, total_addison),
-            "percentage_side_adventures": calculate_completion_percentage(completed_adventure, total_adventure),
+            "percentage_adventures": calculate_completion_percentage(completed_adventure, total_adventure),
             "percentage_caves": calculate_completion_percentage(completed_caves, total_caves),
             "percentage_compendium": calculate_completion_percentage(completed_compendium, total_compendium),
             "percentage_koroks": calculate_completion_percentage(completed_koroks, total_koroks),
@@ -537,13 +537,44 @@ def fetch_temple_progress():
 @app.template_filter('format_percentage_key')
 def format_percentage_key(key):
     # Replace underscores with spaces
-    formatted_key = key.replace("percentage_", "").capitalize()
-    formatted_key = formatted_key.replace("_", " ")
+    if "percentage_fairy_fountains" in key or "percentage_depths_mines" in key or "percentage_wells" in key or "percentage_locations" in key:
+        formatted_key = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key.replace("_", " ")
+        alt = key.replace("percentage_", "location-")
+        alt = alt[:-1]
+    elif "percentage_chasms" in key:
+        formatted_key = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key.replace("_", " ")
+        alt = key.replace("percentage_", "location-")
+        alt = alt[:-1]
+    elif key == "percentage_adventures":
+        formatted_key = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key.replace("_", " ")
+        alt = "adventures"
+    elif key == "percentage_main_quests":
+        formatted_key = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key.replace("_", " ")
+        alt = "mainqu"
+    elif key == "percentage_old_maps":
+        formatted_key = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key.replace("_", " ")
+        alt = "oldmaps"
+    elif key == "percentage_towers":
+        formatted_key = key.replace("percentage_", "").capitalize()
+        alt = "tower"
+    elif key == "percentage_dispensers":
+        formatted_key = key.replace("percentage_", "").capitalize()
+        alt = "location-device_dispenser"
 
+    else:
+        formatted_key1 = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key1.replace("_", " ")
+        alt = formatted_key1
     # Capitalize each word
     formatted_key = formatted_key.title()
+    alt = alt.lower()
 
-    return formatted_key
+    return formatted_key, alt
 
 @app.route("/")
 def index():
@@ -582,6 +613,12 @@ def index():
 
     with closing(conn.cursor()) as c:
         fabrics = c.execute("SELECT * FROM fabrics WHERE f_done = 1").fetchall()
+        #for fabric in fabrics:
+            # fabric[5] = fabric[2].replace("--", "}")
+            # fabric[5] = fabric[5].replace("-", " ").title()
+            # fabric[5] = fabric[5].replace("}", "-")
+            # fabric[5] = fabric[5] + ".jpg"
+            # print("Fabric image ->", fabric[5])
         
 
     return render_template("index.html", finished_mains=finished_mains, fabrics=fabrics, headline=headline, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
@@ -1367,8 +1404,12 @@ def koroks():
     if scroll_position is not None:
         scroll_position = int(scroll_position) 
     with closing(conn.cursor()) as c:
-        c.execute("SELECT COUNT(*) FROM allkoroks WHERE korok_done = 1")
-        completed_koroks = c.fetchone()[0]
+        c.execute("SELECT COUNT(*) FROM allkoroks WHERE korok_done = 1 AND korok_count = 1")
+        single_koroks = c.fetchone()[0]
+        c.execute("SELECT COUNT(*) FROM allkoroks WHERE korok_done = 1 AND korok_count = 2")
+        friends_koroks = c.fetchone()[0]
+
+        completed_koroks = single_koroks + (friends_koroks * 2)
     
     if request.method == 'POST':
         with closing(conn.cursor()) as c:

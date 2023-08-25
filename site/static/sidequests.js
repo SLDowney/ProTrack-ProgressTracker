@@ -5,7 +5,15 @@ function infoToggle(radio) {
   //console.log("sub Elements ->", sideIdElements)
 
   sideIdElements.forEach(function (element) {
-    if (radio.value == "1") {
+    if (sideId == 259) {
+      if (radio.value == "2") {
+        //console.log("ELEMENT 2 ->", element)
+        element.classList.remove("hidden_display"); // Show info
+      } else {
+        element.classList.add("hidden_display"); // Hide info
+      }
+    }
+    else if (radio.value == "1") {
       //console.log("ELEMENT 2 ->", element)
       element.classList.remove("hidden_display"); // Show info
     } else {

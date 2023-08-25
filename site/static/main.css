@@ -877,10 +877,10 @@ span {
     background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgba(255, 255, 255, 0), rgb(255 255 255 / 20%));
 }
 
-.subquests {
+/* .subquests {
     width: 75%;
     margin-left: 13%;
-}
+} */
 #shrine_th_1 {
     width: 15%;
 }
@@ -891,6 +891,19 @@ span {
 
 #sub_1 {
     width: 20%;
+}
+
+.percentage_table td a{
+    padding: 8px;
+    color:#000000;
+}
+
+#fabric_name {
+    font-variant: small-caps;
+}
+
+.fabrics-table td {
+    border: 0px rgba(0, 0, 0, 0);
 }
 
 /* For larger screens */
@@ -947,6 +960,11 @@ span {
     .percentage_table th,
     .percentage_table td {
         padding: 8px;
+    }
+
+    .percentage_table td {
+        padding: 8px;
+        color:#000000;
     }
 
     #percentage_table {

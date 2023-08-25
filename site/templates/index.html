@@ -219,14 +219,12 @@
   <h2>Paraglider Fabrics</h2>
   <table>
     <tr>
-      <th colspan="1">Image</th>
       <th colspan="1">Name</th>
-      <th colspan="3">Collection</th>
+      <th colspan="2">Collection</th>
     </tr>
     {% for fabric in fabrics %}
     <tr>
-      <td>Image for fabric {{fabric[0]}}</td>
-      <td>{{fabric[2]}}</td>
+      <td colspan="2"><p id="fabric_name">{{fabric[2]|replace(' Fabric', '')}}</p><img src="static//images//fabrics/{{fabric[5]}}" alt="{{fabric[5]}}"></td>
       <td>{{fabric[3]}}</td>
     </tr>
     {% endfor %}
