@@ -1259,5 +1259,33 @@ span {
     #fabrics-table, tr {
         margin-bottom: 12px;
     }
+
+    .percentage {
+        display: none; /* Initially hide the container */
+        overflow: hidden;
+        transition: height 0.5s ease-in-out;
+    }
+    
+    #percentage_table {
+        width: 100%;
+        /* Your table styles go here */
+    }
+
+    #toggleButton {
+        position: fixed;
+        bottom: 20px; /* Adjust the distance from the bottom as needed */
+        left: 20px; /* Adjust the distance from the right as needed */
+        z-index: 1; /* Ensure the button appears above other content */
+        background-color: #007bff00; 
+        color: #002397; /* Button text color */
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #toggleButton:hover {
+        background-color: #0057b300; /* Change color on hover */
+    }
+
      
 }
