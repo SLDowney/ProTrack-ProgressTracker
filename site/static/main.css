@@ -1245,19 +1245,18 @@ span {
         /* align-items: center; */
     }
 
-    #fabrics-table {
-        margin-left: 2%;
-        padding-right: 2%;
-    }
-
     #fabrics-table, th, td {
-        width: 100%;
         display: block;
         text-align: center;
     }
     
     #fabrics-table, tr {
         margin-bottom: 12px;
+    }
+
+    #fabrics-table {
+        width: 90%;
+        margin-left: 5%;
     }
 
     .percentage {
@@ -1291,11 +1290,6 @@ span {
         display: none; /* Initially hide the container */
         overflow: hidden;
         transition: height 0.5s ease-in-out;
-    }
-    
-    #fabrics-table {
-        width: 90%;
-        /* Your table styles go here */
     }
 
     #fabricToggle {
