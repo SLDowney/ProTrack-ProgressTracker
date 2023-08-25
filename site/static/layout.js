@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#toggleButton").click(function() {
+    $("#percentToggle").click(function() {
         $(".percentage").slideToggle();
     });
 

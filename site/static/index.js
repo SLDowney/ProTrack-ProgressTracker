@@ -213,8 +213,13 @@ function updateTempleBossStatus(checkbox) {
 $(document).ready(function() {
   $("#fabricToggle").click(function() {
       $(".fabrics-table").slideToggle();
-      $(".index_temples").slideToggle();
+      $(".progress_row").slideToggle();
   });
+  $("#percentToggle").click(function() {
+    $(".progress_row").slideToggle();
+});
+
+  
 
   // Check if the screen width is less than a certain threshold (e.g., 600px)
   function checkWindowSize() {
@@ -224,9 +229,9 @@ $(document).ready(function() {
           $(".fabrics-table").show();
       }
       if ($(window).width() <= 600) {
-        $(".index_temples").hide();
+        $(".progress_row").hide();
     } else {
-        $(".index_temples").show();
+        $(".progress_row").show();
     }
   }
 

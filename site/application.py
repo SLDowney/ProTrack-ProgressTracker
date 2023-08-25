@@ -579,7 +579,6 @@ def format_percentage_key(key):
 @app.route("/")
 def index():
     print("In Index")
-    headline = "Current Percentage Completed"
     percentages = get_percentages()
     
     # Fetch the temple progress data from the database
@@ -621,7 +620,7 @@ def index():
             # print("Fabric image ->", fabric[5])
         
 
-    return render_template("index.html", finished_mains=finished_mains, fabrics=fabrics, headline=headline, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
+    return render_template("index.html", finished_mains=finished_mains, fabrics=fabrics, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
 
 @app.route('/update_lock_status', methods=['POST'])
 def update_lock_status():

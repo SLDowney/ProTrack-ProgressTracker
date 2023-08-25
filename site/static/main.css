@@ -993,6 +993,10 @@ span {
       width: 200px;
       height: 25vh; /* Adjust this value to control the vertical centering */
     }
+
+    #toggleButton, #fabricToggle, #templeToggle {
+        display: none;
+    }
   }
 
 /* Customize the position of the navbar items on mobile */
@@ -1055,6 +1059,10 @@ span {
     #percentage_table {
         margin-bottom: 10%;
         width: 550px;
+    }
+
+    #toggleButton, #fabricToggle, #templeToggle {
+        display: none;
     }
   
     }
@@ -1298,8 +1306,8 @@ span {
         /* left: 20px;  Adjust the distance from the right as needed */
         /* z-index: 1;  Ensure the button appears above other content */
         width: 90%;
-        /* margin-top: 5%;
-        margin-bottom: 5%; */
+        /* margin-top: 5%;*/
+        margin-bottom: 5%; 
         margin-left: 5%;
         background-color: #303030; 
         color: #ffffff; /* Button text color */
@@ -1316,19 +1324,25 @@ span {
         display: none;
      }
 
-     #templeToggle {
+     #percentToggle {
         /* position: fixed; */
         /* bottom: 20px;  Adjust the distance from the bottom as needed */
         /* left: 20px;  Adjust the distance from the right as needed */
         /* z-index: 1;  Ensure the button appears above other content */
-        width: 98%;
-        /* margin-top: 5%;
-        margin-bottom: 5%; */
-        margin-left: 1%;
+        width: 85%;
+        margin-left: 7%;
         background-color: #303030; 
         color: #ffffff; /* Button text color */
         padding: 10px 20px;
         border: none;
         cursor: pointer;
+    }
+
+    .progress-bar-img img {
+        width: 90px;
+        /* height: 90px; */
+        margin-top: -361px;
+        margin-left: 76px;
+        /* float: right; */
     }
 }
