@@ -1247,6 +1247,7 @@ span {
 
     #fabrics-table {
         margin-left: 2%;
+        padding-right: 2%;
     }
 
     #fabrics-table, th, td {
