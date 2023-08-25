@@ -1076,7 +1076,8 @@ span {
         /* margin-left: auto; */
         /* margin-right: auto; */
         margin-top: 5%;
-        width: auto;
+        margin-bottom: 5%;
+        width: 100%;
         background-color: #ffffff;
         border-collapse: collapse;
     }
@@ -1243,4 +1244,19 @@ span {
         cursor: pointer;
         /* align-items: center; */
     }
+
+    #fabrics-table {
+        margin-left: 2%;
+    }
+
+    #fabrics-table, th, td {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    
+    #fabrics-table, tr {
+        margin-bottom: 12px;
+    }
+     
 }
