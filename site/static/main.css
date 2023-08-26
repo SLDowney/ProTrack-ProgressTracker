@@ -1325,17 +1325,14 @@ span {
      }
 
      #percentToggle {
-        /* position: fixed; */
-        /* bottom: 20px;  Adjust the distance from the bottom as needed */
-        /* left: 20px;  Adjust the distance from the right as needed */
-        /* z-index: 1;  Ensure the button appears above other content */
-        width: 85%;
-        margin-left: 7%;
-        background-color: #303030; 
-        color: #ffffff; /* Button text color */
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
+            /* position: fixed; */
+    width: 83%;
+    margin-left: 8%;
+    background-color: #303030;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
     }
 
     .progress-bar-img img {
@@ -1345,4 +1342,17 @@ span {
         margin-left: 76px;
         /* float: right; */
     }
+
+    #templeToggle {
+        position: relative;
+        bottom: 20px;
+        width: 90%;
+        margin-left: 5%;
+        background-color: #303030;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
 }

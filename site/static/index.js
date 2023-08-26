@@ -213,12 +213,11 @@ function updateTempleBossStatus(checkbox) {
 $(document).ready(function() {
   $("#fabricToggle").click(function() {
       $(".fabrics-table").slideToggle();
-      $(".progress_row").slideToggle();
   });
-  $("#percentToggle").click(function() {
-    $(".progress_row").slideToggle();
+  
+$("#templeToggle").click(function() {
+  $(".progress_row").slideToggle();
 });
-
   
 
   // Check if the screen width is less than a certain threshold (e.g., 600px)
