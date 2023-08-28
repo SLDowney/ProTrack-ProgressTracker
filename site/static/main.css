@@ -949,6 +949,7 @@ span {
     }
 
     .percentage_table {
+        display:none;
         position: fixed;
         top: 0;
         right: 0;
@@ -994,7 +995,7 @@ span {
       height: 25vh; /* Adjust this value to control the vertical centering */
     }
 
-    #toggleButton, #fabricToggle, #templeToggle {
+    #percentToggle, #fabricToggle, #templeToggle {
         display: none;
     }
   }
@@ -1061,7 +1062,7 @@ span {
         width: 550px;
     }
 
-    #toggleButton, #fabricToggle, #templeToggle {
+    #percentToggle, #fabricToggle, #templeToggle {
         display: none;
     }
   
@@ -1278,7 +1279,7 @@ span {
         /* Your table styles go here */
     }
 
-    #toggleButton {
+    #percentToggle {
         position: fixed;
         bottom: 20px; /* Adjust the distance from the bottom as needed */
         left: 20px; /* Adjust the distance from the right as needed */
@@ -1290,7 +1291,7 @@ span {
         cursor: pointer;
     }
 
-    #toggleButton:hover {
+    #percentToggle:hover {
         background-color: #0057b300; /* Change color on hover */
     }
 

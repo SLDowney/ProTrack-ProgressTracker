@@ -5,7 +5,7 @@
     <form id="mainquform" action="{{ url_for('mainqu') }}" method="POST" enctype="multipart/form-data">
         <div class="row">
             {% for result in results %}
-            <table class="main_body" style="width: 100%;">
+            <table class="main_body questShow_{{result[14]}}" id="quest_{{result[0]}}" style="width: 100%;">
                 <colgroup>
                     <col span="1">
                     <col span="2">
@@ -30,10 +30,12 @@
                             <td>Location</td>
                             <td>{{result[7]}}</td>
                         </tr>
+                        {% if result[9] != None %}
                         <tr>
                             <td>Rewards</td>
                             <td>{{result[9]}}</td>
                         </tr> 
+                        {% endif %}
                         <tr>
                             <td>Status</td>
                             <td>
@@ -63,18 +65,6 @@
                                 <input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}><label class="mainqu_radio_labels" for="done_{{ result[0] }}">Completed</label>
                             </td>
                         </tr>
-                        {% for sub in subqus %}
-                            {% if sub[2] == result[0] %}
-                                <tr>
-                                    <th class="main_secondary">Info</th>
-                                    <th class="main_secondary">Sub Quest</th>
-                                </tr>
-                                <tr>
-                                    <td><input class="main_checkbox main_check_{{sub[0]}}" id="secondary_{{ sub[0]}}" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[0] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
-                                    <td>{{sub[3]}}</td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
                         {% elif result[1] == 0 %}
                         <tr>
                             <td>Name</td>
@@ -89,7 +79,42 @@
                             </td>
                         </tr>
                         {% endif %}
-                </tbody>
+                        {% if result[1] != 0 %}
+                            {% for sub in subqus %}
+                                {% if sub[2] == result[0] %}
+                                    {% if sub[2] != 2 %}
+                                        <tr class="subquest subquest_{{sub[0]}}">
+                                            <td><input class="main_checkbox id_{{result[0]}} main_check_{{sub[0]}}" id="secondary_{{ sub[0]}}" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[1] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
+                                            <td>{{sub[4]}}</td>
+                                        </tr>
+                                    {% elif sub[2] == 2 %}
+                                
+                                        {% if sub[6] == 1 %}
+                                            <tr class="subquest subquest_1 subquest_{{sub[0]}}">
+                                                <td><input class="main_checkbox level_1 id_{{result[0]}}" id="level_1" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[1] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
+                                                <td>{{sub[4]}}</td>
+                                            </tr>
+                                        {% elif sub[6] == 2 %}
+                                            <tr class="subquest subquest_2 subquest_{{sub[0]}} hidden_display">
+                                                <td><input class="main_checkbox level_2 id_{{result[0]}}" id="level_2" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[1] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
+                                                <td>{{sub[4]}}</td>
+                                            </tr>
+                                        {% elif  sub[6] == 3 %}
+                                            <tr class="subquest subquest_3 subquest_{{sub[0]}} hidden_display">
+                                                <td><input class="main_checkbox level_3 id_{{result[0]}}" id="level_3" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[1] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
+                                                <td>{{sub[4]}}</td>
+                                            </tr>
+                                        {% elif sub[6] == 4 %}
+                                            <tr class="subquest subquest_4 subquest_{{sub[0]}} hidden_display">
+                                                <td><input class="main_checkbox level_4 id_{{result[0]}}" id="level_4" type="checkbox" name="secondary_{{ sub[0] }}" value='{{sub[1] }}' {% if sub[1] == 1 %} checked{% endif %}></td>
+                                                <td>{{sub[4]}}</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
                 {% endfor %}
             </table>
         </div>

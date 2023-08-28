@@ -2364,23 +2364,48 @@ def mainqu():
     scroll_position = session.get('scrollPosition')
     if scroll_position is not None:
         scroll_position = int(scroll_position)
+    quest_info = []
 
     if request.method == 'POST':
         with closing(conn.cursor()) as c:
-            mainqus = c.execute('SELECT quest_id FROM Quests WHERE quest_type = "Main"').fetchall()
-            
+            mainqus = c.execute('SELECT * FROM Quests WHERE quest_type = "Main"').fetchall()
+
             for mainqu in mainqus:
                 mainqu_id = mainqu[0]
-                mainqu_done = request.form.get(f'done_mainqu_{mainqu_id}')
+                mainqu_done = request.form.get(f'done_{mainqu_id}')
+                mainqu_prereq = mainqu[12]
+                mainqu_prestart = mainqu[13]
+                mainqu_level = mainqu[11]
+                print("Quest_show ->", mainqu[14])
+
+                if mainqu_prereq != None:
+                    mainqu_pre_other = c.execute('SELECT * FROM Quests WHERE quest_name = ?', (mainqu_prereq,)).fetchone()[0]
+                    if mainqu_pre_other[1] != 2:
+                        c.execute('UPDATE Quests SET quest_show = 0 WHERE quest_id = ?', (mainqu_id,))
+                    elif mainqu_pre_other[1] == 2:
+                        c.execute('UPDATE Quests SET quest_show = 1 WHERE quest_id = ?', (mainqu_id,))
+                    else:
+                        print("didn't workkkkkkk. Line 2387")
+                if mainqu_prestart != None:
+                    mainqu_start_other = c.execute('SELECT * FROM Quests WHERE quest_name = ?', (mainqu_prestart,)).fetchone()[0]
+                    if mainqu_start_other[1] != 1:
+                        c.execute('UPDATE Quests SET quest_show = 0 WHERE quest_id = ?', (mainqu_id,))
+                    elif mainqu_start_other[1] == 1 or mainqu_start_other[1] == 2:
+                        c.execute('UPDATE Quests SET quest_show = 1 WHERE quest_id = ?', (mainqu_id,))
+                    else:
+                        print("didn't workkkkkkk eitherrrr. Line 2395")
+                if mainqu_level > 1:
+                    c.execute('UPDATE Quests SET quest_show = 0 WHERE quest_id = ?', (mainqu_id,))
+
                 if mainqu_done is None:
-                    print("mainqu_done is none:", mainqu_done)
+                    #print("mainqu_done is none:", mainqu_done)
                     mainqu_done = c.execute('SELECT quest_done FROM Quests WHERE quest_id = ?', (mainqu_id,)).fetchone()[0]
                 else:
                     print("mainqu_done is not none:", mainqu_done)
-                print("mainqu_id:", mainqu_id)
-                print("mainqu_done:", mainqu_done)
+                #print("mainqu_id:", mainqu_id)
+                #print("mainqu_done:", mainqu_done)
                 c.execute('UPDATE Quests SET quest_done = ? WHERE quest_id = ?', (mainqu_done, mainqu_id))
-                print("Executed update statement for mainqu_id:", mainqu_id)
+                #print("Executed update statement for mainqu_id:", mainqu_id)
             conn.commit()
         with closing(conn.cursor()) as c:
             subqus = c.execute('SELECT * FROM SubQuests').fetchall()
@@ -2388,14 +2413,14 @@ def mainqu():
                 secondary_id = secondary[0]
                 secondary_done = request.form.get(f'secondary_{secondary_id}')
                 if secondary_done is None:
-                    print("secondary_done is none:", secondary_done)
+                    #print("secondary_done is none:", secondary_done)
                     secondary_done = c.execute('SELECT subquest_done FROM SubQuests WHERE subquest_id = ?', (secondary_id,)).fetchone()[0]
                 else:
                     print("secondary_done is not none:", secondary_done)
-                print("secondary_id:", secondary_id)
-                print("secondary_done:", secondary_done)
+                #print("secondary_id:", secondary_id)
+                #print("secondary_done:", secondary_done)
                 c.execute('UPDATE SubQuests SET subquest_done = ? WHERE subquest_id = ?', (secondary_done, secondary_id))
-                print("Executed update statement for secondary_id:", secondary_id)
+                #print("Executed update statement for secondary_id:", secondary_id)
             conn.commit()
 
     with closing(conn.cursor()) as c:
@@ -2410,14 +2435,43 @@ def mainqu():
         query = '''SELECT * FROM Quests WHERE quest_type = "Main" ORDER BY quest_id ASC'''
         c.execute(query)
         results = c.fetchall()
+        
+        for main in results:
+            #print("quest_show ->", main[14])
+            info = { "Name": main[3], 
+                "Done": main[1],
+                "Level": main[11],
+                "Prereq": main[12],
+                "Pre-Start": main[13]
+                
+                }
+            quest_info.append(info)
+        #print("Quest Info ->", quest_info)
         info = [(result[0], result[1], result[2]) for result in results]
-    return render_template("mainqu.html", subqus=subqus, main_riju=main_riju, main_sidon=main_sidon, main_yunobo=main_yunobo, main_tulin=main_tulin, main_spirit=main_spirit, scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
+    return render_template("mainqu.html",quest_info=quest_info, subqus=subqus, main_riju=main_riju, main_sidon=main_sidon, main_yunobo=main_yunobo, main_tulin=main_tulin, main_spirit=main_spirit, scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
 
 @app.route('/update_mainquests', methods=['POST'])
 def update_mainquests():
     main_id = request.json.get('main_id')
     main_done = request.json.get('main_done')
-
+    quest_show = request.json.get('quest_show')
+    print("main id ->", main_id)
+    with closing(conn.cursor()) as c:
+        main_target = c.execute('SELECT * FROM Quests WHERE quest_id = ?', (main_id,)).fetchall()
+        print("main_target[0][12] ->", main_target[0][12])
+    
+    if main_done != 0:
+        with closing(conn.cursor()) as c:
+            if main_target[0][12] != None:
+                search_strings = main_target[0][12].split('\r\n')
+                query = """UPDATE Quests SET quest_show = 1 WHERE {} """.format(" OR ".join(["quest_name LIKE '%' || ? || '%'" for _ in search_strings]))
+                c.execute(query, search_strings)  # Pass the search_strings list as bindings
+            if main_target[0][13] != None:
+                search_strings = main_target[0][13].split('\r\n')
+                query = """UPDATE Quests SET quest_show = 1 WHERE {} """.format(" OR ".join(["quest_name LIKE '%' || ? || '%'" for _ in search_strings]))
+                c.execute(query, search_strings)  # Pass the search_strings list as bindings
+        conn.commit()
+            
     if main_done is None:
         main_done = 0
     else:
@@ -2427,7 +2481,8 @@ def update_mainquests():
     try:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE Quests SET quest_done = ? WHERE quest_id = ?', (main_done, main_id))
-            print("Quests Quest_done = ", main_done, ", Quest_id = ", main_id)
+            c.execute('UPDATE Quests SET quest_show = ? WHERE quest_id = ?', (quest_show, main_id))
+            print("Quests Quest_done = ", main_done, ", Quest_id = ", main_id, " quest_show = ", quest_show)
             conn.commit()
         return jsonify(success=True)
     except Exception as e:
@@ -2438,6 +2493,7 @@ def update_mainquests():
 def update_secondary():
     secondary_id = request.json.get('secondary_id')
     secondary_done = request.json.get('secondary_done')
+    main_id = request.json.get('main_id')
 
     if secondary_done is None:
         secondary_done = 0
@@ -2448,11 +2504,31 @@ def update_secondary():
     try:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE SubQuests SET subquest_done = ? WHERE subquest_id = ?', (secondary_done, secondary_id))
-            print("SubQuests subquest_done = ", secondary_done, ", subquest_id = ", secondary_id)
+            if secondary_done == 0:
+                this_item = c.execute('SELECT quest_id FROM SubQuests where subquest_id = ?', (secondary_id,)).fetchone()
+                next_item = c.execute('SELECT quest_id FROM SubQuests where subquest_id = ?', (secondary_id + 1,)).fetchone()
+                if this_item[0] == next_item[0]:    
+                    c.execute('UPDATE SubQuests SET subquest_done = 0 WHERE subquest_id = ?', ((secondary_id + 1),))
+                else:
+                    print(this_item[0], " and ", next_item[0], " are not the same.")
+            #print("SubQuests subquest_done = ", secondary_done, ", subquest_id = ", secondary_id)
             conn.commit()
+        if main_id is not 1:
+            with closing(conn.cursor()) as c:
+                main_done_check = c.execute('SELECT * FROM SubQuests where quest_id = ?', (main_id,)).fetchall()
+                if 0 in main_done_check or None in main_done_check:
+                    print("0 in main_done_check ->", main_done_check)
+                elif 0 not in main_done_check:
+                    c.execute('UPDATE Quests SET quest_done = 2 WHERE quest_id = ?', (main_id,))
+                    #print("Quest set Completed for quest_id ", main_id)
+                conn.commit()
+        else:
+            print("Main ID is 1.")
+
         return jsonify(success=True)
+    
     except Exception as e:
-        print("Error:", e)  # Add this line for debugging
+        print("Error: this one?", e)  # Add this line for debugging
         return jsonify(success=False, error=str(e))
 
 
