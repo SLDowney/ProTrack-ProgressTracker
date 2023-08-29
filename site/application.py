@@ -2516,12 +2516,13 @@ def update_secondary():
         if main_id is not 1:
             with closing(conn.cursor()) as c:
                 main_done_check = c.execute('SELECT * FROM SubQuests where quest_id = ?', (main_id,)).fetchall()
-                if 0 in main_done_check or None in main_done_check:
-                    print("0 in main_done_check ->", main_done_check)
-                elif 0 not in main_done_check:
-                    c.execute('UPDATE Quests SET quest_done = 2 WHERE quest_id = ?', (main_id,))
-                    #print("Quest set Completed for quest_id ", main_id)
-                conn.commit()
+                print("main_done_check ->", main_done_check)
+                # if 0 in main_done_check or None in main_done_check:
+                #     print("0 in main_done_check ->", main_done_check)
+                # elif 0 not in main_done_check:
+                #     c.execute('UPDATE Quests SET quest_done = 2 WHERE quest_id = ?', (main_id,))
+                #     #print("Quest set Completed for quest_id ", main_id)
+                # conn.commit()
         else:
             print("Main ID is 1.")
 

@@ -14,6 +14,79 @@ function updatefairy(fairyId, fairyDone) {
     console.log("Fairy ID ->", fairyId)
 }
 
+function checkForChecked(Checkboxes) {
+    let oneChecked = false;
+    
+    for ( let x = 0; x < Checkboxes.length; x++) {
+      if (!Checkboxes[x].checked) {
+        oneChecked = false;
+        console.log("allDone false ->", oneChecked)
+        console.log("Checkboxes[x] ->", Checkboxes[x])
+      }
+      else {
+        oneChecked = true;
+        console.log("allDone true ->", oneChecked)
+        console.log("Checkboxes[x] ->", Checkboxes[x])
+        break;
+      }
+    }
+  
+    return oneChecked;
+  }
+
+function showUp1(armorSet) {
+    let collectedCheckboxes = armorSet.getElementsByClassName("collected-checkbox");
+    let upgradeDiv = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_1');
+        console.log("Upgrade Div ->", upgradeDiv)
+        if ((checkForChecked(collectedCheckboxes) == true) && checkedFairies >= 1) {
+            upgradeDiv.classList.remove("hidden_display"); 
+            console.log("REMOVED HIDDEN ->", upgradeDiv);
+        }
+        else {
+            upgradeDiv.classList.add("hidden_display");
+            console.log("ADDED HIDDEN ->", upgradeDiv);
+        }
+}
+function showUp2(armorSet) {
+    let upgrade_1_Checkboxes = armorSet.getElementsByClassName("level1-checkbox");
+    let upgradeDiv1 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_2');
+        //console.log("Upgrade Div ->", upgradeDiv)
+        if ((checkForChecked(upgrade_1_Checkboxes) == true) && checkedFairies >= 2) {
+            upgradeDiv1.classList.remove("hidden_display");
+            //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        }
+        else {
+            upgradeDiv1.classList.add("hidden_display");
+        }
+}
+
+function showUp3(armorSet) {
+    let upgrade_2_Checkboxes = armorSet.getElementsByClassName("level2-checkbox");
+    let upgradeDiv2 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_3');
+        //console.log("Upgrade Div ->", upgradeDiv)
+        if ((checkForChecked(upgrade_2_Checkboxes) == true) && checkedFairies >= 3) {
+            upgradeDiv2.classList.remove("hidden_display");
+            //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        }
+        else {
+            upgradeDiv2.classList.add("hidden_display");
+        }
+}
+
+function showUp4(armorSet) {
+    let upgrade_3_Checkboxes = armorSet.getElementsByClassName("level3-checkbox");
+    let upgradeDiv3 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_4');
+        //console.log("Upgrade Div ->", upgradeDiv)
+        if ((checkForChecked(upgrade_3_Checkboxes) == true) && checkedFairies >= 4) {
+            upgradeDiv3.classList.remove("hidden_display");
+            //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        }
+        else {
+            upgradeDiv3.classList.add("hidden_display");
+        }
+}
+
+
 // Function to update armor upgrades display
 function updateUpgradesDisplay() {
     var armorSets = document.getElementsByClassName("armor_set");
@@ -35,77 +108,120 @@ function updateUpgradesDisplay() {
     // Loop through armor sets
     for (var i = 0; i < armorSets.length; i++) {
         var armorSet = armorSets[i];
+        showUp1(armorSet)
+        showUp2(armorSet)
+        showUp3(armorSet)
+        showUp4(armorSet)
         //console.log("Armor Set ->", armorSet)
-        let collectedCheckboxes = armorSet.getElementsByClassName("collected-checkbox");
-        let upgrade_1_Checkboxes = armorSet.getElementsByClassName("level1-checkbox");
-        let upgrade_2_Checkboxes = armorSet.getElementsByClassName("level2-checkbox");
-        let upgrade_3_Checkboxes = armorSet.getElementsByClassName("level3-checkbox");
-        let upgrade_4_Checkboxes = armorSet.getElementsByClassName("level4-checkbox");
+        // let collectedCheckboxes = armorSet.getElementsByClassName("collected-checkbox");
+        // let upgrade_1_Checkboxes = armorSet.getElementsByClassName("level1-checkbox");
+        // let upgrade_2_Checkboxes = armorSet.getElementsByClassName("level2-checkbox");
+        // let upgrade_3_Checkboxes = armorSet.getElementsByClassName("level3-checkbox");
+        // let upgrade_4_Checkboxes = armorSet.getElementsByClassName("level4-checkbox");
         
+        // let upgradeDiv = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_1');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if ((checkForChecked(collectedCheckboxes) == true) && checkedFairies >= 1) {
+        //         upgradeDiv.classList.remove("hidden_display"); 
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv.classList.add("hidden_display");
+        //     }
+
+        // let upgradeDiv1 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_2');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if ((checkForChecked(upgrade_1_Checkboxes) == true) && checkedFairies >= 2) {
+        //         upgradeDiv1.classList.remove("hidden_display");
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv1.classList.add("hidden_display");
+        //     }
+
+        // let upgradeDiv2 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_3');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if ((checkForChecked(upgrade_2_Checkboxes) == true) && checkedFairies >= 3) {
+        //         upgradeDiv2.classList.remove("hidden_display");
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv2.classList.add("hidden_display");
+        //     }
+
+        // let upgradeDiv3 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_4');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if ((checkForChecked(upgrade_3_Checkboxes) == true) && checkedFairies >= 4) {
+        //         upgradeDiv3.classList.remove("hidden_display");
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv3.classList.add("hidden_display");
+        //     }
         // Loop through the checkboxes within the current armorSet
-        Array.from(collectedCheckboxes).forEach(function (checkbox) {
-            //console.log("In array");
-            //console.log("Checked Fairies ->", checkedFairies);
+        // Array.from(collectedCheckboxes).forEach(function (checkbox) {
+        //     //console.log("In array");
+        //     //console.log("Checked Fairies ->", checkedFairies);
     
-            // Get the corresponding upgradeDiv for the current checkbox
-            var upgradeDiv = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_1');
-            //console.log("Upgrade Div ->", upgradeDiv)
-            if (checkbox.checked && checkedFairies >= 1) {
-                upgradeDiv.classList.remove("hidden_display");
-                //console.log("REMOVED HIDDEN ->", upgradeDiv);
-            }
-            else {
-                upgradeDiv.classList.add("hidden_display");
-            }
-        });
+        //     // Get the corresponding upgradeDiv for the current checkbox
+        //     var upgradeDiv = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_1');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if (checkbox.checked && checkedFairies >= 1) {
+        //         upgradeDiv.classList.remove("hidden_display"); 
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv.classList.add("hidden_display");
+        //     }
+        // });
 
-        Array.from(upgrade_1_Checkboxes).forEach(function (checkbox) {
-            //console.log("In array");
-            //console.log("Checked Fairies ->", checkedFairies);
+        // Array.from(upgrade_1_Checkboxes).forEach(function (checkbox) {
+        //     //console.log("In array");
+        //     //console.log("Checked Fairies ->", checkedFairies);
     
-            // Get the corresponding upgradeDiv for the current checkbox
-            var upgradeDiv1 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_2');
-            //console.log("Upgrade Div ->", upgradeDiv)
-            if (checkbox.checked && checkedFairies >= 2) {
-                upgradeDiv1.classList.remove("hidden_display");
-                //console.log("REMOVED HIDDEN ->", upgradeDiv);
-            }
-            else {
-                upgradeDiv1.classList.add("hidden_display");
-            }
-        });
+        //     // Get the corresponding upgradeDiv for the current checkbox
+        //     var upgradeDiv1 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_2');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if (checkbox.checked && checkedFairies >= 2) {
+        //         upgradeDiv1.classList.remove("hidden_display");
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv1.classList.add("hidden_display");
+        //     }
+        // });
 
-        Array.from(upgrade_2_Checkboxes).forEach(function (checkbox) {
-            //console.log("In array");
-            //console.log("Checked Fairies ->", checkedFairies);
+        // Array.from(upgrade_2_Checkboxes).forEach(function (checkbox) {
+        //     //console.log("In array");
+        //     //console.log("Checked Fairies ->", checkedFairies);
     
-            // Get the corresponding upgradeDiv for the current checkbox
-            var upgradeDiv2 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_3');
-            //console.log("Upgrade Div ->", upgradeDiv)
-            if (checkbox.checked && checkedFairies >= 3) {
-                upgradeDiv2.classList.remove("hidden_display");
-                //console.log("REMOVED HIDDEN ->", upgradeDiv);
-            }
-            else {
-                upgradeDiv2.classList.add("hidden_display");
-            }
-        });
+        //     // Get the corresponding upgradeDiv for the current checkbox
+        //     var upgradeDiv2 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_3');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if (checkbox.checked && checkedFairies >= 3) {
+        //         upgradeDiv2.classList.remove("hidden_display");
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv2.classList.add("hidden_display");
+        //     }
+        // });
 
-        Array.from(upgrade_3_Checkboxes).forEach(function (checkbox) {
-            //console.log("In array");
-            //console.log("Checked Fairies ->", checkedFairies);
+        // Array.from(upgrade_3_Checkboxes).forEach(function (checkbox) {
+        //     //console.log("In array");
+        //     //console.log("Checked Fairies ->", checkedFairies);
     
-            // Get the corresponding upgradeDiv for the current checkbox
-            var upgradeDiv3 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_4');
-            //console.log("Upgrade Div ->", upgradeDiv)
-            if (checkbox.checked && checkedFairies >= 4) {
-                upgradeDiv3.classList.remove("hidden_display");
-                //console.log("REMOVED HIDDEN ->", upgradeDiv);
-            }
-            else {
-                upgradeDiv3.classList.add("hidden_display");
-            }
-        });
+        //     // Get the corresponding upgradeDiv for the current checkbox
+        //     var upgradeDiv3 = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_4');
+        //     //console.log("Upgrade Div ->", upgradeDiv)
+        //     if (checkbox.checked && checkedFairies >= 4) {
+        //         upgradeDiv3.classList.remove("hidden_display");
+        //         //console.log("REMOVED HIDDEN ->", upgradeDiv);
+        //     }
+        //     else {
+        //         upgradeDiv3.classList.add("hidden_display");
+        //     }
+        // });
     
     
         // Check the criteria for armor set upgrades
