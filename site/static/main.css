@@ -1011,23 +1011,106 @@ span {
         flex-direction: column;
     }
 
-    /* #armor_table, th, td {
-        display: block;
-        text-align: center;
+    .row.armor_set {
+        display: flex;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-bottom: 5%;
+        border: 2px solid rgb(0 0 0 / 0%);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
     }
-    
-    #armor_table, tr {
-        margin-bottom: 12px;
+
+    .col_border {
+        border-left: 1px solid black;   /* Left border */
+        border-right: 1px solid black; /* Right border */
+        /* No border for top and bottom */
+        border-top: none;
+        border-bottom: none;
+        border-collapse: collapse;
+    }
+
+    .row #table_data {
+        width:50%;
+    }
+
+    #armor_collected {
+        width: 40%;
+    }
+
+    .armor_checkbox input[type=checkbox] {
+        width: 70%;
+        height: 24px;
+        margin-top: 5%;
+    }
+
+    .armor_set_head {
+        justify-content: center;
+        padding: 0 0 0 0;
+        margin: 0;
+        background-color: #62ff019c;
+        height: auto;
+        /* width: 275%; */
+    }
+
+    .armor_set_name {
+        margin: 0;
+        /* padding: 0; */
+        font-size: x-large;
+    }
+
+    .armor_set_piece {
+        background-color: #cd06ff73;
+        margin-bottom: 0;
+        display: flex;
+    }
+
+    .armor_upgrade_items {
+        font-size: medium;
+        /* padding-left: 5%; */
+        /* padding-right: 5%; */
+        width: 76px;
+    }
+
+    #table_row {
+        display: flex;
+        /* flex: 1; */
+        margin: 0;
+        padding: 0;
+        /* align-items: flex-start; */
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #table_head {
+        display: flex;
+        /* flex: 1; */
+        margin: 0;
+        padding: 0;
+        /* align-items: flex-start; */
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #table_data {
+        display: flex;
+        flex: 1;
+        justify-content: space-evenly;
+        /* padding-top: 1%; */
+        /* padding-bottom: 1%; */
     }
 
     #armor_table {
-        width: 90%;
-        margin-left: 5%;
+        text-align: center;
         display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: center;
-    } */
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        width: 50%;
+    }
+
 
   }
 
