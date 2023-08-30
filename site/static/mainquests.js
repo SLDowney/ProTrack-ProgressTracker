@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
   var mainTable = document.getElementById('mainquform');
   checks = document.getElementsByClassName('main_checkbox');
   updateAllMainsVisible();
+  
   //// console.log("checks ->", checks);
   // let unchecked_checkboxes = []
   // let tulin = []
@@ -68,18 +69,15 @@ window.addEventListener('DOMContentLoaded', function () {
         const mainId = radio.name.replace('done_', ''); // Extract main ID
       
         updatemain(radio, mainId); // Pass mainReward to updatemain function
+        mainInfoToggle(radio)
         
     });
     // Add the event listener to the checkboxes to update the counter and Rewards column
   Array.from(mainTable.querySelectorAll('input[type="checkbox"]')).forEach(function (checkbox) {
-    const secondaryLevel = checkbox.id.replace('level_', '');
-    
     checkbox.addEventListener('click', function () {
 
         // Update Rewards cell when radio is clicked
         const secondaryId = checkbox.name.replace('secondary_', ''); // Extract main ID
-        const secondaryLevel = checkbox.id.replace('level_', '');
-        showSecondary(checkbox, secondaryLevel)
         updatesecondary(checkbox, secondaryId); 
     });
 });
@@ -91,13 +89,23 @@ var mainTable = document.getElementById('mainquform');
 function updatesecondary(checkbox, secondaryId) {
   //console.log("--------UPDATE secondary ---------")
   const secondaryFound = checkbox.checked ? 1 : 0;
-  //// console.log("SecondaryFound ->", secondaryFound)
+  const classNames = checkbox.className.split(" ");
+  let mainId;
+  for (const className of classNames) {
+      if (className.startsWith("id_")) {
+        mainId = parseInt(className.substr(3)); // Extract the ID part and convert it to an integer
+        //showMainFromSecondary(mainId)  
+        break;
+      }
+  }
+  console.log("SecondaryCheckbox ->", checkbox)
 
   const data = {
     secondary_id: parseInt(secondaryId),
     secondary_done: parseInt(secondaryFound),
+    main_id: mainId
   };
-  //console.log("DATA ->", data)
+  console.log("DATA ->", data)
 
   fetch('/update_secondary', {
     method: 'POST',
@@ -118,24 +126,30 @@ function updatesecondary(checkbox, secondaryId) {
 
   const secondaryLevel = checkbox.id.replace('level_', '');
   showSecondary(checkbox, secondaryLevel)
+  if (mainId == 1) {
+    updatemain(radio, mainId);
+  }
 }
 
 function updatemain(radio, mainId) {
     console.log("--------UPDATE main ---------")
   const mainFound = radio.value;
-  let questShow;
-  if (mainFound == 0) {
-    questShow = 0
-  }
-  else if (mainFound != 0) {
-    questShow = 1
-  }
+  console.log("mainFound ->", mainFound)
+  
+  // let questShow;
+  // if (mainFound == 0) {
+  //   questShow = 0
+  // }
+  // else if (mainFound != 0) {
+  //   questShow = 1
+  //   showMainFromSecondary(mainId, 1)
+  // }
   //// console.log("MainFound ->", mainFound)
 
   const data = {
     main_id: parseInt(mainId),
-    main_done: parseInt(mainFound),
-    quest_show: parseInt(questShow)
+    main_done: parseInt(mainFound)
+    //quest_show: parseInt(questShow)
   };
   //// console.log("DATA ->", data)
 
@@ -147,9 +161,9 @@ function updatemain(radio, mainId) {
       },
       body: JSON.stringify({
         main_id: mainId,  // Pass the variable to the server.
-        quest_show: parseInt(questShow)
       })
     })
+    
   }
 
   fetch('/update_mainquests', {
@@ -211,14 +225,14 @@ function showSecondary(checkbox, secondaryLevel) {
   for (const className of classNames) {
       if (className.startsWith("id_")) {
         mainId = parseInt(className.substr(3)); // Extract the ID part and convert it to an integer
-        //updateMainVisible(mainId)  
+        //showMainFromSecondary(mainId)  
         break;
       }
   }
   //console.log("CHECKBOX ->", checkbox)
 
   try {
-    console.log("In Try Statement")
+    console.log("In Try Statement ID ->", secondaryId)
     if (checkbox.checked & secondaryLevel == 1) {
       console.log("In IF STATEMENT")
       if (checkCheckboxLevels(checkbox, secondaryLevel)) {
@@ -256,17 +270,31 @@ function showSecondary(checkbox, secondaryLevel) {
       if (checkCheckboxLevels(checkbox, secondaryLevel)) {
         for (const item of ItemFourth) {
           item.classList.remove("hidden_display")
+          
         }
       }else {
         for (const item of ItemFourth) {
           item.classList.add("hidden_display")
+          
         }
       }
     } else if (!checkbox.checked & secondaryLevel == 3) {
       for (const item of ItemFourth) {
         item.classList.add("hidden_display")
+        //showMainFromSecondary(mainId, secondaryFound)
+        updatemain(2, mainId)
+        console.log("secondary level 3?")
       }
     }
+    if (checkbox.checked & secondaryLevel == 4) {
+          //showMainFromSecondary(mainId, secondaryFound)
+          updatemain(2, mainId)
+        }
+      
+    else if (!checkbox.checked & secondaryLevel == 3) {
+        // showMainFromSecondary(mainId, secondaryFound)
+        updatemain(2, mainId)
+      }
     
     const data = {
       secondary_id: parseInt(secondaryId),
@@ -299,16 +327,61 @@ function showSecondary(checkbox, secondaryLevel) {
   
 }
 
-function updateMainVisible(mainId) {
-  console.log("Main id->>", mainId)
-  currentMain = document.getElementById('quest_' + mainId).nextElementSibling
-  console.log("CURRENT MAIN ->", currentMain)
-  currentMain.classList.remove("hidden_display")
-}
+// function showMainFromSecondary(mainId, secondaryFound) {
+//   console.log("Main id->>", mainId)
+//   currentMain = document.getElementById('quest_' + mainId).nextElementSibling
+//   console.log("CURRENT MAIN ->", currentMain)
+//   if (secondaryFound == 1){
+//     currentMain.classList.remove("hidden_display")
+//   }
+//   else {
+//     currentMain.classList.add("hidden_display")
+//   }
+  
+// }
 
 function updateAllMainsVisible() {
   allMains = document.getElementsByClassName('questShow_' + 0)
   for ( let x = 0; x < allMains.length; x++) {
     allMains[x].classList.add("hidden_display")
   }
+  radios = mainTable.querySelectorAll('input[type="radio"]')
+  for ( let x = 0; x < radios.length; x++) {
+    mainInfoToggle(radios[x])
+  }
+}
+
+function mainInfoToggle(radio) {
+  const mainId = radio.name.replace('done_', ''); // Extract main ID;
+  console.log("main ID ->", mainId)
+  var mainIdElements = document.querySelectorAll(".main_" + mainId);
+  console.log("main Elements ->", mainIdElements)
+
+  mainIdElements.forEach(function (element) {
+    if (radio.value == "2") {
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
+    }
+    if (radio.value == "1") {
+      console.log("ELEMENT ->", element)
+
+      if (element.id == "main_location" || element.id == "main_coord" || element.id == "main_contact" || element.id == "main_name") {
+        element.classList.remove("hidden_display");
+      } else {
+          element.classList.add("hidden_display"); // Hide info
+      }
+
+    }
+    else if (radio.value == "0") {
+      console.log("ELEMENT ->", element)
+
+      if (element.id == "main_name") {
+        element.classList.remove("hidden_display");
+      } else {
+          element.classList.add("hidden_display"); // Hide info
+      }
+
+    }
+  });
 }
