@@ -264,6 +264,10 @@ textarea {
     display: none;
 }
 
+.always_hide {
+    display: none;
+}
+
 #Shrine_percent_table {
     color:#ffffff;
 }
@@ -913,6 +917,11 @@ span {
     border: 0px rgba(0, 0, 0, 0);
 }
 
+.armorForm {
+    justify-content: center;
+    margin-top: 5%;
+}
+
 /* For larger screens */
 @media (min-width: 992px) {
     /* Customize the brand logo and its style */
@@ -1017,9 +1026,8 @@ span {
         margin-right: 0%;
         margin-bottom: 5%;
         border: 2px solid rgb(0 0 0 / 0%);
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: flex-start;
         align-items: stretch;
     }
 
@@ -1036,13 +1044,13 @@ span {
         width:50%;
     }
 
-    #armor_collected {
+    /* #armor_collected {
         width: 40%;
-    }
+    } */
 
     .armor_checkbox input[type=checkbox] {
         width: 70%;
-        height: 24px;
+        /* height: 24px; */
         margin-top: 5%;
     }
 
@@ -1065,13 +1073,14 @@ span {
         background-color: #cd06ff73;
         margin-bottom: 0;
         display: flex;
+        height: 92%;
     }
 
     .armor_upgrade_items {
         font-size: medium;
         /* padding-left: 5%; */
         /* padding-right: 5%; */
-        width: 76px;
+        /* width: 76px; */
     }
 
     #table_row {
@@ -1079,19 +1088,17 @@ span {
         /* flex: 1; */
         margin: 0;
         padding: 0;
-        /* align-items: flex-start; */
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     #table_head {
         display: flex;
-        /* flex: 1; */
+        flex: 1;
         margin: 0;
         padding: 0;
-        /* align-items: flex-start; */
+        align-items: center;
         flex-direction: column;
-        justify-content: center;
     }
 
     #table_data {
@@ -1105,10 +1112,23 @@ span {
     #armor_table {
         text-align: center;
         display: flex;
+        /* width: 50%; */
+        flex-direction: row;
+        align-content: space-between;
+        align-items: stretch;
+    }
+
+    #armor_table_upgrade {
+        text-align: center;
+        display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: flex-start;
         width: 50%;
+    }
+
+    .upgrade_items_list #table_data {
+        display: block;
     }
 
 

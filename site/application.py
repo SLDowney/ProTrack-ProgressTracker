@@ -1190,10 +1190,48 @@ def armors():
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM armor ORDER BY a_set ASC')
         armors = c.fetchall()
+        c.execute('SELECT * FROM armor_single ORDER BY a_set ASC')
+        armor_single = c.fetchall()
         # Initialize a list to store armor set lists
         armor_sets = []
+        armor_single_sets = []
         # Create lists for each armor set
+        for row in armor_single:
+            a_id = row[0]
+            a_set = row[1]
+            a_piece = row[2]
+            a_collected = row[3]
+            a_upgrade1 = row[4]
+            a_items1 = row[5]
+            a_upgrade2 = row[6]
+            a_items2 = row[7]
+            a_upgrade3 = row[8]
+            a_items3 = row[9]
+            a_upgrade4 = row[10]
+            a_items4 = row[11]
+            a_totalitems = row[12]
+            item1_list = a_items1.split('\n')
+            item2_list = a_items2.split('\n')
+            item3_list = a_items3.split('\n')
+            item4_list = a_items4.split('\n')
+            single = [a_id, a_piece, a_collected, a_upgrade1, item1_list, a_upgrade2, item2_list, \
+            a_upgrade3, item3_list, a_upgrade4, item4_list, a_totalitems]
+
+            single_set = [[a_set], single]
+            print("single_set ->", single_set)
+            # Find or create the list for the current armor set
+            armor_sets.append(single_set)
         for row in armors:
+            a_items1 = row[6]
+            a_items2 = row[8]
+            a_items3 = row[10]
+            a_items4 = row[12]
+            itemType = type(a_items1)
+            a_items1 = a_items1.strip().split('\r\n')
+            a_items2 = a_items2.split('\r\n')
+            a_items3 = a_items3.split('\r\n')
+            a_items4 = a_items4.strip().split('\n')
+            
             a_id, a_set, a_name, a_piece, a_collected, a_upgrade1, a_items1, a_upgrade2, a_items2, \
             a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems = row
 
@@ -1206,7 +1244,13 @@ def armors():
             # Add collected status and other columns to the appropriate piece in the list
             armor_piece = [a_id, a_piece, a_collected,a_upgrade1, a_items1, a_upgrade2, a_items2, a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems]
             armor_set.append(armor_piece)
-        
+        print("Armor Barbarian ->", armor_sets[26][1][10])
+        for armor_set in armor_sets:
+            if armor_set[1][0] == 31:
+                armor_set[1][10] = armor_set[1][10].split('\n')
+                armor_set[2][10] = armor_set[2][10].split('\n')
+                armor_set[3][10] = armor_set[3][10].split('\n')
+                print("armorset ->", armor_set)
     with closing(conn.cursor()) as c:
             c.execute('SELECT * FROM fairyfountains ORDER BY fairy_id')
             fairies = c.fetchall()
@@ -1219,6 +1263,7 @@ def update_armor():
     armor_done = request.json.get('armor_done')
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
+        c.execute('UPDATE armor_single SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
         print("Updated armor collection for ->", armor_id)
         conn.commit()
         
@@ -1232,6 +1277,7 @@ def update_armor_1():
     if armor_id != 97 or armor_id != 98 or armor_id != 99:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE armor SET a_upgraded1 = ? WHERE a_id = ?', (armor_done, armor_id))
+            c.execute('UPDATE armor_single SET a_upgraded1 = ? WHERE a_id = ?', (armor_done, armor_id))
             print("Updated armor upgrade 1 for ->", armor_id)
             conn.commit()
             
@@ -1245,6 +1291,7 @@ def update_armor_2():
     if armor_id != 97 or armor_id != 98 or armor_id != 99:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE armor SET a_upgraded2 = ? WHERE a_id = ?', (armor_done, armor_id))
+            c.execute('UPDATE armor_single SET a_upgraded2 = ? WHERE a_id = ?', (armor_done, armor_id))
             print("Updated armor upgrade 2 for ->", armor_id)
             conn.commit()
         
@@ -1258,6 +1305,7 @@ def update_armor_3():
     if armor_id != 97 or armor_id != 98 or armor_id != 99:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE armor SET a_upgraded3 = ? WHERE a_id = ?', (armor_done, armor_id))
+            c.execute('UPDATE armor_single SET a_upgraded3 = ? WHERE a_id = ?', (armor_done, armor_id))
             print("Updated armor upgrade 3 for ->", armor_id)
             conn.commit()
         
@@ -1270,6 +1318,7 @@ def update_armor_4():
     if armor_id != 97 or armor_id != 98 or armor_id != 99:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE armor SET a_upgraded4 = ? WHERE a_id = ?', (armor_done, armor_id))
+            c.execute('UPDATE armor_single SET a_upgraded4 = ? WHERE a_id = ?', (armor_done, armor_id))
             print("Updated armor upgrade 4 for ->", armor_id)
             conn.commit()
         

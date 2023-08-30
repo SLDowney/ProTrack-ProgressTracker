@@ -11,7 +11,7 @@ function updatefairy(fairyId, fairyDone) {
             fairy_done: fairyDone
         })
     })
-    console.log("Fairy ID ->", fairyId)
+    //console.log("Fairy ID ->", fairyId)
 }
 
 function checkForChecked(Checkboxes) {
@@ -20,13 +20,13 @@ function checkForChecked(Checkboxes) {
     for ( let x = 0; x < Checkboxes.length; x++) {
       if (!Checkboxes[x].checked) {
         oneChecked = false;
-        console.log("allDone false ->", oneChecked)
-        console.log("Checkboxes[x] ->", Checkboxes[x])
+        //console.log("allDone false ->", oneChecked)
+        //console.log("Checkboxes[x] ->", Checkboxes[x])
       }
       else {
         oneChecked = true;
-        console.log("allDone true ->", oneChecked)
-        console.log("Checkboxes[x] ->", Checkboxes[x])
+        //console.log("allDone true ->", oneChecked)
+        //console.log("Checkboxes[x] ->", Checkboxes[x])
         break;
       }
     }
@@ -37,14 +37,14 @@ function checkForChecked(Checkboxes) {
 function showUp1(armorSet) {
     let collectedCheckboxes = armorSet.getElementsByClassName("collected-checkbox");
     let upgradeDiv = armorSet.querySelector('.armor_upgrade_container#armor_upgrade_1');
-        console.log("Upgrade Div ->", upgradeDiv)
+        //console.log("Upgrade Div ->", upgradeDiv)
         if ((checkForChecked(collectedCheckboxes) == true) && checkedFairies >= 1) {
             upgradeDiv.classList.remove("hidden_display"); 
-            console.log("REMOVED HIDDEN ->", upgradeDiv);
+            //console.log("REMOVED HIDDEN ->", upgradeDiv);
         }
         else {
             upgradeDiv.classList.add("hidden_display");
-            console.log("ADDED HIDDEN ->", upgradeDiv);
+            //console.log("ADDED HIDDEN ->", upgradeDiv);
         }
 }
 function showUp2(armorSet) {
@@ -91,7 +91,7 @@ function showUp4(armorSet) {
 function updateUpgradesDisplay() {
     var armorSets = document.getElementsByClassName("armor_set");
     var greatFairyCheckboxes = document.getElementsByClassName("great-fairy-checkboxes");
-    console.log("Armor Sets ->", armorSets)
+    //console.log("Armor Sets ->", armorSets)
     //console.log("Great Fairy Checkboxes ->", greatFairyCheckboxes)
     checkedFairies = 0
     //const towerFound = checkbox.checked ? 1 : 0;
@@ -232,16 +232,16 @@ function updateUpgradesDisplay() {
         //var upgradeDivs = armorSet.getElementsByClassName("armor_upgrade_container");
         // Array.from(upgradeDivs).forEach(function (div) {
         //     let upgrade_1 = div.querySelector("armor_upgrade_1")
-        //     console.log("div ->", div)
-        //     console.log("Upgrade 1 ->", upgrade_1)
+        //     //console.log("div ->", div)
+        //     //console.log("Upgrade 1 ->", upgrade_1)
 
         
         
         //console.log("Upgrade Div's ->", upgradeDivs)
         // for (var j = 0; j < upgradeDivs.length; j++) {
         //     var upgradeDiv = upgradeDivs[j];
-        //     console.log("Each Upgrade Div ->", upgradeDiv)
-        //     console.log("Collected Check ->", collectedCheck)
+        //     //console.log("Each Upgrade Div ->", upgradeDiv)
+        //     //console.log("Collected Check ->", collectedCheck)
         //     Array.from(collectedCheck).forEach(function (checkbox) {
         //         if (checkbox.checked AND )
         //     }
@@ -268,7 +268,7 @@ for (var i = 0; i < greatFairyCheckboxes.length; i++) {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-    console.log("-----------------------------")
+    //console.log("-----------------------------")
     var armorTable = document.getElementById('armorForm');
     let armor_collected = this.document.getElementById('armor_collected')
     let armor_upgrade_1 = this.document.getElementById('armor_upgrade_1')
@@ -295,7 +295,7 @@ window.addEventListener('DOMContentLoaded', function () {
   
           const armorId = checkbox.id.replace('armor_id_', ''); // Extract armor ID
           if (armorId != 97 || armorId != 98 || armorId != 99) {
-            console.log("Armor ID ->", armorId)
+            //console.log("Armor ID ->", armorId)
             updatearmor(checkbox, armorId); // Pass armor to updatearmor function
             updateUpgradesDisplay();
           }
@@ -351,14 +351,14 @@ window.addEventListener('DOMContentLoaded', function () {
 //   var fairyTable = document.getElementById('fairyForm');
   
 //   function updatefairy(checkbox, fairyId) {
-//       console.log("--------UPDATE fairy ---------")
+//       //console.log("--------UPDATE fairy ---------")
 //       const fairyFound = checkbox.checked ? 1 : 0;
   
 //       const data = {
 //           fairy_id: parseInt(fairyId),
 //           fairy_done: fairyFound,
 //       };
-//       console.log("DATA ->", data)
+//       //console.log("DATA ->", data)
   
 //       fetch(`/update_greatfairies/${fairyId}/${fairyFound}`, {
 //           method: 'POST',
@@ -459,14 +459,14 @@ var armorTable = document.getElementById('armorForm');
   
   
 function updatearmor(checkbox, armorId) {
-    console.log("--------UPDATE armor ---------")
+    //console.log("--------UPDATE armor ---------")
     const armorFound = checkbox.checked ? 1 : 0;
 
     const data = {
         armor_id: parseInt(armorId),
         armor_done: armorFound,
     };
-    console.log("DATA ->", data)
+    //console.log("DATA ->", data)
     
     fetch('/update_armor', {
         method: 'POST',
@@ -489,14 +489,14 @@ function updatearmor(checkbox, armorId) {
 }
 
 function armorUpgrade1(checkbox, armorId) {
-    console.log("--------UPDATE armor ---------")
+    //console.log("--------UPDATE armor ---------")
     const armorFound = checkbox.checked ? 1 : 0;
 
     const data = {
         armor_id: parseInt(armorId),
         armor_done: armorFound,
     };
-    console.log("DATA ->", data)
+    //console.log("DATA ->", data)
     if (armorId != 97 || armorId != 98 || armorId != 99) {
     fetch('/update_armor_1', {
         method: 'POST',
@@ -519,14 +519,14 @@ function armorUpgrade1(checkbox, armorId) {
     }}
 
 function armorUpgrade2(checkbox, armorId) {
-    console.log("--------UPDATE armor ---------")
+    //console.log("--------UPDATE armor ---------")
     const armorFound = checkbox.checked ? 1 : 0;
 
     const data = {
         armor_id: parseInt(armorId),
         armor_done: armorFound,
     };
-    console.log("DATA ->", data)
+    //console.log("DATA ->", data)
     if (armorId != 97 || armorId != 98 || armorId != 99) {
     fetch('/update_armor_2', {
         method: 'POST',
@@ -549,14 +549,14 @@ function armorUpgrade2(checkbox, armorId) {
 }}
 
 function armorUpgrade3(checkbox, armorId) {
-    console.log("--------UPDATE armor ---------")
+    //console.log("--------UPDATE armor ---------")
     const armorFound = checkbox.checked ? 1 : 0;
 
     const data = {
         armor_id: parseInt(armorId),
         armor_done: armorFound,
     };
-    console.log("DATA ->", data)
+    //console.log("DATA ->", data)
     if (armorId != 97 || armorId != 98 || armorId != 99) {
     fetch('/update_armor_3', {
         method: 'POST',
@@ -579,14 +579,14 @@ function armorUpgrade3(checkbox, armorId) {
 }}
 
 function armorUpgrade4(checkbox, armorId) {
-    console.log("--------UPDATE armor ---------")
+    //console.log("--------UPDATE armor ---------")
     const armorFound = checkbox.checked ? 1 : 0;
 
     const data = {
         armor_id: parseInt(armorId),
         armor_done: armorFound,
     };
-    console.log("DATA ->", data)
+    //console.log("DATA ->", data)
     if (armorId != 97 || armorId != 98 || armorId != 99) {
     fetch('/update_armor_4', {
         method: 'POST',
