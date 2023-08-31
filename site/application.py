@@ -80,7 +80,13 @@ def get_percentages():
         c.execute("SELECT COUNT(*) FROM device_dispenser")
         total_dispensers = c.fetchone()[0]
 
+        c.execute("SELECT COUNT(*) FROM armor_info")
+        total_armor = c.fetchone()[0]
+
         # Fetch the number of completed rows for each table
+        c.execute("SELECT COUNT(*) FROM armor_info WHERE a_collected = 1")
+        completed_armor = c.fetchone()[0]
+        
         c.execute("SELECT COUNT(*) FROM shrines WHERE shrine_done = 2")
         completed_shrines = c.fetchone()[0]
 
@@ -222,6 +228,7 @@ def side_update():
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (side_info[9],))
         c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (side_info[9],))
+        c.execute('UPDATE armor_info SET a_collected = 1 WHERE a_id = ?', (side_info[9],))
         c.execute('UPDATE bargains SET item_done = 1 WHERE item_name = ?', (side_info[9],))
         print("Executed update statement with a_name as ->", side_info[9])
     conn.commit()
@@ -293,6 +300,7 @@ def shrine_update():
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (shrine_info[8],))
         c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (shrine_info[8],))
+        c.execute('UPDATE armor_info SET a_collected = 1 WHERE a_id = ?', (shrine_info[8],))
         c.execute('UPDATE bargains SET item_done = 1 WHERE item_name = ?', (shrine_info[8],))
         print("Executed update statement with a_name as ->", shrine_info[8])
     conn.commit()
@@ -345,6 +353,7 @@ def chest_update():
         
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (chest_info[1],))
+        c.execute('UPDATE armor_info SET a_collected = 1 WHERE a_id = ?', (chest_info[1],))
         print("Executed update statement with a_name as ->", chest_info[1])
     conn.commit()
 
@@ -390,6 +399,7 @@ def oldmap_update():
         
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (map_info[4],))
+        c.execute('UPDATE armor_info SET a_collected = 1 WHERE a_id = ?', (map_info[4],))
         print("Executed update statement with a_name as ->", map_info[4])
     conn.commit()
 
@@ -431,6 +441,7 @@ def main_update():
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (main_info[9],))
         c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (main_info[9],))
+        c.execute('UPDATE armor_info SET a_collected = 1 WHERE a_id = ?', (main_info[9],))
         c.execute('UPDATE bargains SET item_done = 1 WHERE item_name = ?', (main_info[9],))
         print("Executed update statement with a_name as ->", main_info[9])
     conn.commit()
@@ -473,6 +484,7 @@ def adventures_update():
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = 1 WHERE a_name = ?', (adventure_info[9],))
         c.execute('UPDATE armor_single SET a_collected = 1 WHERE a_set = ?', (adventure_info[9],))
+        c.execute('UPDATE armor_info SET a_collected = 1 WHERE a_id = ?', (adventure_info[9],))
         c.execute('UPDATE bargains SET item_done = 1 WHERE item_name = ?', (adventure_info[9],))
         print("Executed update statement with a_name as ->", adventure_info[9])
     conn.commit()
@@ -1208,6 +1220,32 @@ def edititem():
     else:
         return render_template("edititem.html", headline=headline, percentages=percentages)
 
+@app.route('/armor_info', methods=['GET', 'POST'])
+def armor_info():
+    headline = "Armor Info"
+    percentages = get_percentages()
+    scroll_position = session.get('scrollPosition')
+    if scroll_position is not None:
+        scroll_position = int(scroll_position) 
+
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT COUNT(*) FROM armor_info")
+        total_armor = c.fetchone()[0]
+        c.execute("SELECT COUNT(*) FROM armor_info WHERE a_collected = 1")
+        completed_armor = c.fetchone()[0]
+
+    percentage_armor = (completed_armor / total_armor) * 100
+		
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM armor_info WHERE a_collected = 1 ORDER BY a_id DESC')
+        armors = c.fetchall()
+        print("armors:", armors)
+        c.execute("SELECT COUNT(*) FROM fairyfountains WHERE fairy_found = 1")
+        completed_fairies = c.fetchone()[0]
+
+    return render_template('armor_info.html', headline=headline,completed_fairies=completed_fairies, percentages=percentages,percentage_armor=percentage_armor, armors=armors, scroll_position=scroll_position)
+
+
 @app.route('/armors', methods=['GET', 'POST'])
 def armors():
     headline = "Armors"
@@ -1223,6 +1261,8 @@ def armors():
         armor_found = request.form.get(f'armor_id_{armor_id}')
         with closing(conn.cursor()) as c:
             c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+            c.execute('UPDATE armor_single SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+            c.execute('UPDATE armor_info SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
         conn.commit()
     
     # Retrieve all armors from the database
@@ -1303,6 +1343,7 @@ def update_armor():
     with closing(conn.cursor()) as c:
         c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
         c.execute('UPDATE armor_single SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
+        c.execute('UPDATE armor_info SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
         print("Updated armor collection for ->", armor_id)
         conn.commit()
         

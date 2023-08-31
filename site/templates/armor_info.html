@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+    <div id="armor-counter">
+        <p>Percentage of Armor Found: <span id="percentage-found">{{ percentage_armor | round | int }}%</span></p>
+    </div>
+    
+    <table id="armor-table">
+        <thead>
+            <tr>
+                <th colspan="2" id="table-head-armor">Image</th>
+                <th>Name</th>
+                <th>Get Place</th>
+                <th>Sale Price</th>
+                <th>Sale Price &star;</th>
+                <th>Sale Price &star;&star;</th>
+                <th>Sale Price &star;&star;&star;</th>
+                <th>Sale Price &star;&star;&star;&star;</th>
+                <th>Stat Base</th>
+                <th>Stat &star;</th>
+                <th>Stat &star;&star;</th>
+                <th>Stat &star;&star;&star;</th>
+                <th>Stat &star;&star;&star;&star;</th>
+            </tr>
+        </thead>
+        {{completed_fairies}}
+        <tbody id="armors-body">
+            {% for armor in armors %}
+            <tr>
+                <input type="hidden" id="armors" name="acollected_{{ armor[0] }}" value="{{ completed_fairies }}">
+                <td colspan="2" id="armor_picture" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">
+                    <img id="armor_pic" src="static//images//armors/{{armor[1]}}" alt="{{armor[3]}}">
+                </td>
+                <td id="armor_name" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[3] }}</td>
+                <td id="armor_get" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[4] }}</td>
+                <td id="armor_price" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[5] }}</td>
+                <td id="armor_price1" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[6] }}</td>
+                <td id="armor_price2" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[7] }}</td>
+                <td id="armor_price3" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[8] }}</td>
+                <td id="armor_price4" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[9] }}</td>
+                <td id="armor_stat" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[10] }}</td>
+                <td id="armor_stat1" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[11] }}</td>
+                <td id="armor_stat2" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[12] }}</td>
+                <td id="armor_stat3" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[13] }}</td>
+                <td id="armor_stat4" name="acollected_{{ armor[0] }}" class="armor_{{armor[0]}} armors hidden_display" value="{{ completed_fairies }}">{{ armor[14] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='armors.js') }}"></script>
+{% endblock %}

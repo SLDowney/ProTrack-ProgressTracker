@@ -1,45 +1,103 @@
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
-  var armorTable = document.getElementById('armorForm');
-
-  // Add the event listener to the checkboxes to update the counter and Rewards column
-  Array.from(armorTable.querySelectorAll('input[type="checkbox"]')).forEach(function (checkbox) {
-    checkbox.addEventListener('click', function () {
-
-        const armorId = checkbox.id.replace('armor_id_', ''); // Extract armor ID
-      
-        updatearmor(checkbox, armorId); // Pass armor to updatearmor function
-    });
+        armorInfoToggle()
 });
- 
-  });
 
-var armorTable = document.getElementById('armorForm');
-
-function updatearmor(checkbox, armorId) {
-    console.log("--------UPDATE armor ---------")
-    const armorFound = checkbox.checked ? 1 : 0;
-
-    const data = {
-        armor_id: parseInt(armorId),
-        armor_done: armorFound,
-    };
-    console.log("DATA ->", data)
-
-    fetch(`/update_armor/${armorId}/${armorFound}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-      .then(response => response.json())
-      .then(data => {
-          // Handle the response if needed
-          console.log('Response from server:', data);
-
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-  }
+function armorInfoToggle() {
+    let armorTable = document.getElementById('armor-table');
+    Array.from(armorTable.getElementsByClassName('armors')).forEach(function (item) {
+        console.log("Armors item ->", item);
+        console.log("Armors item.getAttribute('value') ->", item.getAttribute('value'));
+        console.log("Armors item.getAttribute('name') ->", item.getAttribute('name'));
+        let armorId = item.getAttribute('name').replace('acollected_', ''); // Extract armor ID;
+        console.log("armor ID ->", armorId)
+        var armorIdElements = document.querySelectorAll(".armor_" + armorId);
+    
+        armorIdElements.forEach(function (element) {
+            console.log("Element ->", element)
+            if (element.textContent == "None") {
+                element.textContent = "GET INFO"
+            }
+        if (element.getAttribute('value') == 4) {
+            if (element.id == "armor_name"
+            || element.id == "armor_picture"
+            || element.id == "armor_get"
+            || element.id == "armor_price"
+            || element.id == "armor_price1"
+            || element.id == "armor_price2"
+            || element.id == "armor_price3"
+            || element.id == "armor_price4"
+            || element.id == "armor_stat"
+            || element.id == "armor_stat1"
+            || element.id == "armor_stat2"
+            || element.id == "armor_stat3"
+            || element.id == "armor_stat4") {
+            element.classList.remove("hidden_display");
+            } else {
+                element.classList.remove("hidden_display"); // Hide info
+                element.textContent = "???";
+            }
+        }
+        else if (element.getAttribute('value') == 3) {
+    
+            if (element.id == "armor_name"
+            || element.id == "armor_picture"
+            || element.id == "armor_get"
+            || element.id == "armor_price"
+            || element.id == "armor_price1"
+            || element.id == "armor_price2"
+            || element.id == "armor_price3"
+            || element.id == "armor_stat"
+            || element.id == "armor_stat1"
+            || element.id == "armor_stat2"
+            || element.id == "armor_stat3") {
+            element.classList.remove("hidden_display");
+            } else {
+                element.classList.remove("hidden_display");
+                element.textContent = "???";
+            }
+    
+        }
+        else if (element.getAttribute('value') == 2) {
+    
+            if (element.id == "armor_name"
+            || element.id == "armor_picture"
+            || element.id == "armor_get"
+            || element.id == "armor_price"
+            || element.id == "armor_price1"
+            || element.id == "armor_price2"
+            || element.id == "armor_stat"
+            || element.id == "armor_stat1"
+            || element.id == "armor_stat2") {
+            element.classList.remove("hidden_display");
+            } else {
+                element.classList.remove("hidden_display");
+                element.textContent = "???";
+            }
+    
+        }
+        else if (element.getAttribute('value') == 1) {
+    
+            if (element.id == "armor_name"
+            || element.id == "armor_picture"
+            || element.id == "armor_get"
+            || element.id == "armor_price"
+            || element.id == "armor_price1"
+            || element.id == "armor_stat"
+            || element.id == "armor_stat1") {
+            element.classList.remove("hidden_display");
+            } else {
+                element.classList.remove("hidden_display");
+                element.textContent = "???";
+            }
+    
+        }
+        else if (element.getAttribute('value') == 0) {
+            //console.log("Element Zero ->", element)
+        }
+        else {
+            //console.log("Element Else ->", element)
+        }
+    });
+   })
+}
