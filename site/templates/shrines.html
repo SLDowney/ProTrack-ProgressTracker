@@ -1,6 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %} 
+
+<div id="searchShrine">
+    <input type="text" id="find_shrine" name="find_shrine" placeholder="Shrine Search">
+    <button onclick="shrineFind()">Search</button>
+    <button onclick="shrineShow()">Reset</button>
+</div>
+
 <div id="shrines-counter">
     <p>Completed: {{completed_shrines}}</p>
     <p>Tapped {{tapped_shrines}}</p>
@@ -34,7 +41,7 @@
 
     <form id="shrineform" action="{{ url_for('shrines') }}" method="POST" enctype="multipart/form-data">
         {% for result in results %}
-        <div class="row">
+        <div class="row shrine_all hidden_display" id="shrineStatus_{{result[1]}}" name="shrine_name_{{result[2]}}">
             <table style="width: 100%;">
                 <colgroup>
                     <col span="1">

@@ -1118,6 +1118,10 @@ span {
         align-items: stretch;
     }
 
+    #armor-table {
+        margin-bottom: 5%;
+    }
+
     #armor_table_upgrade {
         text-align: center;
         display: flex;

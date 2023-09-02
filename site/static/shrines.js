@@ -1,3 +1,41 @@
+function shrineShow() {
+  Array.from(document.getElementsByClassName("shrine_all")).forEach(function (element) {
+    const shrineStatus = element.id.replace('shrineStatus_', ''); // Extract shrine ID;
+    if (shrineStatus != 0) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("shrine shrineStatus ->", shrineStatus)
+})
+}
+
+function shrineFind() {
+  let textbox = document.getElementById("find_shrine");
+  let text = textbox.value;
+  console.log("Text ->", text)
+  Array.from(document.getElementsByClassName("shrine_all")).forEach(function (element) {
+    console.log("Element ->", element)
+    let shrineName = element.getAttribute('name');
+    
+    if (shrineName && typeof shrineName === 'string') {
+        shrineName = shrineName.replace('shrine_name_', '');
+        console.log("Shrine Name ->", shrineName);
+    } else {
+        console.log("Element does not have a valid 'name' attribute.");
+    }
+    console.log("Shrine Name ->", shrineName)
+    if (shrineName == text) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("shrine shrineName ->", shrineName)
+})
+}
+
 function infoToggle(radio) {
   const shrineId = radio.name.replace('done_', ''); // Extract shrine ID;
   console.log("shrine ID ->", shrineId)
@@ -25,16 +63,18 @@ function infoToggle(radio) {
 
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
-
+  shrineShow()
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {
       const shrineId = radio.name.replace('done_', ''); // Extract shrine ID;
       console.log("shrineID ->", shrineId)
       updateshrine(radio, shrineId)
       infoToggle(radio);
+      shrineShow()
     });
     if (radio.checked) {
       infoToggle(radio);
+      shrineShow()
     }
     //infoToggle(radio);
   });
