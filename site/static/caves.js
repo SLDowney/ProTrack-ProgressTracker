@@ -1,13 +1,27 @@
+function caveShow() {
+  Array.from(document.getElementsByClassName("cave_all")).forEach(function (element) {
+    const caveStatus = element.id.replace('caveStatus_', ''); // Extract cave ID;
+    console.log("CaveStatus ->", caveStatus)
+    if (caveStatus == 1) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("cave caveStatus ->", caveStatus)
+})
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
-
+  caveShow()
   // Add the event listener to the radio buttons to update the counter and Rewards column
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {
       const caveId = radio.name.replace('done_', ''); // Extract cave ID
       console.log("caveID ->", caveId)
       console.log("radio.value:", radio.value)
-
+      caveShow()
       // itemToggle(radio);
     });
     // itemToggle(radio);

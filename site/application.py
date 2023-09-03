@@ -627,10 +627,27 @@ def format_percentage_key(key):
 
     return formatted_key, alt
 
+def getKeyItems():
+    with closing(conn.cursor()) as c:
+        c.execute("SELECT * FROM KeyItems")
+        keyItems = c.fetchall()
+        return keyItems
+
+@app.template_filter('format_image_name')
+def format_image_name(key):
+    # Replace underscores with spaces
+    if "_" in key:
+        formatted_key = key.replace("_", "").capitalize()
+    
+    formatted_key = formatted_key.title()
+
+    return formatted_key
+
 @app.route("/")
 def index():
     print("In Index")
     percentages = get_percentages()
+    keyItems = getKeyItems()
     
     # Fetch the temple progress data from the database
     temples_data = fetch_temple_progress()
@@ -671,7 +688,7 @@ def index():
             # print("Fabric image ->", fabric[5])
         
 
-    return render_template("index.html", finished_mains=finished_mains, fabrics=fabrics, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
+    return render_template("index.html",keyItems=keyItems, finished_mains=finished_mains, fabrics=fabrics, percentages=percentages, progress_data=progress_data, temples_data=temples_data)
 
 @app.route('/update_lock_status', methods=['POST'])
 def update_lock_status():
@@ -1558,8 +1575,15 @@ def koroks():
 
     # Retrieve all koroks from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM allkoroks')
-        koroks = c.fetchall()
+        quests = c.execute('SELECT * FROM Quests WHERE quest_type = "Main"').fetchall()
+        if quests[2][1] == 2:
+            c.execute('SELECT * FROM allkoroks ORDER BY korok_location')
+            koroks = c.fetchall()
+        elif quests[2][1] != 2:
+            c.execute('SELECT * FROM allkoroks WHERE korok_location = "Great Sky Island"')
+            koroks = c.fetchall()
+            completed_koroks = None
+    
     return render_template('koroks.html', headline=headline, percentages=percentages, completed_koroks=completed_koroks, koroks=koroks, scroll_position=scroll_position)
 
 @app.route('/update-korok', methods=['POST'])

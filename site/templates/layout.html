@@ -66,6 +66,13 @@
         {% endblock %}
     </div>
 
+    <div id="keyItems">
+        {% for item in keyItems %}
+            {% if item[1] == 1 %}
+                <img id="keyitem_{item[0]}" src="static//images//{{item[2]}}" alt="{{item[3]}}">
+            {% endif %}
+        {% endfor %}
+    </div>
     <button id="percentToggle">Progress Percentages</button>
     <div class="col-md-1 percentage">
         <table class="percentage_table" id="percentage_table">

@@ -32,118 +32,120 @@
     </form>
 
     <form id="caveform" action="{{ url_for('caves') }}" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            <table>
-                <colgroup>
-                    <col span="1">
-                    <col span="2">
-                </colgroup>
-                
-                {% for result in results %}
-                    <tbody>
-                        <tr>
-                            <th>Info</th>
-                            <th>Cave Info</th>
-                        </tr>
+        {% for result in results %}
+        <div class="row cave_all hidden_display" id="caveStatus_{{result[0]}}" name="cave_name_{{result[1]}}">
+            <div class="row">
+                <table>
+                    <colgroup>
+                        <col span="1">
+                        <col span="2">
+                    </colgroup>
+                    
+                        <tbody>
+                            <tr>
+                                <th>Info</th>
+                                <th>Cave Info</th>
+                            </tr>
 
-                        {% if result[0] == 2 %}
-                        <tr>
-                            <td>Name</td>
-                            <td>{{result[1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Coordinates</td>
-                            <td>{{result[2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Region</td>
-                            <td>{{result[3]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Bubbulfrog</td>
-                            <td>{{result[4]}}</td>
-                        </tr>
-                        {% if result[5] != None %}
-                        <tr>
-                            <td>Shrine</td>
-                            <td>{{result[5]}}</td>
-                        </tr>
-                        {% else %}
-                        {% endif %}
-                        {% if result[6] != None and result[10] != ""  %}
-                        <tr>
-                            <td>Enemies</td>
-                            <td>{{result[6]}}</td>
-                        </tr>
-                        {% else %}
-                        {% endif %}
-                        {% if result[7] != None and result[10] != ""  %}
-                        <tr>
-                            <td>Treasure</td>
-                            <td>{{result[7]}}</td>
-                        </tr>
-                        {% else %}
-                        {% endif %}
-                        {% if result[13] in armors %}
-                        <tr>
-                            <td>Armor</td>
-                            <td>{{result[13]}}</td>
-                        </tr>
-                        {% else %}
-                        {% endif %}
-                        {% if result[8] != None and result[10] != ""  %}
-                        <tr>
-                            <td>Side Quest</td>
-                            <td>{{result[8]}}</td>
-                        </tr>
-                        {% else %}
-                        {% endif %}
-                        {% if result[9] != None and result[10] != ""  %}
-                        <tr>
-                            <td>Shrine Quest</td>
-                            <td>{{result[9]}}</td>
-                        </tr>
-                        {% else %}
-                        {% endif %}
-                        {% if result[10] != None and result[10] != "" %}
-                        <tr>
-                            <td>Prerequisites</td>
-                            <td>{{result[10]}}</td>
-                        </tr>    
-                        {% else %}
-                        {% endif %}
-                        {% elif result[0] == 1 %}
-                        <tr>
-                            <td>Name</td>
-                            <td>{{result[1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Coordinates</td>
-                            <td>{{result[2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>Region</td>
-                            <td>{{result[3]}}</td>
-                        </tr>
-                        
-                        {% elif result[0] == 0 %}
-                        <tr>
-                            <td>Name</td>
-                            <td>{{result[1]}}</td>
-                        </tr>
-                        {% endif %}
+                            {% if result[0] == 2 %}
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[1]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Coordinates</td>
+                                <td>{{result[2]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Bubbulfrog</td>
+                                <td>{{result[4]}}</td>
+                            </tr>
+                            {% if result[5] != None %}
+                            <tr>
+                                <td>cave</td>
+                                <td>{{result[5]}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% if result[6] != None and result[10] != ""  %}
+                            <tr>
+                                <td>Enemies</td>
+                                <td>{{result[6]}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% if result[7] != None and result[10] != ""  %}
+                            <tr>
+                                <td>Treasure</td>
+                                <td>{{result[7]}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% if result[13] in armors %}
+                            <tr>
+                                <td>Armor</td>
+                                <td>{{result[13]}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% if result[8] != None and result[10] != ""  %}
+                            <tr>
+                                <td>Side Quest</td>
+                                <td>{{result[8]}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% if result[9] != None and result[10] != ""  %}
+                            <tr>
+                                <td>cave Quest</td>
+                                <td>{{result[9]}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% if result[10] != None and result[10] != "" %}
+                            <tr>
+                                <td>Prerequisites</td>
+                                <td>{{result[10]}}</td>
+                            </tr>    
+                            {% else %}
+                            {% endif %}
+                            {% elif result[0] == 1 %}
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[1]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Coordinates</td>
+                                <td>{{result[2]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                            
+                            {% elif result[0] == 0 %}
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[1]}}</td>
+                            </tr>
+                            {% endif %}
 
-                    <tr>
-                        <td colspan="3">
-                            <label class="cave_radio_labels" for="undone_{{ result[12] }}"><input type="radio" id="undone_{{ result[12] }}" name="done_{{ result[12] }}" value="0" {% if result[0] == 0 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')">Unfound</label>
-                            <label class="cave_radio_labels" for="started_{{ result[12] }}"><input type="radio" id="started_{{ result[12] }}" name="done_{{ result[12] }}" value="1" {% if result[0] == 1 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')">Discovered</label>
-                            <label class="cave_radio_labels" for="done_{{ result[12] }}"><input type="radio" id="done_{{ result[12] }}" name="done_{{ result[12] }}" value="2" {% if result[0] == 2 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')">Completed</label>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        <tr>
+                            <td colspan="3">
+                                <label class="cave_radio_labels" for="undone_{{ result[12] }}"><input type="radio" id="undone_{{ result[12] }}" name="done_{{ result[12] }}" value="0" {% if result[0] == 0 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')">Unfound</label>
+                                <label class="cave_radio_labels" for="started_{{ result[12] }}"><input type="radio" id="started_{{ result[12] }}" name="done_{{ result[12] }}" value="1" {% if result[0] == 1 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')">Discovered</label>
+                                <label class="cave_radio_labels" for="done_{{ result[12] }}"><input type="radio" id="done_{{ result[12] }}" name="done_{{ result[12] }}" value="2" {% if result[0] == 2 %}checked{% endif %} onclick="updatecave(this, '{{result[12]}}')">Completed</label>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
         </div>
+        {% endfor %}
     </form>
     <script src="{{ url_for('static', filename='caves.js') }}"></script>
 {% endblock %}

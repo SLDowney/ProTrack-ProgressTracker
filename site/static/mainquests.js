@@ -282,7 +282,7 @@ function showSecondary(checkbox, secondaryLevel) {
       for (const item of ItemFourth) {
         item.classList.add("hidden_display")
         //showMainFromSecondary(mainId, secondaryFound)
-        updatemain(2, mainId)
+        //updatemain(2, mainId)
         console.log("secondary level 3?")
       }
     }
@@ -291,7 +291,7 @@ function showSecondary(checkbox, secondaryLevel) {
           updatemain(2, mainId)
         }
       
-    else if (!checkbox.checked & secondaryLevel == 3) {
+    else if (!checkbox.checked & secondaryLevel == 4) {
         // showMainFromSecondary(mainId, secondaryFound)
         updatemain(2, mainId)
       }

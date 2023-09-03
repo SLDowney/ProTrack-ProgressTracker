@@ -965,7 +965,7 @@ span {
     }
 
     .percentage_table {
-        display:none;
+        /* display:none; */
         position: fixed;
         top: 0;
         right: 0;
@@ -986,7 +986,7 @@ span {
 
     #percentage_table {
         margin-bottom: 10%;
-        width: 550px;
+        /* width: 550px; */
     }
   
     /* Update the width for the items to have four columns in this media query */
@@ -1153,6 +1153,17 @@ span {
         justify-content: flex-end;
         background-color: #cccccc7d;
         background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgba(255, 255, 255, 0), rgb(255 255 255 / 20%));
+    }
+
+    #keyItems {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgba(255, 255, 255, 0), rgb(255 255 255 / 0));
+    }
+
+    #keyItems img {
+        width: 15%;
     }
 
   }

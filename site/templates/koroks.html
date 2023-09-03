@@ -30,11 +30,12 @@
         </div>
         <input type="submit" id="add_korok_submit"value="Add Korok">
     </form> -->
-
+{% if completed_koroks != None %}
     <div id="koroks-counter">
         <p><span>{{completed_koroks}} / 900</span></p>
         <p><span id="percentage-found">0</span>%</p>
     </div>
+{% endif %}
     
     <table id="koroks-table">
         <thead>
