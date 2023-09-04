@@ -1,6 +1,46 @@
+function compFind() {
+  let textbox = document.getElementById("find_comp");
+  let text = textbox.value.toLowerCase();
+  console.log("Text ->", text)
+  Array.from(document.getElementsByClassName("comp_all")).forEach(function (element) {
+    console.log("Element ->", element)
+    let compName = element.getAttribute('name').toLowerCase();
+    
+    if (compName && typeof compName === 'string') {
+        compName = compName.replace('comp_name_', '');
+        console.log("comp Name ->", compName);
+    } else {
+        console.log("Element does not have a valid 'name' attribute.");
+    }
+    console.log("comp Name ->", compName)    
+    if (compName.includes(text)) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("comp compName ->", compName)
+})
+}
+
+function compShow() {
+  location.reload();
+}
+
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
+  const findCompInput = document.getElementById("find_comp");
+  const searchButton = document.getElementById("searchButton");
 
+  findCompInput.focus(); // Set focus on the input field
+
+  // Add an event listener to detect "Enter" key press
+  findCompInput.addEventListener("keyup", function (event) {
+      if (event.key === "Enter") {
+          // Activate the search button when Enter is pressed
+          searchButton.click();
+      }
+  });
   // Add the event listener to the checkboxes to update the counter and Rewards column
   Array.from(document.querySelectorAll('input[type="checkbox"]')).forEach(function (checkbox) {
     checkbox.addEventListener('click', function () {

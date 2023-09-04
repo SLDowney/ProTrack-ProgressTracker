@@ -3,27 +3,27 @@
 {% block body %} 
 
     <form id="addisonform" action="{{ url_for('addison') }}" method="POST" enctype="multipart/form-data">
-        <div class="row">
-            <table style="width: 100%;">
-                <colgroup>
-                    <col span="1">
-                    <col span="2">
-                </colgroup>
-                
-                {% for result in results %}
-                    <tbody>
+        {% for result in results %}
+        <div class="item-container">
+            <div class="row">
+                <table class="location_table">
+                    <colgroup>
+                        <col span="1">
+                        <col span="2">
+                    </colgroup>
+                    <thead>
                         <tr>
                             <th>Info</th>
                             <th>Addison Info</th>
                         </tr>
-
-                        {% if result[1] == 1 %}
+                    </thead>
+                    <tbody>
                         <tr>
                             <td>Coordinates</td>
                             <td>{{result[2]}}</td>
                         </tr>
                         {% if result[3] != None %}
-                        <tr>
+                        <tr id="addison_location" class="addison_{{result[0]}} hidden_display">
                             <td>Location</td>
                             <td>{{result[3]}}</td>
                         </tr>
@@ -33,7 +33,7 @@
                             <td>Region</td>
                             <td>{{result[4]}}</td>
                         </tr>
-                        <tr>
+                        <tr id="addison_rewards" class="addison_{{result[0]}} hidden_display">
                             <td>Rewards</td>
                             <td>{% if result[6] == None %}
                                 ???
@@ -42,26 +42,16 @@
                                 {% endif %}
                             </td>
                         </tr>
-                        {% elif result[1] == 0 %}
                         <tr>
-                            <td>Coordinates</td>
-                            <td>{{result[2]}}</td>
+                            <td colspan="3" class="addison_checkbox">
+                                <input type="checkbox" class="addison_checkbox" id="done_{{ result[0] }}" name="done_addison_{{ result[0] }}" value="{{result[1]}}" {% if result[1] == 1 %}checked{% endif %} onclick="infoToggle(this), updateaddison(this, '{{result[0]}}')">
+                            </td>
                         </tr>
-                        {% endif %}
-
-                    <tr>
-                        <td>Status</td>
-                        <td>
-                            <input type="radio" id="undone_{{ result[0] }}" name="done_addison_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}><label class="addison_radio_labels" for="undone_{{ result[0] }}">Not Done</label>
-                            <input type="radio" id="found_{{ result[0] }}"name="done_addison_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}><label class="addison_radio_labels" for="found_{{ result[0] }}">Completed</label>
-                            <input type="submit" id="addisonSubmit" value="Update">
-                        </td>
-                    </tr>
-
-                    {% endfor %}
-
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        {% endfor %}
     </form>
+    <script src="{{ url_for('static', filename='addison.js') }}"></script>
 {% endblock %}

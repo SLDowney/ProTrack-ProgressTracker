@@ -2,47 +2,55 @@
 
 {% block body %} 
 
+<div id="searchlightroot">
+    <input type="text" id="find_lightroot" name="find_lightroot" placeholder="lightroot Search">
+    <button onclick="lightrootFind()">Search</button>
+    <button onclick="lightrootShow()">Reset</button>
+</div>
+
 <div id="counter">
     <p>Lightroots Found: {{completed_lightroots}}</p>
 </div>
 
 <div class="content-container">
     <form id="rootform" action="{{ url_for('lightroots') }}" method="POST" enctype="multipart/form-data">
-        <div class="item-container location_container">
-            {% for result in results %}
-            <div class="row">
-                <table style="width: 100%;">
-                    <colgroup>
-                        <col span="1">
-                        <col span="2">
-                    </colgroup>
-                        <tbody>
+        {% for result in results %}
+        <div class="row lightroot_all hidden_display" id="lightrootStatus_{{result[1]}}" name="lightroot_name_{{result[2]}}">
+            <div class="item-container location_container">
+                <div class="row">
+                    <table style="width: 100%;">
+                        <colgroup>
+                            <col span="1">
+                            <col span="2">
+                        </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>Info</th>
+                                    <th>Lightroot Info</th>
+                                </tr>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{{result[2]}}</td>
+                                </tr>
+                                <tr class="root_{{result[0]}} hidden_display">
+                                    <td>Coordinates</td>
+                                    <td>{{result[3]}}</td>
+                                </tr>
+                                <tr class="root_{{result[0]}} hidden_display">
+                                    <td>Region</td>
+                                    <td>{{result[4]}}</td>
+                                </tr>
                             <tr>
-                                <th>Info</th>
-                                <th>Lightroot Info</th>
+                                <td colspan="3">
+                                    <input type="checkbox" class="location_checkbox" id="done_{{ result[0] }}" name="done_root_{{ result[0] }}" value="0" {% if result[1] == 1 %}checked Found{% elif result[1] == 0 %} unchecked Unfound{% endif %}>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{result[2]}}</td>
-                            </tr>
-                            <tr class="root_{{result[0]}} hidden_display">
-                                <td>Coordinates</td>
-                                <td>{{result[3]}}</td>
-                            </tr>
-                            <tr class="root_{{result[0]}} hidden_display">
-                                <td>Region</td>
-                                <td>{{result[4]}}</td>
-                            </tr>
-                        <tr>
-                            <td colspan="3">
-                                <input type="checkbox" class="location_checkbox" id="done_{{ result[0] }}" name="done_root_{{ result[0] }}" value="0" {% if result[1] == 1 %}checked Found{% elif result[1] == 0 %} unchecked Unfound{% endif %}>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </form>
 </div>
     <script src="{{ url_for('static', filename='lightroots.js') }}"></script>

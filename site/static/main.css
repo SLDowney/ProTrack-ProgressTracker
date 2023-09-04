@@ -119,6 +119,15 @@ p {
     /* border: 2px solid rgba(0, 0, 0, 0.5); */
 
 }
+
+.addison_checkbox input[type=checkbox] {
+    width: 70%;
+    height: 25px;
+    margin-top: 2%;
+    margin-left: 15%;
+    /* margin-right: 50%; */
+}
+
 .row.armor_set {
     display: flex;
     margin-left: 0%;

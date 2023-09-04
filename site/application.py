@@ -165,24 +165,27 @@ def get_percentages():
         }
     return percentages
 
+@app.route('/prereq_update', methods=['POST'])
 def prereq_update(main_id):
     print("Main id ->", main_id)
     with closing(conn.cursor()) as c:
         pre_start = c.execute('SELECT * FROM prerequisites WHERE prestart_id = ?', (main_id,)).fetchall()
         pre_done = c.execute('SELECT * FROM prerequisites WHERE prerequisite_id = ?', (main_id,)).fetchall()
-        print("pre_start ->", pre_start,'\n')
-        print("pre_done ->", pre_done)
+        #print("pre_start ->", pre_start,'\n')
+        #print("pre_done ->", pre_done)
         
     with closing(conn.cursor()) as c:   
         if pre_start != None:
             for started in pre_start:
                 c.execute('UPDATE Quests SET quest_show = 1 WHERE quest_id = ?', (started[0],))
+                print("updated quest_show in START for ", started[0])
         conn.commit()
     
     with closing(conn.cursor()) as c:
         if pre_done != None:
             for done in pre_done:
                 c.execute('UPDATE Quests SET quest_show = 1 WHERE quest_id = ?', (done[0],))
+                print("updated quest_show in DONE for ", done[0])
                 
             
         
@@ -387,6 +390,24 @@ def chest_update():
     print("IN UPDATE FUNCTION ->", chest_info[1])
     return "success"
 
+@app.route('/camp_chest_update', methods=['POST'])
+def camp_chest_update():
+    data = request.get_json()  # Get the JSON data from the request
+    chest = data.get('camp_chest_id')
+    print("chest:", chest)
+    with closing(conn.cursor()) as c:
+        c.execute('SELECT * FROM camp_chest WHERE camp_chest_id = ?', (chest,))
+        chest_info = c.fetchone()
+        print("Chest Info ->", chest_info[5])
+
+    with closing(conn.cursor()) as c:
+        c.execute('UPDATE caves SET cave_done = 1 WHERE cave_name = ?', (chest_info[5],))
+        print("Executed update statement with cave_name as ->", chest_info[5])
+    conn.commit()
+    
+    print("IN UPDATE FUNCTION ->", chest_info[5])
+    return "success"
+
 @app.route('/oldmap_update', methods=['POST'])
 def oldmap_update():
     data = request.get_json()  # Get the JSON data from the request
@@ -432,6 +453,7 @@ def main_update():
     with closing(conn.cursor()) as c:
         c.execute('SELECT * FROM Quests WHERE quest_type = "Main" AND quest_id = ?', (main,))
         main_info = c.fetchone()
+    conn.commit()
         
     with closing(conn.cursor()) as c:
         c.execute('UPDATE locations SET location_done = 1 WHERE location_name = ?', (main_info[7],))
@@ -606,6 +628,10 @@ def format_percentage_key(key):
         formatted_key = key.replace("percentage_", "").capitalize()
         formatted_key = formatted_key.replace("_", " ")
         alt = "mainqu"
+    elif key == "percentage_side_quests":
+        formatted_key = key.replace("percentage_", "").capitalize()
+        formatted_key = formatted_key.replace("_", " ")
+        alt = "sidequests"
     elif key == "percentage_old_maps":
         formatted_key = key.replace("percentage_", "").capitalize()
         formatted_key = formatted_key.replace("_", " ")
@@ -867,7 +893,7 @@ def chests():
 
     # Retrieve all chests from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM chests')
+        c.execute('SELECT * FROM chests ORDER BY chest_coord ASC')
         chests = c.fetchall()
         print("result[6]:", chests[0][6])
         print("chest id:", chests[0][0])
@@ -1159,12 +1185,32 @@ def camp_chest():
     else:
         # Retrieve all camp_chest from the database
         with closing(conn.cursor()) as c:
-            c.execute('SELECT * FROM camp_chest')
+            c.execute('SELECT * FROM camp_chest ORDER BY camp_chest_coord ASC')
             camp_chests = c.fetchall()
 
     return render_template('camp_chest.html',headline=headline, percentages=percentages,  camp_chests=camp_chests, scroll_position=scroll_position)
 
+@app.route('/update_camp_chests', methods=['POST'])
+def update_camp_chests():
+    camp_chest_id = request.json.get('camp_chest_id')
+    camp_chest_done = request.json.get('camp_chest_done')
 
+    if camp_chest_done is None:
+        camp_chest_done = 0
+    else:
+        camp_chest_done = camp_chest_done
+
+    # Update the dispenser in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE camp_chest SET camp_chest_done = ? WHERE camp_chest_id = ?', (camp_chest_done, camp_chest_id))
+            print("update_camp_chests chest_done = ", camp_chest_done, ", camp_chest_id = ", camp_chest_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+    
 @app.route("/add_camp_chest", methods=["POST"])
 def add_camp_chest():
     try:
@@ -1280,73 +1326,93 @@ def armors():
             c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
             c.execute('UPDATE armor_single SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
             c.execute('UPDATE armor_info SET a_collected = ? WHERE a_id = ?', (armor_found, armor_id))
+            c.execute('UPDATE armor_set SET a_show = 1 WHERE ')
         conn.commit()
     
     # Retrieve all armors from the database
     with closing(conn.cursor()) as c:
-        c.execute('SELECT * FROM armor ORDER BY a_set ASC')
-        armors = c.fetchall()
-        c.execute('SELECT * FROM armor_single ORDER BY a_set ASC')
-        armor_single = c.fetchall()
+        armors = []
+        armor_single =[]
+        sets = c.execute('SELECT set_id FROM armor_set WHERE a_show = 1').fetchall()
+        for set in sets:
+            armorsToCheck = c.execute('SELECT * FROM armor WHERE set_id = ? ORDER BY a_set ASC', (set[0],)).fetchall()
+            for armorother in armorsToCheck:
+                armors.append(armorother)
+        
+        for set in sets:
+            armorSingleToCheck = c.execute('SELECT * FROM armor_single WHERE set_id = ? ORDER BY a_set ASC', (set)).fetchall()
+            for armorother in armorSingleToCheck:
+                armors.append(armorSingleToCheck)
+
+        print("armors ->", armors)
+        print("Armor_single ->", armor_single)
         # Initialize a list to store armor set lists
         armor_sets = []
-        armor_single_sets = []
         # Create lists for each armor set
-        for row in armor_single:
-            a_id = row[0]
-            a_set = row[1]
-            a_piece = row[2]
-            a_collected = row[3]
-            a_upgrade1 = row[4]
-            a_items1 = row[5]
-            a_upgrade2 = row[6]
-            a_items2 = row[7]
-            a_upgrade3 = row[8]
-            a_items3 = row[9]
-            a_upgrade4 = row[10]
-            a_items4 = row[11]
-            a_totalitems = row[12]
-            item1_list = a_items1.split('\n')
-            item2_list = a_items2.split('\n')
-            item3_list = a_items3.split('\n')
-            item4_list = a_items4.split('\n')
-            single = [a_id, a_piece, a_collected, a_upgrade1, item1_list, a_upgrade2, item2_list, \
-            a_upgrade3, item3_list, a_upgrade4, item4_list, a_totalitems]
+        if len(armor_single) > 0:
+            for row in armor_single:
+                print("row ->", row)
+                a_id = row[0]
+                a_set = row[1]
+                a_piece = row[2]
+                a_collected = row[3]
+                a_upgrade1 = row[4]
+                a_items1 = row[5]
+                a_upgrade2 = row[6]
+                a_items2 = row[7]
+                a_upgrade3 = row[8]
+                a_items3 = row[9]
+                a_upgrade4 = row[10]
+                a_items4 = row[11]
+                a_totalitems = row[12]
+                item1_list = a_items1.split('\n')
+                item2_list = a_items2.split('\n')
+                item3_list = a_items3.split('\n')
+                item4_list = a_items4.split('\n')
+                single = [a_id, a_piece, a_collected, a_upgrade1, item1_list, a_upgrade2, item2_list, \
+                a_upgrade3, item3_list, a_upgrade4, item4_list, a_totalitems, set_id]
 
-            single_set = [[a_set], single]
-            print("single_set ->", single_set)
-            # Find or create the list for the current armor set
-            armor_sets.append(single_set)
-        for row in armors:
-            a_items1 = row[6]
-            a_items2 = row[8]
-            a_items3 = row[10]
-            a_items4 = row[12]
-            itemType = type(a_items1)
-            a_items1 = a_items1.strip().split('\r\n')
-            a_items2 = a_items2.split('\r\n')
-            a_items3 = a_items3.split('\r\n')
-            a_items4 = a_items4.strip().split('\n')
-            
-            a_id, a_set, a_name, a_piece, a_collected, a_upgrade1, a_items1, a_upgrade2, a_items2, \
-            a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems = row
+                single_set = [[a_set], single]
+                print("single_set ->", single_set)
+                # Find or create the list for the current armor set
+                armor_sets.append(single_set)
+        
+        if len(armors) > 0:
+            print("armors ->", armors[0][0],armors[0][1])
+            for row in armors:
+                i = 0
+                for item in row:
+                    print("Item", i, " ->", item)
+                    i = i + 1
+                a_items1 = row[6]
+                a_items2 = row[8]
+                a_items3 = row[10]
+                a_items4 = row[12]
+                a_items1 = a_items1.strip().split('\r\n')
+                a_items2 = a_items2.split('\r\n')
+                a_items3 = a_items3.split('\r\n')
+                a_items4 = a_items4.strip().split('\n')
+                
+                a_id, a_set, a_name, a_piece, a_collected, a_upgrade1, a_items1, a_upgrade2, a_items2, \
+                a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems, set_id = row
 
-            # Find or create the list for the current armor set
-            armor_set = next((set_list for set_list in armor_sets if set_list[0][0] == a_set), None)
-            if armor_set is None:
-                armor_set = [[a_set]]
-                armor_sets.append(armor_set)
+                # Find or create the list for the current armor set
+                armor_set = next((set_list for set_list in armor_sets if set_list[0][0] == a_set), None)
+                if armor_set is None:
+                    armor_set = [[a_set, set_id]]
+                    armor_sets.append(armor_set)
 
-            # Add collected status and other columns to the appropriate piece in the list
-            armor_piece = [a_id, a_piece, a_collected,a_upgrade1, a_items1, a_upgrade2, a_items2, a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems]
-            armor_set.append(armor_piece)
-        print("Armor Barbarian ->", armor_sets[26][1][10])
-        for armor_set in armor_sets:
-            if armor_set[1][0] == 31:
-                armor_set[1][10] = armor_set[1][10].split('\n')
-                armor_set[2][10] = armor_set[2][10].split('\n')
-                armor_set[3][10] = armor_set[3][10].split('\n')
-                print("armorset ->", armor_set)
+                # Add collected status and other columns to the appropriate piece in the list
+                armor_piece = [a_id, a_piece, a_collected,a_upgrade1, a_items1, a_upgrade2, a_items2, a_upgrade3, a_items3, a_upgrade4, a_items4, a_totalitems]
+                armor_set.append(armor_piece)
+        
+        if len(armor_sets) > 0:
+            for armor_set in armor_sets:
+                if armor_set[1][0] == 31:
+                    armor_set[1][10] = armor_set[1][10].split('\n')
+                    armor_set[2][10] = armor_set[2][10].split('\n')
+                    armor_set[3][10] = armor_set[3][10].split('\n')
+                    print("armorset ->", armor_set)
     with closing(conn.cursor()) as c:
             c.execute('SELECT * FROM fairyfountains ORDER BY fairy_id')
             fairies = c.fetchall()
@@ -1361,6 +1427,8 @@ def update_armor():
         c.execute('UPDATE armor SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
         c.execute('UPDATE armor_single SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
         c.execute('UPDATE armor_info SET a_collected = ? WHERE a_id = ?', (armor_done, armor_id))
+        set_id = c.execute('SELECT set_id FROM armor WHERE a_id = ?', (armor_id)).fetchone()
+        c.execute('UPDATE armor_set SET a_show = 1 WHERE set_id = ?', (set_id))
         print("Updated armor collection for ->", armor_id)
         conn.commit()
         
@@ -2378,7 +2446,7 @@ def sidequests():
 def update_sidequests():
     side_id = request.json.get('side_id')
     side_done = request.json.get('side_done')
-
+    prereq_update(side_id)
     if side_done is None:
         side_done = 0
     else:
@@ -2493,6 +2561,7 @@ def adventures():
 def update_adventures():
     adventure_id = request.json.get('adventure_id')
     adventure_done = request.json.get('adventure_done')
+    prereq_update(adventure_id)
 
     if adventure_done is None:
         adventure_done = 0
@@ -2568,7 +2637,7 @@ def mainqu():
         subqus = c.execute('SELECT * FROM SubQuests').fetchall()
 
     with closing(conn.cursor()) as c:
-        query = '''SELECT * FROM Quests WHERE quest_type = "Main" ORDER BY quest_id ASC'''
+        query = '''SELECT * FROM Quests WHERE quest_type = "Main" ORDER BY quest_id desc'''
         c.execute(query)
         results = c.fetchall()
         
@@ -2591,6 +2660,7 @@ def update_mainquests():
     main_id = request.json.get('main_id')
     main_done = request.json.get('main_done')
     print("main id ->", main_id)
+    print("main done ->", main_done)
 
     prereq_update(main_id)
     # with closing(conn.cursor()) as c:
@@ -2618,8 +2688,17 @@ def update_mainquests():
     try:
         with closing(conn.cursor()) as c:
             c.execute('UPDATE Quests SET quest_done = ? WHERE quest_id = ?', (main_done, main_id))
-           # c.execute('UPDATE Quests SET quest_show = 1 WHERE quest_id = ?', (main_id))
-            print("Quests Quest_done = ", main_done, ", Quest_id = ", main_id)
+            if main_id == 2 and main_done == 2:
+                print("in main_id = 2 IF")
+                c.execute('UPDATE shrines SET shrine_done = 2 where shrine_id = 1')
+                c.execute('UPDATE shrines SET shrine_done = 2 where shrine_id = 2')
+                c.execute('UPDATE shrines SET shrine_done = 2 where shrine_id = 3')
+                c.execute('UPDATE shrines SET shrine_done = 2 where shrine_id = 4')
+            if main_id == 5 and main_done == 1:
+                print("in main_id = 5 IF")
+                c.execute('UPDATE towers SET tower_done = 1 where tower_id = 13')
+                # c.execute('UPDATE Quests SET quest_show = 1 WHERE quest_id = ?', (main_id))
+                print("Quests Quest_done = ", main_done, ", Quest_id = ", main_id)
             conn.commit()
         return jsonify(success=True)
     except Exception as e:
@@ -2705,6 +2784,28 @@ def addison():
         results = c.fetchall()
         info = [(result[0], result[1], result[2]) for result in results]
     return render_template("addison.html", scroll_position=scroll_position, headline=headline, percentages=percentages, info=info, results=results)
+
+@app.route('/update_addison', methods=['POST'])
+def update_addison():
+    addison_id = request.json.get('addison_id')
+    addison_done = request.json.get('addison_done')
+
+    if addison_done is None:
+        addison_done = 0
+    else:
+        addison_done = addison_done
+
+    # Update the addison in the database with the new found status
+    try:
+        with closing(conn.cursor()) as c:
+            c.execute('UPDATE addison SET addison_done = ? WHERE addison_id = ?', (addison_done, addison_id))
+            print("update_addison addison_done = ", addison_done, ", addison_id = ", addison_id)
+            conn.commit()
+        return jsonify(success=True)
+    except Exception as e:
+        print("Error:", e)  # Add this line for debugging
+        return jsonify(success=False, error=str(e))
+    
 
 @app.route("/location-location", methods=["GET", "POST"])
 def location():

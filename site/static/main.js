@@ -1,3 +1,41 @@
+function armorShow() {
+    Array.from(document.getElementsByClassName("armor_all")).forEach(function (element) {
+      const armorStatus = element.id.replace('armorStatus_', ''); // Extract armor ID;
+      if (armorStatus != 0) {
+        element.classList.remove("hidden_display");
+      }
+      else {
+        element.classList.add("hidden_display");
+      }
+      console.log("armor armorStatus ->", armorStatus)
+  })
+  }
+  
+  function armorFind() {
+    let textbox = document.getElementById("find_armor");
+    let text = textbox.value.toLowerCase();
+    console.log("Text ->", text)
+    Array.from(document.getElementsByClassName("armor_all")).forEach(function (element) {
+      console.log("Element ->", element)
+      let armorName = element.getAttribute('name').toLowerCase();
+      
+      if (armorName && typeof armorName === 'string') {
+          armorName = armorName.replace('armor_name_', '');
+          console.log("armor Name ->", armorName);
+      } else {
+          console.log("Element does not have a valid 'name' attribute.");
+      }
+      console.log("armor Name ->", armorName)    
+      if (armorName.includes(text)) {
+        element.classList.remove("hidden_display");
+      }
+      else {
+        element.classList.add("hidden_display");
+      }
+      console.log("armor armorName ->", armorName)
+  })
+  }
+
 // Function to update great fairies
 function updatefairy(fairyId, fairyDone) {
     // Update the database and perform any necessary UI updates

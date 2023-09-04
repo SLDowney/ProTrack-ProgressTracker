@@ -83,7 +83,7 @@ var chestTable = document.getElementById('chestform');
 
 function updatechest(checkbox, chestId) {
   console.log("--------UPDATE chest ---------")
-  const chestFound = checkbox.value;
+  const chestFound = checkbox.checked ? 1 : 0;;
 
   const data = {
     chest_id: parseInt(chestId),

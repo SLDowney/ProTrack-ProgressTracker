@@ -1,191 +1,169 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-
-    <!-- <form action="{{ url_for('compendium') }}" method="POST" enctype="multipart/form-data">
-
-        <h1>Search Compendium</h1>
-        <div>
-            <input type="text" name="search_item" id="search_item" placeholder="Search Item">
-            <input type="submit" value="Search">
-        </div>
-    </form>
-
-    <h1>Search Results</h1>
-    {% if search_results %}
-        <form action="{{ url_for('update_compendium') }}" method="POST">
-            {% for result in search_results %}
-                <input type="hidden" name="comp_id" value="{{ result[0] }}">
-                <input type="submit" id="comp_searchresult" value="{{ result[1] }}">
-            {% endfor %}
-        </form>
-    {% else %}
-        <p>No search results found.</p>
-    {% endif %} -->
+<div id="searchcomp">
+    <input type="text" id="find_comp" name="find_comp" placeholder="comp Search">
+    <button id="searchButton" onclick="compFind()">Search</button>
+    <button onclick="compShow()">Reset</button>
+</div>
 
     <div class="content-container">
         <form id="comp_main" action="{{ url_for('compendium') }}" method="POST" enctype="multipart/form-data">
             <h1>Creatures</h1>
             <div class="item-container">
-                    <div class="comp-md-8">
-                        {% for creature in creatures %}
+                <div class="comp-md-8">
+                    {% for result in results if result[2] == "Creatures" %}
+                    <div class="row comp_all" id="compStatus_{{result[3]}}" name="comp_name_{{result[1]}}">
                         <table class="location_table" id="well-table">
                             <tr>
                                 <th colspan="2">Info</th>
                             </tr>
                             <tr>
                                 <td>ID</td>
-                                <td>{{creature[0]}}</td>
-                            </tr>
-                            <tr>
-                                <td>Item</td>
-                                <td><p class="comp_hide" id="comp_item_{{creature[0]}}" data-rewards="{{ creature[1] }}">{{ creature[1] }}</p><p id="comp_white">{{creature[1]}}</p></td>
+                                <td>{{result[0]}}</td>
                             </tr>
                             <tr>
                                 <td class="comp_checkbox">
-                                    <input type="hidden" name="comp_id" value="{{ creature[0] }}">
-                                    {% if creature[3] == 0 %}
-                                        <input type="checkbox" class="comp_checkbox" id="done_{{ creature[0] }}" name="done_comp_{{ creature[0] }}" value="0" unchecked onclick="updatecomp(this, '{{creature[0]}}'); itemToggle(this, '{{ creature[0] }}')">
-                                    {% elif creature[3] == 1 %}
-                                        <input type="checkbox" class="comp_checkbox" id="done_{{ creature[0] }}" name="done_comp_{{ creature[0] }}" value="1" checked onclick="updatecomp(this, '{{creature[0]}}'); itemToggle(this, '{{ creature[0] }}')">
+                                    <input type="hidden" name="comp_id" value="{{ result[0] }}">
+                                    {% if result[3] == 0 %}
+                                        <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value="0" unchecked onclick="updatecomp(this, '{{result[0]}}'); itemToggle(this, '{{ result[0] }}')">
+                                    {% elif result[3] == 1 %}
+                                        <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value="1" checked onclick="updatecomp(this, '{{result[0]}}'); itemToggle(this, '{{ result[0] }}')">
                                     {% else %}
                                     {% endif %}
                                 </td>
-                                <td>
-                                </td>
+                                <td><p class="comp_hide" id="comp_item_{{result[0]}}" data-rewards="{{ result[1] }}">{{ result[1] }}</p><p id="comp_white">{{result[1]}}</p></td>
                             </tr>
                             
                         </table>  
-                        {% endfor %}                  
                     </div>
+                    {% endfor %}                  
+                </div>
                 
             </div>
         <h1>Monsters</h1>
         <div class="item-container">
-            {% for monster in monsters %}
-                <div class="comp-md-8">
-                <table class="location_table" id="well-table">
-                    <tr>
-                        <th colspan="2">Info</th>
-                    </tr>
-                    <tr>
-                        <td>ID</td>
-                        <td>{{monster[0]}}</td>
-                    </tr>
-                    <tr>
-                        <td>Item</td>
-                        <td><p class="comp_hide" id="comp_item_{{monster[0]}}" data-rewards="{{ monster[1] }}">{{ monster[1] }}</p><p id="comp_white">{{monster[1]}}</p></td>                    </tr>                    
-                    <tr>
-                        <td colspan="2" class="comp_checkbox">
-                            <input type="hidden" name="comp_id" value="{{ monster[0] }}">
-                            {% if monster[3] == 0 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ monster[0] }}" name="done_comp_{{ monster[0] }}" value=0 unchecked onclick="updatecomp(this, '{{monster[0]}}')">
-                            {% elif monster[3] == 1 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ monster[0] }}" name="done_comp_{{ monster[0] }}" value=1 checked onclick="updatecomp(this, '{{monster[0]}}')">
-                            {% else %}
-                            {% endif %}
-                            
-                        </td>
-                    </tr>
-                </table>
+            {% for result in results if result[2] == "Monsters" %}
+            <div class="comp-md-8">
+                <div class="row comp_all" id="compStatus_{{result[3]}}" name="comp_name_{{result[1]}}">
+                    <table class="location_table" id="well-table">
+                        <tr>
+                            <th colspan="2">Info</th>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{result[0]}}</td>
+                        </tr>
+                        <tr>
+                            <td class="comp_checkbox">
+                                <input type="hidden" name="comp_id" value="{{ result[0] }}">
+                                {% if result[3] == 0 %}
+                                    <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=0 unchecked onclick="updatecomp(this, '{{result[0]}}')">
+                                {% elif result[3] == 1 %}
+                                    <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=1 checked onclick="updatecomp(this, '{{result[0]}}')">
+                                {% else %}
+                                {% endif %}
+                                
+                            </td>
+                            <td><p class="comp_hide" id="comp_item_{{result[0]}}" data-rewards="{{ result[1] }}">{{ result[1] }}</p><p id="comp_white">{{result[1]}}</p></td>
+                        </tr>
+                    </table>
                 </div>
+            </div>
             {% endfor %}
         </div>
         <h1>Materials</h1>
         <div class="item-container">
-            {% for material in materials %}
-                <div class="comp-md-8">
+            {% for result in results if result[2] == "Materials" %}
+            <div class="comp-md-8">
+                <div class="row comp_all"  id="compStatus_{{result[3]}}" name="comp_name_{{result[1]}}">
                     <table class="location_table" id="well-table">
                     <tr>
                         <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
-                        <td>{{material[0]}}</td>
+                        <td>{{result[0]}}</td>
                     </tr>
                     <tr>
-                        <td>Item</td>
-                        <td><p class="comp_hide" id="comp_item_{{material[0]}}" data-rewards="{{ material[1] }}">{{ material[1] }}</p><p id="comp_white">{{material[1]}}</p></td>                    </tr>                    
-                    </tr>                     
-                    <tr>
-                        <td colspan="2" class="comp_checkbox">
-                            <input type="hidden" name="comp_id" value="{{ material[0] }}">
-                            {% if material[3] == 0 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ material[0] }}" name="done_comp_{{ material[0] }}" value=0 unchecked onclick="updatecomp(this, '{{material[0]}}')">
-                            {% elif material[3] == 1 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ material[0] }}" name="done_comp_{{ material[0] }}" value=1 checked onclick="updatecomp(this, '{{material[0]}}')">
+                        <td class="comp_checkbox">
+                            <input type="hidden" name="comp_id" value="{{ result[0] }}">
+                            {% if result[3] == 0 %}
+                                <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=0 unchecked onclick="updatecomp(this, '{{result[0]}}')">
+                            {% elif result[3] == 1 %}
+                                <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=1 checked onclick="updatecomp(this, '{{result[0]}}')">
                             {% else %}
                             {% endif %}
                             
                         </td>
-                    </tr>
+                        <td><p class="comp_hide" id="comp_item_{{result[0]}}" data-rewards="{{ result[1] }}">{{ result[1] }}</p><p id="comp_white">{{result[1]}}</p></td>                    </tr>                    
+                    </tr> 
                 </table>
                 </div>
+            </div>
             {% endfor %}
         </div>
 
         <h1>Equipment</h1>
         <div class="item-container">
-            {% for equip in equipment %}
-                <div class="comp-md-8">
+            {% for result in results if result[2] == "Equipment" %}
+            <div class="comp-md-8">
+                <div class="row comp_all" id="compStatus_{{result[3]}}" name="comp_name_{{result[1]}}">
                     <table class="location_table" id="well-table">
                     <tr>
                         <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
-                        <td>{{equip[0]}}</td>
+                        <td>{{result[0]}}</td>
                     </tr>
                     <tr>
-                        <td>Item</td>
-                        <td><p class="comp_hide" id="comp_item_{{equip[0]}}" data-rewards="{{ equip[1] }}">{{ equip[1] }}</p><p id="comp_white">{{equip[1]}}</p></td>                 
-                    </tr>    
-                    <tr>
-                        <td colspan="2" class="comp_checkbox">
-                            <input type="hidden" name="comp_id" value="{{ equip[0] }}">
-                            {% if equip[3] == 0 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ equip[0] }}" name="done_comp_{{ equip[0] }}" value=0 unchecked onclick="updatecomp(this, '{{equip[0]}}')">
-                            {% elif equip[3] == 1 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ equip[0] }}" name="done_comp_{{ equip[0] }}" value=1 checked onclick="updatecomp(this, '{{equip[0]}}')">
+                        <td class="comp_checkbox">
+                            <input type="hidden" name="comp_id" value="{{ result[0] }}">
+                            {% if result[3] == 0 %}
+                                <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=0 unchecked onclick="updatecomp(this, '{{result[0]}}')">
+                            {% elif result[3] == 1 %}
+                                <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=1 checked onclick="updatecomp(this, '{{result[0]}}')">
                             {% else %}
                             {% endif %}
                             
                         </td>
-                    </tr>
+                        <td><p class="comp_hide" id="comp_item_{{result[0]}}" data-rewards="{{ result[1] }}">{{ result[1] }}</p><p id="comp_white">{{result[1]}}</p></td>                 
+                    </tr>    
                 </table>
                 </div>
+            </div>
             {% endfor %}
         </div>
         <h1>Treasures</h1>
         <div class="item-container">
-            {% for treasure in treasures %}
-                <div class="comp-md-8">
+            {% for result in results if result[2] == "Treasure" %}
+            <div class="comp-md-8">
+                <div class="row comp_all"  id="compStatus_{{result[3]}}" name="comp_name_{{result[1]}}">
                     <table class="location_table" id="well-table">
                     <tr>
                         <th colspan="2">Info</th>
                     </tr>
                     <tr>
                         <td>ID</td>
-                        <td>{{treasure[0]}}</td>
+                        <td>{{result[0]}}</td>
                     </tr>
                     <tr>
-                        <td>Item</td>
-                        <td><p class="comp_hide" id="comp_item_{{treasure[0]}}" data-rewards="{{ treasure[1] }}">{{ treasure[1] }}</p><p id="comp_white">{{treasure[1]}}</p></td>                 
-                    </tr>    
-                    <tr>
-                        <td colspan="2" class="comp_checkbox">
-                            <input type="hidden" name="comp_id" value="{{ treasure[0] }}">
-                            {% if treasure[3] == 0 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ treasure[0] }}" name="done_comp_{{ treasure[0] }}" value=0 unchecked onclick="updatecomp(this, '{{treasure[0]}}')">
-                            {% elif treasure[3] == 1 %}
-                                <input type="checkbox" class="comp_checkbox" id="done_{{ treasure[0] }}" name="done_comp_{{ treasure[0] }}" value=1 checked onclick="updatecomp(this, '{{treasure[0]}}')">
+                        <td class="comp_checkbox">
+                            <input type="hidden" name="comp_id" value="{{ result[0] }}">
+                            {% if result[3] == 0 %}
+                                <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=0 unchecked onclick="updatecomp(this, '{{result[0]}}')">
+                            {% elif result[3] == 1 %}
+                                <input type="checkbox" class="comp_checkbox" id="done_{{ result[0] }}" name="done_comp_{{ result[0] }}" value=1 checked onclick="updatecomp(this, '{{result[0]}}')">
                             {% else %}
                             {% endif %}
                             
                         </td>
-                    </tr>
+                        <td><p class="comp_hide" id="comp_item_{{result[0]}}" data-rewards="{{ result[1] }}">{{ result[1] }}</p><p id="comp_white">{{result[1]}}</p></td>                 
+                    </tr>  
                 </table>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </form>

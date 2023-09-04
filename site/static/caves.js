@@ -2,13 +2,38 @@ function caveShow() {
   Array.from(document.getElementsByClassName("cave_all")).forEach(function (element) {
     const caveStatus = element.id.replace('caveStatus_', ''); // Extract cave ID;
     console.log("CaveStatus ->", caveStatus)
-    if (caveStatus == 1) {
+    if (caveStatus != 0) {
       element.classList.remove("hidden_display");
     }
     else {
       element.classList.add("hidden_display");
     }
     console.log("cave caveStatus ->", caveStatus)
+})
+}
+
+function caveFind() {
+  let textbox = document.getElementById("find_cave");
+  let text = textbox.value.toLowerCase();
+  console.log("Text ->", text)
+  Array.from(document.getElementsByClassName("cave_all")).forEach(function (element) {
+    console.log("Element ->", element)
+    let caveName = element.getAttribute('name').toLowerCase();
+    
+    if (caveName && typeof caveName === 'string') {
+        caveName = caveName.replace('cave_name_', '');
+        console.log("cave Name ->", caveName);
+    } else {
+        console.log("Element does not have a valid 'name' attribute.");
+    }
+    console.log("cave Name ->", caveName)    
+    if (caveName.includes(text)) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("cave caveName ->", caveName)
 })
 }
 

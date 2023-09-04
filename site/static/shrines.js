@@ -13,11 +13,11 @@ function shrineShow() {
 
 function shrineFind() {
   let textbox = document.getElementById("find_shrine");
-  let text = textbox.value;
+  let text = textbox.value.toLowerCase();
   console.log("Text ->", text)
   Array.from(document.getElementsByClassName("shrine_all")).forEach(function (element) {
     console.log("Element ->", element)
-    let shrineName = element.getAttribute('name');
+    let shrineName = element.getAttribute('name').toLowerCase();
     
     if (shrineName && typeof shrineName === 'string') {
         shrineName = shrineName.replace('shrine_name_', '');
@@ -25,8 +25,8 @@ function shrineFind() {
     } else {
         console.log("Element does not have a valid 'name' attribute.");
     }
-    console.log("Shrine Name ->", shrineName)
-    if (shrineName == text) {
+    console.log("Shrine Name ->", shrineName)    
+    if (shrineName.includes(text)) {
       element.classList.remove("hidden_display");
     }
     else {
@@ -63,6 +63,19 @@ function infoToggle(radio) {
 
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
+
+  const findShrineInput = document.getElementById("find_shrine");
+  const searchButton = document.getElementById("searchButton");
+
+  findShrineInput.focus(); // Set focus on the input field
+
+  // Add an event listener to detect "Enter" key press
+  findShrineInput.addEventListener("keyup", function (event) {
+      if (event.key === "Enter") {
+          // Activate the search button when Enter is pressed
+          searchButton.click();
+      }
+  });
   shrineShow()
   Array.from(document.querySelectorAll('input[type="radio"]')).forEach(function (radio) {
     radio.addEventListener('change', function () {

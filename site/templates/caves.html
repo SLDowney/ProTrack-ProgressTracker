@@ -2,8 +2,14 @@
 
 {% block body %} 
 
+<div id="searchcave">
+    <input type="text" id="find_cave" name="find_cave" placeholder="cave Search">
+    <button onclick="caveFind()">Search</button>
+    <button onclick="caveShow()">Reset</button>
+</div>
+
      <!-- Add a table to display the completion status for each region -->
-     <table style="width: 100%;">
+     <!-- <table style="width: 100%;">
         <tr>
             <th>Region</th>
             <th>Completed</th>
@@ -29,7 +35,7 @@
             {% endfor %}
         </select>
         <input type="submit" value="Filter">
-    </form>
+    </form> -->
 
     <form id="caveform" action="{{ url_for('caves') }}" method="POST" enctype="multipart/form-data">
         {% for result in results %}

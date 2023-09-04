@@ -1,5 +1,44 @@
+function lightrootShow() {
+  Array.from(document.getElementsByClassName("lightroot_all")).forEach(function (element) {
+    const lightrootStatus = element.id.replace('lightrootStatus_', ''); // Extract lightroot ID;
+    if (lightrootStatus != 0) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("lightroot lightrootStatus ->", lightrootStatus)
+})
+}
+
+function lightrootFind() {
+  let textbox = document.getElementById("find_lightroot");
+  let text = textbox.value.toLowerCase();
+  console.log("Text ->", text)
+  Array.from(document.getElementsByClassName("lightroot_all")).forEach(function (element) {
+    console.log("Element ->", element)
+    let lightrootName = element.getAttribute('name').toLowerCase();
+    
+    if (lightrootName && typeof lightrootName === 'string') {
+        lightrootName = lightrootName.replace('lightroot_name_', '');
+        console.log("lightroot Name ->", lightrootName);
+    } else {
+        console.log("Element does not have a valid 'name' attribute.");
+    }
+    console.log("lightroot Name ->", lightrootName)    
+    if (lightrootName.includes(text)) {
+      element.classList.remove("hidden_display");
+    }
+    else {
+      element.classList.add("hidden_display");
+    }
+    console.log("lightroot lightrootName ->", lightrootName)
+})
+}
+
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("-----------------------------")
+  console.log("-----------------------------");
+  lightrootShow();
   var lightrootTable = document.getElementById('rootform');
   var checkboxes = document.querySelectorAll('.location_checkbox');
 
