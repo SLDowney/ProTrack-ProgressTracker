@@ -931,6 +931,10 @@ span {
     margin-top: 5%;
 }
 
+#searchcave {
+    margin-bottom: 2%;
+}
+
 /* For larger screens */
 @media (min-width: 992px) {
     /* Customize the brand logo and its style */
@@ -946,6 +950,17 @@ span {
         margin-right: 0; /* You can adjust the margin value if needed */
     }
 
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        align-items: center;
+    }
+    
     
     .navbar {
         position: fixed; /* Fixed position on the left side of the screen */
@@ -1268,8 +1283,38 @@ span {
     }
 
     .navbar-toggler {
-        margin-left: 35%;
+        margin-left: 0%;
         color:#247681
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        align-items: center;
+    }
+    
+    .navbar {
+        position: relative; /* Reset position for mobile */
+        width: 150%; /* Reset width for mobile */
+        padding-top: 10%;
+        /* flex-direction: row; */
+        justify-content: center;
+        color: #000000;
+    }
+
+    .navbar-nav .nav-link {
+        color: #000000; /* Your custom link color */
+        text-align: center;
+        font-size: large;
+        font-weight: bold;  
+        line-height: 1;
+        /* margin-left: -50%; */
+
     }
 
     .percentage_table {
@@ -1325,6 +1370,19 @@ span {
         margin-top: 10px;
     }
 
+    input[type="text"] {
+        display: table-cell;
+        /* float: right; */
+        margin-left: 0%;
+        justify-items: flex-start;
+    }
+
+    #searchcave {
+        margin-bottom: 2%;
+        display: flex;
+        justify-content: space-between;
+    }
+
     .locations-nav {
         background-color: #404040;
         height: 75px;
@@ -1366,6 +1424,15 @@ span {
         display: flex;
         flex-direction: column;
     /* justify-content: space-between; */
+    }
+
+    .location_checkbox {
+        width: 100px;
+        height: 50px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 0;
+        padding: 0;
     }
 
     .location_table {
@@ -1513,7 +1580,7 @@ span {
     }
 
     #fabrics-table, th, td {
-        display: block;
+        /* display: block; */
         text-align: center;
     }
     

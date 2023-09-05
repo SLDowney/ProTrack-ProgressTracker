@@ -7,7 +7,7 @@
     </a>
 </div>
 <div id="counter">
-    <p><span>{{completed_dispenser}} / ?</span></p>
+    <p>Found: <span>{{completed_dispenser}}</span></p>
 </div>
 <div class="content-container">
     <form action="{{ url_for('device_dispenser') }}" method="POST" enctype="multipart/form-data">
@@ -23,15 +23,15 @@
                         </thead>
                         <tbody colspan="3">   
                             <tr>
-                                <td colspan="1">Coordinates</td>
+                                <td class="dis_td_head" colspan="1">Coordinates</td>
                                 <td colspan="2">{{device_dispenser[2]}}</td>
                             </tr>
                             <tr>
-                                <td colspan="1">Region</td>
+                                <td class="dis_td_head" colspan="1">Region</td>
                                 <td colspan="2">{{device_dispenser[3]}}</td>
                             </tr>
                             <tr>
-                                <td colspan="1">Map</td>
+                                <td class="dis_td_head" colspan="1">Map</td>
                                 <td colspan="2">{{device_dispenser[4]}}</td>
                             </tr>
                             {% if device_dispenser[1] == 1 %}
