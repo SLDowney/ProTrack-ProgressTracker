@@ -46,99 +46,77 @@
                         <col span="1">
                         <col span="2">
                     </colgroup>
-                    
                         <tbody>
                             <tr>
                                 <th>Info</th>
                                 <th>Cave Info</th>
                             </tr>
-
-                            {% if result[0] == 2 %}
-                            <tr>
+                            <tr id="cave_name" class="cave_{{result[0]}} hidden_display">
                                 <td>Name</td>
                                 <td>{{result[1]}}</td>
                             </tr>
-                            <tr>
+                            <tr id="cave_coord" class="cave_{{result[0]}} hidden_display">
                                 <td>Coordinates</td>
                                 <td>{{result[2]}}</td>
                             </tr>
-                            <tr>
+                            <tr id="cave_region" class="cave_{{result[0]}} hidden_display">
                                 <td>Region</td>
                                 <td>{{result[3]}}</td>
                             </tr>
-                            <tr>
+                            <tr id="cave_bubbulfrog" class="cave_{{result[0]}} hidden_display">
                                 <td>Bubbulfrog</td>
                                 <td>{{result[4]}}</td>
                             </tr>
                             {% if result[5] != None %}
-                            <tr>
-                                <td>cave</td>
+                            <tr id="cave_shrine" class="cave_{{result[0]}} hidden_display">
+                                <td>Shrine</td>
                                 <td>{{result[5]}}</td>
                             </tr>
                             {% else %}
                             {% endif %}
                             {% if result[6] != None and result[10] != ""  %}
-                            <tr>
+                            <tr id="cave_enemies" class="cave_{{result[0]}} hidden_display">
                                 <td>Enemies</td>
                                 <td>{{result[6]}}</td>
                             </tr>
                             {% else %}
                             {% endif %}
                             {% if result[7] != None and result[10] != ""  %}
-                            <tr>
+                            <tr id="cave_treasure" class="cave_{{result[0]}} hidden_display">
                                 <td>Treasure</td>
                                 <td>{{result[7]}}</td>
                             </tr>
                             {% else %}
                             {% endif %}
                             {% if result[13] in armors %}
-                            <tr>
+                            <tr id="cave_armor" class="cave_{{result[0]}} hidden_display">
                                 <td>Armor</td>
                                 <td>{{result[13]}}</td>
                             </tr>
                             {% else %}
                             {% endif %}
                             {% if result[8] != None and result[10] != ""  %}
-                            <tr>
+                            <tr id="cave_sidequ" class="cave_{{result[0]}} hidden_display">
                                 <td>Side Quest</td>
                                 <td>{{result[8]}}</td>
                             </tr>
                             {% else %}
                             {% endif %}
                             {% if result[9] != None and result[10] != ""  %}
-                            <tr>
-                                <td>cave Quest</td>
+                            <tr id="cave_shrinequ" class="cave_{{result[0]}} hidden_display">
+                                <td>Shrine Quest</td>
                                 <td>{{result[9]}}</td>
                             </tr>
                             {% else %}
                             {% endif %}
                             {% if result[10] != None and result[10] != "" %}
-                            <tr>
+                            <tr id="cave_prereq" class="cave_{{result[0]}} hidden_display">
                                 <td>Prerequisites</td>
                                 <td>{{result[10]}}</td>
                             </tr>    
                             {% else %}
                             {% endif %}
-                            {% elif result[0] == 1 %}
-                            <tr>
-                                <td>Name</td>
-                                <td>{{result[1]}}</td>
-                            </tr>
-                            <tr>
-                                <td>Coordinates</td>
-                                <td>{{result[2]}}</td>
-                            </tr>
-                            <tr>
-                                <td>Region</td>
-                                <td>{{result[3]}}</td>
-                            </tr>
                             
-                            {% elif result[0] == 0 %}
-                            <tr>
-                                <td>Name</td>
-                                <td>{{result[1]}}</td>
-                            </tr>
-                            {% endif %}
 
                         <tr>
                             <td colspan="3">

@@ -1,14 +1,33 @@
 function caveShow() {
   Array.from(document.getElementsByClassName("cave_all")).forEach(function (element) {
-    const caveStatus = element.id.replace('caveStatus_', ''); // Extract cave ID;
+    let caveStatus = element.id.replace('caveStatus_', ''); // Extract cave ID;
     console.log("CaveStatus ->", caveStatus)
-    if (caveStatus != 0) {
-      element.classList.remove("hidden_display");
+    console.log("ELEMENT ! ->", element)
+    if (caveStatus == 2) {
+      console.log("ELEMENT 2 ->", element)
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
     }
-    else {
-      element.classList.add("hidden_display");
+    if (caveStatus == 1) {
+      console.log("ELEMENT 1 ID ->", element.id)
+      // if (element.id == "cave_name" || element.id == "cave_location" || element.id == "cave_coord" || element.id == "cave_region") {
+      //   console.log("Element 1 ID ->", element.id)
+      //   element.classList.remove("hidden_display");
+      // } else {
+      //     element.classList.add("hidden_display"); // Hide info
+      // }
     }
-    console.log("cave caveStatus ->", caveStatus)
+    if (caveStatus == 0) {
+      console.log("ELEMENT 0 ->", element)
+
+      if (element.id == "cave_name") {
+        element.classList.remove("hidden_display");
+      } else {
+          element.classList.add("hidden_display"); // Hide info
+      }
+
+    }
 })
 }
 
@@ -37,6 +56,41 @@ function caveFind() {
 })
 }
 
+function infoToggle(radio) {
+  const caveId = radio.name.replace('done_', ''); // Extract cave ID;
+  console.log("cave ID ->", caveId)
+  var caveIDElements = document.querySelectorAll(".cave_" + caveId);
+  console.log("cave Elements ->", caveIDElements)
+
+  caveIDElements.forEach(function (element) {
+    if (radio.value == "2") {
+      element.classList.remove("hidden_display"); // Show info
+    } else {
+      element.classList.add("hidden_display"); // Hide info
+    }
+    if (radio.value == "1") {
+      console.log("ELEMENT ->", element)
+
+      if (element.id == "cave_name" || element.id == "cave_location" || element.id == "cave_coord" || element.id == "cave_region") {
+        element.classList.remove("hidden_display");
+      } else {
+          element.classList.add("hidden_display"); // Hide info
+      }
+    }
+    if (radio.value == "0") {
+      console.log("ELEMENT ->", element)
+
+      if (element.id == "cave_name") {
+        element.classList.remove("hidden_display");
+      } else {
+          element.classList.add("hidden_display"); // Hide info
+      }
+
+    }
+    });
+  }
+
+
 window.addEventListener('DOMContentLoaded', function () {
   console.log("-----------------------------")
   caveShow()
@@ -46,31 +100,30 @@ window.addEventListener('DOMContentLoaded', function () {
       const caveId = radio.name.replace('done_', ''); // Extract cave ID
       console.log("caveID ->", caveId)
       console.log("radio.value:", radio.value)
-      caveShow()
-      // itemToggle(radio);
+      //caveShow()
+      infoToggle(radio)
     });
-    // itemToggle(radio);
   });
 });
 
 
 // Function to handle form submission and filtering by region
-function filterByRegion() {
-  var selectedRegion = document.getElementById('regionFilter').value;
-  var caveForm = document.getElementById('caveform');
-  caveForm.action = "/caves"; // Use the relative URL
-  if (selectedRegion) {
-      caveForm.action += "?region=" + encodeURIComponent(selectedRegion); // Include the region query parameter
-  }
-  caveForm.submit();
-  return false;
-}
+// function filterByRegion() {
+//   var selectedRegion = document.getElementById('regionFilter').value;
+//   var caveForm = document.getElementById('caveform');
+//   caveForm.action = "/caves"; // Use the relative URL
+//   if (selectedRegion) {
+//       caveForm.action += "?region=" + encodeURIComponent(selectedRegion); // Include the region query parameter
+//   }
+//   caveForm.submit();
+//   return false;
+// }
 
 // Add a listener for the form submission
-document.getElementById('regionFilterForm').addEventListener('submit', function (event) {
-  event.preventDefault(); // Prevent the default form submission behavior
-  filterByRegion(); // Call the filterByRegion() function to handle the form submission
-});
+// document.getElementById('regionFilterForm').addEventListener('submit', function (event) {
+//   event.preventDefault(); // Prevent the default form submission behavior
+//   filterByRegion(); // Call the filterByRegion() function to handle the form submission
+// });
 
 function updatecave(radio, caveId) {
   console.log("--------UPDATE cave ---------")
@@ -111,15 +164,3 @@ function updatecave(radio, caveId) {
       console.error('Error:', error);
     });
 }
-
-// function itemToggle(radio) {
-//   var compId = radio.id.replace('done_', ''); // Extract comp ID
-//   var compItemElement = document.getElementById("comp_item_" + compId);
-//   var items = compItemElement.nextElementSibling.textContent; // Get rewards value using getAttribute
-
-//   if (radio.checked) {
-//     compItemElement.textContent = items; // Show rewards value
-//   } else {
-//     compItemElement.textContent = "???"; // Show "???" when unchecked
-//   }
-// }

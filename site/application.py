@@ -823,7 +823,7 @@ def caves():
             conn.commit()
 
     with closing(conn.cursor()) as c:
-        query = '''SELECT * FROM caves ORDER BY cave_name ASC'''
+        query = '''SELECT * FROM caves ORDER BY cave_done ASC, cave_name ASC;'''
         c.execute(query)
         results = c.fetchall()
         selected_region = request.args.get('region')
@@ -1563,7 +1563,7 @@ def shrines():
             conn.commit()
 
     with closing(conn.cursor()) as c:
-        query = '''SELECT * FROM shrines ORDER BY shrine_shrine ASC'''
+        query = '''SELECT * FROM shrines ORDER BY shrine_done ASC, shrine_shrine ASC'''
         c.execute(query)
         selected_region = request.args.get('region')
         results = c.fetchall()
